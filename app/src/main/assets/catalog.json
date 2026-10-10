@@ -1,0 +1,937 @@
+[
+  {
+    "id": "Phone",
+    "title": "Phone",
+    "subtitle": "System-level controls",
+    "icon": "mode_mac",
+    "origin": "iOS",
+    "actions": [
+      {
+        "id": "TTModePhoneVolumeUp",
+        "title": "Volume up",
+        "icon": "music_volume_up"
+      },
+      {
+        "id": "TTModePhoneVolumeDown",
+        "title": "Volume down",
+        "icon": "music_volume_down"
+      },
+      {
+        "id": "TTModePhoneVolumeJump",
+        "title": "Jump to volume",
+        "icon": "music_volume_up"
+      },
+      {
+        "id": "TTModePhoneVolumeMute",
+        "title": "Mute",
+        "icon": "music_volume_mute"
+      }
+    ],
+    "defaults": [
+      "TTModePhoneVolumeUp",
+      "TTModePhoneVolumeJump",
+      "TTModePhoneVolumeMute",
+      "TTModePhoneVolumeDown"
+    ]
+  },
+  {
+    "id": "Camera",
+    "title": "Camera",
+    "subtitle": "Shoot photos and videos",
+    "icon": "mode_camera",
+    "origin": "iOS",
+    "actions": [
+      {
+        "id": "TTModeCameraShoot",
+        "title": "Take photo",
+        "icon": "camera_shoot"
+      },
+      {
+        "id": "TTModeCameraSwitchPhotoVideo",
+        "title": "Switch photo/video",
+        "icon": "camera_video"
+      },
+      {
+        "id": "TTModeCameraSwitchView",
+        "title": "Flip front/back",
+        "icon": "camera_reverse"
+      },
+      {
+        "id": "TTModeCameraSwitchFlash",
+        "title": "Switch flash",
+        "icon": "camera_flash"
+      }
+    ],
+    "defaults": [
+      "TTModeCameraShoot",
+      "TTModeCameraSwitchView",
+      "TTModeCameraSwitchPhotoVideo",
+      "TTModeCameraShoot"
+    ]
+  },
+  {
+    "id": "Music",
+    "title": "Music",
+    "subtitle": "Control your music",
+    "icon": "mode_music",
+    "origin": "iOS",
+    "actions": [
+      {
+        "id": "TTModeMusicVolumeUp",
+        "title": "Volume up",
+        "icon": "music_volume_up"
+      },
+      {
+        "id": "TTModeMusicVolumeDown",
+        "title": "Volume down",
+        "icon": "music_volume_down"
+      },
+      {
+        "id": "TTModeMusicVolumeJump",
+        "title": "Jump to volume",
+        "icon": "music_volume_up"
+      },
+      {
+        "id": "TTModeMusicVolumeMute",
+        "title": "Mute music",
+        "icon": "music_volume_mute"
+      },
+      {
+        "id": "TTModeMusicPlayPause",
+        "title": "Play/pause",
+        "icon": "music_play_pause"
+      },
+      {
+        "id": "TTModeMusicPlay",
+        "title": "Play music",
+        "icon": "music_play"
+      },
+      {
+        "id": "TTModeMusicPause",
+        "title": "Pause music",
+        "icon": "music_pause"
+      },
+      {
+        "id": "TTModeMusicNextTrack",
+        "title": "Next track",
+        "icon": "music_ff"
+      },
+      {
+        "id": "TTModeMusicPreviousTrack",
+        "title": "Previous track",
+        "icon": "music_rewind"
+      }
+    ],
+    "defaults": [
+      "TTModeMusicVolumeUp",
+      "TTModeMusicNextTrack",
+      "TTModeMusicPlayPause",
+      "TTModeMusicVolumeDown"
+    ]
+  },
+  {
+    "id": "Hue",
+    "title": "Hue",
+    "subtitle": "Lights and scenes",
+    "icon": "mode_hue",
+    "origin": "iOS",
+    "actions": [
+      {
+        "id": "TTModeHueRaiseBrightness",
+        "title": "Raise brightness",
+        "icon": "hue_brightness_up"
+      },
+      {
+        "id": "TTModeHueLowerBrightness",
+        "title": "Lower brightness",
+        "icon": "hue_brightness_down"
+      },
+      {
+        "id": "TTModeHueRaiseSaturation",
+        "title": "Raise saturation",
+        "icon": "hue_brightness_up"
+      },
+      {
+        "id": "TTModeHueLowerSaturation",
+        "title": "Lower saturation",
+        "icon": "hue_brightness_down"
+      },
+      {
+        "id": "TTModeHueShiftColorLeft",
+        "title": "Shift color left",
+        "icon": "hue_shift_left"
+      },
+      {
+        "id": "TTModeHueShiftColorRight",
+        "title": "Shift color right",
+        "icon": "hue_shift_right"
+      },
+      {
+        "id": "TTModeHueRandom",
+        "title": "Random",
+        "icon": "hue_random"
+      },
+      {
+        "id": "TTModeHueCycleScenes",
+        "title": "Cycle scenes",
+        "icon": "hue_cycle"
+      },
+      {
+        "id": "TTModeHueSceneCustom",
+        "title": "Custom scene",
+        "icon": "hue_evening"
+      },
+      {
+        "id": "TTModeHueSceneEarlyEvening",
+        "title": "Early evening",
+        "icon": "hue_sunset"
+      },
+      {
+        "id": "TTModeHueSceneLateEvening",
+        "title": "Late evening",
+        "icon": "hue_evening"
+      },
+      {
+        "id": "TTModeHueSceneMorning",
+        "title": "Morning",
+        "icon": "hue_evening"
+      },
+      {
+        "id": "TTModeHueSceneMidnightOil",
+        "title": "Midnight oil",
+        "icon": "hue_evening"
+      },
+      {
+        "id": "TTModeHueSceneColorLoop",
+        "title": "Color loop",
+        "icon": "hue_random"
+      },
+      {
+        "id": "TTModeHueSleep",
+        "title": "Sleep",
+        "icon": "hue_sleep"
+      },
+      {
+        "id": "TTModeHueSceneLightsOff",
+        "title": "Lights off",
+        "icon": "hue_sleep"
+      }
+    ],
+    "defaults": [
+      "TTModeHueSceneEarlyEvening",
+      "TTModeHueSceneLateEvening",
+      "TTModeHueRandom",
+      "TTModeHueSleep"
+    ]
+  },
+  {
+    "id": "Nanoleaf",
+    "title": "Nanoleaf",
+    "subtitle": "Light panels and effects",
+    "icon": "mode_nanoleaf",
+    "origin": "iOS",
+    "actions": [
+      {
+        "id": "TTModeNanoleafToggle",
+        "title": "Toggle on/off",
+        "icon": "nanoleaf_toggle"
+      },
+      {
+        "id": "TTModeNanoleafTurnOn",
+        "title": "Turn on",
+        "icon": "nanoleaf_toggle"
+      },
+      {
+        "id": "TTModeNanoleafTurnOff",
+        "title": "Turn off",
+        "icon": "nanoleaf_toggle"
+      },
+      {
+        "id": "TTModeNanoleafSceneCustom",
+        "title": "Trigger effect",
+        "icon": "nanoleaf_scene"
+      },
+      {
+        "id": "TTModeNanoleafRaiseBrightness",
+        "title": "Raise brightness",
+        "icon": "nanoleaf_brightness_up"
+      },
+      {
+        "id": "TTModeNanoleafLowerBrightness",
+        "title": "Lower brightness",
+        "icon": "nanoleaf_brightness_down"
+      },
+      {
+        "id": "TTModeNanoleafSleep",
+        "title": "Sleep",
+        "icon": "nanoleaf_sleep"
+      }
+    ],
+    "defaults": [
+      "TTModeNanoleafToggle",
+      "TTModeNanoleafRaiseBrightness",
+      "TTModeNanoleafLowerBrightness",
+      "TTModeNanoleafSleep"
+    ]
+  },
+  {
+    "id": "Wemo",
+    "title": "Wemo",
+    "subtitle": "Smart power meter and outlet",
+    "icon": "mode_wemo",
+    "origin": "iOS",
+    "actions": [
+      {
+        "id": "TTModeWemoDeviceStart",
+        "title": "Turn on",
+        "icon": "electrical_connected"
+      },
+      {
+        "id": "TTModeWemoDeviceOff",
+        "title": "Turn off",
+        "icon": "electrical_disconnected"
+      },
+      {
+        "id": "TTModeWemoDeviceToggle",
+        "title": "Toggle device",
+        "icon": "electrical"
+      }
+    ],
+    "defaults": [
+      "TTModeWemoDeviceStart",
+      "TTModeWemoDeviceToggle",
+      "TTModeWemoDeviceToggle",
+      "TTModeWemoDeviceOff"
+    ]
+  },
+  {
+    "id": "Kasa",
+    "title": "TP-Link Kasa",
+    "subtitle": "Smart plugs and switches",
+    "icon": "mode_wemo",
+    "origin": "iOS",
+    "actions": [
+      {
+        "id": "TTModeKasaDeviceOn",
+        "title": "Turn on",
+        "icon": "electrical_connected"
+      },
+      {
+        "id": "TTModeKasaDeviceOff",
+        "title": "Turn off",
+        "icon": "electrical_disconnected"
+      },
+      {
+        "id": "TTModeKasaDeviceToggle",
+        "title": "Toggle device",
+        "icon": "electrical"
+      }
+    ],
+    "defaults": [
+      "TTModeKasaDeviceOn",
+      "TTModeKasaDeviceToggle",
+      "TTModeKasaDeviceToggle",
+      "TTModeKasaDeviceOff"
+    ]
+  },
+  {
+    "id": "Govee",
+    "title": "Govee",
+    "subtitle": "Smart lights and devices",
+    "icon": "mode_hue",
+    "origin": "iOS",
+    "actions": [
+      {
+        "id": "TTModeGoveeDeviceOn",
+        "title": "Turn on",
+        "icon": "hue_on"
+      },
+      {
+        "id": "TTModeGoveeDeviceOff",
+        "title": "Turn off",
+        "icon": "hue_off"
+      },
+      {
+        "id": "TTModeGoveeDeviceToggle",
+        "title": "Toggle device",
+        "icon": "electrical"
+      },
+      {
+        "id": "TTModeGoveeBrightnessUp",
+        "title": "Brightness up",
+        "icon": "hue_brightness"
+      },
+      {
+        "id": "TTModeGoveeBrightnessDown",
+        "title": "Brightness down",
+        "icon": "hue_brightness"
+      }
+    ],
+    "defaults": [
+      "TTModeGoveeDeviceOn",
+      "TTModeGoveeBrightnessUp",
+      "TTModeGoveeBrightnessDown",
+      "TTModeGoveeDeviceOff"
+    ]
+  },
+  {
+    "id": "Sonos",
+    "title": "Sonos",
+    "subtitle": "Connected wireless speakers",
+    "icon": "mode_sonos",
+    "origin": "iOS",
+    "actions": [
+      {
+        "id": "TTModeSonosVolumeUp",
+        "title": "Volume up",
+        "icon": "music_volume_up"
+      },
+      {
+        "id": "TTModeSonosVolumeDown",
+        "title": "Volume down",
+        "icon": "music_volume_down"
+      },
+      {
+        "id": "TTModeSonosVolumeMute",
+        "title": "Mute",
+        "icon": "music_volume_mute"
+      },
+      {
+        "id": "TTModeSonosVolumeJump",
+        "title": "Jump to volume",
+        "icon": "music_volume_up"
+      },
+      {
+        "id": "TTModeSonosPlayPause",
+        "title": "Play/pause",
+        "icon": "music_play_pause"
+      },
+      {
+        "id": "TTModeSonosPlay",
+        "title": "Play",
+        "icon": "music_play"
+      },
+      {
+        "id": "TTModeSonosPause",
+        "title": "Pause",
+        "icon": "music_pause"
+      },
+      {
+        "id": "TTModeSonosNextTrack",
+        "title": "Next track",
+        "icon": "music_ff"
+      },
+      {
+        "id": "TTModeSonosPreviousTrack",
+        "title": "Previous track",
+        "icon": "music_rewind"
+      }
+    ],
+    "defaults": [
+      "TTModeSonosVolumeUp",
+      "TTModeSonosNextTrack",
+      "TTModeSonosPlayPause",
+      "TTModeSonosVolumeDown"
+    ]
+  },
+  {
+    "id": "Bose",
+    "title": "Bose",
+    "subtitle": "Control Bose speakers",
+    "icon": "mode_bose",
+    "origin": "iOS",
+    "actions": [
+      {
+        "id": "TTModeBoseVolumeUp",
+        "title": "Volume up",
+        "icon": "music_volume_up"
+      },
+      {
+        "id": "TTModeBoseVolumeDown",
+        "title": "Volume down",
+        "icon": "music_volume_down"
+      },
+      {
+        "id": "TTModeBoseVolumeMute",
+        "title": "Mute",
+        "icon": "music_volume_mute"
+      },
+      {
+        "id": "TTModeBoseVolumeJump",
+        "title": "Jump to volume",
+        "icon": "music_volume_up"
+      },
+      {
+        "id": "TTModeBosePlayPause",
+        "title": "Play/pause",
+        "icon": "music_play_pause"
+      },
+      {
+        "id": "TTModeBosePlay",
+        "title": "Play",
+        "icon": "music_play"
+      },
+      {
+        "id": "TTModeBosePause",
+        "title": "Pause",
+        "icon": "music_pause"
+      },
+      {
+        "id": "TTModeBoseNextTrack",
+        "title": "Next track",
+        "icon": "music_ff"
+      },
+      {
+        "id": "TTModeBosePreviousTrack",
+        "title": "Previous track",
+        "icon": "music_rewind"
+      }
+    ],
+    "defaults": [
+      "TTModeBoseVolumeUp",
+      "TTModeBoseNextTrack",
+      "TTModeBosePlayPause",
+      "TTModeBoseVolumeDown"
+    ]
+  },
+  {
+    "id": "Yoga",
+    "title": "Yoga",
+    "subtitle": "Practice yoga and movement",
+    "icon": "mode_meditation",
+    "origin": "iOS",
+    "actions": [
+      {
+        "id": "TTModeYogaTimeUp",
+        "title": "More time",
+        "icon": ""
+      },
+      {
+        "id": "TTModeYogaTimeDown",
+        "title": "Less time",
+        "icon": ""
+      },
+      {
+        "id": "TTModeYogaNext",
+        "title": "Next",
+        "icon": ""
+      },
+      {
+        "id": "TTModeYogaPrevious",
+        "title": "Previous",
+        "icon": ""
+      }
+    ],
+    "defaults": [
+      "TTModeYogaTimeUp",
+      "TTModeYogaNext",
+      "TTModeYogaPrevious",
+      "TTModeYogaTimeDown"
+    ]
+  },
+  {
+    "id": "Custom",
+    "title": "Custom",
+    "subtitle": "Hit a website on command",
+    "icon": "mode_custom",
+    "origin": "iOS",
+    "actions": [
+      {
+        "id": "TTModeCustomURL",
+        "title": "Custom URL",
+        "icon": "webhook"
+      }
+    ],
+    "defaults": [
+      "TTModeCustomURL",
+      "TTModeCustomURL",
+      "TTModeCustomURL",
+      "TTModeCustomURL"
+    ]
+  },
+  {
+    "id": "Ifttt",
+    "title": "IFTTT",
+    "subtitle": "Buttons for If This Then That",
+    "icon": "mode_ifttt",
+    "origin": "iOS",
+    "actions": [
+      {
+        "id": "TTModeIftttTriggerAction",
+        "title": "Trigger action",
+        "icon": "lightning"
+      }
+    ],
+    "defaults": [
+      "TTModeIftttTriggerAction",
+      "TTModeIftttTriggerAction",
+      "TTModeIftttTriggerAction",
+      "TTModeIftttTriggerAction"
+    ]
+  },
+  {
+    "id": "HomeKit",
+    "title": "HomeKit",
+    "subtitle": "Your home at your command.",
+    "icon": "mode_homekit",
+    "origin": "iOS",
+    "actions": [
+      {
+        "id": "TTModeHomeKitTriggerScene",
+        "title": "TriggerScene",
+        "icon": "lightning"
+      }
+    ],
+    "defaults": [
+      "TTModeHomeKitTriggerScene",
+      "TTModeHomeKitTriggerScene",
+      "TTModeHomeKitTriggerScene",
+      "TTModeHomeKitTriggerScene"
+    ]
+  },
+  {
+    "id": "Spotify",
+    "title": "Spotify",
+    "subtitle": "Control Spotify music",
+    "icon": "mode_spotify",
+    "origin": "iOS",
+    "actions": [
+      {
+        "id": "TTModeSpotifyVolumeUp",
+        "title": "Volume up",
+        "icon": "music_volume_up"
+      },
+      {
+        "id": "TTModeSpotifyVolumeDown",
+        "title": "Volume down",
+        "icon": "music_volume_down"
+      },
+      {
+        "id": "TTModeSpotifyVolumeMute",
+        "title": "Mute",
+        "icon": "music_volume_mute"
+      },
+      {
+        "id": "TTModeSpotifyVolumeJump",
+        "title": "Jump to volume",
+        "icon": "music_volume_up"
+      },
+      {
+        "id": "TTModeSpotifyPlayPause",
+        "title": "Play/pause",
+        "icon": "music_play_pause"
+      },
+      {
+        "id": "TTModeSpotifyPlay",
+        "title": "Play",
+        "icon": "music_play"
+      },
+      {
+        "id": "TTModeSpotifyPause",
+        "title": "Pause",
+        "icon": "music_pause"
+      },
+      {
+        "id": "TTModeSpotifyNextTrack",
+        "title": "Next track",
+        "icon": "music_ff"
+      },
+      {
+        "id": "TTModeSpotifyPreviousTrack",
+        "title": "Previous track",
+        "icon": "music_rewind"
+      }
+    ],
+    "defaults": [
+      "TTModeSpotifyVolumeUp",
+      "TTModeSpotifyNextTrack",
+      "TTModeSpotifyPlayPause",
+      "TTModeSpotifyVolumeDown"
+    ]
+  },
+  {
+    "id": "AlarmClock",
+    "title": "Alarm",
+    "subtitle": "",
+    "icon": "mode_alarm",
+    "origin": "Mac",
+    "actions": [
+      {
+        "id": "TTModeAlarmSnooze",
+        "title": "Snooze",
+        "icon": "alarm_snooze"
+      },
+      {
+        "id": "TTModeAlarmNextSong",
+        "title": "Next Song",
+        "icon": "music_ff"
+      },
+      {
+        "id": "TTModeAlarmSongInfo",
+        "title": "Alarm Clock",
+        "icon": "song_info"
+      },
+      {
+        "id": "TTModeAlarmStop",
+        "title": "Stop alarm",
+        "icon": "alarm_off"
+      },
+      {
+        "id": "TTModeAlarmVolumeUp",
+        "title": "Volume up",
+        "icon": "music_volume_up"
+      },
+      {
+        "id": "TTModeAlarmVolumeDown",
+        "title": "Volume down",
+        "icon": "music_volume_down"
+      }
+    ],
+    "defaults": [
+      "TTModeAlarmVolumeUp",
+      "TTModeAlarmNextSong",
+      "TTModeAlarmSnooze",
+      "TTModeAlarmVolumeDown"
+    ]
+  },
+  {
+    "id": "Airfoil",
+    "title": "Airfoil",
+    "subtitle": "",
+    "icon": "app_airfoil",
+    "origin": "Mac",
+    "actions": [
+      {
+        "id": "TTModeAirfoilVolumeUp",
+        "title": "Volume up",
+        "icon": "music_volume_up"
+      },
+      {
+        "id": "TTModeAirfoilVolumeDown",
+        "title": "Volume down",
+        "icon": "music_volume_down"
+      },
+      {
+        "id": "TTModeAirfoilVolumeJump",
+        "title": "Volume jump",
+        "icon": "music_volume"
+      },
+      {
+        "id": "TTModeAirfoilMute",
+        "title": "Mute",
+        "icon": "music_mute"
+      }
+    ],
+    "defaults": [
+      "TTModeAirfoilVolumeUp",
+      "TTModeAirfoilVolumeJump",
+      "TTModeAirfoilVolumeJump",
+      "TTModeAirfoilVolumeDown"
+    ]
+  },
+  {
+    "id": "Video",
+    "title": "Video",
+    "subtitle": "",
+    "icon": "mode_video",
+    "origin": "Mac",
+    "actions": [
+      {
+        "id": "TTModeVideoVolumeUp",
+        "title": "Volume up",
+        "icon": "music_volume_up"
+      },
+      {
+        "id": "TTModeVideoVolumeDown",
+        "title": "Volume down",
+        "icon": "music_volume_down"
+      },
+      {
+        "id": "TTModeVideoFF",
+        "title": "Fast forward",
+        "icon": "music_ff"
+      },
+      {
+        "id": "TTModeVideoRewind",
+        "title": "Rewind",
+        "icon": "music_rewind"
+      },
+      {
+        "id": "TTModeVideoPause",
+        "title": "Play/pause",
+        "icon": "music_play_pause"
+      },
+      {
+        "id": "TTModeVideoFullScreen",
+        "title": "Full screen",
+        "icon": "fullscreen"
+      }
+    ],
+    "defaults": [
+      "TTModeVideoVolumeUp",
+      "TTModeVideoPause",
+      "TTModeVideoFullScreen",
+      "TTModeVideoVolumeDown"
+    ]
+  },
+  {
+    "id": "News",
+    "title": "NewsBlur",
+    "subtitle": "",
+    "icon": "mode_news",
+    "origin": "Mac",
+    "actions": [
+      {
+        "id": "TTModeNewsNextStory",
+        "title": "Next story",
+        "icon": "next"
+      },
+      {
+        "id": "TTModeNewsNextSite",
+        "title": "Next site",
+        "icon": "next_site"
+      },
+      {
+        "id": "TTModeNewsPreviousStory",
+        "title": "Previous story",
+        "icon": "previous"
+      },
+      {
+        "id": "TTModeNewsPreviousSite",
+        "title": "Previous site",
+        "icon": "previous_site"
+      },
+      {
+        "id": "TTModeNewsScrollUp",
+        "title": "Scroll up",
+        "icon": "scroll_up"
+      },
+      {
+        "id": "TTModeNewsScrollDown",
+        "title": "Scroll down",
+        "icon": "scroll_down"
+      },
+      {
+        "id": "TTModeNewsMenu",
+        "title": "Menu",
+        "icon": "menu"
+      }
+    ],
+    "defaults": [
+      "TTModeNewsScrollUp",
+      "TTModeNewsNextStory",
+      "TTModeNewsMenu",
+      "TTModeNewsScrollDown"
+    ]
+  },
+  {
+    "id": "Web",
+    "title": "Web",
+    "subtitle": "",
+    "icon": "mode_web",
+    "origin": "Mac",
+    "actions": [
+      {
+        "id": "TTModeWebMenu",
+        "title": "Menu",
+        "icon": "menu"
+      },
+      {
+        "id": "TTModeWebNext",
+        "title": "OK / Next",
+        "icon": "next_site"
+      },
+      {
+        "id": "TTModeWebScrollUp",
+        "title": "Scroll up",
+        "icon": "scroll_up"
+      },
+      {
+        "id": "TTModeWebScrollDown",
+        "title": "Scroll down",
+        "icon": "scroll_down"
+      }
+    ],
+    "defaults": [
+      "TTModeWebScrollUp",
+      "TTModeWebNext",
+      "TTModeWebMenu",
+      "TTModeWebScrollDown"
+    ]
+  },
+  {
+    "id": "Presentation",
+    "title": "Presentation",
+    "subtitle": "",
+    "icon": "mode_presentation",
+    "origin": "Mac",
+    "actions": [
+      {
+        "id": "TTModePresentationNextSlide",
+        "title": "Next slide",
+        "icon": "music_ff"
+      },
+      {
+        "id": "TTModePresentationPreviousSlide",
+        "title": "Previous slide",
+        "icon": "music_rewind"
+      },
+      {
+        "id": "TTModePresentationToggleSlides",
+        "title": "Toggle slides",
+        "icon": "presentation_slides"
+      },
+      {
+        "id": "TTModePresentationPlay",
+        "title": "Play presentation",
+        "icon": "music_play"
+      },
+      {
+        "id": "TTModePresentationVolumeUp",
+        "title": "Volume up",
+        "icon": "music_volume_up"
+      },
+      {
+        "id": "TTModePresentationVolumeDown",
+        "title": "Volume down",
+        "icon": "music_volume_down"
+      }
+    ],
+    "defaults": [
+      "TTModePresentationToggleSlides",
+      "TTModePresentationNextSlide",
+      "TTModePresentationPreviousSlide",
+      "TTModePresentationPlay"
+    ]
+  },
+  {
+    "id": "Nest",
+    "title": "Nest",
+    "subtitle": "",
+    "icon": "mode_nest",
+    "origin": "Mac",
+    "actions": [
+      {
+        "id": "TTModeNestRaiseTemp",
+        "title": "Raise temp",
+        "icon": "temperature_up"
+      },
+      {
+        "id": "TTModeNestLowerTemp",
+        "title": "Lower temp",
+        "icon": "temperature_down"
+      },
+      {
+        "id": "TTModeNestSetTemp",
+        "title": "Set temperature",
+        "icon": "temperature"
+      }
+    ],
+    "defaults": [
+      "TTModeNestRaiseTemp",
+      "TTModeNestSetTemp",
+      "TTModeNestSetTemp",
+      "TTModeNestLowerTemp"
+    ]
+  }
+]

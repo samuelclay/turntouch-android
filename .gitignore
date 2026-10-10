@@ -1,0 +1,13 @@
+.gradle/
+.kotlin/
+**/build/
+local.properties
+*.iml
+.idea/
+.DS_Store
+evidence/*.xml
+# Local device diagnostics may contain device identifiers and network details.
+evidence/
+*.keystore
+*.jks
+.env
