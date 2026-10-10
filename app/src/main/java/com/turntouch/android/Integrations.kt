@@ -114,7 +114,7 @@ class ActionExecutor(private val app: AppState) {
             "RaiseSaturation","LowerSaturation" -> body.put("sat_inc",if(action.startsWith("Raise"))amount else -amount)
             "ShiftColorLeft","ShiftColorRight" -> body.put("hue_inc",if(action.endsWith("Right"))5000 else -5000)
             "SceneLightsOff","Sleep" -> { body.put("on",false); if(action=="Sleep")body.put("transitiontime",(c["seconds"]?.toIntOrNull() ?: 60)*10) }
-            "Random" -> body.put("on",true).put("hue",(0..65535).random()).put("sat",220)
+            "Random" -> {HueRandom.apply(base,group,HueRandomSettings.from(c));return}
             "SceneColorLoop" -> body.put("on",true).put("effect","colorloop")
             "CycleScenes" -> {
                 val scenes=c["scenes"].orEmpty().split('|').filter { it.isNotBlank() }

@@ -10,6 +10,7 @@ The Samsung Galaxy S22 (Android API 36) and Galaxy Tab A8 (API 34) have been use
 - Live local-network discovery of Hue, Sonos, and Nanoleaf.
 - Hue bridge pairing on the tablet and Nanoleaf pairing on the phone.
 - Loading Hue rooms/scenes and Nanoleaf effects, selecting them inline, and verifying persisted selections.
+- Hue Random: independent single/double-tap options, all 27 setting combinations tested, plus real color/saturation/brightness command read-back and state restoration on one reachable room light.
 - Whole-diamond touch targets, pressed fill, centered long labels, and visible inline action selection, including preserving other actions in a batch.
 
 The automatic pairing retry loop has tests for eventual success, cancellation, and ignoring late results after cancellation. A new physical pairing round trip with the automatic retry UI still needs to be checked.
@@ -43,9 +44,11 @@ A complete live Turn Touch four-button test and background reconnect endurance r
 
 ## Testing
 
-- `ButtonDecoderTest`, `NetworkTest`, and `PairingTest` run locally without hardware.
+- `ButtonDecoderTest`, `NetworkTest`, `PairingTest`, and `HueRandomTest` run locally without hardware.
 - `DiamondInteractionTest` verifies hit targets, highlight shape, centered long labels, and action chooser visibility on a device. Temporary button changes are restored.
 - `InlineLightingOptionsTest` requires real saved pairing credentials and a Hue/Nanoleaf mode slot. Run the appropriate method on the device paired with that integration. It reads device catalogs and changes/restores button assignments; it does not activate an effect or scene.
+- `HueRandomOptionsTest` verifies the six controls in 16-button mode and independent per-tap options in 12-button mode. It restores the original button preferences.
+- `HueRandomLiveTest` requires saved Hue credentials. It briefly changes a small reachable color-light room, checks the result, and restores the original light states.
 - `DeviceSmokeTest` uses Bluetooth scanning and local Wi-Fi discovery, and may attempt a connection to a discovered Turn Touch.
 - `LiveIntegrationTest` is an opt-in protocol test that requires a private `files/test-connections.json` fixture. It changes one light's brightness and a speaker's volume briefly, then restores them. Do not commit credentials or device fixtures. Its current combined Hue/Sonos test needs to be split so each integration can be checked independently.
 

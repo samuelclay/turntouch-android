@@ -20,6 +20,10 @@ App | Choose an action
 :---:|:---:
 ![](Screenshots/tablet-main.png) | ![](Screenshots/tablet-chooser.png)
 
+### Hue Random options
+
+<img src="Screenshots/tablet-hue-random.png" width="800" alt="Hue Random color, saturation, and luminance options for single and double taps">
+
 ## Features
 
 [Turn Touch](https://turntouch.com) is a smart home remote control carved out of beautiful wood. This Android companion brings the iOS app's four-button interface, original artwork, and Effra typography to phones and tablets using Kotlin and Jetpack Compose.

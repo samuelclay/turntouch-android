@@ -5,6 +5,9 @@ import androidx.compose.foundation.relocation.BringIntoViewRequester
 import androidx.compose.foundation.relocation.bringIntoViewRequester
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.draw.clip
+import androidx.compose.foundation.selection.selectable
+import androidx.compose.foundation.selection.selectableGroup
 import kotlinx.coroutines.launch
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
@@ -71,10 +74,11 @@ object LightingOptions {
 }
 
 /** Options stay in the button inspector; selecting or typing saves immediately. */
-@Composable fun BindingOptions(app: AppState, binding: Binding, onChange: (Binding) -> Unit) {
+@Composable fun BindingOptions(app: AppState, binding: Binding, doubleBinding: Binding?=null, onDoubleChange: (Binding)->Unit={}, onChange: (Binding) -> Unit) {
     fun update(key: String, value: String) = onChange(binding.copy(options = binding.options + (key to value)))
     if (binding.mode == "Hue" || binding.mode == "Nanoleaf") {
         LightingBindingOptions(app, binding, onChange)
+        if(binding.action=="TTModeHueRandom")HueRandomOptions(binding,doubleBinding,onChange,onDoubleChange)
         return
     }
     val fields = when {
@@ -179,6 +183,40 @@ object LightingOptions {
                         Text(choice.name,Modifier.weight(1f),fontFamily=Effra);if(choice.id==selected)Text("✓")
                     }
                 }
+            }
+        }
+    }
+}
+
+@Composable private fun HueRandomOptions(single: Binding,double: Binding?,onSingleChange: (Binding)->Unit,onDoubleChange: (Binding)->Unit) {
+    val groups=listOf(
+        Triple("Color","randomColors",listOf("Different","Mix","Same")),
+        Triple("Saturation","randomSaturation",listOf("Pastels","Mix","Strong")),
+        Triple("Luminance","randomBrightness",listOf("Dim","Mix","Bright"))
+    )
+    Column(Modifier.fillMaxWidth().padding(vertical=8.dp)) {
+        groups.forEach { (label,key,choices) ->
+            Text(label,Modifier.padding(top=12.dp,bottom=4.dp),fontFamily=Effra,fontSize=13.sp,color=Ink)
+            RandomSegments(label,if(double==null)"" else "Single tap",key,choices,single,onSingleChange)
+            if(double!=null)RandomSegments(label,"Double tap",key,choices,double,onDoubleChange)
+        }
+    }
+}
+
+@Composable private fun RandomSegments(label: String,tap: String,key: String,choices: List<String>,binding: Binding,onChange: (Binding)->Unit) {
+    val selected=binding.options[key]?.toIntOrNull() ?: 2
+    Row(Modifier.fillMaxWidth().padding(vertical=3.dp),verticalAlignment=Alignment.CenterVertically) {
+        if(tap.isNotBlank())Artwork(if(tap=="Single tap")"single_tap" else "double_tap",Modifier.padding(end=8.dp),size=20.dp,description=tap,tint=Ink)
+        Row(Modifier.weight(1f).border(1.dp,Blue,RoundedCornerShape(5.dp)).clip(RoundedCornerShape(5.dp)).selectableGroup()) {
+            choices.forEachIndexed {index,title ->
+                Box(Modifier.weight(1f).heightIn(min=36.dp).background(if(index==selected)Blue else Color.White)
+                    .selectable(selected=index==selected,role=androidx.compose.ui.semantics.Role.RadioButton) {
+                        onChange(binding.copy(options=binding.options+(key to index.toString())))
+                    }.semantics {contentDescription="${if(tap.isBlank())"" else "$tap "}$label: $title"}.padding(horizontal=3.dp,vertical=8.dp),
+                    contentAlignment=Alignment.Center) {
+                    Text(title,fontFamily=Effra,fontSize=13.sp,color=if(index==selected)Color.White else Blue)
+                }
+                if(index<choices.lastIndex)Box(Modifier.width(1.dp).height(36.dp).background(Blue))
             }
         }
     }

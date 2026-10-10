@@ -110,9 +110,9 @@ class MainActivity: ComponentActivity() {
                 else Column(Modifier.fillMaxSize().background(Color(0xfff5f6f8)).verticalScroll(rememberScrollState()),horizontalAlignment=Alignment.CenterHorizontally) {
                     BoxWithConstraints(Modifier.fillMaxWidth()) {
                         val h=if(maxWidth>600.dp)420.dp else 270.dp
-                        RemoteDiamond(app,inspected,Modifier.fillMaxWidth().height(h)) { direction,gesture -> if(app.perform)app.dispatch(direction,gesture) else inspected=direction }
+                        RemoteDiamond(app,inspected,Modifier.fillMaxWidth().height(h)) { direction,gesture -> if(app.perform)app.dispatch(direction,gesture) else inspected=if(inspected==direction)null else direction }
                     }
-                    if(inspected!=null) ActionEditor(app,inspected!!) { inspected=null }
+                    if(inspected!=null) ActionEditor(app,inspected!!)
                     else {
                         Text(if(app.perform)"Tap a button to perform its action" else "Tap a button to change its action",fontSize=14.sp,color=Color(0xff808388))
                         TextButton(onClick={connection=app.mode().id}) { Text("${app.mode().title} options") }
@@ -197,30 +197,40 @@ fun diamondPoints(w: Float,h: Float,s: Float): List<List<Offset>> = listOf(
 @Composable fun ModePicker(app: AppState,onChoose: (String)->Unit) {
     LazyColumn(Modifier.fillMaxWidth()) { items(app.catalog.modes) { mode -> Row(Modifier.fillMaxWidth().clickable { onChoose(mode.id) }.padding(horizontal=32.dp,vertical=15.dp),verticalAlignment=Alignment.CenterVertically) { Artwork(mode.icon); Column(Modifier.padding(start=16.dp)) { Text(mode.title,fontSize=18.sp); Text(mode.subtitle,fontSize=13.sp,color=Color.Gray) } }; HorizontalDivider(color=Color(0xffeeeeee)) } }
 }
-@Composable fun ActionEditor(app: AppState,direction: Direction,onDone: ()->Unit) {
+@Composable fun ActionEditor(app: AppState,direction: Direction) {
     var gesture by remember(direction) { mutableStateOf(Gesture.Single) }
     var choosing by remember(direction) { mutableStateOf(false) }
     var adding by remember { mutableStateOf(false) }
     var changingIndex by remember { mutableIntStateOf(0) }
     var choiceMode by remember { mutableStateOf<String?>(null) }
-    val batch=app.bindings(direction,gesture)
+    val singleBatch=app.bindings(direction,Gesture.Single)
+    val doubleBatch=app.bindings(direction,Gesture.Double)
+    val pairedRandom=!app.twelve && singleBatch.firstOrNull()?.action=="TTModeHueRandom" && doubleBatch.firstOrNull()?.action=="TTModeHueRandom"
+    val editingGesture=if(pairedRandom)Gesture.Single else gesture
+    val batch=app.bindings(direction,editingGesture)
     Column(Modifier.widthIn(max=700.dp).fillMaxWidth().padding(horizontal=24.dp)) {
-        Row(verticalAlignment=Alignment.CenterVertically) { Text("${direction.name} button",Modifier.weight(1f),fontSize=20.sp); TextButton(onClick=onDone) { Text("Done") } }
-        if(!app.twelve)Row { listOf(Gesture.Single,Gesture.Double).forEach { g->TextButton(onClick={gesture=g;choosing=false},Modifier.weight(1f)) { Text(if(g==Gesture.Single)"Single tap" else "Double tap",color=if(gesture==g)Blue else Color.Gray) } } }
+        if(!app.twelve && !pairedRandom)Row { listOf(Gesture.Single,Gesture.Double).forEach { g->TextButton(onClick={gesture=g;choosing=false},Modifier.weight(1f)) { Text(if(g==Gesture.Single)"Single tap" else "Double tap",color=if(gesture==g)Blue else Color.Gray) } } }
         batch.forEachIndexed { i,b ->
             key(direction,gesture,i,b.mode,b.action) {
                 Row(Modifier.fillMaxWidth().padding(vertical=8.dp),verticalAlignment=Alignment.CenterVertically) {
                     Artwork(app.catalog.action(b).icon)
                     Column(Modifier.weight(1f).padding(start=12.dp)) { Text(app.catalog.action(b).title); Text(app.catalog.mode(b.mode).title,fontSize=12.sp,color=Color.Gray) }
                     TextButton(onClick={val same=choosing && !adding && changingIndex==i;adding=false;changingIndex=i;choosing=!same;choiceMode=b.mode},Modifier.semantics {contentDescription="Change action ${i+1}"}) {Text("Change",fontSize=13.sp)}
-                    if(i>0)IconButton(onClick={app.save(direction,gesture,batch.filterIndexed { n,_->n!=i })}) { Artwork("button_x",size=14.dp,description="Remove action ${i+1}") }
+                    if(i>0)IconButton(onClick={app.save(direction,editingGesture,batch.filterIndexed { n,_->n!=i })}) { Artwork("button_x",size=14.dp,description="Remove action ${i+1}") }
                 }
                 if(choosing && !adding && changingIndex==i) ActionChooser(app,choiceMode,{choiceMode=it},{choosing=false}) { selected ->
-                    val current=app.bindings(direction,gesture)
-                    app.save(direction,gesture,current.mapIndexed {n,item->if(n==i)selected else item});choosing=false
-                } else BindingOptions(app,b) { updated ->
-                    val current=app.bindings(direction,gesture)
-                    app.save(direction,gesture,current.mapIndexed { n,item->if(n==i)updated else item })
+                    val current=app.bindings(direction,editingGesture)
+                    app.save(direction,editingGesture,current.mapIndexed {n,item->if(n==i)selected else item});choosing=false
+                } else BindingOptions(app,b,
+                    doubleBinding=if(pairedRandom)doubleBatch.getOrNull(i)?.takeIf {it.action=="TTModeHueRandom"} else null,
+                    onDoubleChange={updated ->app.save(direction,Gesture.Double,app.bindings(direction,Gesture.Double).mapIndexed {n,item->if(n==i)updated else item})}
+                ) { updated ->
+                    val current=app.bindings(direction,editingGesture)
+                    app.save(direction,editingGesture,current.mapIndexed { n,item->if(n==i)updated else item })
+                    if(pairedRandom && updated.options["group"]!=b.options["group"]) {
+                        val group=updated.options["group"] ?: "0"
+                        app.save(direction,Gesture.Double,app.bindings(direction,Gesture.Double).mapIndexed {n,item->if(n==i)item.copy(options=item.options+("group" to group)) else item})
+                    }
                 }
                 HorizontalDivider(Modifier.padding(vertical=12.dp),color=Color(0xffd3d7d9))
             }
@@ -235,7 +245,7 @@ fun diamondPoints(w: Float,h: Float,s: Float): List<List<Offset>> = listOf(
             HorizontalDivider(Modifier.align(Alignment.BottomCenter),thickness=0.5.dp,color=Color(0xffc2cbce))
         }
         if(choosing && adding) ActionChooser(app,choiceMode,{choiceMode=it},{choosing=false}) { selected ->
-            app.save(direction,gesture,app.bindings(direction,gesture)+selected);choosing=false
+            app.save(direction,editingGesture,app.bindings(direction,editingGesture)+selected);choosing=false
         }
     }
 }

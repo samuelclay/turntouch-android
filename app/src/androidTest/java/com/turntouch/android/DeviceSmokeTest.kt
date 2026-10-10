@@ -16,7 +16,7 @@ class DeviceSmokeTest {
     rule.onNodeWithContentDescription("North button").assertExists().performTouchInput { click() }
     rule.mainClock.advanceTimeBy(500)
     rule.onRoot().printToLog("TurnTouchTest")
-    rule.onNodeWithText("North button").assertExists()
+    rule.onNodeWithContentDescription("Change action 1").assertExists()
     rule.onNodeWithContentDescription("Change action 1").performScrollTo().performClick()
     rule.onNodeWithText("Mute music").performScrollTo().performClick()
     rule.runOnIdle {Assert.assertEquals("TTModeMusicVolumeMute",app.bindings(Direction.North).first().action);app.save(Direction.North,Gesture.Single,listOf(Binding("Music","TTModeMusicVolumeUp")));app.screen="devices";app.bluetooth.startScan()}

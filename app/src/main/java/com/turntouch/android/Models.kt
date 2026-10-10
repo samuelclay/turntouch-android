@@ -54,12 +54,21 @@ class AppState(val context: Context) {
     fun bindings(direction: Direction, gesture: Gesture=Gesture.Single, slot: Int=selected): List<Binding> {
         revision
         val saved=prefs.getString(key(slot,direction,gesture),null)
-        if(saved!=null) return runCatching { JSONArray(saved).let { a -> (0 until a.length()).map { Binding.from(a.getJSONObject(it)) } } }.getOrDefault(emptyList())
+        fun withDefaults(bindings: List<Binding>)=bindings.map {binding ->
+            if(binding.action=="TTModeHueRandom")binding.copy(options=HueRandomSettings.defaults(gesture==Gesture.Double)+binding.options) else binding
+        }
+        if(saved!=null) return withDefaults(runCatching { JSONArray(saved).let { a -> (0 until a.length()).map { Binding.from(a.getJSONObject(it)) } } }.getOrDefault(emptyList()))
+        if(gesture==Gesture.Double && !twelve) {
+            val single=bindings(direction,Gesture.Single,slot)
+            if(single.firstOrNull()?.action=="TTModeHueRandom")return single.map {binding ->
+                if(binding.action=="TTModeHueRandom")binding.copy(options=binding.options+HueRandomSettings.defaults(true)) else binding
+            }
+        }
         val m=if(twelve) catalog.mode(listOf("Music","Hue","Wemo")[slot.coerceIn(0,2)]) else mode(slot)
         val action=m.defaults[direction.ordinal]
         if(gesture==Gesture.Hold && !twelve) return emptyList()
         val doubleAction=if(gesture==Gesture.Double && !twelve) when { action.endsWith("PlayPause") -> "TTMode${m.id}PreviousTrack"; action.endsWith("NextTrack") -> "TTMode${m.id}PreviousTrack"; else -> action } else action
-        return listOf(Binding(m.id,doubleAction))
+        return withDefaults(listOf(Binding(m.id,doubleAction)))
     }
     fun save(direction: Direction,gesture: Gesture,bindings: List<Binding>) { prefs.edit().putString(key(selected,direction,gesture),JSONArray(bindings.map { it.json() }).toString()).apply(); revision++ }
     fun config(mode: String): Map<String,String> { revision; val j=JSONObject(secrets.get(mode) ?: "{}"); return j.keys().asSequence().associateWith { j.getString(it) } }

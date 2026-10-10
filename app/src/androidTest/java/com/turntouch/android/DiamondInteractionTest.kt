@@ -7,13 +7,19 @@ import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import org.junit.Assert.*
 import org.junit.Rule
 import org.junit.Test
+import org.junit.Before
+import org.junit.After
 
 class DiamondInteractionTest {
     @get:Rule val rule=createAndroidComposeRule<MainActivity>()
 
+    private lateinit var snapshot: DeviceStateSnapshot
+    @Before fun rememberPreferences() {rule.runOnIdle {snapshot=DeviceStateSnapshot((rule.activity.application as TurnTouchApp).state)}}
+    @After fun restorePreferences() {rule.runOnIdle {snapshot.restore()}}
+
     private fun openMusic(): AppState {
         val app=(rule.activity.application as TurnTouchApp).state
-        rule.runOnIdle {app.finishOnboarding();app.screen="remote";app.select(1);app.changePerformMode(false)}
+        rule.runOnIdle {app.finishOnboarding();app.screen="remote";app.changeButtonMode(false);app.select(1);app.changePerformMode(false)}
         return app
     }
 
@@ -31,7 +37,7 @@ class DiamondInteractionTest {
         // The rectangle corner is outside the diamond and must not activate it.
         north.performTouchInput {click(Offset(width*0.05f,height*0.05f))}
         rule.mainClock.advanceTimeBy(500)
-        rule.onNodeWithText("North button").assertDoesNotExist()
+        rule.onNodeWithContentDescription("Change action 1").assertDoesNotExist()
         // A tap near the top tip, beyond the old label rectangle, must activate it.
         north.performTouchInput {down(Offset(width*0.5f,height*0.15f))}
         rule.waitForIdle()
@@ -44,7 +50,7 @@ class DiamondInteractionTest {
         screenshot("pressed")
         north.performTouchInput {up()}
         rule.mainClock.advanceTimeBy(500)
-        rule.onNodeWithText("North button").assertExists()
+        rule.onNodeWithContentDescription("Change action 1").assertExists()
     }
 
     @Test fun changeRevealsActionsAndPreservesOtherBatchActions() {
