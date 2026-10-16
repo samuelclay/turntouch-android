@@ -74,3 +74,14 @@ adb -s DEVICE install -r app/build/outputs/apk/androidTest/debug/app-debug-andro
 ## Final device state
 
 Bluetooth is enabled on both devices. Temporary test bindings were removed and tested light/speaker states restored. After the background investigation, the S22 is the intended sole listener; the tablet listener is stopped to avoid competing for the same remote. No store submission or release publication was performed.
+
+## Connection status and duplicate HUD feedback follow-up
+
+The build based on `c99bdcd` now bounds both direct and automatic connection attempts at 15 seconds. An unavailable remote displays **Connection failed**, with a reason and a retry action that replaces a pending automatic GATT registration. The registration may continue waiting in the background after the displayed attempt fails; a successful button-notification subscription changes the status to **Connected**. Normal loss of an automatic link displays **Disconnected**. Setup deadlines are canceled on success, disconnect, or replacement.
+
+Physical button press/release packets now own the HUD highlight. Action execution no longer highlights the button a second time after the single/double-tap recognition delay, or clears another button's current highlight when an older action completes.
+
+- Debug APK SHA-256: `576453efbd31a3c0355b268240bcaaf64f9210b6897b4fbc883b14b47b63ac02`, installed on both Samsungs without clearing user data.
+- `RemoteFeedbackTest`: 2/2 passed on S22 (27.503s), 2/2 on Tab A8 (28.535s). Uses isolated preferences and an unavailable test address to exercise automatic failure and manual retry; a decoded single press executes one local test action without a second highlight. No real action assignments or credentials are modified.
+- Debug app/test builds, JVM tests, and lint passed. These focused checks do not constitute renewed proof of every light integration or long-duration background behavior.
+- Fresh tablet UI showed **connected**, with real desk-remote press/release packets observed after installation. Screenshots and UI dumps are kept locally under ignored `evidence/remote-feedback/`.

@@ -35,6 +35,7 @@ import androidx.compose.ui.unit.sp
                 connected -> "connected"
                 remote.state=="Connecting…" -> "connecting"
                 remote.state=="Discovering services…" -> "connecting"
+                remote.state=="Connection failed" -> "connection failed"
                 remote.state.startsWith("Press") -> "pairing"
                 else -> "disconnected"
             }
@@ -52,7 +53,10 @@ import androidx.compose.ui.unit.sp
                                 leadingIcon={Artwork("battery",size=22.dp)},onClick={menuAddress=null})
                             DropdownMenuItem(text={Text(remote.firmware?.let { "Firmware: v$it" } ?: "Firmware unavailable")},
                                 leadingIcon={Artwork("versions",size=22.dp)},onClick={menuAddress=null})
-                            if(remote.state=="Disconnected" || remote.state=="Nearby")DropdownMenuItem(text={Text("Reconnect remote")},onClick={menuAddress=null;ble.connect(remote.address,false)})
+                            remote.connectionError?.let { message ->
+                                Text(message,Modifier.widthIn(max=280.dp).padding(horizontal=16.dp,vertical=12.dp),fontSize=14.sp,color=Ink)
+                            }
+                            if(!connected && !remote.state.startsWith("Press"))DropdownMenuItem(text={Text("Try connecting again")},onClick={menuAddress=null;ble.retry(remote.address)})
                             DropdownMenuItem(text={Text("Rename remote")},leadingIcon={Artwork("rename",size=22.dp)},enabled=connected,onClick={menuAddress=null;rename=remote})
                             DropdownMenuItem(text={Text("Forget this remote")},leadingIcon={Artwork("remove",size=22.dp)},onClick={menuAddress=null;ble.disconnect(remote.address,true)})
                         }

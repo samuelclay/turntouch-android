@@ -77,7 +77,8 @@ class AppState(val context: Context) {
         if(!twelve && gesture==Gesture.Hold) { select(direction.ordinal); log("Switched to ${mode().title}"); return }
         val slot=if(twelve)gesture.ordinal else selected
         val batch=bindings(direction,if(twelve)Gesture.Single else gesture,slot)
-        scope.launch { active=direction; for(binding in batch) executor.run(binding); delay(180); active=null }
+        // Physical press/release owns the HUD highlight; delayed action execution must not flash it again.
+        scope.launch { for(binding in batch) executor.run(binding) }
     }
 }
 class TurnTouchApp: Application() {

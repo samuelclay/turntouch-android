@@ -18,7 +18,7 @@ object RemoteProtocol {
     val firmware: UUID=UUID.fromString("00001534-1212-efde-1523-785feabcd123")
     val cccd: UUID=UUID.fromString("00002902-0000-1000-8000-00805f9b34fb")
 }
-data class Remote(val address: String, val name: String, val rssi: Int=0, val state: String="Nearby", val battery: Int?=null, val firmware: String?=null, val pairedButtons: Int=0)
+data class Remote(val address: String, val name: String, val rssi: Int=0, val state: String="Nearby", val battery: Int?=null, val firmware: String?=null, val pairedButtons: Int=0, val connectionError: String?=null)
 enum class RemotePairingPhase { Intro, Searching, Connecting, Buttons, Success, Failure }
 class BluetoothController(private val app: AppState) {
     private val context=app.context
@@ -33,6 +33,7 @@ class BluetoothController(private val app: AppState) {
     private val queues=mutableMapOf<String,ArrayDeque<() -> Boolean>>()
     private val retries=mutableMapOf<String,Int>()
     private val automatic=mutableSetOf<String>()
+    private val deadlines=mutableMapOf<String,Runnable>()
     private val pairing=mutableSetOf<String>()
     private val saved get()=prefs.getStringSet("paired",emptySet())!!.toSet()
     val hasSavedRemotes get()=saved.isNotEmpty()
@@ -121,13 +122,36 @@ class BluetoothController(private val app: AppState) {
             app.log("Bluetooth disabled; waiting for it to return")
         }
     }
+    private fun cancelDeadline(address: String) { deadlines.remove(address)?.let { handler.removeCallbacks(it) } }
+    private fun connectionDeadline(g: BluetoothGatt, setup: Boolean=false) {
+        val address=g.device.address
+        cancelDeadline(address)
+        val deadline=Runnable {
+            deadlines.remove(address)
+            if(connections[address]!==g)return@Runnable
+            val message=if(setup)"Remote setup timed out. Try connecting again." else "Connection timed out. Press a remote button to wake it, and disconnect it from other devices."
+            // Keep Android's automatic registration alive so a sleeping remote can return,
+            // but never describe an indefinite wait as an active connection attempt.
+            if(!setup && address in automatic) {
+                update(address) { it.copy(state="Connection failed",connectionError=message) }
+                report(message)
+            } else connectionFailed(g,message)
+        }
+        deadlines[address]=deadline
+        handler.postDelayed(deadline,15000)
+    }
+    fun retry(address: String) { disconnect(address); connect(address,false) }
     fun connect(address: String,newPair: Boolean=true,background: Boolean=false) {
         if(address in connections)return
         try {
-            if(manager?.adapter?.isEnabled!=true)return
+            if(manager?.adapter?.isEnabled!=true) {
+                update(address) { it.copy(state="Disconnected",connectionError="Turn on Bluetooth to connect.") }
+                return
+            }
             context.startForegroundService(Intent(context,RemoteService::class.java))
             if(remotes.none { it.address==address })remotes.add(Remote(address,prefs.getString("name:$address","Turn Touch")!!))
-            update(address) { it.copy(state="Connecting…") }
+            if(!background || remotes.firstOrNull { it.address==address }?.state!="Connection failed")
+                update(address) { it.copy(state="Connecting…",connectionError=null) }
             if(newPair && address !in saved)pairing.add(address)
             refreshPairing()
             decoders[address]=ButtonDecoder(app::dispatch) { app.active=it }
@@ -137,23 +161,29 @@ class BluetoothController(private val app: AppState) {
             if(autoConnect)automatic.add(address)
             val g=manager!!.adapter.getRemoteDevice(address).connectGatt(context,autoConnect,callback,BluetoothDevice.TRANSPORT_LE)
             connections[address]=g
-            if(!autoConnect)handler.postDelayed({ if(connections[address]===g && remotes.firstOrNull { it.address==address }?.state=="Connecting…") { connectionFailed(g); report("Connection timed out. Wake the remote and try again.") } },15000)
-        } catch(e: SecurityException) { report("Nearby devices permission is needed to connect.") }
+            connectionDeadline(g)
+        } catch(e: SecurityException) {
+            val message="Nearby devices permission is needed to connect."
+            update(address) { it.copy(state="Connection failed",connectionError=message) }; report(message)
+        }
     }
     fun disconnect(address: String,forget: Boolean=false) {
         if(forget) { prefs.edit().putStringSet("paired",saved-address).apply(); pairing.remove(address) }
         pairing.remove(address)
+        cancelDeadline(address)
         automatic.remove(address); retries.remove(address)
         val g=connections.remove(address); g?.disconnect(); g?.close(); decoders.remove(address)?.reset(); queues.remove(address)
-        update(address) { it.copy(state=if(forget)"Nearby" else "Disconnected",pairedButtons=0) }
+        update(address) { it.copy(state=if(forget)"Nearby" else "Disconnected",pairedButtons=0,connectionError=null) }
         if(connections.isEmpty() && saved.isEmpty())context.stopService(Intent(context,RemoteService::class.java))
     }
-    private fun connectionFailed(g: BluetoothGatt) {
+    private fun connectionFailed(g: BluetoothGatt,message: String="Could not connect to the remote. Wake it and try again.") {
         val address=g.device.address
         if(connections[address]!==g)return
+        cancelDeadline(address)
         connections.remove(address); automatic.remove(address); queues.remove(address)
         decoders.remove(address)?.reset(); g.disconnect(); g.close()
-        update(address) { it.copy(state="Disconnected") }
+        update(address) { it.copy(state="Connection failed",connectionError=message) }
+        report(message)
         if(address in saved) {
             val attempt=(retries[address] ?: 0)+1; retries[address]=attempt
             handler.postDelayed({ if(address in saved && address !in connections)connect(address,false,background=true) },(attempt*2000L).coerceAtMost(30000))
@@ -193,9 +223,9 @@ class BluetoothController(private val app: AppState) {
             val address=g.device.address
             if(connections[address]!==g)return@post
             if(newState==BluetoothProfile.STATE_CONNECTED && status==BluetoothGatt.GATT_SUCCESS) {
-                update(address) { it.copy(state="Discovering services…") }
-                if(!g.discoverServices())connectionFailed(g)
-                handler.postDelayed({ if(connections[address]===g && remotes.firstOrNull { it.address==address }?.state=="Discovering services…") { report("Remote setup timed out; reconnecting"); connectionFailed(g) } },15000)
+                update(address) { it.copy(state="Discovering services…",connectionError=null) }
+                connectionDeadline(g,setup=true)
+                if(!g.discoverServices())connectionFailed(g,"Could not read the remote services.")
             }
             else if(newState==BluetoothProfile.STATE_DISCONNECTED || status!=0) {
                 app.log("Remote disconnected (GATT $status)")
@@ -203,25 +233,26 @@ class BluetoothController(private val app: AppState) {
                 // need a fresh registration; a just-paired direct connection does too.
                 if(status==BluetoothGatt.GATT_SUCCESS && address in automatic && address in saved) {
                     queues.remove(address); decoders[address]?.reset()
-                    update(address) { it.copy(state="Connecting…") }
+                    cancelDeadline(address)
+                    update(address) { it.copy(state="Disconnected",connectionError="Waiting for your remote to return. Press a button to wake it.") }
                     app.log("Waiting for saved remote to return")
-                } else connectionFailed(g)
+                } else connectionFailed(g,"Remote connection failed (Bluetooth $status). Wake it and try again.")
             }
         } }
         override fun onServicesDiscovered(g: BluetoothGatt,status: Int) { handler.post {
             if(connections[g.device.address]!==g)return@post
-            if(status!=0) { report("Unable to read remote services ($status)"); connectionFailed(g); return@post }
+            if(status!=0) { connectionFailed(g,"Unable to read remote services ($status)"); return@post }
             val buttons=g.getService(RemoteProtocol.service)?.getCharacteristic(RemoteProtocol.buttons)
             val cccd=buttons?.getDescriptor(RemoteProtocol.cccd)
-            if(buttons==null || cccd==null) { report("This device does not expose the Turn Touch button service."); disconnect(g.device.address); return@post }
+            if(buttons==null || cccd==null) { connectionFailed(g,"This device does not expose the Turn Touch button service."); return@post }
             if(!g.setCharacteristicNotification(buttons,true)) { connectionFailed(g); return@post }
             enqueue(g) { cccd.value=BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE; g.writeDescriptor(cccd) }
             for(s in g.services)for(c in s.characteristics)if(c.uuid in listOf(RemoteProtocol.battery,RemoteProtocol.nickname,RemoteProtocol.firmware))enqueue(g) { g.readCharacteristic(c) }
         } }
         override fun onDescriptorWrite(g: BluetoothGatt,d: BluetoothGattDescriptor,status: Int) { handler.post {
             if(connections[g.device.address]!==g)return@post
-            if(status==0) { retries.remove(g.device.address); update(g.device.address) { it.copy(state=if(it.address in pairing)"Press all four buttons to pair" else "Connected") }; app.log("Button notifications enabled") }
-            else { report("Could not subscribe to remote buttons ($status)"); connectionFailed(g); return@post }
+            if(status==0) { cancelDeadline(g.device.address); retries.remove(g.device.address); update(g.device.address) { it.copy(state=if(it.address in pairing)"Press all four buttons to pair" else "Connected",connectionError=null) }; app.log("Button notifications enabled") }
+            else { connectionFailed(g,"Could not subscribe to remote buttons ($status)"); return@post }
             refreshPairing()
             advance(g)
         } }

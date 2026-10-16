@@ -286,7 +286,12 @@ fun diamondPoints(w: Float,h: Float,s: Float): List<List<Offset>> = listOf(
             Column(Modifier.fillMaxWidth().padding(vertical=18.dp)) {
                 Text(remote.name,fontSize=22.sp); Text(remote.state,fontSize=15.sp); Text("${remote.address} · ${remote.rssi} dBm${remote.battery?.let { " · $it% battery" } ?: ""}${remote.firmware?.let { " · Firmware $it" } ?: ""}",fontSize=12.sp,color=Color.Gray)
                 if(remote.state.startsWith("Press")) { Row { Direction.entries.forEach { d->Text(if(remote.pairedButtons and (1 shl d.ordinal)!=0)"✓ ${d.name}  " else "○ ${d.name}  ",fontSize=13.sp) } } }
-                Row { if(remote.state in listOf("Nearby","Disconnected"))TextButton(onClick={if(ble.isSaved(remote.address))ble.connect(remote.address,false) else app.screen="pairing"}) { Text("Connect") } else { TextButton(onClick={rename=remote}) { Text("Rename") }; TextButton(onClick={ble.disconnect(remote.address,true)}) { Text("Forget") } } }
+                remote.connectionError?.let { Text(it,fontSize=14.sp,color=MaterialTheme.colorScheme.error) }
+                Row {
+                    if(remote.state!="Connected" && !remote.state.startsWith("Press"))TextButton(onClick={if(ble.isSaved(remote.address))ble.retry(remote.address) else app.screen="pairing"}) { Text(if(remote.state=="Nearby")"Connect" else "Try again") }
+                    if(remote.state=="Connected")TextButton(onClick={rename=remote}) { Text("Rename") }
+                    if(ble.isSaved(remote.address))TextButton(onClick={ble.disconnect(remote.address,true)}) { Text("Forget") }
+                }
                 HorizontalDivider()
             }
         }
