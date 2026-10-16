@@ -26,7 +26,7 @@ Support: samuel@turntouch.com. Website: https://turntouch.com.
 Privacy: https://turntouch.com/static/android/privacy.html (also available offline in Settings).
 No Turn Touch login is required. Physical remote use requires separately purchased Turn Touch hardware. Individual integrations require compatible devices and sometimes their own credentials/API keys.
 
-Review access instructions: Open the app and use the pairing dialog's cancel/close control to explore configuration without hardware. Settings > How it works opens the walkthrough. Settings > Apps & connections configures third-party hardware. To test physical control, use a Turn Touch BLE remote and compatible smart-home devices on the same local network. A remote pairs with one host at a time. No universal review credentials or simulated hardware are provided.
+Review access instructions: Choose **Try offline demo** in the first-launch pairing dialog, or Settings → Help → Try offline demo. The labeled preview uses sample devices and intercepts all commands; **Edit buttons** opens the real action editor with temporary in-memory assignments. Exit demo returns to personal configuration unchanged. Real physical control requires a Turn Touch BLE remote and compatible smart-home devices/provider credentials. A remote pairs with one host at a time.
 
 ## Validation
 
@@ -48,3 +48,11 @@ Play app created under NewsBlur, Inc.: app ID `4974725381826331297`.
 ## Offline review demo
 
 The offline demo is available in the first-launch pairing dialog and Settings → Help. It reuses the app UI and action editor with in-memory assignments and simulated controls. Two instrumentation checks passed on each physical Samsung device: UI editing/execution/exit/reset with personal preferences unchanged, and interception of network/native action routes. Fresh demo captures are in ignored `evidence/play-release-1.0/`. Unit tests and release lint/build passed after this addition. The signed artifact manifest was refreshed after rebuilding source commit `b57f826`.
+
+## Console preparation status
+
+All initial setup tasks were saved on October 16, 2026. The default English listing is ready to send for review, with seven phone and seven 10-inch tablet screenshots, icon, and feature graphic. Category/contact details and target audience (18+, without restricting minor users) are saved.
+
+Data safety discloses optional collection of User IDs, App interactions, Other user-generated content, and Device or other IDs for app functionality. No ephemeral-processing claim is made. User-initiated provider transfers use the sharing exemption. The form does not claim universal transit encryption or a developer-operated deletion mechanism; the privacy policy explains local clearing and provider controls. External provider accounts are described explicitly; Turn Touch creates no account.
+
+The production release has not yet been uploaded or submitted. Country selection is in progress. The verified upload bundle is `evidence/play-release-1.0/TurnTouch-1.0.aab`, SHA-256 `055695317dfcb630a622d0a39023a920be66a4a2f8a51569d5337f5e4d3720a3`.

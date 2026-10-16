@@ -14,6 +14,8 @@ Configure compatible Philips Hue and Nanoleaf lights, select rooms and scenes, a
 BUILT FOR YOUR REMOTE
 A guided pairing flow and illustrated walkthrough help you get started. The app keeps listening for your paired remote in the background using Android’s connected-device service. Bluetooth range, permissions, and your phone’s battery settings affect availability.
 
+Try the offline demo to explore sample remote actions without hardware or an account. Demo commands are simulated and do not control real devices.
+
 A Turn Touch remote is required for physical-button control and is sold separately. Compatible smart-home hardware, local network access, and sometimes a third-party account or API key are needed for integrations. This app does not provide Apple HomeKit, Google Home, Nest, or remote firmware updates.
 
 No Turn Touch account, ads, or subscription is required.
