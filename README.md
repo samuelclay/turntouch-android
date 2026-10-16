@@ -34,7 +34,7 @@ App | Choose an action
 - **Native Android controls:** Control device volume and the active media session, capture photos and video, and open web content.
 - **Original design:** Reuses Turn Touch's icons, fonts, and diamond interface, with full-face touch feedback and inline configuration.
 
-This is an **early development build**, not a finished port or a Play Store release. Hue and Nanoleaf pairing and their live selectors have been checked on physical Samsung devices; several other integrations and platform features remain incomplete or unverified. See [implementation and testing status](docs/STATUS.md) before relying on an integration.
+Version **1.0** is prepared for Google Play; submission and publication are tracked separately in [release notes](store/RELEASE.md). Hue and Nanoleaf pairing and their live selectors have been checked on physical Samsung devices; several other integrations and platform features remain incomplete or unverified. See [implementation and testing status](docs/STATUS.md) before relying on an integration.
 
 ## Requirements
 

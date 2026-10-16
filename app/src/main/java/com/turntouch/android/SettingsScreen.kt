@@ -109,6 +109,8 @@ private val SettingsMuted=Color(0xff808aa0)
                 SettingsLink("How it works","how_it_works",onClick={onNavigate("tutorial")})
                 SettingsDivider()
                 SettingsLink("Connection diagnostics","electrical_connected",onClick={onNavigate("diagnostics")})
+                SettingsDivider()
+                SettingsLink("Privacy policy","how_it_works",onClick={onNavigate("privacy")})
             }
             Text("Turn Touch for Android · ${BuildConfig.VERSION_NAME}",Modifier.align(Alignment.CenterHorizontally).padding(top=4.dp),fontSize=13.sp,color=SettingsMuted)
             Text("Original design and artwork © Turn Touch",Modifier.align(Alignment.CenterHorizontally).padding(top=4.dp,bottom=12.dp),fontSize=12.sp,color=SettingsMuted)

@@ -92,6 +92,12 @@ class MainActivity: ComponentActivity() {
         when {
             app.screen.startsWith("connect:") -> ConnectionScreen(app,app.screen.substringAfter(":")) { app.screen="remote" }
             app.screen=="devices" -> Devices(app,scan)
+            app.screen=="privacy" -> Column(Modifier.fillMaxSize()) {
+                TextButton(onClick={app.screen="remote"}) { Text("Done") }
+                val context=LocalContext.current
+                val policy=remember { context.assets.open("privacy.txt").bufferedReader().use { it.readText() } }
+                Text(policy,Modifier.verticalScroll(rememberScrollState()).padding(24.dp),fontSize=16.sp)
+            }
             app.screen=="diagnostics" -> Column { TextButton(onClick={app.screen="remote";settingsOpen=true}) { Text("Back") }; LazyColumn { items(app.events.toList()) { Text(it,Modifier.padding(12.dp),fontSize=13.sp) } } }
             nativeBinding!=null -> NativeScreen(app,nativeBinding!!,nativeCommands) { nativeBinding=null }
             else -> {
