@@ -9,6 +9,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Path
+import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.unit.IntOffset
+import androidx.compose.ui.window.Popup
+import androidx.compose.ui.window.PopupProperties
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -16,18 +24,45 @@ import androidx.compose.ui.unit.sp
 
 private val SettingsMuted=Color(0xff808aa0)
 
-@Composable fun Settings(app: AppState,onConnection: (String)->Unit) {
+/** Anchored to the title-bar gear; the action editor stays in place behind it. */
+@Composable fun SettingsPopover(app: AppState,onDismiss: ()->Unit,onNavigate: (String)->Unit,onConnection: (String)->Unit) {
+    val configuration=LocalConfiguration.current
+    val width=(configuration.screenWidthDp-32).coerceAtMost(340).dp
+    val height=(configuration.screenHeightDp*0.72f).coerceAtMost(600f).dp
+    val offset=with(LocalDensity.current) { IntOffset(-12.dp.roundToPx(),44.dp.roundToPx()) }
+    Popup(alignment=Alignment.TopEnd,offset=offset,onDismissRequest=onDismiss,
+        properties=PopupProperties(focusable=true,dismissOnBackPress=true,dismissOnClickOutside=true)) {
+        Column(Modifier.width(width).semantics { contentDescription="Settings popover" }) {
+            Canvas(Modifier.align(Alignment.End).padding(end=4.dp).size(16.dp,8.dp)) {
+                drawPath(Path().apply { moveTo(0f,size.height);lineTo(size.width/2,0f);lineTo(size.width,size.height);close() },Color.White)
+            }
+            Surface(shape=RoundedCornerShape(16.dp),color=Color.White,shadowElevation=10.dp,
+                modifier=Modifier.fillMaxWidth().height(height)) {
+                Column {
+                    Row(Modifier.fillMaxWidth().padding(start=20.dp,end=8.dp).height(48.dp),verticalAlignment=Alignment.CenterVertically) {
+                        Text("Settings",Modifier.weight(1f),fontSize=20.sp,fontWeight=FontWeight.Bold,color=Ink)
+                        TextButton(onClick=onDismiss) { Text("Done") }
+                    }
+                    HorizontalDivider(color=Color(0xffe0e5e8),thickness=0.5.dp)
+                    Settings(app,onNavigate,onConnection)
+                }
+            }
+        }
+    }
+}
+
+@Composable private fun Settings(app: AppState,onNavigate: (String)->Unit,onConnection: (String)->Unit) {
     var showAllApps by remember { mutableStateOf(false) }
     val remotes=app.bluetooth.remotes.filter { app.bluetooth.isSaved(it.address) }
     Column(Modifier.fillMaxSize().background(Color(0xfff5f6f8)).verticalScroll(rememberScrollState()),horizontalAlignment=Alignment.CenterHorizontally) {
-        Column(Modifier.widthIn(max=640.dp).fillMaxWidth().padding(horizontal=20.dp,vertical=24.dp)) {
+        Column(Modifier.fillMaxWidth().padding(horizontal=12.dp,vertical=16.dp)) {
             SettingsSection("REMOTES") {
                 remotes.forEach { remote ->
                     SettingsLink(remote.name,"remote_graphic",remote.state.removeSuffix("…")+
-                        if(remote.state=="Connected" && remote.battery!=null)" · ${remote.battery}% battery" else "",onClick={app.screen="devices"})
+                        if(remote.state=="Connected" && remote.battery!=null)" · ${remote.battery}% battery" else "",onClick={onNavigate("devices")})
                     SettingsDivider()
                 }
-                SettingsLink("Add a new remote","add",if(remotes.isEmpty())"Pair your Turn Touch" else null,onClick={app.screen="pairing"})
+                SettingsLink("Add a new remote","add",if(remotes.isEmpty())"Pair your Turn Touch" else null,onClick={onNavigate("pairing")})
             }
             SettingsSection("BUTTONS") {
                 Column(Modifier.padding(16.dp)) {
@@ -71,9 +106,9 @@ private val SettingsMuted=Color(0xff808aa0)
                 TextButton(onClick={showAllApps=!showAllApps},Modifier.fillMaxWidth().heightIn(min=48.dp)) { Text(if(showAllApps)"Show fewer apps" else "Show all apps",fontSize=15.sp) }
             }
             SettingsSection("HELP") {
-                SettingsLink("How it works","how_it_works",onClick={app.screen="tutorial"})
+                SettingsLink("How it works","how_it_works",onClick={onNavigate("tutorial")})
                 SettingsDivider()
-                SettingsLink("Connection diagnostics","electrical_connected",onClick={app.screen="diagnostics"})
+                SettingsLink("Connection diagnostics","electrical_connected",onClick={onNavigate("diagnostics")})
             }
             Text("Turn Touch for Android · ${BuildConfig.VERSION_NAME}",Modifier.align(Alignment.CenterHorizontally).padding(top=4.dp),fontSize=13.sp,color=SettingsMuted)
             Text("Original design and artwork © Turn Touch",Modifier.align(Alignment.CenterHorizontally).padding(top=4.dp,bottom=12.dp),fontSize=12.sp,color=SettingsMuted)

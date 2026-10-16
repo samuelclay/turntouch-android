@@ -70,6 +70,7 @@ class MainActivity: ComponentActivity() {
     if(id!=0)Image(painterResource(id),description,modifier.size(size),colorFilter=tint?.let {ColorFilter.tint(it)}) else Box(modifier.size(size))
 }
 @Composable fun App(app: AppState,scan: ()->Unit) {
+    var settingsOpen by remember { mutableStateOf(false) }
     var inspected by remember { mutableStateOf<Direction?>(null) }
     var chooseMode by remember { mutableStateOf(false) }
     var connection by remember { mutableStateOf<String?>(null) }
@@ -79,20 +80,19 @@ class MainActivity: ComponentActivity() {
     BackHandler(enabled=app.screen!="remote" || inspected!=null || chooseMode || nativeBinding!=null) { app.screen="remote"; inspected=null; chooseMode=false; nativeBinding=null }
     Column(Modifier.fillMaxSize().safeDrawingPadding()) {
         Box(Modifier.fillMaxWidth().height(44.dp).background(Brush.verticalGradient(listOf(Color.White,Color(0xffe7e7e7))))) {
-            if(app.screen=="settings") {
-                Text("Settings",Modifier.align(Alignment.Center),fontFamily=Effra,fontSize=20.sp,color=Ink)
-                TextButton(onClick={app.screen="remote"},Modifier.align(Alignment.CenterEnd)) { Text("Done",fontSize=15.sp) }
-            } else {
-                Artwork("title",Modifier.align(Alignment.Center).width(100.dp).height(12.dp),100.dp)
-                IconButton(onClick={app.screen="settings"},Modifier.align(Alignment.CenterEnd)) { Artwork("settings",size=22.dp,description="Settings") }
+            Artwork("title",Modifier.align(Alignment.Center).width(100.dp).height(12.dp),100.dp)
+            Box(Modifier.align(Alignment.CenterEnd)) {
+                IconButton(onClick={settingsOpen=!settingsOpen}) { Artwork("settings",size=22.dp,description="Settings") }
+                if(settingsOpen)SettingsPopover(app,onDismiss={settingsOpen=false},
+                    onNavigate={settingsOpen=false;app.screen=it},
+                    onConnection={settingsOpen=false;connection=it})
             }
         }
         HorizontalDivider(color=Color(0xffe7e7e7))
         when {
             app.screen.startsWith("connect:") -> ConnectionScreen(app,app.screen.substringAfter(":")) { app.screen="remote" }
             app.screen=="devices" -> Devices(app,scan)
-            app.screen=="settings" -> Settings(app) { connection=it }
-            app.screen=="diagnostics" -> Column { TextButton(onClick={app.screen="settings"}) { Text("Back") }; LazyColumn { items(app.events.toList()) { Text(it,Modifier.padding(12.dp),fontSize=13.sp) } } }
+            app.screen=="diagnostics" -> Column { TextButton(onClick={app.screen="remote";settingsOpen=true}) { Text("Back") }; LazyColumn { items(app.events.toList()) { Text(it,Modifier.padding(12.dp),fontSize=13.sp) } } }
             nativeBinding!=null -> NativeScreen(app,nativeBinding!!,nativeCommands) { nativeBinding=null }
             else -> {
                 Row(Modifier.fillMaxWidth().height(92.dp)) {
