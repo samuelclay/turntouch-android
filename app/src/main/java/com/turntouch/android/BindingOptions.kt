@@ -100,7 +100,7 @@ object LightingOptions {
     LaunchedEffect(binding.mode, config, refresh) {
         loading = true
         error = null
-        try { choices = LightingOptions.load(binding.mode, config) }
+        try { choices = app.demo?.choices(binding.mode) ?: LightingOptions.load(binding.mode, config) }
         catch (cancelled: kotlinx.coroutines.CancellationException) { throw cancelled }
         catch (failure: Exception) { error = failure.message ?: "Could not load options." }
         finally { loading = false }

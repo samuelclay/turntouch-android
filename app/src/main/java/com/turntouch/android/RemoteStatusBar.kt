@@ -16,6 +16,10 @@ import androidx.compose.ui.unit.sp
 
 /** iOS TTDeviceTitleView: fixed 44-point rows below the scrolling action editor. */
 @Composable fun RemoteStatusBar(app: AppState) {
+    if(app.demo!=null) {
+        StatusRow { Artwork("remote_graphic",size=32.dp); Text("Sample remote",Modifier.weight(1f).padding(start=12.dp)); Text("simulated",color=Ink) }
+        return
+    }
     val ble=app.bluetooth
     val remotes=ble.remotes.filter { ble.isSaved(it.address) || it.state=="Connected" || it.state.startsWith("Press") }
     var menuAddress by remember { mutableStateOf<String?>(null) }

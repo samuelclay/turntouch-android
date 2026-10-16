@@ -53,7 +53,7 @@ private val SettingsMuted=Color(0xff808aa0)
 
 @Composable private fun Settings(app: AppState,onNavigate: (String)->Unit,onConnection: (String)->Unit) {
     var showAllApps by remember { mutableStateOf(false) }
-    val remotes=app.bluetooth.remotes.filter { app.bluetooth.isSaved(it.address) }
+    val remotes=if(app.demo!=null)emptyList() else app.bluetooth.remotes.filter { app.bluetooth.isSaved(it.address) }
     Column(Modifier.fillMaxSize().background(Color(0xfff5f6f8)).verticalScroll(rememberScrollState()),horizontalAlignment=Alignment.CenterHorizontally) {
         Column(Modifier.fillMaxWidth().padding(horizontal=12.dp,vertical=16.dp)) {
             SettingsSection("REMOTES") {
@@ -106,6 +106,10 @@ private val SettingsMuted=Color(0xff808aa0)
                 TextButton(onClick={showAllApps=!showAllApps},Modifier.fillMaxWidth().heightIn(min=48.dp)) { Text(if(showAllApps)"Show fewer apps" else "Show all apps",fontSize=15.sp) }
             }
             SettingsSection("HELP") {
+                if(app.demo==null) {
+                    SettingsLink("Try offline demo","remote_graphic","Explore without hardware",onClick={onNavigate("demo")})
+                    SettingsDivider()
+                }
                 SettingsLink("How it works","how_it_works",onClick={onNavigate("tutorial")})
                 SettingsDivider()
                 SettingsLink("Connection diagnostics","electrical_connected",onClick={onNavigate("diagnostics")})

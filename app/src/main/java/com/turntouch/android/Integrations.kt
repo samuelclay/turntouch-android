@@ -45,6 +45,7 @@ class ActionExecutor(private val app: AppState) {
     private val sceneCycles=mutableMapOf<String,Int>()
     var nativeAction: ((Binding)->Unit)?=null
     suspend fun run(binding: Binding) {
+        app.demo?.let { it.run(binding,app); return }
         val title=app.catalog.action(binding).title
         try {
             val config=app.config(binding.mode)+binding.options

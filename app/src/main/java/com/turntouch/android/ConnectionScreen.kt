@@ -16,6 +16,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import java.net.URI
 
 @Composable fun ConnectionScreen(app: AppState,mode: String,onDone: ()->Unit) {
+    if(app.demo!=null) { DemoConnectionScreen(app,mode,onDone); return }
     val values=remember(mode) {mutableStateMapOf<String,String>().apply {putAll(app.config(mode))}}
     var phase by remember(mode) {mutableStateOf(if(mode in listOf("Hue","Nanoleaf")) { if(values["token"].isNullOrBlank()) "discover" else "connected" } else "options")}
     var devices by remember(mode) {mutableStateOf<List<LanDevice>>(emptyList())}

@@ -24,7 +24,7 @@ class BluetoothController(private val app: AppState) {
     private val context=app.context
     private val manager=context.getSystemService(BluetoothManager::class.java)
     private val handler=Handler(Looper.getMainLooper())
-    private val prefs=context.getSharedPreferences("remotes",Context.MODE_PRIVATE)
+    private val prefs=if(app.demo!=null)MemoryPreferences() else context.getSharedPreferences("remotes",Context.MODE_PRIVATE)
     val remotes=mutableStateListOf<Remote>()
     var scanning by mutableStateOf(false); private set
     var error by mutableStateOf<String?>(null); private set

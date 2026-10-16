@@ -28,6 +28,10 @@ private val PairingText=Color(0xff3d3c3d)
 
 /** The iOS form-sheet sequence, using the original hero art, type, colors, and footer. */
 @Composable fun RemotePairingDialog(app: AppState, startPairing: ()->Unit, initialTutorial: Boolean=false, onClose: ()->Unit) {
+    if(app.demo!=null && !initialTutorial) {
+        Dialog(onDismissRequest=onClose) { Surface { DemoConnectionScreen(app,"remote",onClose) } }
+        return
+    }
     val ble=app.bluetooth
     var intro by remember { mutableStateOf(!initialTutorial && !ble.hasSavedRemotes) }
     var tutorial by remember { mutableStateOf(initialTutorial) }
@@ -50,6 +54,7 @@ private val PairingText=Color(0xff3d3c3d)
                         }
                     }
                     HorizontalDivider(color=Color(0xffe7e7e7))
+                    if(!tutorial && app.demo==null)TextButton(onClick={app.onboarding=false;app.screen="demo"},Modifier.align(Alignment.CenterHorizontally)) { Text("Try offline demo") }
                     if(tutorial) PairingTutorial(app.twelve,onClose)
                     else AnimatedContent(phase,Modifier.weight(1f),transitionSpec={
                         (slideInHorizontally { it }+fadeIn()).togetherWith(slideOutHorizontally { -it/3 }+fadeOut())

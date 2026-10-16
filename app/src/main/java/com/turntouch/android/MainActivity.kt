@@ -70,6 +70,7 @@ class MainActivity: ComponentActivity() {
     if(id!=0)Image(painterResource(id),description,modifier.size(size),colorFilter=tint?.let {ColorFilter.tint(it)}) else Box(modifier.size(size))
 }
 @Composable fun App(app: AppState,scan: ()->Unit) {
+    if(app.screen=="demo" && app.demo==null) { OfflineDemo(app); return }
     var settingsOpen by remember { mutableStateOf(false) }
     var inspected by remember { mutableStateOf<Direction?>(null) }
     var chooseMode by remember { mutableStateOf(false) }
@@ -78,7 +79,7 @@ class MainActivity: ComponentActivity() {
     val nativeCommands=remember { kotlinx.coroutines.flow.MutableSharedFlow<Binding>(extraBufferCapacity=16) }
     DisposableEffect(app) { app.executor.nativeAction={ b -> nativeBinding=b; app.scope.launch { nativeCommands.emit(b) } }; onDispose { app.executor.nativeAction=null } }
     BackHandler(enabled=app.screen!="remote" || inspected!=null || chooseMode || nativeBinding!=null) { app.screen="remote"; inspected=null; chooseMode=false; nativeBinding=null }
-    Column(Modifier.fillMaxSize().safeDrawingPadding()) {
+    Column(Modifier.fillMaxSize().then(if(app.demo==null)Modifier.safeDrawingPadding() else Modifier.navigationBarsPadding())) {
         Box(Modifier.fillMaxWidth().height(44.dp).background(Brush.verticalGradient(listOf(Color.White,Color(0xffe7e7e7))))) {
             Artwork("title",Modifier.align(Alignment.Center).width(100.dp).height(12.dp),100.dp)
             Box(Modifier.align(Alignment.CenterEnd)) {
@@ -89,6 +90,7 @@ class MainActivity: ComponentActivity() {
             }
         }
         HorizontalDivider(color=Color(0xffe7e7e7))
+        app.demo?.let { DemoPreview(app,it) }
         when {
             app.screen.startsWith("connect:") -> ConnectionScreen(app,app.screen.substringAfter(":")) { app.screen="remote" }
             app.screen=="devices" -> Devices(app,scan)
@@ -281,6 +283,7 @@ fun diamondPoints(w: Float,h: Float,s: Float): List<List<Offset>> = listOf(
     }
 }
 @Composable fun Devices(app: AppState,scan: ()->Unit) {
+    if(app.demo!=null) { DemoConnectionScreen(app,"remote") {app.screen="remote"}; return }
     val ble=app.bluetooth
     var rename by remember { mutableStateOf<Remote?>(null) }
     Column(Modifier.fillMaxWidth().verticalScroll(rememberScrollState()).padding(24.dp)) {

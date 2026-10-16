@@ -44,3 +44,7 @@ S22 screenshots use a temporary 1080×1920 display size for Play's aspect-ratio 
 Repeat after building debug app/test APKs: `python3 scripts/capture_store.py` (uses the two attached device serials and temporarily stops the other remote listener). Browse `index.html` for the complete gallery. `scripts/store_graphics.swift` renders the separate feature graphic from existing Turn Touch artwork.
 
 Play app created under NewsBlur, Inc.: app ID `4974725381826331297`.
+
+## Offline review demo
+
+The offline demo is available in the first-launch pairing dialog and Settings → Help. It reuses the app UI and action editor with in-memory assignments and simulated controls. Two instrumentation checks passed on each physical Samsung device: UI editing/execution/exit/reset with personal preferences unchanged, and interception of network/native action routes. Fresh demo captures are in ignored `evidence/play-release-1.0/`. Unit tests and release lint/build passed after this addition. The signed artifact manifest must be refreshed after rebuilding this commit.

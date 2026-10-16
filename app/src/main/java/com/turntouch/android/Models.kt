@@ -27,10 +27,10 @@ class Catalog(context: Context) {
         return if(b.action=="TTModeNanoleafSceneCustom" && !b.options["scene"].isNullOrBlank())definition.copy(title=b.options.getValue("scene")) else definition
     }
 }
-class AppState(val context: Context) {
+class AppState(val context: Context, val demo: DemoSession? = null) {
     val catalog=Catalog(context)
-    private val prefs=context.getSharedPreferences("turntouch",Context.MODE_PRIVATE)
-    private val secrets=SecretStore(context)
+    private val prefs=demo?.preferences ?: context.getSharedPreferences("turntouch",Context.MODE_PRIVATE)
+    private val secrets by lazy { SecretStore(context) }
     var revision by mutableIntStateOf(0); private set
     var selected by mutableIntStateOf(prefs.getInt("selected",2)); private set
     var twelve by mutableStateOf(prefs.getBoolean("twelve",false)); private set
@@ -71,9 +71,10 @@ class AppState(val context: Context) {
         return withDefaults(listOf(Binding(m.id,doubleAction)))
     }
     fun save(direction: Direction,gesture: Gesture,bindings: List<Binding>) { prefs.edit().putString(key(selected,direction,gesture),JSONArray(bindings.map { it.json() }).toString()).apply(); revision++ }
-    fun config(mode: String): Map<String,String> { revision; val j=JSONObject(secrets.get(mode) ?: "{}"); return j.keys().asSequence().associateWith { j.getString(it) } }
-    fun saveConfig(mode: String, values: Map<String,String>) { secrets.put(mode,JSONObject(values).toString()); revision++ }
+    fun config(mode: String): Map<String,String> { revision; demo?.let { return it.configs[mode].orEmpty() }; val j=JSONObject(secrets.get(mode) ?: "{}"); return j.keys().asSequence().associateWith { j.getString(it) } }
+    fun saveConfig(mode: String, values: Map<String,String>) { demo?.let { it.configs[mode]=values; revision++; return }; secrets.put(mode,JSONObject(values).toString()); revision++ }
     fun dispatch(direction: Direction,gesture: Gesture) {
+        if(demo==null && screen=="demo")return // Physical input must not control the home while previewing.
         if(!twelve && gesture==Gesture.Hold) { select(direction.ordinal); log("Switched to ${mode().title}"); return }
         val slot=if(twelve)gesture.ordinal else selected
         val batch=bindings(direction,if(twelve)Gesture.Single else gesture,slot)

@@ -28,4 +28,6 @@ Manifest declares `FOREGROUND_SERVICE_CONNECTED_DEVICE`. `RemoteService` maintai
 
 ## Review access
 
-The app itself requires no login. A physical Turn Touch remote and compatible local smart-home hardware are needed for complete control testing. The configuration screens and illustrated walkthrough can be explored without the remote. Third-party setups cannot be replaced with fabricated review credentials. If Console requires review hardware coordination, use samuel@turntouch.com and the owner's instructions.
+No Turn Touch account is required. Choose **Try offline demo** in the first-launch pairing dialog, or Settings → Help → Try offline demo. The labeled preview uses sample Hue, Nanoleaf, Govee, and Sonos assignments; screen taps simulate actions, and **Edit buttons** opens the actual action editor. All assignments and connection settings in the demo are held only in memory. Commands are intercepted before network, media, camera, or alarm execution. Exit demo returns to the normal app without changing personal configuration.
+
+The demo is an interface and interaction preview, not hardware proof. Actual BLE pairing and smart-home control still require a physical remote and compatible devices/provider access. Review instructions must describe that limitation honestly.
