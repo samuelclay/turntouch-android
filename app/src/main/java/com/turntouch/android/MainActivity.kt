@@ -66,7 +66,7 @@ class MainActivity: ComponentActivity() {
 }
 @Composable fun Artwork(name: String,modifier: Modifier=Modifier,size: Dp=32.dp,description: String?=null,tint: Color?=null) {
     val context=LocalContext.current
-    val id=remember(name) { context.resources.getIdentifier(name,"drawable",context.packageName) }
+    val id=remember(name) { context.resources.getIdentifier(if(name=="settings")"settings_sharp" else name,"drawable",context.packageName) }
     if(id!=0)Image(painterResource(id),description,modifier.size(size),colorFilter=tint?.let {ColorFilter.tint(it)}) else Box(modifier.size(size))
 }
 @Composable fun App(app: AppState,scan: ()->Unit) {
@@ -79,9 +79,13 @@ class MainActivity: ComponentActivity() {
     BackHandler(enabled=app.screen!="remote" || inspected!=null || chooseMode || nativeBinding!=null) { app.screen="remote"; inspected=null; chooseMode=false; nativeBinding=null }
     Column(Modifier.fillMaxSize().safeDrawingPadding()) {
         Box(Modifier.fillMaxWidth().height(44.dp).background(Brush.verticalGradient(listOf(Color.White,Color(0xffe7e7e7))))) {
-            Artwork("title",Modifier.align(Alignment.Center).width(100.dp).height(12.dp),100.dp)
-            TextButton(onClick={app.screen=if(app.bluetooth.hasSavedRemotes)"devices" else "pairing"},Modifier.align(Alignment.CenterStart)) { Text("Remotes",fontSize=13.sp) }
-            IconButton(onClick={app.screen="settings"},Modifier.align(Alignment.CenterEnd)) { Artwork("settings",size=22.dp,description="Settings") }
+            if(app.screen=="settings") {
+                Text("Settings",Modifier.align(Alignment.Center),fontFamily=Effra,fontSize=20.sp,color=Ink)
+                TextButton(onClick={app.screen="remote"},Modifier.align(Alignment.CenterEnd)) { Text("Done",fontSize=15.sp) }
+            } else {
+                Artwork("title",Modifier.align(Alignment.Center).width(100.dp).height(12.dp),100.dp)
+                IconButton(onClick={app.screen="settings"},Modifier.align(Alignment.CenterEnd)) { Artwork("settings",size=22.dp,description="Settings") }
+            }
         }
         HorizontalDivider(color=Color(0xffe7e7e7))
         when {
@@ -106,20 +110,22 @@ class MainActivity: ComponentActivity() {
                     Text(if(app.twelve)"${listOf("Single tap","Double tap","Hold")[app.selected]} actions" else app.mode().subtitle.ifBlank { app.mode().title },Modifier.weight(1f).padding(start=12.dp),fontSize=13.sp)
                     TextButton(onClick={chooseMode=!chooseMode}) { Text(if(chooseMode)"Done" else "Change",fontSize=13.sp) }
                 }
-                if(chooseMode) ModePicker(app) { id->app.assignMode(id);chooseMode=false }
-                else Column(Modifier.fillMaxSize().background(Color(0xfff5f6f8)).verticalScroll(rememberScrollState()),horizontalAlignment=Alignment.CenterHorizontally) {
-                    BoxWithConstraints(Modifier.fillMaxWidth()) {
-                        val h=if(maxWidth>600.dp)420.dp else 270.dp
-                        RemoteDiamond(app,inspected,Modifier.fillMaxWidth().height(h)) { direction,gesture -> if(app.perform)app.dispatch(direction,gesture) else inspected=if(inspected==direction)null else direction }
-                    }
-                    if(inspected!=null) ActionEditor(app,inspected!!)
-                    else {
-                        Text(if(app.perform)"Tap a button to perform its action" else "Tap a button to change its action",fontSize=14.sp,color=Color(0xff808388))
-                        TextButton(onClick={connection=app.mode().id}) { Text("${app.mode().title} options") }
-                        Row(Modifier.padding(16.dp),verticalAlignment=Alignment.CenterVertically) { Artwork("battery",size=20.dp); Text(app.bluetooth.remotes.firstOrNull { it.state=="Connected" }?.let { "${it.name} · ${it.battery?.let { b->"$b%" } ?: "Connected"}" } ?: "No remotes connected",Modifier.padding(start=8.dp),fontSize=13.sp); TextButton(onClick={app.screen=if(app.bluetooth.hasSavedRemotes)"devices" else "pairing"}) { Text("Connect") } }
-                    }
+                Box(Modifier.weight(1f).fillMaxWidth()) {
+                    if(chooseMode) ModePicker(app) { id->app.assignMode(id);chooseMode=false }
+                    else Column(Modifier.fillMaxSize().background(Color(0xfff5f6f8)).verticalScroll(rememberScrollState()),horizontalAlignment=Alignment.CenterHorizontally) {
+                        BoxWithConstraints(Modifier.fillMaxWidth()) {
+                            val h=if(maxWidth>600.dp)420.dp else 270.dp
+                            RemoteDiamond(app,inspected,Modifier.fillMaxWidth().height(h)) { direction,gesture -> if(app.perform)app.dispatch(direction,gesture) else inspected=if(inspected==direction)null else direction }
+                        }
+                        if(inspected!=null) ActionEditor(app,inspected!!)
+                        else {
+                            Text(if(app.perform)"Tap a button to perform its action" else "Tap a button to change its action",fontSize=14.sp,color=Color(0xff808388))
+                            TextButton(onClick={connection=app.mode().id}) { Text("${app.mode().title} options") }
+                        }
 
+                    }
                 }
+                RemoteStatusBar(app)
             }
         }
     }
@@ -287,19 +293,6 @@ fun diamondPoints(w: Float,h: Float,s: Float): List<List<Offset>> = listOf(
         if(ble.remotes.isEmpty())Text("No remotes found yet. A remote connected to your Mac or iPhone may need to disconnect there first.",Modifier.padding(vertical=24.dp),color=Color.Gray)
     }
     rename?.let { remote -> var name by remember { mutableStateOf(remote.name) }; var error by remember { mutableStateOf("") }; AlertDialog(onDismissRequest={rename=null},title={Text("Name your remote")},text={Column { OutlinedTextField(name,{name=it},label={Text("Name")});Text(error,color=MaterialTheme.colorScheme.error) }},confirmButton={TextButton(onClick={runCatching { ble.rename(remote.address,name) }.onSuccess { rename=null }.onFailure { error=it.message.orEmpty() }}) { Text("Save") }},dismissButton={TextButton(onClick={rename=null}) { Text("Cancel") }}) }
-}
-@Composable fun Settings(app: AppState,onConnection: (String)->Unit) {
-    Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(24.dp)) {
-        Row { Text("Settings",Modifier.weight(1f),fontSize=25.sp);TextButton(onClick={app.screen="remote"}) { Text("Done") } }
-        Row(verticalAlignment=Alignment.CenterVertically) { Column(Modifier.weight(1f)) { Text("12-button mode");Text("Single tap, double tap, and hold",fontSize=13.sp,color=Color.Gray) };Switch(app.twelve,{app.changeButtonMode(it)}) }
-        Row(verticalAlignment=Alignment.CenterVertically) { Text("Perform actions when tapping the screen",Modifier.weight(1f));Switch(app.perform,{app.changePerformMode(it)}) }
-        TextButton(onClick={app.screen=if(app.bluetooth.hasSavedRemotes)"devices" else "pairing"}) { Text("Remotes") }
-        TextButton(onClick={app.screen="tutorial"}) { Text("How it works") }
-        TextButton(onClick={app.screen="diagnostics"}) { Text("Connection diagnostics") }
-        HorizontalDivider();Text("Apps",Modifier.padding(vertical=16.dp),fontSize=20.sp)
-        app.catalog.modes.forEach { mode -> Row(Modifier.fillMaxWidth().clickable { onConnection(mode.id) }.padding(vertical=10.dp),verticalAlignment=Alignment.CenterVertically) { Artwork(mode.icon,size=28.dp);Text(mode.title,Modifier.padding(start=16.dp)) } }
-        Text("Turn Touch · Android 0.1.0\nOriginal design and artwork © Turn Touch",Modifier.padding(top=24.dp),fontSize=12.sp,color=Color.Gray)
-    }
 }
 fun connectionFields(mode: String): List<Pair<String,String>> = when(mode) {
     "Hue"->listOf("host" to "Bridge IP address","token" to "Bridge username","group" to "Group ID (0 = all lights)")

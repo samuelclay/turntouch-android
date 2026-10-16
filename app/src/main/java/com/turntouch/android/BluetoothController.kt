@@ -184,7 +184,7 @@ class BluetoothController(private val app: AppState) {
                 } else { val decoder=decoders[address] ?: return; decoder.read(bytes,SystemClock.elapsedRealtime()); handler.postDelayed({ decoder.flush(SystemClock.elapsedRealtime()) },300) }
             }
             RemoteProtocol.battery -> if(bytes.isNotEmpty())update(address) { it.copy(battery=bytes[0].toInt() and 255) }
-            RemoteProtocol.nickname -> { val name=bytes.toString(Charsets.UTF_8).trim('\u0000',' '); if(name.isNotBlank())update(address) { it.copy(name=name) } }
+            RemoteProtocol.nickname -> { val name=bytes.toString(Charsets.UTF_8).trim('\u0000',' '); if(name.isNotBlank()) { prefs.edit().putString("name:$address",name).apply(); update(address) { it.copy(name=name) } } }
             RemoteProtocol.firmware -> update(address) { it.copy(firmware=bytes.joinToString(".") { (it.toInt() and 255).toString() }) }
         }
     }
