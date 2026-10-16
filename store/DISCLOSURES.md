@@ -6,7 +6,7 @@ This is a preparation worksheet, not a claim that Console forms have been submit
 - Privacy policy: https://turntouch.com/static/android/privacy.html
 - No app account creation or Turn Touch login. Some integrations require credentials belonging to a third-party device/service.
 - Intended audience: adult owners configuring their smart-home equipment; not designed for children. Do not imply a children/families program enrollment.
-- No financial, health, medical, government, news-publishing, or gambling functionality. The News mode is a general web viewer, not a news-publishing service.
+- No financial, medical, government, news-publishing, or gambling functionality. The optional Yoga mode is a pose timer, so Activity and fitness was declared in the Health form. It does not collect health data. The News mode is a general web viewer, not a news-publishing service.
 - No Advertising ID permission or advertising SDK.
 - No analytics or crash-report upload SDK. AndroidX/Compose, CameraX, Kotlin coroutines only.
 

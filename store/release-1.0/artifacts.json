@@ -1,21 +1,21 @@
 {
   "versionName": "1.0",
   "versionCode": 1,
-  "sourceCommit": "5aadbb72e964b47e1e1807e7579161c2eb47be83",
+  "sourceCommit": "b57f82653c4a5045222eaed28578e16697487ec6",
   "artifacts": {
     "aab": {
       "path": "app/build/outputs/bundle/release/app-release.aab",
-      "sha256": "8a4313bc931f04338f30643325b8768ffcbc35aab5ed7ce2e86879880fa5fa3e",
-      "bytes": 11823392
+      "sha256": "055695317dfcb630a622d0a39023a920be66a4a2f8a51569d5337f5e4d3720a3",
+      "bytes": 11838089
     },
     "releaseApk": {
       "path": "app/build/outputs/apk/release/app-release.apk",
-      "sha256": "dc32c8870ec95e3acce07df0aef36e047f0385a624d55cbcc2f4bd706afbc366",
-      "bytes": 12462100
+      "sha256": "18fcb90e8e8bc03f7e2425200acb2d8a5473d1aac52ce136b83bb3782005de37",
+      "bytes": 12478484
     },
     "deviceDebugApk": {
       "path": "app/build/outputs/apk/debug/app-debug.apk",
-      "sha256": "556a39eef210a5161bf1bf75edd07f7d1918a02d23d5939e68abd80eebe91d67",
+      "sha256": "5c855fa6728336108949e1383069e9cc9f1dfc779d2813deccd1a6faf4d0ee1e",
       "bytes": 17891408
     }
   }
