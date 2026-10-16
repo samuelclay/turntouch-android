@@ -1,0 +1,11 @@
+{
+  "icon.png": "Turn Touch diamond logo on a blue background.",
+  "featureGraphic.png": "Turn Touch: Four buttons. Your favorite actions. An illustrated four-button remote.",
+  "01-actions.png": "Hue light actions on four remote buttons, with the connected Turn Touch remote shown below.",
+  "02-button-actions.png": "Customize Hue Random settings for a remote button.",
+  "03-action-picker.png": "Choose a Hue action, including brightness and saturation controls.",
+  "04-settings.png": "Settings popover with remote battery, connection status, and button-layout controls.",
+  "05-tutorial.png": "Illustrated introduction to controlling apps with the Turn Touch remote.",
+  "06-buttons.png": "Walkthrough explaining how each remote button performs an action.",
+  "07-apps.png": "Choose an app or integration for your remote, including camera, music, Hue, and Nanoleaf."
+}

@@ -34,3 +34,13 @@ Review access instructions: Open the app and use the pairing dialog's cancel/clo
 - Dedicated upload signature verified; release APK ZIP alignment and all 64-bit ELF LOAD segments meet 16 KB alignment.
 - Detailed integration coverage and known gaps remain documented in `../docs/RELEASE_VALIDATION_2026-10-16.md` and `../docs/STATUS.md`.
 - This file records preparation, not confirmation of Play submission or publication. Console status must be verified separately.
+
+## Fresh screenshot pass
+
+Seven screenshots per device were captured on October 16, 2026 using source `5aadbb7`. Both capture runs wait for a genuine BLE Connected state and restore original button preferences. The installed debug APK on both Samsungs was checked byte-for-byte against the final local artifact and reports version 1.0.
+
+S22 screenshots use a temporary 1080×1920 display size for Play's aspect-ratio limits; native 1080×2340 was restored. Tab A8 captures use its native 1920×1200 landscape layout. System demo mode hides notifications during capture and is restored afterward; actual clock/battery values remain visible on Samsung. These are app screenshots, with no synthetic connection status or composited app UI.
+
+Repeat after building debug app/test APKs: `python3 scripts/capture_store.py` (uses the two attached device serials and temporarily stops the other remote listener). Browse `index.html` for the complete gallery. `scripts/store_graphics.swift` renders the separate feature graphic from existing Turn Touch artwork.
+
+Play app created under NewsBlur, Inc.: app ID `4974725381826331297`.
