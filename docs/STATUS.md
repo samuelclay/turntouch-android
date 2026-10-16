@@ -16,6 +16,8 @@ The Samsung Galaxy S22 (Android API 36) and Galaxy Tab A8 (API 34) have been use
 - Whole-diamond touch targets, pressed fill, centered long labels, and visible inline action selection, including preserving other actions in a batch.
 - Four-button BLE pairing on both Samsungs, with the iOS-style pairing modal on the tablet; nickname/battery reads and startup reconnection.
 - Pairing timeout/retry/cancellation and the five-page swipeable tutorial on both devices.
+- Short background retention and reconnection after Bluetooth off/on without reopening the activity on both Samsungs; long screen-off endurance remains unverified.
+- Real screen-off S22 single taps controlling Nanoleaf with state read-back, then the original Up batch dispatching Hue Random and Nanoleaf Turn On. Govee reported its missing API key; controlled double/hold action validation remains incomplete.
 - Hue brightness, saturation, color shift, color loop, off, immediate sleep, custom scenes, and scene cycling, with read-back and restoration.
 - Nanoleaf power, brightness, and effect changes; Sonos volume and mute; native Android media volume, with read-back and restoration.
 
@@ -46,7 +48,7 @@ The automatic pairing retry loop has tests for eventual success, cancellation, a
 
 The app implements scanning, GATT notifications, button decoding, four-button confirmation, nickname/battery reads, saved connections, and foreground listening. The decoder has tests for single/double/held presses, chords, malformed packets, and reset behavior.
 
-A live Turn Touch four-button pairing test has passed on each Samsung. The pairing modal now follows the iOS artwork and flow, with automatic connection, confirmation progress, timeout/retry screens, and a tutorial pager. Background reconnect endurance remains unverified. Sol page turners share a service identifier and are excluded by their advertised names. Firmware updating is not implemented.
+A live Turn Touch four-button pairing test has passed on each Samsung. The pairing modal now follows the iOS artwork and flow, with automatic connection, confirmation progress, timeout/retry screens, and a tutorial pager. Saved remotes use persistent automatic reconnection and the foreground service handles Bluetooth off/on recovery. Long background reconnect endurance remains unverified. Sol page turners share a service identifier and are excluded by their advertised names. Firmware updating is not implemented.
 
 ## Testing
 
@@ -59,6 +61,7 @@ A live Turn Touch four-button pairing test has passed on each Samsung. The pairi
 - `LiveIntegrationTest` is an opt-in protocol test that requires a private `files/test-connections.json` fixture. It changes one light's brightness and a speaker's volume briefly, then restores them. Do not commit credentials or device fixtures. Its current combined Hue/Sonos test needs to be split so each integration can be checked independently.
 - `ReleaseHardwareTest` checks Hue, Nanoleaf, Sonos, native volume, and Govee LAN independently with real read-back/restoration. It uses saved encrypted connections and discovery; unavailable hardware is explicitly skipped. Do not run two tests against the same lights/speaker concurrently.
 - `PairingFlowTest` checks tutorial swiping/navigation and cancellation cleanup. Its real-timer timeout/retry scenario is opt-in with `-e pairingTimeout true` and requires no physical button presses.
-- `RemoteLightLiveTest` is opt-in with `-e liveRemote true`. A person must single-tap, double-tap, and hold a real paired remote while the app is backgrounded. It verifies Nanoleaf state after each action, then restores the light and original assignments. `-e remoteTimeoutSeconds 600` extends the interaction window to ten minutes. Keep the other Android app closed so it cannot take the BLE connection.
+- `BackgroundConnectionTest` is opt-in with `-e backgroundBluetooth true`. It checks background retention and real Bluetooth radio off/on recovery without reopening the activity, then re-enables Bluetooth. Keep other hosts disconnected from the same remote.
+- `RemoteLightLiveTest` is opt-in with `-e liveRemote true`. A person must single-tap, double-tap, and hold a real paired remote while the app is backgrounded. It verifies Nanoleaf state after each action, then restores the light and original assignments. `-e remoteTimeoutSeconds 600` extends the interaction window to ten minutes. Stop the other Android app’s listener so it cannot take the BLE connection; merely leaving its screen keeps the listener running.
 
 Raw device logs and local evidence are intentionally ignored by Git because they can contain network addresses, remote identifiers, or test configuration. README screenshots are curated separately.
