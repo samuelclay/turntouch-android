@@ -2,6 +2,8 @@
 
 This is the initial Android implementation, with 22 catalog entries derived from the iOS and Mac apps. A catalog entry does not mean that every corresponding feature is complete. Full iOS/Mac parity and exhaustive hardware validation are still in progress.
 
+See the [October 16 physical-device validation](RELEASE_VALIDATION_2026-10-16.md) for the current release checks and remaining gaps.
+
 ## Verified on physical devices
 
 The Samsung Galaxy S22 (Android API 36) and Galaxy Tab A8 (API 34) have been used for development:
@@ -12,6 +14,10 @@ The Samsung Galaxy S22 (Android API 36) and Galaxy Tab A8 (API 34) have been use
 - Loading Hue rooms/scenes and Nanoleaf effects, selecting them inline, and verifying persisted selections.
 - Hue Random: independent single/double-tap options, all 27 setting combinations tested, plus real color/saturation/brightness command read-back and state restoration on one reachable room light.
 - Whole-diamond touch targets, pressed fill, centered long labels, and visible inline action selection, including preserving other actions in a batch.
+- Four-button BLE pairing on both Samsungs, with the iOS-style pairing modal on the tablet; nickname/battery reads and startup reconnection.
+- Pairing timeout/retry/cancellation and the five-page swipeable tutorial on both devices.
+- Hue brightness, saturation, color shift, color loop, off, immediate sleep, custom scenes, and scene cycling, with read-back and restoration.
+- Nanoleaf power, brightness, and effect changes; Sonos volume and mute; native Android media volume, with read-back and restoration.
 
 The automatic pairing retry loop has tests for eventual success, cancellation, and ignoring late results after cancellation. A new physical pairing round trip with the automatic retry UI still needs to be checked.
 
@@ -19,9 +25,9 @@ The automatic pairing retry loop has tests for eventual success, cancellation, a
 
 | Integration | Current implementation | Remaining validation or work |
 | --- | --- | --- |
-| Hue | Local v1 API pairing, rooms/scenes, brightness, saturation, color, sleep, scene cycling | Full action read-back/restore tests; match all iOS v2 preset/default behavior |
-| Nanoleaf | Local pairing, effect list and selection, on/off, brightness | Full action read-back tests; sleep/fade parity |
-| Sonos | Discovery and local SOAP media/volume control | Live command validation and group coordinator behavior |
+| Hue | Local v1 API pairing, rooms/scenes, brightness, saturation, color, sleep, scene cycling | Named presets still need a manually selected scene; full-duration fades and all iOS v2 preset/default behavior |
+| Nanoleaf | Local pairing, effect list and selection, on/off, brightness; basic actions live-tested | Sleep/fade parity |
+| Sonos | Discovery and local SOAP media/volume control; volume/mute live-tested | Transport and group coordinator behavior |
 | Kasa | Legacy TCP and KLAP support, UDP discovery | Live authentication and control with available devices |
 | Govee | LAN discovery/control and cloud API path | Live device/API validation |
 | WeMo / Bose | Local protocol implementations | Hardware unavailable during development; not live-tested |
@@ -40,7 +46,7 @@ The automatic pairing retry loop has tests for eventual success, cancellation, a
 
 The app implements scanning, GATT notifications, button decoding, four-button confirmation, nickname/battery reads, saved connections, and foreground listening. The decoder has tests for single/double/held presses, chords, malformed packets, and reset behavior.
 
-A complete live Turn Touch four-button test and background reconnect endurance run have not yet passed. Sol page turners share a service identifier and are excluded by their advertised names. Firmware updating is not implemented.
+A live Turn Touch four-button pairing test has passed on each Samsung. The pairing modal now follows the iOS artwork and flow, with automatic connection, confirmation progress, timeout/retry screens, and a tutorial pager. Background reconnect endurance remains unverified. Sol page turners share a service identifier and are excluded by their advertised names. Firmware updating is not implemented.
 
 ## Testing
 
@@ -51,5 +57,8 @@ A complete live Turn Touch four-button test and background reconnect endurance r
 - `HueRandomLiveTest` requires saved Hue credentials. It briefly changes a small reachable color-light room, checks the result, and restores the original light states.
 - `DeviceSmokeTest` uses Bluetooth scanning and local Wi-Fi discovery, and may attempt a connection to a discovered Turn Touch.
 - `LiveIntegrationTest` is an opt-in protocol test that requires a private `files/test-connections.json` fixture. It changes one light's brightness and a speaker's volume briefly, then restores them. Do not commit credentials or device fixtures. Its current combined Hue/Sonos test needs to be split so each integration can be checked independently.
+- `ReleaseHardwareTest` checks Hue, Nanoleaf, Sonos, native volume, and Govee LAN independently with real read-back/restoration. It uses saved encrypted connections and discovery; unavailable hardware is explicitly skipped. Do not run two tests against the same lights/speaker concurrently.
+- `PairingFlowTest` checks tutorial swiping/navigation and cancellation cleanup. Its real-timer timeout/retry scenario is opt-in with `-e pairingTimeout true` and requires no physical button presses.
+- `RemoteLightLiveTest` is opt-in with `-e liveRemote true`. A person must single-tap, double-tap, and hold a real paired remote while the app is backgrounded. It verifies Nanoleaf state after each action, then restores the light and original assignments. `-e remoteTimeoutSeconds 600` extends the interaction window to ten minutes. Keep the other Android app closed so it cannot take the BLE connection.
 
 Raw device logs and local evidence are intentionally ignored by Git because they can contain network addresses, remote identifiers, or test configuration. README screenshots are curated separately.
