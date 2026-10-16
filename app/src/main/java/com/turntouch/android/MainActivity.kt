@@ -66,7 +66,7 @@ class MainActivity: ComponentActivity() {
 }
 @Composable fun Artwork(name: String,modifier: Modifier=Modifier,size: Dp=32.dp,description: String?=null,tint: Color?=null) {
     val context=LocalContext.current
-    val id=remember(name) { context.resources.getIdentifier(if(name=="settings")"settings_sharp" else name,"drawable",context.packageName) }
+    val id=remember(name) { context.resources.getIdentifier(when(name) { "settings"->"settings_sharp"; "mode_mac"->"phone_sharp"; "title"->"title_2x"; else->name },"drawable",context.packageName) }
     if(id!=0)Image(painterResource(id),description,modifier.size(size),colorFilter=tint?.let {ColorFilter.tint(it)}) else Box(modifier.size(size))
 }
 @Composable fun App(app: AppState,scan: ()->Unit) {
