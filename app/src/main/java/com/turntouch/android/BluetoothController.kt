@@ -19,6 +19,7 @@ object RemoteProtocol {
     val cccd: UUID=UUID.fromString("00002902-0000-1000-8000-00805f9b34fb")
 }
 data class Remote(val address: String, val name: String, val rssi: Int=0, val state: String="Nearby", val battery: Int?=null, val firmware: String?=null, val pairedButtons: Int=0)
+enum class RemotePairingPhase { Intro, Searching, Connecting, Buttons, Success, Failure }
 class BluetoothController(private val app: AppState) {
     private val context=app.context
     private val manager=context.getSystemService(BluetoothManager::class.java)
@@ -33,6 +34,53 @@ class BluetoothController(private val app: AppState) {
     private val retries=mutableMapOf<String,Int>()
     private val pairing=mutableSetOf<String>()
     private val saved get()=prefs.getStringSet("paired",emptySet())!!.toSet()
+    val hasSavedRemotes get()=saved.isNotEmpty()
+    fun isSaved(address: String)=address in saved
+    var pairingPhase by mutableStateOf(RemotePairingPhase.Intro); private set
+    var pairingButtons by mutableIntStateOf(0); private set
+    var pairingSecondsLeft by mutableIntStateOf(30); private set
+    var pairingFailure by mutableStateOf<String?>(null); private set
+    private var pairingActive=false
+    private var pairingDeadline=0L
+    private var scanGeneration=0
+    private val pairingTick=object: Runnable {
+        override fun run() {
+            if(!pairingActive)return
+            val left=pairingDeadline-SystemClock.elapsedRealtime()
+            pairingSecondsLeft=((left+999)/1000).toInt().coerceAtLeast(0)
+            if(left<=0)failPairing(if(pairingPhase==RemotePairingPhase.Buttons)"Press all four buttons before the timer runs out." else "No remotes could be found")
+            else handler.postDelayed(this,200)
+        }
+    }
+    init { saved.forEach { remotes.add(Remote(it,prefs.getString("name:$it","Turn Touch")!!,state="Disconnected")) } }
+    fun beginPairing() {
+        cancelPairing(); error=null; pairingFailure=null; pairingButtons=0
+        remotes.removeAll { it.address !in saved }
+        pairingActive=true; pairingPhase=RemotePairingPhase.Searching
+        pairingDeadline=SystemClock.elapsedRealtime()+20000
+        startScan(); handler.post(pairingTick)
+        error?.let { failPairing(it) }
+    }
+    fun cancelPairing() {
+        pairingActive=false; handler.removeCallbacks(pairingTick); stopScan()
+        pairing.toList().forEach { disconnect(it) }; pairing.clear()
+    }
+    private fun failPairing(message: String) {
+        cancelPairing(); pairingFailure=message; pairingPhase=RemotePairingPhase.Failure
+    }
+    fun pairingUnavailable(message: String) { report(message); failPairing(message) }
+    private fun refreshPairing() {
+        if(!pairingActive)return
+        val candidates=remotes.filter { it.address in pairing }
+        val ready=candidates.filter { it.state.startsWith("Press") }.maxByOrNull { Integer.bitCount(it.pairedButtons) }
+        if(ready!=null) {
+            if(pairingPhase!=RemotePairingPhase.Buttons)pairingDeadline=SystemClock.elapsedRealtime()+30000
+            pairingPhase=RemotePairingPhase.Buttons; pairingButtons=ready.pairedButtons
+        } else if(candidates.any { it.state=="Connecting…" || it.state=="Discovering services…" }) {
+            if(pairingPhase!=RemotePairingPhase.Connecting)pairingDeadline=SystemClock.elapsedRealtime()+15000
+            pairingPhase=RemotePairingPhase.Connecting
+        }
+    }
     private fun update(address: String, transform: (Remote)->Remote) { val i=remotes.indexOfFirst { it.address==address }; if(i>=0)remotes[i]=transform(remotes[i]) }
     private fun report(message: String) { error=message; app.log(message) }
     private val scan=object: ScanCallback() {
@@ -43,8 +91,9 @@ class BluetoothController(private val app: AppState) {
             if(remotes.none { it.address==address }) { remotes.add(Remote(address,prefs.getString("name:$address",name)!!,result.rssi)); app.log("Found $name ($address)") }
             else update(address) { it.copy(rssi=result.rssi) }
             if(address in saved && address !in connections) connect(address,false)
+            else if(pairingActive && address !in saved && address !in connections)connect(address)
         } }
-        override fun onScanFailed(code: Int) { handler.post { scanning=false; report("Bluetooth scan failed ($code). Try again.") } }
+        override fun onScanFailed(code: Int) { handler.post { scanning=false; report("Bluetooth scan failed ($code). Try again."); if(pairingActive)failPairing(error!!) } }
     }
     fun startScan() {
         if(scanning)return
@@ -55,12 +104,13 @@ class BluetoothController(private val app: AppState) {
             scanning=true
             val filters=listOf(ScanFilter.Builder().setServiceUuid(ParcelUuid(RemoteProtocol.service)).build(),ScanFilter.Builder().setServiceUuid(ParcelUuid(UUID.fromString("00001523-0000-1000-8000-00805f9b34fb"))).build())
             adapter.bluetoothLeScanner.startScan(filters,ScanSettings.Builder().setScanMode(ScanSettings.SCAN_MODE_LOW_LATENCY).build(),scan)
-            handler.postDelayed({ stopScan() },20000)
+            val generation=++scanGeneration
+            handler.postDelayed({ if(scanGeneration==generation)stopScan() },20000)
             app.log("Looking for Turn Touch remotes…")
         } catch(e: SecurityException) { scanning=false; report("Allow Nearby devices to find and connect your remote.") }
     }
-    fun stopScan() { try { manager?.adapter?.bluetoothLeScanner?.stopScan(scan) } catch(_:SecurityException) {} ; scanning=false }
-    fun reconnect() { saved.forEach { if(it !in connections)connect(it,false) } }
+    fun stopScan() { scanGeneration++; try { manager?.adapter?.bluetoothLeScanner?.stopScan(scan) } catch(_:SecurityException) {} ; scanning=false }
+    fun reconnect() { try { if(manager?.adapter?.isEnabled==true)saved.forEach { if(it !in connections)connect(it,false) } } catch(_:SecurityException) {} }
     fun connect(address: String,newPair: Boolean=true) {
         if(address in connections)return
         try {
@@ -68,16 +118,19 @@ class BluetoothController(private val app: AppState) {
             if(remotes.none { it.address==address })remotes.add(Remote(address,prefs.getString("name:$address","Turn Touch")!!))
             update(address) { it.copy(state="Connecting…") }
             if(newPair && address !in saved)pairing.add(address)
+            refreshPairing()
             decoders[address]=ButtonDecoder(app::dispatch) { app.active=it }
             val g=manager!!.adapter.getRemoteDevice(address).connectGatt(context,false,callback,BluetoothDevice.TRANSPORT_LE)
             connections[address]=g
-            handler.postDelayed({ if(connections[address]===g && remotes.firstOrNull { it.address==address }?.state=="Connecting…") { g.disconnect(); report("Connection timed out. Wake the remote and try again.") } },15000)
+            handler.postDelayed({ if(connections[address]===g && remotes.firstOrNull { it.address==address }?.state in listOf("Connecting…","Discovering services…")) { g.disconnect(); report("Connection timed out. Wake the remote and try again.") } },15000)
         } catch(e: SecurityException) { report("Nearby devices permission is needed to connect.") }
     }
     fun disconnect(address: String,forget: Boolean=false) {
         if(forget) { prefs.edit().putStringSet("paired",saved-address).apply(); pairing.remove(address) }
+        pairing.remove(address)
         val g=connections.remove(address); g?.disconnect(); g?.close(); decoders.remove(address)?.reset(); queues.remove(address)
         update(address) { it.copy(state=if(forget)"Nearby" else "Disconnected",pairedButtons=0) }
+        if(connections.isEmpty() && saved.isEmpty())context.stopService(Intent(context,RemoteService::class.java))
     }
     fun rename(address: String,name: String) {
         val clean=name.trim(); require(clean.toByteArray(Charsets.UTF_8).size in 1..20) { "Use a name of 1–20 UTF-8 bytes." }
@@ -96,7 +149,11 @@ class BluetoothController(private val app: AppState) {
                 if(address in pairing) {
                     val mask=bytes[0].toInt().inv() and 15
                     update(address) { val count=it.pairedButtons or mask; it.copy(pairedButtons=count,state=if(count==15)"Connected" else "Press all four buttons to pair") }
-                    if(remotes.first { it.address==address }.pairedButtons==15) { pairing.remove(address); prefs.edit().putStringSet("paired",saved+address).apply(); app.log("Remote paired") }
+                    refreshPairing()
+                    if(remotes.first { it.address==address }.pairedButtons==15) {
+                        pairing.remove(address); prefs.edit().putStringSet("paired",saved+address).apply(); app.log("Remote paired")
+                        if(pairingActive) { pairingButtons=15; pairingPhase=RemotePairingPhase.Success; cancelPairing() }
+                    }
                 } else { val decoder=decoders[address] ?: return; decoder.read(bytes,SystemClock.elapsedRealtime()); handler.postDelayed({ decoder.flush(SystemClock.elapsedRealtime()) },300) }
             }
             RemoteProtocol.battery -> if(bytes.isNotEmpty())update(address) { it.copy(battery=bytes[0].toInt() and 255) }
@@ -115,6 +172,7 @@ class BluetoothController(private val app: AppState) {
             }
         } }
         override fun onServicesDiscovered(g: BluetoothGatt,status: Int) { handler.post {
+            if(connections[g.device.address]!==g)return@post
             if(status!=0) { report("Unable to read remote services ($status)"); g.disconnect(); return@post }
             val buttons=g.getService(RemoteProtocol.service)?.getCharacteristic(RemoteProtocol.buttons)
             val cccd=buttons?.getDescriptor(RemoteProtocol.cccd)
@@ -124,13 +182,15 @@ class BluetoothController(private val app: AppState) {
             for(s in g.services)for(c in s.characteristics)if(c.uuid in listOf(RemoteProtocol.battery,RemoteProtocol.nickname,RemoteProtocol.firmware))enqueue(g) { g.readCharacteristic(c) }
         } }
         override fun onDescriptorWrite(g: BluetoothGatt,d: BluetoothGattDescriptor,status: Int) { handler.post {
+            if(connections[g.device.address]!==g)return@post
             if(status==0) { retries.remove(g.device.address); update(g.device.address) { it.copy(state=if(it.address in pairing)"Press all four buttons to pair" else "Connected") }; app.log("Button notifications enabled") }
             else report("Could not subscribe to remote buttons ($status)")
+            refreshPairing()
             advance(g)
         } }
-        override fun onCharacteristicRead(g: BluetoothGatt,c: BluetoothGattCharacteristic,status: Int) { handler.post { if(status==0)value(g,c,c.value ?: byteArrayOf()); advance(g) } }
-        override fun onCharacteristicChanged(g: BluetoothGatt,c: BluetoothGattCharacteristic) { val bytes=c.value?.clone() ?: return; handler.post { value(g,c,bytes) } }
-        override fun onCharacteristicWrite(g: BluetoothGatt,c: BluetoothGattCharacteristic,status: Int) { handler.post { if(status!=0)report("Remote write failed ($status)"); advance(g) } }
+        override fun onCharacteristicRead(g: BluetoothGatt,c: BluetoothGattCharacteristic,status: Int) { handler.post { if(connections[g.device.address]!==g)return@post; if(status==0)value(g,c,c.value ?: byteArrayOf()); advance(g) } }
+        override fun onCharacteristicChanged(g: BluetoothGatt,c: BluetoothGattCharacteristic) { val bytes=c.value?.clone() ?: return; handler.post { if(connections[g.device.address]===g)value(g,c,bytes) } }
+        override fun onCharacteristicWrite(g: BluetoothGatt,c: BluetoothGattCharacteristic,status: Int) { handler.post { if(connections[g.device.address]!==g)return@post; if(status!=0)report("Remote write failed ($status)"); advance(g) } }
     }
 }
 class RemoteService: Service() {

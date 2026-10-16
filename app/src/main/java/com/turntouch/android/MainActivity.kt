@@ -52,13 +52,14 @@ val SelectedStroke=Color(0xff303aa0)
 val Effra=FontFamily(Font(R.font.effra),Font(R.font.effra_light,FontWeight.Light),Font(R.font.effra_bold,FontWeight.Bold))
 class MainActivity: ComponentActivity() {
     private val state get()=(application as TurnTouchApp).state
-    private val permissions=registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { result -> if(result.values.all { it })state.bluetooth.startScan() else state.log("Allow Nearby devices in Settings to connect a remote.") }
+    private val permissions=registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { result -> if(state.onboarding || state.screen=="pairing") { if(result.values.all { it })state.bluetooth.beginPairing() else state.bluetooth.pairingUnavailable("Allow Nearby devices in Settings to connect a remote.") } }
     override fun onNewIntent(intent: Intent) { super.onNewIntent(intent); openRequestedSetup(intent) }
     private fun openRequestedSetup(intent: Intent) { if(BuildConfig.DEBUG)intent.getStringExtra("setup")?.takeIf { id -> state.catalog.modes.any { it.id==id } }?.let { state.finishOnboarding(); state.screen="connect:$it" } }
     fun scan() {
         val needed=if(Build.VERSION.SDK_INT>=31)arrayOf(Manifest.permission.BLUETOOTH_SCAN,Manifest.permission.BLUETOOTH_CONNECT) else arrayOf(Manifest.permission.ACCESS_FINE_LOCATION)
-        if(needed.all { checkSelfPermission(it)==PackageManager.PERMISSION_GRANTED })state.bluetooth.startScan() else permissions.launch(needed)
+        if(needed.all { checkSelfPermission(it)==PackageManager.PERMISSION_GRANTED })state.bluetooth.beginPairing() else permissions.launch(needed)
     }
+    override fun onStart() { super.onStart(); state.bluetooth.reconnect() }
     override fun onCreate(savedInstanceState: Bundle?) { super.onCreate(savedInstanceState); openRequestedSetup(intent); enableEdgeToEdge(); setContent {
         MaterialTheme(colorScheme=lightColorScheme(primary=Blue,onPrimary=Color.White,background=Color.White,surface=Color.White,onSurface=Ink),typography=Typography(bodyLarge=androidx.compose.ui.text.TextStyle(fontFamily=Effra,fontSize=17.sp),bodyMedium=androidx.compose.ui.text.TextStyle(fontFamily=Effra,fontSize=15.sp),labelLarge=androidx.compose.ui.text.TextStyle(fontFamily=Effra,fontSize=15.sp),titleLarge=androidx.compose.ui.text.TextStyle(fontFamily=Effra,fontSize=24.sp))) { Surface(Modifier.fillMaxSize()) { App(state,::scan) } }
     } }
@@ -79,12 +80,11 @@ class MainActivity: ComponentActivity() {
     Column(Modifier.fillMaxSize().safeDrawingPadding()) {
         Box(Modifier.fillMaxWidth().height(44.dp).background(Brush.verticalGradient(listOf(Color.White,Color(0xffe7e7e7))))) {
             Artwork("title",Modifier.align(Alignment.Center).width(100.dp).height(12.dp),100.dp)
-            TextButton(onClick={app.screen="devices"},Modifier.align(Alignment.CenterStart)) { Text("Remotes",fontSize=13.sp) }
+            TextButton(onClick={app.screen=if(app.bluetooth.hasSavedRemotes)"devices" else "pairing"},Modifier.align(Alignment.CenterStart)) { Text("Remotes",fontSize=13.sp) }
             IconButton(onClick={app.screen="settings"},Modifier.align(Alignment.CenterEnd)) { Artwork("settings",size=22.dp,description="Settings") }
         }
         HorizontalDivider(color=Color(0xffe7e7e7))
         when {
-            app.onboarding -> Onboarding(app,scan)
             app.screen.startsWith("connect:") -> ConnectionScreen(app,app.screen.substringAfter(":")) { app.screen="remote" }
             app.screen=="devices" -> Devices(app,scan)
             app.screen=="settings" -> Settings(app) { connection=it }
@@ -116,13 +116,14 @@ class MainActivity: ComponentActivity() {
                     else {
                         Text(if(app.perform)"Tap a button to perform its action" else "Tap a button to change its action",fontSize=14.sp,color=Color(0xff808388))
                         TextButton(onClick={connection=app.mode().id}) { Text("${app.mode().title} options") }
-                        Row(Modifier.padding(16.dp),verticalAlignment=Alignment.CenterVertically) { Artwork("battery",size=20.dp); Text(app.bluetooth.remotes.firstOrNull { it.state=="Connected" }?.let { "${it.name} · ${it.battery?.let { b->"$b%" } ?: "Connected"}" } ?: "No remotes connected",Modifier.padding(start=8.dp),fontSize=13.sp); TextButton(onClick={app.screen="devices";scan()}) { Text("Connect") } }
+                        Row(Modifier.padding(16.dp),verticalAlignment=Alignment.CenterVertically) { Artwork("battery",size=20.dp); Text(app.bluetooth.remotes.firstOrNull { it.state=="Connected" }?.let { "${it.name} · ${it.battery?.let { b->"$b%" } ?: "Connected"}" } ?: "No remotes connected",Modifier.padding(start=8.dp),fontSize=13.sp); TextButton(onClick={app.screen=if(app.bluetooth.hasSavedRemotes)"devices" else "pairing"}) { Text("Connect") } }
                     }
 
                 }
             }
         }
     }
+    if(app.onboarding || app.screen=="pairing" || app.screen=="tutorial") RemotePairingDialog(app,scan,app.screen=="tutorial") { app.finishOnboarding(); app.screen="remote" }
     connection?.let { id -> LaunchedEffect(id) { app.screen="connect:$id";connection=null } }
 }
 @Composable fun MiniDiamond(selected: Int,active: Boolean) {
@@ -267,32 +268,19 @@ fun diamondPoints(w: Float,h: Float,s: Float): List<List<Offset>> = listOf(
         }
     }
 }
-@Composable fun Onboarding(app: AppState,scan: ()->Unit) {
-    var step by remember { mutableIntStateOf(0) }
-    val titles=listOf("Welcome to Turn Touch","Tap a button","Hold a button","Multiple actions")
-    val copy=listOf("Your favorite apps and devices, at the touch of a button.","Each button runs an action. Double tap for another action.","Hold a button to switch apps. Four apps, always within reach.","Run several actions with a single press. Tap a button in the app to make it yours.")
-    val art=listOf("modal_remote_hero","modal_ftux_action","modal_ftux_mode","modal_ftux_doubletap")
-    Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(32.dp),horizontalAlignment=Alignment.CenterHorizontally,verticalArrangement=Arrangement.Center) {
-        Artwork(art[step],Modifier.fillMaxWidth().height(230.dp),230.dp)
-        Text(titles[step],Modifier.padding(top=30.dp,bottom=18.dp),fontSize=30.sp,fontFamily=Effra,fontWeight=FontWeight.Light)
-        Text(copy[step],textAlign=TextAlign.Center,fontSize=18.sp)
-        Button(onClick={if(step<3)step++ else {app.finishOnboarding();app.screen="devices";scan()}},Modifier.padding(top=30.dp)) { Text(if(step<3)"Next" else "Connect a remote") }
-        TextButton(onClick={app.finishOnboarding()}) { Text("Explore the app") }
-    }
-}
 @Composable fun Devices(app: AppState,scan: ()->Unit) {
     val ble=app.bluetooth
     var rename by remember { mutableStateOf<Remote?>(null) }
     Column(Modifier.fillMaxWidth().verticalScroll(rememberScrollState()).padding(24.dp)) {
         Row(verticalAlignment=Alignment.CenterVertically) { Text("Your remotes",Modifier.weight(1f),fontSize=25.sp); TextButton(onClick={app.screen="remote"}) { Text("Done") } }
         Text("Press a button on your Turn Touch to wake it, then connect.",Modifier.padding(vertical=16.dp))
-        Button(onClick=scan,enabled=!ble.scanning) { Text(if(ble.scanning)"Searching…" else "Find remotes") }
+        Button(onClick={app.screen="pairing"}) { Text("Pair a new remote") }
         ble.error?.let { Text(it,Modifier.padding(vertical=12.dp),color=MaterialTheme.colorScheme.error) }
         ble.remotes.forEach { remote ->
             Column(Modifier.fillMaxWidth().padding(vertical=18.dp)) {
                 Text(remote.name,fontSize=22.sp); Text(remote.state,fontSize=15.sp); Text("${remote.address} · ${remote.rssi} dBm${remote.battery?.let { " · $it% battery" } ?: ""}${remote.firmware?.let { " · Firmware $it" } ?: ""}",fontSize=12.sp,color=Color.Gray)
                 if(remote.state.startsWith("Press")) { Row { Direction.entries.forEach { d->Text(if(remote.pairedButtons and (1 shl d.ordinal)!=0)"✓ ${d.name}  " else "○ ${d.name}  ",fontSize=13.sp) } } }
-                Row { if(remote.state in listOf("Nearby","Disconnected"))TextButton(onClick={ble.connect(remote.address)}) { Text("Connect") } else { TextButton(onClick={rename=remote}) { Text("Rename") }; TextButton(onClick={ble.disconnect(remote.address,true)}) { Text("Forget") } } }
+                Row { if(remote.state in listOf("Nearby","Disconnected"))TextButton(onClick={if(ble.isSaved(remote.address))ble.connect(remote.address,false) else app.screen="pairing"}) { Text("Connect") } else { TextButton(onClick={rename=remote}) { Text("Rename") }; TextButton(onClick={ble.disconnect(remote.address,true)}) { Text("Forget") } } }
                 HorizontalDivider()
             }
         }
@@ -305,8 +293,8 @@ fun diamondPoints(w: Float,h: Float,s: Float): List<List<Offset>> = listOf(
         Row { Text("Settings",Modifier.weight(1f),fontSize=25.sp);TextButton(onClick={app.screen="remote"}) { Text("Done") } }
         Row(verticalAlignment=Alignment.CenterVertically) { Column(Modifier.weight(1f)) { Text("12-button mode");Text("Single tap, double tap, and hold",fontSize=13.sp,color=Color.Gray) };Switch(app.twelve,{app.changeButtonMode(it)}) }
         Row(verticalAlignment=Alignment.CenterVertically) { Text("Perform actions when tapping the screen",Modifier.weight(1f));Switch(app.perform,{app.changePerformMode(it)}) }
-        TextButton(onClick={app.screen="devices"}) { Text("Remotes") }
-        TextButton(onClick={app.onboarding=true}) { Text("How it works") }
+        TextButton(onClick={app.screen=if(app.bluetooth.hasSavedRemotes)"devices" else "pairing"}) { Text("Remotes") }
+        TextButton(onClick={app.screen="tutorial"}) { Text("How it works") }
         TextButton(onClick={app.screen="diagnostics"}) { Text("Connection diagnostics") }
         HorizontalDivider();Text("Apps",Modifier.padding(vertical=16.dp),fontSize=20.sp)
         app.catalog.modes.forEach { mode -> Row(Modifier.fillMaxWidth().clickable { onConnection(mode.id) }.padding(vertical=10.dp),verticalAlignment=Alignment.CenterVertically) { Artwork(mode.icon,size=28.dp);Text(mode.title,Modifier.padding(start=16.dp)) } }
