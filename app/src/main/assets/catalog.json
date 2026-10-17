@@ -933,5 +933,25 @@
       "TTModeNestSetTemp",
       "TTModeNestLowerTemp"
     ]
+  },
+  {
+    "id": "HomeAssistant",
+    "title": "Home Assistant",
+    "subtitle": "Your home, scenes, and automations",
+    "icon": "mode_home",
+    "actions": [
+      {
+        "id": "TTModeHomeAssistantAction",
+        "title": "Home Assistant action",
+        "icon": "mode_home"
+      }
+    ],
+    "defaults": [
+      "TTModeHomeAssistantAction",
+      "TTModeHomeAssistantAction",
+      "TTModeHomeAssistantAction",
+      "TTModeHomeAssistantAction"
+    ],
+    "origin": "mac"
   }
 ]

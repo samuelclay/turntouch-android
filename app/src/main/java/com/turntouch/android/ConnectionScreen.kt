@@ -17,6 +17,13 @@ import java.net.URI
 
 @Composable fun ConnectionScreen(app: AppState,mode: String,onDone: ()->Unit) {
     if(app.demo!=null) { DemoConnectionScreen(app,mode,onDone); return }
+    if(mode=="HomeAssistant") {
+        Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(24.dp)) {
+            TextButton(onClick=onDone) { Text(tr("Done")) }
+            Text(tr("Home Assistant"),Modifier.fillMaxWidth(),fontSize=22.sp,textAlign=TextAlign.Center)
+            HomeAssistantOptions(app)
+        }; return
+    }
     val values=remember(mode) {mutableStateMapOf<String,String>().apply {putAll(app.config(mode))}}
     var phase by remember(mode) {mutableStateOf(if(mode in listOf("Hue","Nanoleaf")) { if(values["token"].isNullOrBlank()) "discover" else "connected" } else "options")}
     var devices by remember(mode) {mutableStateOf<List<LanDevice>>(emptyList())}

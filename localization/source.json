@@ -15,8 +15,23 @@
   "APPS & CONNECTIONS": [
     "app/src/main/java/com/turntouch/android/SettingsScreen.kt"
   ],
+  "Access token": [
+    "app/src/main/java/com/turntouch/android/HomeAssistantOptions.kt"
+  ],
   "Action chooser": [
     "app/src/main/java/com/turntouch/android/MainActivity.kt"
+  ],
+  "Action data (optional JSON)": [
+    "app/src/main/java/com/turntouch/android/HomeAssistantOptions.kt"
+  ],
+  "Action data must be a JSON object, for example {\"brightness_pct\": 50}.": [
+    "app/src/main/java/com/turntouch/android/HomeAssistantClient.kt"
+  ],
+  "Action settings": [
+    "app/src/main/java/com/turntouch/android/HomeAssistantOptions.kt"
+  ],
+  "Activate scene": [
+    "app/src/main/java/com/turntouch/android/HomeAssistantClient.kt"
   ],
   "Add a new remote": [
     "app/src/main/java/com/turntouch/android/SettingsScreen.kt"
@@ -27,6 +42,9 @@
   "Add new action": [
     "app/src/main/java/com/turntouch/android/MainActivity.kt"
   ],
+  "Add the required action data field: ": [
+    "app/src/main/java/com/turntouch/android/HomeAssistantClient.kt"
+  ],
   "Airfoil": [
     "catalog: Airfoil title"
   ],
@@ -35,6 +53,9 @@
   ],
   "Alarm Clock": [
     "catalog: TTModeAlarmSongInfo"
+  ],
+  "All entities": [
+    "app/src/main/java/com/turntouch/android/HomeAssistantOptions.kt"
   ],
   "All rooms": [
     "app/src/main/java/com/turntouch/android/BindingOptions.kt",
@@ -63,6 +84,9 @@
   ],
   "Automatic (device language)": [
     "app/src/main/java/com/turntouch/android/Localization.kt"
+  ],
+  "Automations": [
+    "app/src/main/java/com/turntouch/android/HomeAssistantOptions.kt"
   ],
   "BUTTONS": [
     "app/src/main/java/com/turntouch/android/SettingsScreen.kt"
@@ -115,6 +139,7 @@
     "catalog: Camera title"
   ],
   "Cancel": [
+    "app/src/main/java/com/turntouch/android/HomeAssistantOptions.kt",
     "app/src/main/java/com/turntouch/android/Localization.kt",
     "app/src/main/java/com/turntouch/android/MainActivity.kt",
     "app/src/main/java/com/turntouch/android/MainActivity.kt",
@@ -137,11 +162,18 @@
   "Choose a supported media action": [
     "app/src/main/java/com/turntouch/android/Integrations.kt"
   ],
+  "Choose a valid Home Assistant action.": [
+    "app/src/main/java/com/turntouch/android/HomeAssistantClient.kt"
+  ],
   "Choose action": [
     "app/src/main/java/com/turntouch/android/MainActivity.kt"
   ],
   "Choose an action": [
     "app/src/main/java/com/turntouch/android/Models.kt"
+  ],
+  "Choose an entity first.": [
+    "app/src/main/java/com/turntouch/android/HomeAssistantClient.kt",
+    "app/src/main/java/com/turntouch/android/HomeAssistantOptions.kt"
   ],
   "Choose another device": [
     "app/src/main/java/com/turntouch/android/ConnectionScreen.kt"
@@ -164,11 +196,20 @@
   "Choose scenes in this button’s options first.": [
     "app/src/main/java/com/turntouch/android/Integrations.kt"
   ],
+  "Choose the target in the entity list, not in action data.": [
+    "app/src/main/java/com/turntouch/android/HomeAssistantClient.kt"
+  ],
+  "Choose what the remote button does in Home Assistant.": [
+    "app/src/main/java/com/turntouch/android/HomeAssistantOptions.kt"
+  ],
   "Choose your apps and actions": [
     "app/src/main/java/com/turntouch/android/RemotePairingScreen.kt"
   ],
   "Choose your language. You can change it anytime in Settings.": [
     "app/src/main/java/com/turntouch/android/Localization.kt"
+  ],
+  "Climate": [
+    "app/src/main/java/com/turntouch/android/HomeAssistantOptions.kt"
   ],
   "Close action chooser": [
     "app/src/main/java/com/turntouch/android/MainActivity.kt"
@@ -180,13 +221,21 @@
     "catalog: TTModeHueSceneColorLoop"
   ],
   "Connect": [
+    "app/src/main/java/com/turntouch/android/HomeAssistantOptions.kt",
     "app/src/main/java/com/turntouch/android/MainActivity.kt"
   ],
   "Connect this app first.": [
     "app/src/main/java/com/turntouch/android/BindingOptions.kt"
   ],
+  "Connect to Home Assistant first.": [
+    "app/src/main/java/com/turntouch/android/HomeAssistantClient.kt",
+    "app/src/main/java/com/turntouch/android/HomeAssistantClient.kt"
+  ],
   "Connect to {0}": [
     "app/src/main/java/com/turntouch/android/BindingOptions.kt"
+  ],
+  "Connect using the Home Assistant menu.": [
+    "app/src/main/java/com/turntouch/android/HomeAssistantOptions.kt"
   ],
   "Connect your Android device to the same Wi-Fi network, then select your bridge below.": [
     "app/src/main/java/com/turntouch/android/ConnectionScreen.kt"
@@ -212,6 +261,14 @@
   "Connecting...": [
     "app/src/main/java/com/turntouch/android/RemotePairingScreen.kt"
   ],
+  "Connection cancelled.": [
+    "app/src/main/java/com/turntouch/android/HomeAssistantClient.kt",
+    "app/src/main/java/com/turntouch/android/HomeAssistantClient.kt"
+  ],
+  "Connection changed.": [
+    "app/src/main/java/com/turntouch/android/HomeAssistantClient.kt",
+    "app/src/main/java/com/turntouch/android/HomeAssistantClient.kt"
+  ],
   "Connection diagnostics": [
     "app/src/main/java/com/turntouch/android/SettingsScreen.kt"
   ],
@@ -223,6 +280,9 @@
   ],
   "Connection timed out. Press a remote button to wake it, and disconnect it from other devices.": [
     "app/src/main/java/com/turntouch/android/BluetoothController.kt"
+  ],
+  "Connection…": [
+    "app/src/main/java/com/turntouch/android/HomeAssistantOptions.kt"
   ],
   "Continue": [
     "app/src/main/java/com/turntouch/android/ConnectionScreen.kt",
@@ -238,6 +298,9 @@
   "Control your music": [
     "catalog: Music subtitle"
   ],
+  "Controllable entities": [
+    "app/src/main/java/com/turntouch/android/HomeAssistantOptions.kt"
+  ],
   "Could not connect to the remote. Wake it and try again.": [
     "app/src/main/java/com/turntouch/android/BluetoothController.kt"
   ],
@@ -252,6 +315,9 @@
   ],
   "Could not subscribe to remote buttons ({0})": [
     "app/src/main/java/com/turntouch/android/BluetoothController.kt"
+  ],
+  "Covers": [
+    "app/src/main/java/com/turntouch/android/HomeAssistantOptions.kt"
   ],
   "Custom": [
     "catalog: Custom title"
@@ -281,6 +347,7 @@
     "app/src/main/java/com/turntouch/android/MainActivity.kt"
   ],
   "Device returned HTTP {0}": [
+    "app/src/main/java/com/turntouch/android/HomeAssistantClient.kt",
     "app/src/main/java/com/turntouch/android/Integrations.kt"
   ],
   "Different": [
@@ -288,6 +355,9 @@
   ],
   "Dim": [
     "app/src/main/java/com/turntouch/android/BindingOptions.kt"
+  ],
+  "Disconnect": [
+    "app/src/main/java/com/turntouch/android/HomeAssistantOptions.kt"
   ],
   "Disconnected": [
     "Application-owned status or selector label; translated only at rendering, never in state comparisons."
@@ -301,6 +371,7 @@
   "Done": [
     "app/src/main/java/com/turntouch/android/ConnectionScreen.kt",
     "app/src/main/java/com/turntouch/android/ConnectionScreen.kt",
+    "app/src/main/java/com/turntouch/android/ConnectionScreen.kt",
     "app/src/main/java/com/turntouch/android/MainActivity.kt",
     "app/src/main/java/com/turntouch/android/MainActivity.kt",
     "app/src/main/java/com/turntouch/android/MainActivity.kt",
@@ -311,6 +382,8 @@
   ],
   "Double tap": [
     "Application-owned status or selector label; translated only at rendering, never in state comparisons.",
+    "app/src/main/java/com/turntouch/android/MainActivity.kt",
+    "app/src/main/java/com/turntouch/android/MainActivity.kt",
     "app/src/main/java/com/turntouch/android/MainActivity.kt"
   ],
   "Double tap actions": [
@@ -340,6 +413,9 @@
   "Effect name": [
     "app/src/main/java/com/turntouch/android/MainActivity.kt"
   ],
+  "Enter a Home Assistant address and access token.": [
+    "app/src/main/java/com/turntouch/android/HomeAssistantClient.kt"
+  ],
   "Enter an IP address": [
     "app/src/main/java/com/turntouch/android/ConnectionScreen.kt"
   ],
@@ -347,6 +423,7 @@
     "app/src/main/java/com/turntouch/android/NativeScreens.kt"
   ],
   "Enter an http:// or https:// address.": [
+    "app/src/main/java/com/turntouch/android/HomeAssistantClient.kt",
     "app/src/main/java/com/turntouch/android/Integrations.kt"
   ],
   "Enter connection details for this app": [
@@ -461,6 +538,22 @@
   "Hold the power button on your Nanoleaf controller for 5–7 seconds, until its indicator starts flashing. Turn Touch checks every 5 seconds and connects automatically.": [
     "app/src/main/java/com/turntouch/android/ConnectionScreen.kt"
   ],
+  "Home Assistant": [
+    "app/src/main/java/com/turntouch/android/ConnectionScreen.kt",
+    "catalog: HomeAssistant title"
+  ],
+  "Home Assistant accepted the action.": [
+    "app/src/main/java/com/turntouch/android/HomeAssistantOptions.kt"
+  ],
+  "Home Assistant action": [
+    "catalog: TTModeHomeAssistantAction"
+  ],
+  "Home Assistant address": [
+    "app/src/main/java/com/turntouch/android/HomeAssistantOptions.kt"
+  ],
+  "Home Assistant menu": [
+    "app/src/main/java/com/turntouch/android/HomeAssistantOptions.kt"
+  ],
   "HomeKit": [
     "catalog: HomeKit title"
   ],
@@ -495,6 +588,10 @@
   "Invalid Kasa response": [
     "app/src/main/java/com/turntouch/android/Integrations.kt",
     "app/src/main/java/com/turntouch/android/Klap.kt"
+  ],
+  "Invalid sign-in response.": [
+    "app/src/main/java/com/turntouch/android/HomeAssistantClient.kt",
+    "app/src/main/java/com/turntouch/android/HomeAssistantClient.kt"
   ],
   "Jump to volume": [
     "catalog: TTModePhoneVolumeJump",
@@ -541,6 +638,9 @@
   "Light panels and effects": [
     "catalog: Nanoleaf subtitle"
   ],
+  "Lights": [
+    "app/src/main/java/com/turntouch/android/HomeAssistantOptions.kt"
+  ],
   "Lights and scenes": [
     "catalog: Hue subtitle"
   ],
@@ -571,6 +671,9 @@
   ],
   "Make your Turn Touch remote control lights, music, and everyday actions.": [
     "Store short-description; maximum=80 characters"
+  ],
+  "Media players": [
+    "app/src/main/java/com/turntouch/android/HomeAssistantOptions.kt"
   ],
   "Menu": [
     "catalog: TTModeNewsMenu",
@@ -665,6 +768,9 @@
   "No lights in the selected room.": [
     "app/src/main/java/com/turntouch/android/HueRandom.kt"
   ],
+  "No matching entities": [
+    "app/src/main/java/com/turntouch/android/HomeAssistantOptions.kt"
+  ],
   "No network interfaces found": [
     "Application-owned status or selector label; translated only at rendering, never in state comparisons."
   ],
@@ -677,6 +783,9 @@
   ],
   "No remotes paired": [
     "app/src/main/java/com/turntouch/android/RemoteStatusBar.kt"
+  ],
+  "No required action data.": [
+    "app/src/main/java/com/turntouch/android/HomeAssistantOptions.kt"
   ],
   "No rooms available.": [
     "app/src/main/java/com/turntouch/android/BindingOptions.kt"
@@ -705,8 +814,15 @@
   "Open Turn Touch to use {0}.": [
     "app/src/main/java/com/turntouch/android/Integrations.kt"
   ],
+  "Open token settings": [
+    "app/src/main/java/com/turntouch/android/HomeAssistantOptions.kt"
+  ],
   "Original design and artwork © Turn Touch": [
     "app/src/main/java/com/turntouch/android/SettingsScreen.kt"
+  ],
+  "Other": [
+    "app/src/main/java/com/turntouch/android/HomeAssistantOptions.kt",
+    "app/src/main/java/com/turntouch/android/HomeAssistantOptions.kt"
   ],
   "Page or media URL": [
     "app/src/main/java/com/turntouch/android/MainActivity.kt"
@@ -865,6 +981,9 @@
   "Recording…": [
     "app/src/main/java/com/turntouch/android/NativeScreens.kt"
   ],
+  "Refresh": [
+    "app/src/main/java/com/turntouch/android/HomeAssistantOptions.kt"
+  ],
   "Refresh effects": [
     "app/src/main/java/com/turntouch/android/BindingOptions.kt"
   ],
@@ -904,6 +1023,9 @@
   "Request body": [
     "app/src/main/java/com/turntouch/android/MainActivity.kt"
   ],
+  "Required data: ": [
+    "app/src/main/java/com/turntouch/android/HomeAssistantOptions.kt"
+  ],
   "Rest": [
     "app/src/main/java/com/turntouch/android/NativeScreens.kt"
   ],
@@ -915,6 +1037,12 @@
   ],
   "Run actions from the screen": [
     "app/src/main/java/com/turntouch/android/SettingsScreen.kt"
+  ],
+  "Run automation (check conditions)": [
+    "app/src/main/java/com/turntouch/android/HomeAssistantClient.kt"
+  ],
+  "Run script": [
+    "app/src/main/java/com/turntouch/android/HomeAssistantClient.kt"
   ],
   "SINGLE TAP": [
     "app/src/main/java/com/turntouch/android/MainActivity.kt"
@@ -963,6 +1091,9 @@
   "Scene ID": [
     "app/src/main/java/com/turntouch/android/MainActivity.kt"
   ],
+  "Scenes": [
+    "app/src/main/java/com/turntouch/android/HomeAssistantOptions.kt"
+  ],
   "Scenes to cycle": [
     "app/src/main/java/com/turntouch/android/BindingOptions.kt"
   ],
@@ -972,6 +1103,9 @@
   "Screen taps perform actions": [
     "app/src/main/java/com/turntouch/android/SettingsScreen.kt"
   ],
+  "Scripts": [
+    "app/src/main/java/com/turntouch/android/HomeAssistantOptions.kt"
+  ],
   "Scroll down": [
     "catalog: TTModeNewsScrollDown",
     "catalog: TTModeWebScrollDown"
@@ -979,6 +1113,9 @@
   "Scroll up": [
     "catalog: TTModeNewsScrollUp",
     "catalog: TTModeWebScrollUp"
+  ],
+  "Search Home Assistant": [
+    "app/src/main/java/com/turntouch/android/HomeAssistantOptions.kt"
   ],
   "Search again": [
     "app/src/main/java/com/turntouch/android/ConnectionScreen.kt"
@@ -994,6 +1131,9 @@
   ],
   "Selected {0}": [
     "app/src/main/java/com/turntouch/android/ConnectionScreen.kt"
+  ],
+  "Set remote button": [
+    "app/src/main/java/com/turntouch/android/HomeAssistantOptions.kt"
   ],
   "Set temperature": [
     "catalog: TTModeNestSetTemp"
@@ -1032,6 +1172,10 @@
   "Show me how it works": [
     "app/src/main/java/com/turntouch/android/RemotePairingScreen.kt"
   ],
+  "Sign in…": [
+    "app/src/main/java/com/turntouch/android/HomeAssistantOptions.kt",
+    "app/src/main/java/com/turntouch/android/HomeAssistantOptions.kt"
+  ],
   "Simulate connection": [
     "app/src/main/java/com/turntouch/android/OfflineDemo.kt"
   ],
@@ -1043,6 +1187,8 @@
   ],
   "Single tap": [
     "Application-owned status or selector label; translated only at rendering, never in state comparisons.",
+    "app/src/main/java/com/turntouch/android/MainActivity.kt",
+    "app/src/main/java/com/turntouch/android/MainActivity.kt",
     "app/src/main/java/com/turntouch/android/MainActivity.kt"
   ],
   "Single tap actions": [
@@ -1109,6 +1255,9 @@
   "Switched to {0}": [
     "app/src/main/java/com/turntouch/android/Models.kt"
   ],
+  "Switches": [
+    "app/src/main/java/com/turntouch/android/HomeAssistantOptions.kt"
+  ],
   "System-level controls": [
     "catalog: Phone subtitle"
   ],
@@ -1137,6 +1286,9 @@
   "Tap a remote button to try an action": [
     "app/src/main/java/com/turntouch/android/OfflineDemo.kt"
   ],
+  "Test action": [
+    "app/src/main/java/com/turntouch/android/HomeAssistantOptions.kt"
+  ],
   "That worked perfectly": [
     "app/src/main/java/com/turntouch/android/RemotePairingScreen.kt"
   ],
@@ -1154,6 +1306,9 @@
   ],
   "This device does not expose the Turn Touch button service.": [
     "app/src/main/java/com/turntouch/android/BluetoothController.kt"
+  ],
+  "This entity has no callable actions. Sensors are usually read-only.": [
+    "app/src/main/java/com/turntouch/android/HomeAssistantOptions.kt"
   ],
   "This is an offline preview. In normal mode, connect your own remote and supported devices. No account, Bluetooth, Wi-Fi, camera, or media access is used by demo actions.": [
     "app/src/main/java/com/turntouch/android/OfflineDemo.kt"
@@ -1246,6 +1401,9 @@
   "Use a name of 1–20 UTF-8 bytes.": [
     "app/src/main/java/com/turntouch/android/BluetoothController.kt"
   ],
+  "Use access token…": [
+    "app/src/main/java/com/turntouch/android/HomeAssistantOptions.kt"
+  ],
   "Use your remote to move through poses or adjust the time.": [
     "app/src/main/java/com/turntouch/android/NativeScreens.kt"
   ],
@@ -1336,11 +1494,17 @@
   "Yoga": [
     "catalog: Yoga title"
   ],
+  "Your Home Assistant session expired or the token is invalid. Connect again.": [
+    "app/src/main/java/com/turntouch/android/HomeAssistantClient.kt"
+  ],
   "Your favorite actions, one touch away": [
     "Store screenshot-caption; maximum=100 characters"
   ],
   "Your home at your command.": [
     "catalog: HomeKit subtitle"
+  ],
+  "Your home, scenes, and automations": [
+    "catalog: HomeAssistant subtitle"
   ],
   "Your remote has been paired": [
     "app/src/main/java/com/turntouch/android/RemotePairingScreen.kt"
@@ -1371,7 +1535,8 @@
     "Application-owned display label"
   ],
   "hold": [
-    "Application-owned display label"
+    "Application-owned display label",
+    "app/src/main/java/com/turntouch/android/MainActivity.kt"
   ],
   "north": [
     "Application-owned display label"
@@ -1396,6 +1561,9 @@
   ],
   "{0} button options": [
     "app/src/main/java/com/turntouch/android/BindingOptions.kt"
+  ],
+  "{0} now runs “{1}”.": [
+    "app/src/main/java/com/turntouch/android/HomeAssistantOptions.kt"
   ],
   "{0} options": [
     "app/src/main/java/com/turntouch/android/ConnectionScreen.kt",

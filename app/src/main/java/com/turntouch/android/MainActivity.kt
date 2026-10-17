@@ -234,7 +234,7 @@ fun diamondPoints(w: Float,h: Float,s: Float): List<List<Offset>> = listOf(
     Column(Modifier.widthIn(max=700.dp).fillMaxWidth().padding(horizontal=24.dp)) {
         if(!app.twelve && !pairedRandom)Row { listOf(Gesture.Single,Gesture.Double).forEach { g->TextButton(onClick={gesture=g;choosing=false},Modifier.weight(1f)) { Text(if(g==Gesture.Single)tr("Single tap") else tr("Double tap"),color=if(gesture==g)Blue else Color.Gray) } } }
         batch.forEachIndexed { i,b ->
-            key(direction,gesture,i,b.mode,b.action) {
+            key(app.selected,app.twelve,direction,gesture,i,b.mode,b.action) {
                 Row(Modifier.fillMaxWidth().padding(vertical=8.dp),verticalAlignment=Alignment.CenterVertically) {
                     Artwork(app.catalog.action(b).icon)
                     Column(Modifier.weight(1f).padding(start=12.dp)) { Text(app.catalog.action(b).title); Text(app.catalog.mode(b.mode).title,fontSize=12.sp,color=Color.Gray) }
@@ -244,6 +244,8 @@ fun diamondPoints(w: Float,h: Float,s: Float): List<List<Offset>> = listOf(
                 if(choosing && !adding && changingIndex==i) ActionChooser(app,choiceMode,{choiceMode=it},{choosing=false}) { selected ->
                     val current=app.bindings(direction,editingGesture)
                     app.save(direction,editingGesture,current.mapIndexed {n,item->if(n==i)selected else item});choosing=false
+                } else if(b.mode=="HomeAssistant") HomeAssistantOptions(app,b, direction.displayName+" · "+when { app.twelve -> listOf(tr("Single tap"),tr("Double tap"),tr("hold"))[app.selected]; gesture==Gesture.Double -> tr("Double tap"); else -> tr("Single tap") }) { updated ->
+                    app.save(direction,editingGesture,app.bindings(direction,editingGesture).mapIndexed { n,item->if(n==i)updated else item })
                 } else BindingOptions(app,b,
                     doubleBinding=if(pairedRandom)doubleBatch.getOrNull(i)?.takeIf {it.action=="TTModeHueRandom"} else null,
                     onDoubleChange={updated ->app.save(direction,Gesture.Double,app.bindings(direction,Gesture.Double).mapIndexed {n,item->if(n==i)updated else item})}

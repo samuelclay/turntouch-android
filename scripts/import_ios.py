@@ -20,7 +20,7 @@ def literal(body, fallback=''):
     m=re.search(r'return (?:TTText\()?@?"([^"\\]*)"',body)
     return m.group(1) if m else fallback
 catalog=[]
-for key in ['Phone','Camera','Music','Hue','Nanoleaf','Wemo','Kasa','Govee','Sonos','Bose','Yoga','Custom','Ifttt','HomeKit','Spotify','AlarmClock','Airfoil','Video','News','Web','Presentation','Nest']:
+for key in ['Phone','Camera','Music','Hue','Nanoleaf','Wemo','Kasa','Govee','Sonos','Bose','Yoga','Custom','Ifttt','HomeAssistant','HomeKit','Spotify','AlarmClock','Airfoil','Video','News','Web','Presentation','Nest']:
     paths=list((ios/'Modes').glob('*/TTMode'+key+'.swift'))
     if paths and key!='AlarmClock':
         text=paths[0].read_text(); body=lambda n:swiftbody(text,n)

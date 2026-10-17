@@ -51,6 +51,7 @@ class ActionExecutor(private val app: AppState) {
             val config=app.config(binding.mode)+binding.options
             val action=binding.action.removePrefix("TTMode${binding.mode}")
             when(binding.mode) {
+                "HomeAssistant" -> app.homeAssistant.call(binding.options)
                 "Phone","Music","Spotify","Airfoil" -> media(action,config)
                 "Camera","Yoga","Web","News","Presentation","Video" -> { val handler=nativeAction ?: error(tr("Open Turn Touch to use {0}.", binding.mode)); handler(binding) }
                 "AlarmClock" -> alarm(action)

@@ -31,11 +31,12 @@ class Catalog(context: Context) {
     fun mode(id: String) = modes.first { it.id == id }
     fun action(b: Binding): ActionDefinition {
         val definition=mode(b.mode).actions.firstOrNull { it.id==b.action } ?: ActionDefinition(b.action,tr("Choose an action"),mode(b.mode).icon)
-        return if(b.action=="TTModeNanoleafSceneCustom" && !b.options["scene"].isNullOrBlank())definition.copy(sourceTitle=b.options.getValue("scene"),translateTitle=false) else definition
+        return if(b.mode=="HomeAssistant" && !b.options["name"].isNullOrBlank())definition.copy(sourceTitle=b.options.getValue("name"),translateTitle=false) else if(b.action=="TTModeNanoleafSceneCustom" && !b.options["scene"].isNullOrBlank())definition.copy(sourceTitle=b.options.getValue("scene"),translateTitle=false) else definition
     }
 }
 class AppState(val context: Context, val demo: DemoSession? = null) {
     val catalog=Catalog(context)
+    var homeAssistant = HomeAssistantClient(context)
     private val prefs=demo?.preferences ?: context.getSharedPreferences("turntouch",Context.MODE_PRIVATE)
     private val secrets by lazy { SecretStore(context) }
     var revision by mutableIntStateOf(0); private set
@@ -78,7 +79,7 @@ class AppState(val context: Context, val demo: DemoSession? = null) {
         return withDefaults(listOf(Binding(m.id,doubleAction)))
     }
     fun save(direction: Direction,gesture: Gesture,bindings: List<Binding>) { prefs.edit().putString(key(selected,direction,gesture),JSONArray(bindings.map { it.json() }).toString()).apply(); revision++ }
-    fun config(mode: String): Map<String,String> { revision; demo?.let { return it.configs[mode].orEmpty() }; val j=JSONObject(secrets.get(mode) ?: "{}"); return j.keys().asSequence().associateWith { j.getString(it) } }
+    fun config(mode: String): Map<String,String> { revision; if(mode=="HomeAssistant")return if(homeAssistant.connected)mapOf("host" to homeAssistant.server) else emptyMap(); demo?.let { return it.configs[mode].orEmpty() }; val j=JSONObject(secrets.get(mode) ?: "{}"); return j.keys().asSequence().associateWith { j.getString(it) } }
     fun saveConfig(mode: String, values: Map<String,String>) { demo?.let { it.configs[mode]=values; revision++; return }; secrets.put(mode,JSONObject(values).toString()); revision++ }
     fun dispatch(direction: Direction,gesture: Gesture) {
         if(demo==null && screen=="demo")return // Physical input must not control the home while previewing.

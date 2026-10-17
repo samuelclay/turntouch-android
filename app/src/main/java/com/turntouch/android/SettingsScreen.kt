@@ -94,7 +94,7 @@ private val SettingsMuted=Color(0xff808aa0)
                 }
             }
             SettingsSection(tr("APPS & CONNECTIONS")) {
-                val favorites=listOf("Hue","Nanoleaf","Govee","Sonos","Kasa")
+                val favorites=listOf("HomeAssistant","Hue","Nanoleaf","Govee","Sonos","Kasa")
                 val modes=if(showAllApps)app.catalog.modes.sortedBy { if(it.id in favorites)favorites.indexOf(it.id) else favorites.size+app.catalog.modes.indexOf(it) }
                     else favorites.mapNotNull { id->app.catalog.modes.firstOrNull { it.id==id } }
                 modes.forEachIndexed { index,mode ->
