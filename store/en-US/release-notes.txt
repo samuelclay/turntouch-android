@@ -4,3 +4,4 @@ Turn Touch comes to Android.
 • Control compatible lights and music, or combine actions.
 • See remote status and battery level.
 • Use the app on phones and tablets.
+• Explore an offline demo without hardware.
