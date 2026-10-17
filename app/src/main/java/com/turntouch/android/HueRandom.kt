@@ -41,7 +41,7 @@ object HueRandom {
             val members=LightingOptions.objectResponse(request("$base/groups/$group","GET",null)).getJSONArray("lights")
             (0 until members.length()).map {members.getString(it)}.filter {lights.has(it)}
         }
-        check(ids.isNotEmpty()) {"No lights in the selected room."}
+        check(ids.isNotEmpty()) {tr("No lights in the selected room.")}
         val states=generate(ids.size,settings)
         val failures=mutableListOf<String>()
         ids.zip(states).forEach { (id,state) ->
@@ -53,7 +53,7 @@ object HueRandom {
             // White-only bulbs still receive brightness without unsupported color fields.
             val result=JSONArray(request("$base/lights/$id/state","PUT",body.toString()))
             for(i in 0 until result.length())result.getJSONObject(i).optJSONObject("error")?.let {
-                failures.add(it.optString("description","Hue rejected a light change"))
+                failures.add(it.optString("description",tr("Hue rejected a light change")))
             }
         }
         check(failures.isEmpty()) {failures.distinct().joinToString("; ")}

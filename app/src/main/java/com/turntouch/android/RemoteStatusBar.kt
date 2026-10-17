@@ -17,7 +17,7 @@ import androidx.compose.ui.unit.sp
 /** iOS TTDeviceTitleView: fixed 44-point rows below the scrolling action editor. */
 @Composable fun RemoteStatusBar(app: AppState) {
     if(app.demo!=null) {
-        StatusRow { Artwork("remote_graphic",size=32.dp); Text("Sample remote",Modifier.weight(1f).padding(start=12.dp)); Text("simulated",color=Ink) }
+        StatusRow { Artwork("remote_graphic",size=32.dp); Text(tr("Sample remote"),Modifier.weight(1f).padding(start=12.dp)); Text(tr("simulated"),color=Ink) }
         return
     }
     val ble=app.bluetooth
@@ -25,23 +25,23 @@ import androidx.compose.ui.unit.sp
     var menuAddress by remember { mutableStateOf<String?>(null) }
     var rename by remember { mutableStateOf<Remote?>(null) }
     Column(Modifier.fillMaxWidth().heightIn(max=176.dp).verticalScroll(rememberScrollState())
-        .background(Color(0xfff5f6f8)).semantics { contentDescription="Remote status bar" }) {
+        .background(Color(0xfff5f6f8)).semantics { contentDescription=tr("Remote status bar") }) {
         if(remotes.isEmpty()) {
             StatusRow {
                 Artwork("remote_graphic",size=32.dp)
-                Text("No remotes paired",Modifier.weight(1f).padding(start=12.dp),fontFamily=Effra,fontSize=15.sp,color=Ink)
-                TextButton(onClick={app.screen="pairing"},contentPadding=PaddingValues(horizontal=8.dp)) { Text("Pair remote",fontFamily=Effra,fontSize=15.sp) }
+                Text(tr("No remotes paired"),Modifier.weight(1f).padding(start=12.dp),fontFamily=Effra,fontSize=15.sp,color=Ink)
+                TextButton(onClick={app.screen="pairing"},contentPadding=PaddingValues(horizontal=8.dp)) { Text(tr("Pair remote"),fontFamily=Effra,fontSize=15.sp) }
             }
         }
         remotes.forEach { remote -> key(remote.address) {
             val connected=remote.state=="Connected"
             val status=when {
-                connected -> "connected"
-                remote.state=="Connecting…" -> "connecting"
-                remote.state=="Discovering services…" -> "connecting"
-                remote.state=="Connection failed" -> "connection failed"
-                remote.state.startsWith("Press") -> "pairing"
-                else -> "disconnected"
+                connected -> tr("connected")
+                remote.state=="Connecting…" -> tr("connecting")
+                remote.state=="Discovering services…" -> tr("connecting")
+                remote.state=="Connection failed" -> tr("connection failed")
+                remote.state.startsWith("Press") -> tr("pairing")
+                else -> tr("disconnected")
             }
             Box {
                 StatusRow(Modifier.semantics { stateDescription=status }) {
@@ -50,19 +50,19 @@ import androidx.compose.ui.unit.sp
                     Text(status,fontFamily=Effra,fontSize=15.sp,color=Color(0xff808aa0))
                     // Keep the iOS 22-point glyph with a full-row-height touch target.
                     Box(Modifier.padding(start=2.dp).size(44.dp).clickable { menuAddress=remote.address }
-                        .semantics { contentDescription="Settings for ${remote.name}" },contentAlignment=Alignment.Center) {
+                        .semantics { contentDescription=tr("Settings for {0}", remote.name) },contentAlignment=Alignment.Center) {
                         Artwork("settings",size=22.dp)
                         DropdownMenu(expanded=menuAddress==remote.address,onDismissRequest={menuAddress=null},modifier=Modifier.widthIn(min=240.dp),containerColor=Color.White,tonalElevation=0.dp) {
-                            DropdownMenuItem(text={Text(if(connected && remote.battery!=null)"Battery: ${remote.battery}%" else "Battery unavailable")},
+                            DropdownMenuItem(text={Text(if(connected && remote.battery!=null)tr("Battery: {0}%", remote.battery) else tr("Battery unavailable"))},
                                 leadingIcon={Artwork("battery",size=22.dp)},onClick={menuAddress=null})
-                            DropdownMenuItem(text={Text(remote.firmware?.let { "Firmware: v$it" } ?: "Firmware unavailable")},
+                            DropdownMenuItem(text={Text(remote.firmware?.let { tr("Firmware: v{0}", it) } ?: tr("Firmware unavailable"))},
                                 leadingIcon={Artwork("versions",size=22.dp)},onClick={menuAddress=null})
                             remote.connectionError?.let { message ->
                                 Text(message,Modifier.widthIn(max=280.dp).padding(horizontal=16.dp,vertical=12.dp),fontSize=14.sp,color=Ink)
                             }
-                            if(!connected && !remote.state.startsWith("Press"))DropdownMenuItem(text={Text("Try connecting again")},onClick={menuAddress=null;ble.retry(remote.address)})
-                            DropdownMenuItem(text={Text("Rename remote")},leadingIcon={Artwork("rename",size=22.dp)},enabled=connected,onClick={menuAddress=null;rename=remote})
-                            DropdownMenuItem(text={Text("Forget this remote")},leadingIcon={Artwork("remove",size=22.dp)},onClick={menuAddress=null;ble.disconnect(remote.address,true)})
+                            if(!connected && !remote.state.startsWith("Press"))DropdownMenuItem(text={Text(tr("Try connecting again"))},onClick={menuAddress=null;ble.retry(remote.address)})
+                            DropdownMenuItem(text={Text(tr("Rename remote"))},leadingIcon={Artwork("rename",size=22.dp)},enabled=connected,onClick={menuAddress=null;rename=remote})
+                            DropdownMenuItem(text={Text(tr("Forget this remote"))},leadingIcon={Artwork("remove",size=22.dp)},onClick={menuAddress=null;ble.disconnect(remote.address,true)})
                         }
                     }
                 }
@@ -72,10 +72,10 @@ import androidx.compose.ui.unit.sp
     rename?.let { remote ->
         var name by remember(remote.address) { mutableStateOf(remote.name) }
         var error by remember(remote.address) { mutableStateOf("") }
-        AlertDialog(onDismissRequest={rename=null},title={Text("Name your remote")},text={Column {
-            OutlinedTextField(name,{name=it},label={Text("Name")});Text(error,color=MaterialTheme.colorScheme.error)
-        }},confirmButton={TextButton(onClick={runCatching { ble.rename(remote.address,name) }.onSuccess { rename=null }.onFailure { error=it.message.orEmpty() }}) {Text("Save")}},
-            dismissButton={TextButton(onClick={rename=null}) {Text("Cancel")}})
+        AlertDialog(onDismissRequest={rename=null},title={Text(tr("Name your remote"))},text={Column {
+            OutlinedTextField(name,{name=it},label={Text(tr("Name"))});Text(error,color=MaterialTheme.colorScheme.error)
+        }},confirmButton={TextButton(onClick={runCatching { ble.rename(remote.address,name) }.onSuccess { rename=null }.onFailure { error=it.message.orEmpty() }}) {Text(tr("Save"))}},
+            dismissButton={TextButton(onClick={rename=null}) {Text(tr("Cancel"))}})
     }
 }
 

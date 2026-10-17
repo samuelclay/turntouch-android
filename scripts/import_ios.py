@@ -17,7 +17,7 @@ def swiftbody(text, name):
     m=re.search(r'func '+re.escape(name)+r'\([^)]*\)[^{]*\{(.*?)(?=\n    (?:override |class |@objc |private |public )*func |\n    // MARK:|\n})',text,re.S)
     return m.group(1) if m else ''
 def literal(body, fallback=''):
-    m=re.search(r'return @?"([^"\\]*)"',body)
+    m=re.search(r'return (?:TTText\()?@?"([^"\\]*)"',body)
     return m.group(1) if m else fallback
 catalog=[]
 for key in ['Phone','Camera','Music','Hue','Nanoleaf','Wemo','Kasa','Govee','Sonos','Bose','Yoga','Custom','Ifttt','HomeKit','Spotify','AlarmClock','Airfoil','Video','News','Web','Presentation','Nest']:

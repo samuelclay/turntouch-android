@@ -26,12 +26,12 @@ class DemoSession {
     var colorIndex by mutableIntStateOf(0)
     var playing by mutableStateOf(false)
     var volume by mutableIntStateOf(40)
-    var result by mutableStateOf("Tap a remote button to try an action")
+    var result by mutableStateOf(tr("Tap a remote button to try an action"))
     val colors=listOf(Color(0xfff4c66a),Color(0xffa88cf5),Color(0xff61ccca),Color(0xffef8db3))
     init { listOf("Hue","Nanoleaf","Govee","Sonos").forEach { configs[it]=mapOf("token" to "offline-sample","group" to "0") } }
     fun choices(mode: String)=LightingChoices(
-        rooms=if(mode=="Hue")listOf(DeviceChoice("0","All rooms"),DeviceChoice("1","Sample living room")) else emptyList(),
-        scenes=listOf(DeviceChoice("relax","Relax"),DeviceChoice("focus","Focus"),DeviceChoice("sunset","Sunset")))
+        rooms=if(mode=="Hue")listOf(DeviceChoice("0",tr("All rooms")),DeviceChoice("1",tr("Sample living room"))) else emptyList(),
+        scenes=listOf(DeviceChoice("relax",tr("Relax")),DeviceChoice("focus",tr("Focus")),DeviceChoice("sunset",tr("Sunset"))))
     fun run(binding: Binding,app: AppState) {
         val action=binding.action.removePrefix("TTMode${binding.mode}")
         when {
@@ -48,7 +48,7 @@ class DemoSession {
             action.contains("Mute") -> volume=if(volume==0)40 else 0
             action.contains("Play") || action.contains("Pause") -> playing=!playing
         }
-        result="Simulated: ${app.catalog.mode(binding.mode).title} · ${app.catalog.action(binding).title}"
+        result=tr("Simulated: {0} · {1}", app.catalog.mode(binding.mode).title, app.catalog.action(binding).title)
         app.log(result)
     }
 }
@@ -67,10 +67,10 @@ class DemoSession {
     Column(Modifier.fillMaxSize()) {
         Row(Modifier.fillMaxWidth().background(Color(0xffe8f1ff)).statusBarsPadding().padding(horizontal=16.dp),verticalAlignment=Alignment.CenterVertically) {
             Column(Modifier.weight(1f).padding(vertical=8.dp)) {
-                Text("Offline demo",color=Ink,fontSize=18.sp)
-                Text("Sample devices · no real commands",color=Ink,fontSize=12.sp)
+                Text(tr("Offline demo"),color=Ink,fontSize=18.sp)
+                Text(tr("Sample devices · no real commands"),color=Ink,fontSize=12.sp)
             }
-            TextButton(onClick={exit()}) {Text("Exit demo")}
+            TextButton(onClick={exit()}) {Text(tr("Exit demo"))}
         }
         Box(Modifier.weight(1f)) {App(app,{})}
     }
@@ -80,12 +80,12 @@ class DemoSession {
     Column(Modifier.fillMaxWidth().background(Color(0xfff5f6f8)).padding(horizontal=16.dp,vertical=6.dp)) {
         Row(verticalAlignment=Alignment.CenterVertically) {
             Box(Modifier.size(28.dp).background(if(demo.lightOn)demo.colors[demo.colorIndex] else Color(0xff78808c))
-                .semantics {contentDescription="Sample light ${if(demo.lightOn)"on" else "off"}, color ${demo.colorIndex}, brightness ${demo.brightness} percent"})
-            Text("Sample light: ${if(demo.lightOn)"${demo.brightness}%" else "off"}",Modifier.weight(1f).padding(start=8.dp),fontSize=13.sp)
-            TextButton(onClick={app.changePerformMode(!app.perform)}) {Text(if(app.perform)"Edit buttons" else "Try buttons")}
+                .semantics {contentDescription=tr("Sample light {0}, color {1}, brightness {2} percent", if(demo.lightOn)"on" else "off", demo.colorIndex, demo.brightness)})
+            Text(tr("Sample light: {0}", if(demo.lightOn)"${demo.brightness}%" else "off"),Modifier.weight(1f).padding(start=8.dp),fontSize=13.sp)
+            TextButton(onClick={app.changePerformMode(!app.perform)}) {Text(if(app.perform)tr("Edit buttons") else tr("Try buttons"))}
         }
         Text(demo.result,fontSize=12.sp,color=Ink,maxLines=2)
-        if(app.mode().id in listOf("Sonos","Music","Phone","Spotify"))Text("Sample speaker: ${if(demo.playing)"playing" else "paused"} · ${demo.volume}%",fontSize=12.sp)
+        if(app.mode().id in listOf("Sonos","Music","Phone","Spotify"))Text(tr("Sample speaker: {0} · {1}%", if(demo.playing)"playing" else "paused", demo.volume),fontSize=12.sp)
     }
 }
 
@@ -93,13 +93,13 @@ class DemoSession {
     var paired by remember(mode) {mutableStateOf(false)}
     val title=if(mode=="remote")"Turn Touch" else app.catalog.mode(mode).title
     Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(24.dp),horizontalAlignment=Alignment.CenterHorizontally) {
-        TextButton(onClick=onDone,Modifier.align(Alignment.Start)) {Text("Back")}
+        TextButton(onClick=onDone,Modifier.align(Alignment.Start)) {Text(tr("Back"))}
         Artwork(if(mode=="remote")"remote_graphic" else app.catalog.mode(mode).icon,size=80.dp)
-        Text("Sample $title",Modifier.padding(vertical=20.dp),fontSize=26.sp)
-        Text("This is an offline preview. In normal mode, connect your own remote and supported devices. No account, Bluetooth, Wi-Fi, camera, or media access is used by demo actions.")
-        Button(onClick={paired=true},Modifier.padding(top=24.dp)) {Text("Simulate connection")}
-        if(paired)Text("Simulated connection ready",Modifier.padding(16.dp),color=Blue)
-        TextButton(onClick=onDone) {Text("Done")}
+        Text(tr("Sample {0}", title),Modifier.padding(vertical=20.dp),fontSize=26.sp)
+        Text(tr("This is an offline preview. In normal mode, connect your own remote and supported devices. No account, Bluetooth, Wi-Fi, camera, or media access is used by demo actions."))
+        Button(onClick={paired=true},Modifier.padding(top=24.dp)) {Text(tr("Simulate connection"))}
+        if(paired)Text(tr("Simulated connection ready"),Modifier.padding(16.dp),color=Blue)
+        TextButton(onClick=onDone) {Text(tr("Done"))}
     }
 }
 

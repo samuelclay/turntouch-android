@@ -50,7 +50,7 @@ class BluetoothController(private val app: AppState) {
             if(!pairingActive)return
             val left=pairingDeadline-SystemClock.elapsedRealtime()
             pairingSecondsLeft=((left+999)/1000).toInt().coerceAtLeast(0)
-            if(left<=0)failPairing(if(pairingPhase==RemotePairingPhase.Buttons)"Press all four buttons before the timer runs out." else "No remotes could be found")
+            if(left<=0)failPairing(if(pairingPhase==RemotePairingPhase.Buttons)tr("Press all four buttons before the timer runs out.") else tr("No remotes could be found"))
             else handler.postDelayed(this,200)
         }
     }
@@ -95,28 +95,28 @@ class BluetoothController(private val app: AppState) {
             if(address in saved && address !in connections) connect(address,false)
             else if(pairingActive && address !in saved && address !in connections)connect(address)
         } }
-        override fun onScanFailed(code: Int) { handler.post { scanning=false; report("Bluetooth scan failed ($code). Try again."); if(pairingActive)failPairing(error!!) } }
+        override fun onScanFailed(code: Int) { handler.post { scanning=false; report(tr("Bluetooth scan failed ({0}). Try again.", code)); if(pairingActive)failPairing(error!!) } }
     }
     fun startScan() {
         if(scanning)return
         error=null
         try {
             val adapter=manager?.adapter
-            if(adapter==null || !adapter.isEnabled) { report("Turn on Bluetooth to find your remotes."); return }
+            if(adapter==null || !adapter.isEnabled) { report(tr("Turn on Bluetooth to find your remotes.")); return }
             scanning=true
             val filters=listOf(ScanFilter.Builder().setServiceUuid(ParcelUuid(RemoteProtocol.service)).build(),ScanFilter.Builder().setServiceUuid(ParcelUuid(UUID.fromString("00001523-0000-1000-8000-00805f9b34fb"))).build())
             adapter.bluetoothLeScanner.startScan(filters,ScanSettings.Builder().setScanMode(ScanSettings.SCAN_MODE_LOW_LATENCY).build(),scan)
             val generation=++scanGeneration
             handler.postDelayed({ if(scanGeneration==generation)stopScan() },20000)
             app.log("Looking for Turn Touch remotes…")
-        } catch(e: SecurityException) { scanning=false; report("Allow Nearby devices to find and connect your remote.") }
+        } catch(e: SecurityException) { scanning=false; report(tr("Allow Nearby devices to find and connect your remote.")) }
     }
     fun stopScan() { scanGeneration++; try { manager?.adapter?.bluetoothLeScanner?.stopScan(scan) } catch(_:SecurityException) {} ; scanning=false }
     fun reconnect(background: Boolean=false) { try { if(manager?.adapter?.isEnabled==true)saved.forEach { if(it !in connections)connect(it,false,background) } } catch(_:SecurityException) {} }
     fun adapterStateChanged(state: Int) {
         if(state==BluetoothAdapter.STATE_ON) { app.log("Bluetooth enabled; reconnecting saved remotes"); reconnect(background=true) }
         else if(state==BluetoothAdapter.STATE_TURNING_OFF || state==BluetoothAdapter.STATE_OFF) {
-            if(pairingActive)failPairing("Turn on Bluetooth to find your remotes.")
+            if(pairingActive)failPairing(tr("Turn on Bluetooth to find your remotes."))
             connections.keys.toList().forEach { disconnect(it) }
             retries.clear()
             app.log("Bluetooth disabled; waiting for it to return")
@@ -129,7 +129,7 @@ class BluetoothController(private val app: AppState) {
         val deadline=Runnable {
             deadlines.remove(address)
             if(connections[address]!==g)return@Runnable
-            val message=if(setup)"Remote setup timed out. Try connecting again." else "Connection timed out. Press a remote button to wake it, and disconnect it from other devices."
+            val message=if(setup)tr("Remote setup timed out. Try connecting again.") else tr("Connection timed out. Press a remote button to wake it, and disconnect it from other devices.")
             // Keep Android's automatic registration alive so a sleeping remote can return,
             // but never describe an indefinite wait as an active connection attempt.
             if(!setup && address in automatic) {
@@ -145,7 +145,7 @@ class BluetoothController(private val app: AppState) {
         if(address in connections)return
         try {
             if(manager?.adapter?.isEnabled!=true) {
-                update(address) { it.copy(state="Disconnected",connectionError="Turn on Bluetooth to connect.") }
+                update(address) { it.copy(state="Disconnected",connectionError=tr("Turn on Bluetooth to connect.")) }
                 return
             }
             context.startForegroundService(Intent(context,RemoteService::class.java))
@@ -163,7 +163,7 @@ class BluetoothController(private val app: AppState) {
             connections[address]=g
             connectionDeadline(g)
         } catch(e: SecurityException) {
-            val message="Nearby devices permission is needed to connect."
+            val message=tr("Nearby devices permission is needed to connect.")
             update(address) { it.copy(state="Connection failed",connectionError=message) }; report(message)
         }
     }
@@ -176,7 +176,7 @@ class BluetoothController(private val app: AppState) {
         update(address) { it.copy(state=if(forget)"Nearby" else "Disconnected",pairedButtons=0,connectionError=null) }
         if(connections.isEmpty() && saved.isEmpty())context.stopService(Intent(context,RemoteService::class.java))
     }
-    private fun connectionFailed(g: BluetoothGatt,message: String="Could not connect to the remote. Wake it and try again.") {
+    private fun connectionFailed(g: BluetoothGatt,message: String=tr("Could not connect to the remote. Wake it and try again.")) {
         val address=g.device.address
         if(connections[address]!==g)return
         cancelDeadline(address)
@@ -190,7 +190,7 @@ class BluetoothController(private val app: AppState) {
         }
     }
     fun rename(address: String,name: String) {
-        val clean=name.trim(); require(clean.toByteArray(Charsets.UTF_8).size in 1..20) { "Use a name of 1–20 UTF-8 bytes." }
+        val clean=name.trim(); require(clean.toByteArray(Charsets.UTF_8).size in 1..20) { tr("Use a name of 1–20 UTF-8 bytes.") }
         val g=connections[address] ?: return
         val c=g.getService(RemoteProtocol.service)?.getCharacteristic(RemoteProtocol.nickname) ?: return
         enqueue(g) { c.value=clean.toByteArray(); g.writeCharacteristic(c) }
@@ -225,7 +225,7 @@ class BluetoothController(private val app: AppState) {
             if(newState==BluetoothProfile.STATE_CONNECTED && status==BluetoothGatt.GATT_SUCCESS) {
                 update(address) { it.copy(state="Discovering services…",connectionError=null) }
                 connectionDeadline(g,setup=true)
-                if(!g.discoverServices())connectionFailed(g,"Could not read the remote services.")
+                if(!g.discoverServices())connectionFailed(g,tr("Could not read the remote services."))
             }
             else if(newState==BluetoothProfile.STATE_DISCONNECTED || status!=0) {
                 app.log("Remote disconnected (GATT $status)")
@@ -234,17 +234,17 @@ class BluetoothController(private val app: AppState) {
                 if(status==BluetoothGatt.GATT_SUCCESS && address in automatic && address in saved) {
                     queues.remove(address); decoders[address]?.reset()
                     cancelDeadline(address)
-                    update(address) { it.copy(state="Disconnected",connectionError="Waiting for your remote to return. Press a button to wake it.") }
+                    update(address) { it.copy(state="Disconnected",connectionError=tr("Waiting for your remote to return. Press a button to wake it.")) }
                     app.log("Waiting for saved remote to return")
-                } else connectionFailed(g,"Remote connection failed (Bluetooth $status). Wake it and try again.")
+                } else connectionFailed(g,tr("Remote connection failed (Bluetooth {0}). Wake it and try again.", status))
             }
         } }
         override fun onServicesDiscovered(g: BluetoothGatt,status: Int) { handler.post {
             if(connections[g.device.address]!==g)return@post
-            if(status!=0) { connectionFailed(g,"Unable to read remote services ($status)"); return@post }
+            if(status!=0) { connectionFailed(g,tr("Unable to read remote services ({0})", status)); return@post }
             val buttons=g.getService(RemoteProtocol.service)?.getCharacteristic(RemoteProtocol.buttons)
             val cccd=buttons?.getDescriptor(RemoteProtocol.cccd)
-            if(buttons==null || cccd==null) { connectionFailed(g,"This device does not expose the Turn Touch button service."); return@post }
+            if(buttons==null || cccd==null) { connectionFailed(g,tr("This device does not expose the Turn Touch button service.")); return@post }
             if(!g.setCharacteristicNotification(buttons,true)) { connectionFailed(g); return@post }
             enqueue(g) { cccd.value=BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE; g.writeDescriptor(cccd) }
             for(s in g.services)for(c in s.characteristics)if(c.uuid in listOf(RemoteProtocol.battery,RemoteProtocol.nickname,RemoteProtocol.firmware))enqueue(g) { g.readCharacteristic(c) }
@@ -252,13 +252,13 @@ class BluetoothController(private val app: AppState) {
         override fun onDescriptorWrite(g: BluetoothGatt,d: BluetoothGattDescriptor,status: Int) { handler.post {
             if(connections[g.device.address]!==g)return@post
             if(status==0) { cancelDeadline(g.device.address); retries.remove(g.device.address); update(g.device.address) { it.copy(state=if(it.address in pairing)"Press all four buttons to pair" else "Connected",connectionError=null) }; app.log("Button notifications enabled") }
-            else { connectionFailed(g,"Could not subscribe to remote buttons ($status)"); return@post }
+            else { connectionFailed(g,tr("Could not subscribe to remote buttons ({0})", status)); return@post }
             refreshPairing()
             advance(g)
         } }
         override fun onCharacteristicRead(g: BluetoothGatt,c: BluetoothGattCharacteristic,status: Int) { handler.post { if(connections[g.device.address]!==g)return@post; if(status==0)value(g,c,c.value ?: byteArrayOf()); advance(g) } }
         override fun onCharacteristicChanged(g: BluetoothGatt,c: BluetoothGattCharacteristic) { val bytes=c.value?.clone() ?: return; handler.post { if(connections[g.device.address]===g)value(g,c,bytes) } }
-        override fun onCharacteristicWrite(g: BluetoothGatt,c: BluetoothGattCharacteristic,status: Int) { handler.post { if(connections[g.device.address]!==g)return@post; if(status!=0)report("Remote write failed ($status)"); advance(g) } }
+        override fun onCharacteristicWrite(g: BluetoothGatt,c: BluetoothGattCharacteristic,status: Int) { handler.post { if(connections[g.device.address]!==g)return@post; if(status!=0)report(tr("Remote write failed ({0})", status)); advance(g) } }
     }
 }
 class RemoteService: Service() {
@@ -268,9 +268,9 @@ class RemoteService: Service() {
                 (application as TurnTouchApp).state.bluetooth.adapterStateChanged(intent.getIntExtra(BluetoothAdapter.EXTRA_STATE,BluetoothAdapter.ERROR))
         }
     }
-    override fun onCreate() { super.onCreate(); val nm=getSystemService(NotificationManager::class.java); nm.createNotificationChannel(NotificationChannel("remote","Remote connection",NotificationManager.IMPORTANCE_LOW))
+    override fun onCreate() { super.onCreate(); val nm=getSystemService(NotificationManager::class.java); nm.createNotificationChannel(NotificationChannel("remote",tr("Remote connection"),NotificationManager.IMPORTANCE_LOW))
         val open=PendingIntent.getActivity(this,0,Intent(this,MainActivity::class.java),PendingIntent.FLAG_IMMUTABLE)
-        startForeground(1,Notification.Builder(this,"remote").setSmallIcon(R.drawable.battery).setContentTitle("Turn Touch").setContentText("Listening for your remote").setContentIntent(open).setOngoing(true).build())
+        startForeground(1,Notification.Builder(this,"remote").setSmallIcon(R.drawable.battery).setContentTitle(tr("Turn Touch")).setContentText(tr("Listening for your remote")).setContentIntent(open).setOngoing(true).build())
         val filter=IntentFilter(BluetoothAdapter.ACTION_STATE_CHANGED)
         if(Build.VERSION.SDK_INT>=33)registerReceiver(adapterReceiver,filter,Context.RECEIVER_EXPORTED) else registerReceiver(adapterReceiver,filter)
     }

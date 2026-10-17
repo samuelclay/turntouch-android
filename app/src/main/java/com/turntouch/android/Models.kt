@@ -8,10 +8,17 @@ import org.json.JSONObject
 import kotlinx.coroutines.*
 
 /** Direction order is the firmware's bit order, not compass order. */
-enum class Direction { North, East, West, South }
+enum class Direction { North, East, West, South;
+    val displayName get()=when(this) { North->tr("North"); East->tr("East"); West->tr("West"); South->tr("South") }
+}
 enum class Gesture { Single, Double, Hold }
-data class ActionDefinition(val id: String, val title: String, val icon: String)
-data class ModeDefinition(val id: String, val title: String, val subtitle: String, val icon: String, val actions: List<ActionDefinition>, val defaults: List<String>, val origin: String)
+data class ActionDefinition(val id: String, private val sourceTitle: String, val icon: String, val translateTitle: Boolean=true) {
+    val title get()=if(translateTitle)tr(sourceTitle) else sourceTitle
+}
+data class ModeDefinition(val id: String, private val sourceTitle: String, private val sourceSubtitle: String, val icon: String, val actions: List<ActionDefinition>, val defaults: List<String>, val origin: String) {
+    val title get()=tr(sourceTitle)
+    val subtitle get()=tr(sourceSubtitle)
+}
 data class Binding(val mode: String, val action: String, val options: Map<String, String> = emptyMap()) {
     fun json() = JSONObject().put("mode", mode).put("action", action).put("options", JSONObject(options))
     companion object { fun from(j: JSONObject): Binding { val o=j.optJSONObject("options") ?: JSONObject(); return Binding(j.getString("mode"), j.getString("action"), o.keys().asSequence().associateWith { o.getString(it) }) } }
@@ -23,8 +30,8 @@ class Catalog(context: Context) {
     }
     fun mode(id: String) = modes.first { it.id == id }
     fun action(b: Binding): ActionDefinition {
-        val definition=mode(b.mode).actions.firstOrNull { it.id==b.action } ?: ActionDefinition(b.action,"Choose an action",mode(b.mode).icon)
-        return if(b.action=="TTModeNanoleafSceneCustom" && !b.options["scene"].isNullOrBlank())definition.copy(title=b.options.getValue("scene")) else definition
+        val definition=mode(b.mode).actions.firstOrNull { it.id==b.action } ?: ActionDefinition(b.action,tr("Choose an action"),mode(b.mode).icon)
+        return if(b.action=="TTModeNanoleafSceneCustom" && !b.options["scene"].isNullOrBlank())definition.copy(sourceTitle=b.options.getValue("scene"),translateTitle=false) else definition
     }
 }
 class AppState(val context: Context, val demo: DemoSession? = null) {
@@ -35,7 +42,7 @@ class AppState(val context: Context, val demo: DemoSession? = null) {
     var selected by mutableIntStateOf(prefs.getInt("selected",2)); private set
     var twelve by mutableStateOf(prefs.getBoolean("twelve",false)); private set
     var perform by mutableStateOf(prefs.getBoolean("perform",false)); private set
-    var status by mutableStateOf("Ready")
+    var status by mutableStateOf(tr("Ready"))
     var active by mutableStateOf<Direction?>(null)
     var screen by mutableStateOf("remote")
     var onboarding by mutableStateOf(!prefs.getBoolean("onboarded",false))
@@ -75,7 +82,7 @@ class AppState(val context: Context, val demo: DemoSession? = null) {
     fun saveConfig(mode: String, values: Map<String,String>) { demo?.let { it.configs[mode]=values; revision++; return }; secrets.put(mode,JSONObject(values).toString()); revision++ }
     fun dispatch(direction: Direction,gesture: Gesture) {
         if(demo==null && screen=="demo")return // Physical input must not control the home while previewing.
-        if(!twelve && gesture==Gesture.Hold) { select(direction.ordinal); log("Switched to ${mode().title}"); return }
+        if(!twelve && gesture==Gesture.Hold) { select(direction.ordinal); log(tr("Switched to {0}", mode().title)); return }
         val slot=if(twelve)gesture.ordinal else selected
         val batch=bindings(direction,if(twelve)Gesture.Single else gesture,slot)
         // Physical press/release owns the HUD highlight; delayed action execution must not flash it again.
@@ -84,5 +91,5 @@ class AppState(val context: Context, val demo: DemoSession? = null) {
 }
 class TurnTouchApp: Application() {
     lateinit var state: AppState
-    override fun onCreate() { super.onCreate(); state=AppState(this); state.executor=ActionExecutor(state); state.bluetooth=BluetoothController(state) }
+    override fun onCreate() { super.onCreate(); Localization.initialize(this); state=AppState(this); state.executor=ActionExecutor(state); state.bluetooth=BluetoothController(state) }
 }

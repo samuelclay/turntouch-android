@@ -1,0 +1,1410 @@
+{
+  " · Firmware {0}": [
+    "app/src/main/java/com/turntouch/android/MainActivity.kt"
+  ],
+  " · {0}% battery": [
+    "app/src/main/java/com/turntouch/android/MainActivity.kt",
+    "app/src/main/java/com/turntouch/android/SettingsScreen.kt"
+  ],
+  "12 actions": [
+    "app/src/main/java/com/turntouch/android/SettingsScreen.kt"
+  ],
+  "16 actions": [
+    "app/src/main/java/com/turntouch/android/SettingsScreen.kt"
+  ],
+  "APPS & CONNECTIONS": [
+    "app/src/main/java/com/turntouch/android/SettingsScreen.kt"
+  ],
+  "Action chooser": [
+    "app/src/main/java/com/turntouch/android/MainActivity.kt"
+  ],
+  "Add a new remote": [
+    "app/src/main/java/com/turntouch/android/SettingsScreen.kt"
+  ],
+  "Add action": [
+    "app/src/main/java/com/turntouch/android/MainActivity.kt"
+  ],
+  "Add new action": [
+    "app/src/main/java/com/turntouch/android/MainActivity.kt"
+  ],
+  "Airfoil": [
+    "catalog: Airfoil title"
+  ],
+  "Alarm": [
+    "catalog: AlarmClock title"
+  ],
+  "Alarm Clock": [
+    "catalog: TTModeAlarmSongInfo"
+  ],
+  "All rooms": [
+    "app/src/main/java/com/turntouch/android/BindingOptions.kt",
+    "app/src/main/java/com/turntouch/android/OfflineDemo.kt"
+  ],
+  "Allow Nearby devices in Settings to connect a remote.": [
+    "app/src/main/java/com/turntouch/android/MainActivity.kt"
+  ],
+  "Allow Nearby devices to find and connect your remote.": [
+    "app/src/main/java/com/turntouch/android/BluetoothController.kt"
+  ],
+  "Allow camera": [
+    "app/src/main/java/com/turntouch/android/NativeScreens.kt"
+  ],
+  "App options": [
+    "app/src/main/java/com/turntouch/android/SettingsScreen.kt"
+  ],
+  "Apple HomeKit is not available on Android. A home-scene bridge is required.": [
+    "app/src/main/java/com/turntouch/android/Integrations.kt"
+  ],
+  "Apps": [
+    "app/src/main/java/com/turntouch/android/MainActivity.kt"
+  ],
+  "Authorization token": [
+    "app/src/main/java/com/turntouch/android/MainActivity.kt"
+  ],
+  "Automatic (device language)": [
+    "app/src/main/java/com/turntouch/android/Localization.kt"
+  ],
+  "BUTTONS": [
+    "app/src/main/java/com/turntouch/android/SettingsScreen.kt"
+  ],
+  "Back": [
+    "app/src/main/java/com/turntouch/android/ConnectionScreen.kt",
+    "app/src/main/java/com/turntouch/android/MainActivity.kt",
+    "app/src/main/java/com/turntouch/android/OfflineDemo.kt"
+  ],
+  "Battery unavailable": [
+    "app/src/main/java/com/turntouch/android/RemoteStatusBar.kt"
+  ],
+  "Battery: {0}%": [
+    "app/src/main/java/com/turntouch/android/RemoteStatusBar.kt"
+  ],
+  "Beautiful control": [
+    "app/src/main/java/com/turntouch/android/RemotePairingScreen.kt"
+  ],
+  "Bluetooth scan failed ({0}). Try again.": [
+    "app/src/main/java/com/turntouch/android/BluetoothController.kt"
+  ],
+  "Bose": [
+    "catalog: Bose title"
+  ],
+  "Bridge IP address": [
+    "app/src/main/java/com/turntouch/android/MainActivity.kt"
+  ],
+  "Bridge username": [
+    "app/src/main/java/com/turntouch/android/MainActivity.kt"
+  ],
+  "Bright": [
+    "app/src/main/java/com/turntouch/android/BindingOptions.kt"
+  ],
+  "Brightness down": [
+    "catalog: TTModeGoveeBrightnessDown"
+  ],
+  "Brightness step": [
+    "app/src/main/java/com/turntouch/android/MainActivity.kt"
+  ],
+  "Brightness up": [
+    "catalog: TTModeGoveeBrightnessUp"
+  ],
+  "Button mode": [
+    "app/src/main/java/com/turntouch/android/SettingsScreen.kt"
+  ],
+  "Buttons for If This Then That": [
+    "catalog: Ifttt subtitle"
+  ],
+  "Camera": [
+    "catalog: Camera title"
+  ],
+  "Cancel": [
+    "app/src/main/java/com/turntouch/android/Localization.kt",
+    "app/src/main/java/com/turntouch/android/MainActivity.kt",
+    "app/src/main/java/com/turntouch/android/MainActivity.kt",
+    "app/src/main/java/com/turntouch/android/RemotePairingScreen.kt",
+    "app/src/main/java/com/turntouch/android/RemoteStatusBar.kt"
+  ],
+  "Change": [
+    "app/src/main/java/com/turntouch/android/MainActivity.kt",
+    "app/src/main/java/com/turntouch/android/MainActivity.kt"
+  ],
+  "Change action {0}": [
+    "app/src/main/java/com/turntouch/android/MainActivity.kt"
+  ],
+  "Child’s pose": [
+    "app/src/main/java/com/turntouch/android/NativeScreens.kt"
+  ],
+  "Choose a button to assign your lights and scenes.": [
+    "app/src/main/java/com/turntouch/android/ConnectionScreen.kt"
+  ],
+  "Choose a supported media action": [
+    "app/src/main/java/com/turntouch/android/Integrations.kt"
+  ],
+  "Choose action": [
+    "app/src/main/java/com/turntouch/android/MainActivity.kt"
+  ],
+  "Choose an action": [
+    "app/src/main/java/com/turntouch/android/Models.kt"
+  ],
+  "Choose another device": [
+    "app/src/main/java/com/turntouch/android/ConnectionScreen.kt"
+  ],
+  "Choose app": [
+    "app/src/main/java/com/turntouch/android/MainActivity.kt"
+  ],
+  "Choose effect": [
+    "app/src/main/java/com/turntouch/android/BindingOptions.kt"
+  ],
+  "Choose legacy or KLAP. KLAP devices use the TP-Link account you used to set them up.": [
+    "app/src/main/java/com/turntouch/android/ConnectionScreen.kt"
+  ],
+  "Choose room": [
+    "app/src/main/java/com/turntouch/android/BindingOptions.kt"
+  ],
+  "Choose scene": [
+    "app/src/main/java/com/turntouch/android/BindingOptions.kt"
+  ],
+  "Choose scenes in this button’s options first.": [
+    "app/src/main/java/com/turntouch/android/Integrations.kt"
+  ],
+  "Choose your apps and actions": [
+    "app/src/main/java/com/turntouch/android/RemotePairingScreen.kt"
+  ],
+  "Choose your language. You can change it anytime in Settings.": [
+    "app/src/main/java/com/turntouch/android/Localization.kt"
+  ],
+  "Close action chooser": [
+    "app/src/main/java/com/turntouch/android/MainActivity.kt"
+  ],
+  "Color": [
+    "app/src/main/java/com/turntouch/android/BindingOptions.kt"
+  ],
+  "Color loop": [
+    "catalog: TTModeHueSceneColorLoop"
+  ],
+  "Connect": [
+    "app/src/main/java/com/turntouch/android/MainActivity.kt"
+  ],
+  "Connect this app first.": [
+    "app/src/main/java/com/turntouch/android/BindingOptions.kt"
+  ],
+  "Connect to {0}": [
+    "app/src/main/java/com/turntouch/android/BindingOptions.kt"
+  ],
+  "Connect your Android device to the same Wi-Fi network, then select your bridge below.": [
+    "app/src/main/java/com/turntouch/android/ConnectionScreen.kt"
+  ],
+  "Connect your Android device to the same Wi-Fi network, then select your light panels below.": [
+    "app/src/main/java/com/turntouch/android/ConnectionScreen.kt"
+  ],
+  "Connect {0} first.": [
+    "app/src/main/java/com/turntouch/android/BindingOptions.kt"
+  ],
+  "Connected": [
+    "Application-owned status or selector label; translated only at rendering, never in state comparisons."
+  ],
+  "Connected to {0}": [
+    "app/src/main/java/com/turntouch/android/ConnectionScreen.kt"
+  ],
+  "Connected wireless speakers": [
+    "catalog: Sonos subtitle"
+  ],
+  "Connecting": [
+    "Application-owned status or selector label; translated only at rendering, never in state comparisons."
+  ],
+  "Connecting...": [
+    "app/src/main/java/com/turntouch/android/RemotePairingScreen.kt"
+  ],
+  "Connection diagnostics": [
+    "app/src/main/java/com/turntouch/android/SettingsScreen.kt"
+  ],
+  "Connection failed": [
+    "Application-owned status or selector label; translated only at rendering, never in state comparisons."
+  ],
+  "Connection not configured": [
+    "app/src/main/java/com/turntouch/android/Integrations.kt"
+  ],
+  "Connection timed out. Press a remote button to wake it, and disconnect it from other devices.": [
+    "app/src/main/java/com/turntouch/android/BluetoothController.kt"
+  ],
+  "Continue": [
+    "app/src/main/java/com/turntouch/android/ConnectionScreen.kt",
+    "app/src/main/java/com/turntouch/android/Localization.kt",
+    "app/src/main/java/com/turntouch/android/RemotePairingScreen.kt"
+  ],
+  "Control Bose speakers": [
+    "catalog: Bose subtitle"
+  ],
+  "Control Spotify music": [
+    "catalog: Spotify subtitle"
+  ],
+  "Control your music": [
+    "catalog: Music subtitle"
+  ],
+  "Could not connect to the remote. Wake it and try again.": [
+    "app/src/main/java/com/turntouch/android/BluetoothController.kt"
+  ],
+  "Could not load options.": [
+    "app/src/main/java/com/turntouch/android/BindingOptions.kt"
+  ],
+  "Could not read the remote services.": [
+    "app/src/main/java/com/turntouch/android/BluetoothController.kt"
+  ],
+  "Could not search the network. {0}": [
+    "app/src/main/java/com/turntouch/android/ConnectionScreen.kt"
+  ],
+  "Could not subscribe to remote buttons ({0})": [
+    "app/src/main/java/com/turntouch/android/BluetoothController.kt"
+  ],
+  "Custom": [
+    "catalog: Custom title"
+  ],
+  "Custom URL": [
+    "catalog: TTModeCustomURL"
+  ],
+  "Custom scene": [
+    "catalog: TTModeHueSceneCustom"
+  ],
+  "Cycle scenes": [
+    "catalog: TTModeHueCycleScenes"
+  ],
+  "DOUBLE TAP": [
+    "app/src/main/java/com/turntouch/android/MainActivity.kt"
+  ],
+  "Device IP address": [
+    "app/src/main/java/com/turntouch/android/MainActivity.kt"
+  ],
+  "Device IP address (LAN Control)": [
+    "app/src/main/java/com/turntouch/android/MainActivity.kt"
+  ],
+  "Device IP address (include port if needed)": [
+    "app/src/main/java/com/turntouch/android/MainActivity.kt"
+  ],
+  "Device address": [
+    "app/src/main/java/com/turntouch/android/MainActivity.kt"
+  ],
+  "Device returned HTTP {0}": [
+    "app/src/main/java/com/turntouch/android/Integrations.kt"
+  ],
+  "Different": [
+    "app/src/main/java/com/turntouch/android/BindingOptions.kt"
+  ],
+  "Dim": [
+    "app/src/main/java/com/turntouch/android/BindingOptions.kt"
+  ],
+  "Disconnected": [
+    "Application-owned status or selector label; translated only at rendering, never in state comparisons."
+  ],
+  "Discovering services": [
+    "Application-owned status or selector label; translated only at rendering, never in state comparisons."
+  ],
+  "Discovering services…": [
+    "Application-owned display label"
+  ],
+  "Done": [
+    "app/src/main/java/com/turntouch/android/ConnectionScreen.kt",
+    "app/src/main/java/com/turntouch/android/ConnectionScreen.kt",
+    "app/src/main/java/com/turntouch/android/MainActivity.kt",
+    "app/src/main/java/com/turntouch/android/MainActivity.kt",
+    "app/src/main/java/com/turntouch/android/MainActivity.kt",
+    "app/src/main/java/com/turntouch/android/NativeScreens.kt",
+    "app/src/main/java/com/turntouch/android/OfflineDemo.kt",
+    "app/src/main/java/com/turntouch/android/RemotePairingScreen.kt",
+    "app/src/main/java/com/turntouch/android/SettingsScreen.kt"
+  ],
+  "Double tap": [
+    "Application-owned status or selector label; translated only at rendering, never in state comparisons.",
+    "app/src/main/java/com/turntouch/android/MainActivity.kt"
+  ],
+  "Double tap actions": [
+    "app/src/main/java/com/turntouch/android/MainActivity.kt"
+  ],
+  "Downward dog": [
+    "app/src/main/java/com/turntouch/android/NativeScreens.kt"
+  ],
+  "Each button can do multiple actions": [
+    "app/src/main/java/com/turntouch/android/RemotePairingScreen.kt"
+  ],
+  "Each button performs an action": [
+    "app/src/main/java/com/turntouch/android/RemotePairingScreen.kt"
+  ],
+  "Early evening": [
+    "catalog: TTModeHueSceneEarlyEvening"
+  ],
+  "East": [
+    "app/src/main/java/com/turntouch/android/Models.kt"
+  ],
+  "Edit buttons": [
+    "app/src/main/java/com/turntouch/android/OfflineDemo.kt"
+  ],
+  "Effect": [
+    "Application-owned status or selector label; translated only at rendering, never in state comparisons."
+  ],
+  "Effect name": [
+    "app/src/main/java/com/turntouch/android/MainActivity.kt"
+  ],
+  "Enter an IP address": [
+    "app/src/main/java/com/turntouch/android/ConnectionScreen.kt"
+  ],
+  "Enter an http:// or https:// URL": [
+    "app/src/main/java/com/turntouch/android/NativeScreens.kt"
+  ],
+  "Enter an http:// or https:// address.": [
+    "app/src/main/java/com/turntouch/android/Integrations.kt"
+  ],
+  "Enter connection details for this app": [
+    "app/src/main/java/com/turntouch/android/Integrations.kt"
+  ],
+  "Event name": [
+    "app/src/main/java/com/turntouch/android/MainActivity.kt"
+  ],
+  "Exit demo": [
+    "app/src/main/java/com/turntouch/android/OfflineDemo.kt"
+  ],
+  "Explore without hardware": [
+    "app/src/main/java/com/turntouch/android/SettingsScreen.kt"
+  ],
+  "Fade duration (seconds)": [
+    "app/src/main/java/com/turntouch/android/BindingOptions.kt",
+    "app/src/main/java/com/turntouch/android/MainActivity.kt"
+  ],
+  "Fast forward": [
+    "catalog: TTModeVideoFF"
+  ],
+  "Find devices on Wi-Fi": [
+    "app/src/main/java/com/turntouch/android/ConnectionScreen.kt"
+  ],
+  "Find your Hue bridge": [
+    "app/src/main/java/com/turntouch/android/ConnectionScreen.kt"
+  ],
+  "Find your Nanoleaf": [
+    "app/src/main/java/com/turntouch/android/ConnectionScreen.kt"
+  ],
+  "Firmware unavailable": [
+    "app/src/main/java/com/turntouch/android/RemoteStatusBar.kt"
+  ],
+  "Firmware: v{0}": [
+    "app/src/main/java/com/turntouch/android/RemoteStatusBar.kt"
+  ],
+  "Flip": [
+    "app/src/main/java/com/turntouch/android/NativeScreens.kt"
+  ],
+  "Flip front/back": [
+    "catalog: TTModeCameraSwitchView"
+  ],
+  "Focus": [
+    "app/src/main/java/com/turntouch/android/OfflineDemo.kt"
+  ],
+  "Forget": [
+    "app/src/main/java/com/turntouch/android/MainActivity.kt"
+  ],
+  "Forget this remote": [
+    "app/src/main/java/com/turntouch/android/RemoteStatusBar.kt"
+  ],
+  "Forward fold": [
+    "app/src/main/java/com/turntouch/android/NativeScreens.kt"
+  ],
+  "Four apps × four buttons per app\n= sixteen different actions": [
+    "app/src/main/java/com/turntouch/android/RemotePairingScreen.kt"
+  ],
+  "Full screen": [
+    "catalog: TTModeVideoFullScreen"
+  ],
+  "Google Home connection needs app authorization setup. Home Assistant will be a separate integration.": [
+    "app/src/main/java/com/turntouch/android/ConnectionScreen.kt"
+  ],
+  "Govee": [
+    "catalog: Govee title"
+  ],
+  "Govee API key": [
+    "app/src/main/java/com/turntouch/android/MainActivity.kt"
+  ],
+  "Govee did not confirm the change": [
+    "app/src/main/java/com/turntouch/android/LocalDiscovery.kt"
+  ],
+  "Govee did not respond. Enable LAN Control in the Govee app.": [
+    "app/src/main/java/com/turntouch/android/LocalDiscovery.kt"
+  ],
+  "Govee rejected command": [
+    "app/src/main/java/com/turntouch/android/Integrations.kt"
+  ],
+  "Group ID": [
+    "app/src/main/java/com/turntouch/android/MainActivity.kt"
+  ],
+  "Group ID (0 = all lights)": [
+    "app/src/main/java/com/turntouch/android/MainActivity.kt"
+  ],
+  "HELP": [
+    "app/src/main/java/com/turntouch/android/SettingsScreen.kt"
+  ],
+  "HOLD": [
+    "app/src/main/java/com/turntouch/android/MainActivity.kt"
+  ],
+  "HTTP method (GET or POST)": [
+    "app/src/main/java/com/turntouch/android/MainActivity.kt"
+  ],
+  "Half lift": [
+    "app/src/main/java/com/turntouch/android/NativeScreens.kt"
+  ],
+  "Here's how it works": [
+    "app/src/main/java/com/turntouch/android/RemotePairingScreen.kt"
+  ],
+  "Hit a website on command": [
+    "catalog: Custom subtitle"
+  ],
+  "Hold a button to switch between four apps": [
+    "app/src/main/java/com/turntouch/android/SettingsScreen.kt"
+  ],
+  "Hold actions": [
+    "app/src/main/java/com/turntouch/android/MainActivity.kt"
+  ],
+  "Hold the power button": [
+    "app/src/main/java/com/turntouch/android/ConnectionScreen.kt"
+  ],
+  "Hold the power button on your Nanoleaf controller for 5–7 seconds, until its indicator starts flashing. Turn Touch checks every 5 seconds and connects automatically.": [
+    "app/src/main/java/com/turntouch/android/ConnectionScreen.kt"
+  ],
+  "HomeKit": [
+    "catalog: HomeKit title"
+  ],
+  "How it works": [
+    "app/src/main/java/com/turntouch/android/RemotePairingScreen.kt",
+    "app/src/main/java/com/turntouch/android/SettingsScreen.kt"
+  ],
+  "How it works pages": [
+    "app/src/main/java/com/turntouch/android/RemotePairingScreen.kt"
+  ],
+  "Hue": [
+    "catalog: Hue title"
+  ],
+  "Hue command failed": [
+    "app/src/main/java/com/turntouch/android/Integrations.kt"
+  ],
+  "Hue rejected a light change": [
+    "app/src/main/java/com/turntouch/android/HueRandom.kt"
+  ],
+  "IFTTT": [
+    "catalog: Ifttt title"
+  ],
+  "IP address": [
+    "app/src/main/java/com/turntouch/android/ConnectionScreen.kt"
+  ],
+  "Invalid API key": [
+    "Application-owned status or selector label; translated only at rendering, never in state comparisons."
+  ],
+  "Invalid Kasa handshake": [
+    "app/src/main/java/com/turntouch/android/Klap.kt"
+  ],
+  "Invalid Kasa response": [
+    "app/src/main/java/com/turntouch/android/Integrations.kt",
+    "app/src/main/java/com/turntouch/android/Klap.kt"
+  ],
+  "Jump to volume": [
+    "catalog: TTModePhoneVolumeJump",
+    "catalog: TTModeMusicVolumeJump",
+    "catalog: TTModeSonosVolumeJump",
+    "catalog: TTModeBoseVolumeJump",
+    "catalog: TTModeSpotifyVolumeJump"
+  ],
+  "Jump volume (0–100)": [
+    "app/src/main/java/com/turntouch/android/MainActivity.kt"
+  ],
+  "Kasa KLAP": [
+    "app/src/main/java/com/turntouch/android/LocalDiscovery.kt"
+  ],
+  "Kasa authorization or connection failed ({0})": [
+    "app/src/main/java/com/turntouch/android/Klap.kt"
+  ],
+  "Kasa credentials did not match this device": [
+    "app/src/main/java/com/turntouch/android/Klap.kt"
+  ],
+  "Kasa legacy": [
+    "app/src/main/java/com/turntouch/android/LocalDiscovery.kt"
+  ],
+  "Kasa rejected command ({0})": [
+    "app/src/main/java/com/turntouch/android/Klap.kt"
+  ],
+  "Kasa rejected the command": [
+    "app/src/main/java/com/turntouch/android/Integrations.kt"
+  ],
+  "Kasa response signature did not match": [
+    "app/src/main/java/com/turntouch/android/Klap.kt"
+  ],
+  "Language": [
+    "app/src/main/java/com/turntouch/android/Localization.kt",
+    "app/src/main/java/com/turntouch/android/SettingsScreen.kt",
+    "app/src/main/java/com/turntouch/android/SettingsScreen.kt"
+  ],
+  "Late evening": [
+    "catalog: TTModeHueSceneLateEvening"
+  ],
+  "Less time": [
+    "catalog: TTModeYogaTimeDown"
+  ],
+  "Light panels and effects": [
+    "catalog: Nanoleaf subtitle"
+  ],
+  "Lights and scenes": [
+    "catalog: Hue subtitle"
+  ],
+  "Lights off": [
+    "catalog: TTModeHueSceneLightsOff"
+  ],
+  "Like changing the lights, playing music, or turning up the volume": [
+    "app/src/main/java/com/turntouch/android/RemotePairingScreen.kt"
+  ],
+  "Listening for your remote": [
+    "app/src/main/java/com/turntouch/android/BluetoothController.kt"
+  ],
+  "Loading…": [
+    "app/src/main/java/com/turntouch/android/BindingOptions.kt"
+  ],
+  "Lower brightness": [
+    "catalog: TTModeHueLowerBrightness",
+    "catalog: TTModeNanoleafLowerBrightness"
+  ],
+  "Lower saturation": [
+    "catalog: TTModeHueLowerSaturation"
+  ],
+  "Lower temp": [
+    "catalog: TTModeNestLowerTemp"
+  ],
+  "Luminance": [
+    "app/src/main/java/com/turntouch/android/BindingOptions.kt"
+  ],
+  "Make your Turn Touch remote control lights, music, and everyday actions.": [
+    "Store short-description; maximum=80 characters"
+  ],
+  "Menu": [
+    "catalog: TTModeNewsMenu",
+    "catalog: TTModeWebMenu"
+  ],
+  "Midnight oil": [
+    "catalog: TTModeHueSceneMidnightOil"
+  ],
+  "Mix": [
+    "app/src/main/java/com/turntouch/android/BindingOptions.kt",
+    "app/src/main/java/com/turntouch/android/BindingOptions.kt",
+    "app/src/main/java/com/turntouch/android/BindingOptions.kt"
+  ],
+  "Model": [
+    "app/src/main/java/com/turntouch/android/MainActivity.kt"
+  ],
+  "More time": [
+    "catalog: TTModeYogaTimeUp"
+  ],
+  "Morning": [
+    "catalog: TTModeHueSceneMorning"
+  ],
+  "Mountain": [
+    "app/src/main/java/com/turntouch/android/NativeScreens.kt"
+  ],
+  "Music": [
+    "catalog: Music title"
+  ],
+  "Mute": [
+    "catalog: TTModePhoneVolumeMute",
+    "catalog: TTModeSonosVolumeMute",
+    "catalog: TTModeBoseVolumeMute",
+    "catalog: TTModeSpotifyVolumeMute",
+    "catalog: TTModeAirfoilMute"
+  ],
+  "Mute music": [
+    "catalog: TTModeMusicVolumeMute"
+  ],
+  "Name": [
+    "app/src/main/java/com/turntouch/android/MainActivity.kt",
+    "app/src/main/java/com/turntouch/android/RemoteStatusBar.kt"
+  ],
+  "Name your remote": [
+    "app/src/main/java/com/turntouch/android/MainActivity.kt",
+    "app/src/main/java/com/turntouch/android/RemoteStatusBar.kt"
+  ],
+  "Nanoleaf": [
+    "catalog: Nanoleaf title"
+  ],
+  "Nearby": [
+    "Application-owned status or selector label; translated only at rendering, never in state comparisons."
+  ],
+  "Nearby devices permission is needed to connect.": [
+    "app/src/main/java/com/turntouch/android/BluetoothController.kt"
+  ],
+  "Nest": [
+    "catalog: Nest title"
+  ],
+  "Nest requires a Google Device Access project and OAuth setup.": [
+    "app/src/main/java/com/turntouch/android/Integrations.kt"
+  ],
+  "NewsBlur": [
+    "catalog: News title"
+  ],
+  "Next": [
+    "catalog: TTModeYogaNext"
+  ],
+  "Next Song": [
+    "catalog: TTModeAlarmNextSong"
+  ],
+  "Next site": [
+    "catalog: TTModeNewsNextSite"
+  ],
+  "Next slide": [
+    "catalog: TTModePresentationNextSlide"
+  ],
+  "Next story": [
+    "catalog: TTModeNewsNextStory"
+  ],
+  "Next track": [
+    "catalog: TTModeMusicNextTrack",
+    "catalog: TTModeSonosNextTrack",
+    "catalog: TTModeBoseNextTrack",
+    "catalog: TTModeSpotifyNextTrack"
+  ],
+  "No Nanoleaf devices found": [
+    "Application-owned status or selector label; translated only at rendering, never in state comparisons."
+  ],
+  "No effects available.": [
+    "app/src/main/java/com/turntouch/android/BindingOptions.kt"
+  ],
+  "No lights in the selected room.": [
+    "app/src/main/java/com/turntouch/android/HueRandom.kt"
+  ],
+  "No network interfaces found": [
+    "Application-owned status or selector label; translated only at rendering, never in state comparisons."
+  ],
+  "No remotes could be found": [
+    "app/src/main/java/com/turntouch/android/BluetoothController.kt",
+    "app/src/main/java/com/turntouch/android/RemotePairingScreen.kt"
+  ],
+  "No remotes found yet. A remote connected to your Mac or iPhone may need to disconnect there first.": [
+    "app/src/main/java/com/turntouch/android/MainActivity.kt"
+  ],
+  "No remotes paired": [
+    "app/src/main/java/com/turntouch/android/RemoteStatusBar.kt"
+  ],
+  "No rooms available.": [
+    "app/src/main/java/com/turntouch/android/BindingOptions.kt"
+  ],
+  "No scenes available.": [
+    "app/src/main/java/com/turntouch/android/BindingOptions.kt"
+  ],
+  "No {0} devices found. Check that your device is powered on and connected to the same Wi-Fi network.": [
+    "app/src/main/java/com/turntouch/android/ConnectionScreen.kt"
+  ],
+  "North": [
+    "app/src/main/java/com/turntouch/android/Models.kt"
+  ],
+  "Not available on Android": [
+    "app/src/main/java/com/turntouch/android/SettingsScreen.kt"
+  ],
+  "OK / Next": [
+    "catalog: TTModeWebNext"
+  ],
+  "Offline demo": [
+    "app/src/main/java/com/turntouch/android/OfflineDemo.kt"
+  ],
+  "Open": [
+    "app/src/main/java/com/turntouch/android/NativeScreens.kt"
+  ],
+  "Open Turn Touch to use {0}.": [
+    "app/src/main/java/com/turntouch/android/Integrations.kt"
+  ],
+  "Original design and artwork © Turn Touch": [
+    "app/src/main/java/com/turntouch/android/SettingsScreen.kt"
+  ],
+  "Page or media URL": [
+    "app/src/main/java/com/turntouch/android/MainActivity.kt"
+  ],
+  "Page {0} of 5": [
+    "app/src/main/java/com/turntouch/android/RemotePairingScreen.kt"
+  ],
+  "Pair a new remote": [
+    "app/src/main/java/com/turntouch/android/MainActivity.kt"
+  ],
+  "Pair remote": [
+    "app/src/main/java/com/turntouch/android/RemotePairingScreen.kt",
+    "app/src/main/java/com/turntouch/android/RemoteStatusBar.kt"
+  ],
+  "Pair your Turn Touch": [
+    "app/src/main/java/com/turntouch/android/SettingsScreen.kt"
+  ],
+  "Pairing a new remote": [
+    "app/src/main/java/com/turntouch/android/RemotePairingScreen.kt"
+  ],
+  "Pairing pages": [
+    "app/src/main/java/com/turntouch/android/RemotePairingScreen.kt"
+  ],
+  "Pairing your Turn Touch": [
+    "app/src/main/java/com/turntouch/android/RemotePairingScreen.kt"
+  ],
+  "Panel IP address": [
+    "app/src/main/java/com/turntouch/android/MainActivity.kt"
+  ],
+  "Pastels": [
+    "app/src/main/java/com/turntouch/android/BindingOptions.kt"
+  ],
+  "Pause": [
+    "app/src/main/java/com/turntouch/android/NativeScreens.kt",
+    "catalog: TTModeSonosPause",
+    "catalog: TTModeBosePause",
+    "catalog: TTModeSpotifyPause"
+  ],
+  "Pause music": [
+    "catalog: TTModeMusicPause"
+  ],
+  "Phone": [
+    "catalog: Phone title"
+  ],
+  "Photo": [
+    "app/src/main/java/com/turntouch/android/NativeScreens.kt"
+  ],
+  "Photo saved": [
+    "app/src/main/java/com/turntouch/android/NativeScreens.kt"
+  ],
+  "Plank": [
+    "app/src/main/java/com/turntouch/android/NativeScreens.kt"
+  ],
+  "Play": [
+    "catalog: TTModeSonosPlay",
+    "catalog: TTModeBosePlay",
+    "catalog: TTModeSpotifyPlay"
+  ],
+  "Play music": [
+    "catalog: TTModeMusicPlay"
+  ],
+  "Play presentation": [
+    "catalog: TTModePresentationPlay"
+  ],
+  "Play/pause": [
+    "catalog: TTModeMusicPlayPause",
+    "catalog: TTModeSonosPlayPause",
+    "catalog: TTModeBosePlayPause",
+    "catalog: TTModeSpotifyPlayPause",
+    "catalog: TTModeVideoPause"
+  ],
+  "Pose duration (seconds)": [
+    "app/src/main/java/com/turntouch/android/MainActivity.kt"
+  ],
+  "Practice yoga and movement": [
+    "catalog: Yoga subtitle"
+  ],
+  "Presentation": [
+    "Application-owned display label",
+    "catalog: Presentation title"
+  ],
+  "Press a button on your Turn Touch to wake it, then connect.": [
+    "app/src/main/java/com/turntouch/android/MainActivity.kt"
+  ],
+  "Press all four buttons before the timer runs out.": [
+    "app/src/main/java/com/turntouch/android/BluetoothController.kt"
+  ],
+  "Press all four buttons to connect": [
+    "app/src/main/java/com/turntouch/android/RemotePairingScreen.kt"
+  ],
+  "Press all four buttons to pair": [
+    "Application-owned status or selector label; translated only at rendering, never in state comparisons."
+  ],
+  "Press and hold to change apps": [
+    "app/src/main/java/com/turntouch/android/RemotePairingScreen.kt"
+  ],
+  "Press the large round button on your Hue bridge. Turn Touch checks every 5 seconds and connects automatically.": [
+    "app/src/main/java/com/turntouch/android/ConnectionScreen.kt"
+  ],
+  "Press the link button": [
+    "app/src/main/java/com/turntouch/android/ConnectionScreen.kt"
+  ],
+  "Previous": [
+    "catalog: TTModeYogaPrevious"
+  ],
+  "Previous site": [
+    "catalog: TTModeNewsPreviousSite"
+  ],
+  "Previous slide": [
+    "catalog: TTModePresentationPreviousSlide"
+  ],
+  "Previous story": [
+    "catalog: TTModeNewsPreviousStory"
+  ],
+  "Previous track": [
+    "catalog: TTModeMusicPreviousTrack",
+    "catalog: TTModeSonosPreviousTrack",
+    "catalog: TTModeBosePreviousTrack",
+    "catalog: TTModeSpotifyPreviousTrack"
+  ],
+  "Privacy policy": [
+    "app/src/main/java/com/turntouch/android/SettingsScreen.kt"
+  ],
+  "Protocol (legacy or klap)": [
+    "app/src/main/java/com/turntouch/android/MainActivity.kt"
+  ],
+  "Pulsing circles": [
+    "app/src/main/java/com/turntouch/android/RemotePairingScreen.kt"
+  ],
+  "Put your favorite actions on the four buttons of your Turn Touch remote.\n\nPair a Turn Touch Bluetooth remote with your Android phone or tablet, then choose what each button does. Control compatible lights, adjust your music, and combine several actions into a single press.\n\nMAKE EACH BUTTON YOURS\n• Choose actions for single taps, double taps, and holds.\n• Use 12-action or 16-action layouts.\n• Run several actions from one button.\n• See your remote’s connection status and battery level.\n\nLIGHTS AND MUSIC\nConfigure compatible Philips Hue and Nanoleaf lights, select rooms and scenes, adjust brightness, or randomize Hue colors. Connect compatible Sonos speakers for music controls. Additional connection options include Govee, Kasa, WeMo, Bose, IFTTT, and custom HTTP commands; supported functions and setup requirements vary by device and service.\n\nBUILT FOR YOUR REMOTE\nA guided pairing flow and illustrated walkthrough help you get started. The app keeps listening for your paired remote in the background using Android’s connected-device service. Bluetooth range, permissions, and your phone’s battery settings affect availability.\n\nTry the offline demo to explore sample remote actions without hardware or an account. Demo commands are simulated and do not control real devices.\n\nA Turn Touch remote is required for physical-button control and is sold separately. Compatible smart-home hardware, local network access, and sometimes a third-party account or API key are needed for integrations. This app does not provide Apple HomeKit, Google Home, Nest, or remote firmware updates.\n\nNo Turn Touch account, ads, or subscription is required.\n\nLearn more: https://turntouch.com\nSupport: samuel@turntouch.com": [
+    "Store full-description; maximum=4000 characters"
+  ],
+  "REMOTES": [
+    "app/src/main/java/com/turntouch/android/SettingsScreen.kt"
+  ],
+  "Raise brightness": [
+    "catalog: TTModeHueRaiseBrightness",
+    "catalog: TTModeNanoleafRaiseBrightness"
+  ],
+  "Raise saturation": [
+    "catalog: TTModeHueRaiseSaturation"
+  ],
+  "Raise temp": [
+    "catalog: TTModeNestRaiseTemp"
+  ],
+  "Random": [
+    "catalog: TTModeHueRandom"
+  ],
+  "Ready": [
+    "app/src/main/java/com/turntouch/android/Models.kt",
+    "app/src/main/java/com/turntouch/android/NativeScreens.kt"
+  ],
+  "Record": [
+    "app/src/main/java/com/turntouch/android/NativeScreens.kt"
+  ],
+  "Recording…": [
+    "app/src/main/java/com/turntouch/android/NativeScreens.kt"
+  ],
+  "Refresh effects": [
+    "app/src/main/java/com/turntouch/android/BindingOptions.kt"
+  ],
+  "Refresh rooms and scenes": [
+    "app/src/main/java/com/turntouch/android/BindingOptions.kt"
+  ],
+  "Relax": [
+    "app/src/main/java/com/turntouch/android/OfflineDemo.kt"
+  ],
+  "Remote buttons: {0} of 4 confirmed": [
+    "app/src/main/java/com/turntouch/android/RemotePairingScreen.kt"
+  ],
+  "Remote connection": [
+    "app/src/main/java/com/turntouch/android/BluetoothController.kt"
+  ],
+  "Remote connection failed (Bluetooth {0}). Wake it and try again.": [
+    "app/src/main/java/com/turntouch/android/BluetoothController.kt"
+  ],
+  "Remote setup timed out. Try connecting again.": [
+    "app/src/main/java/com/turntouch/android/BluetoothController.kt"
+  ],
+  "Remote status bar": [
+    "app/src/main/java/com/turntouch/android/RemoteStatusBar.kt"
+  ],
+  "Remote write failed ({0})": [
+    "app/src/main/java/com/turntouch/android/BluetoothController.kt"
+  ],
+  "Remove action {0}": [
+    "app/src/main/java/com/turntouch/android/MainActivity.kt"
+  ],
+  "Rename": [
+    "app/src/main/java/com/turntouch/android/MainActivity.kt"
+  ],
+  "Rename remote": [
+    "app/src/main/java/com/turntouch/android/RemoteStatusBar.kt"
+  ],
+  "Request body": [
+    "app/src/main/java/com/turntouch/android/MainActivity.kt"
+  ],
+  "Rest": [
+    "app/src/main/java/com/turntouch/android/NativeScreens.kt"
+  ],
+  "Rewind": [
+    "catalog: TTModeVideoRewind"
+  ],
+  "Room": [
+    "Application-owned status or selector label; translated only at rendering, never in state comparisons."
+  ],
+  "Run actions from the screen": [
+    "app/src/main/java/com/turntouch/android/SettingsScreen.kt"
+  ],
+  "SINGLE TAP": [
+    "app/src/main/java/com/turntouch/android/MainActivity.kt"
+  ],
+  "Same": [
+    "app/src/main/java/com/turntouch/android/BindingOptions.kt"
+  ],
+  "Sample devices · no real commands": [
+    "app/src/main/java/com/turntouch/android/OfflineDemo.kt"
+  ],
+  "Sample light {0}, color {1}, brightness {2} percent": [
+    "app/src/main/java/com/turntouch/android/OfflineDemo.kt"
+  ],
+  "Sample light: {0}": [
+    "app/src/main/java/com/turntouch/android/OfflineDemo.kt"
+  ],
+  "Sample living room": [
+    "app/src/main/java/com/turntouch/android/OfflineDemo.kt"
+  ],
+  "Sample remote": [
+    "app/src/main/java/com/turntouch/android/RemoteStatusBar.kt"
+  ],
+  "Sample speaker: {0} · {1}%": [
+    "app/src/main/java/com/turntouch/android/OfflineDemo.kt"
+  ],
+  "Sample {0}": [
+    "app/src/main/java/com/turntouch/android/OfflineDemo.kt"
+  ],
+  "Saturation": [
+    "app/src/main/java/com/turntouch/android/BindingOptions.kt"
+  ],
+  "Save": [
+    "app/src/main/java/com/turntouch/android/ConnectionScreen.kt",
+    "app/src/main/java/com/turntouch/android/MainActivity.kt",
+    "app/src/main/java/com/turntouch/android/RemoteStatusBar.kt"
+  ],
+  "Saved setup": [
+    "app/src/main/java/com/turntouch/android/SettingsScreen.kt"
+  ],
+  "Scanning for remotes": [
+    "app/src/main/java/com/turntouch/android/RemotePairingScreen.kt"
+  ],
+  "Scene": [
+    "Application-owned status or selector label; translated only at rendering, never in state comparisons."
+  ],
+  "Scene ID": [
+    "app/src/main/java/com/turntouch/android/MainActivity.kt"
+  ],
+  "Scenes to cycle": [
+    "app/src/main/java/com/turntouch/android/BindingOptions.kt"
+  ],
+  "Screen taps edit your buttons": [
+    "app/src/main/java/com/turntouch/android/SettingsScreen.kt"
+  ],
+  "Screen taps perform actions": [
+    "app/src/main/java/com/turntouch/android/SettingsScreen.kt"
+  ],
+  "Scroll down": [
+    "catalog: TTModeNewsScrollDown",
+    "catalog: TTModeWebScrollDown"
+  ],
+  "Scroll up": [
+    "catalog: TTModeNewsScrollUp",
+    "catalog: TTModeWebScrollUp"
+  ],
+  "Search again": [
+    "app/src/main/java/com/turntouch/android/ConnectionScreen.kt"
+  ],
+  "Searching for remotes": [
+    "app/src/main/java/com/turntouch/android/RemotePairingScreen.kt"
+  ],
+  "Searching for remotes...": [
+    "app/src/main/java/com/turntouch/android/RemotePairingScreen.kt"
+  ],
+  "Searching your Wi-Fi network…": [
+    "app/src/main/java/com/turntouch/android/ConnectionScreen.kt"
+  ],
+  "Selected {0}": [
+    "app/src/main/java/com/turntouch/android/ConnectionScreen.kt"
+  ],
+  "Set temperature": [
+    "catalog: TTModeNestSetTemp"
+  ],
+  "Set up connection": [
+    "app/src/main/java/com/turntouch/android/SettingsScreen.kt"
+  ],
+  "Set {0} in connection options first.": [
+    "app/src/main/java/com/turntouch/android/Integrations.kt"
+  ],
+  "Settings": [
+    "app/src/main/java/com/turntouch/android/MainActivity.kt",
+    "app/src/main/java/com/turntouch/android/SettingsScreen.kt"
+  ],
+  "Settings for {0}": [
+    "app/src/main/java/com/turntouch/android/RemoteStatusBar.kt"
+  ],
+  "Settings popover": [
+    "app/src/main/java/com/turntouch/android/SettingsScreen.kt"
+  ],
+  "Shift color left": [
+    "catalog: TTModeHueShiftColorLeft"
+  ],
+  "Shift color right": [
+    "catalog: TTModeHueShiftColorRight"
+  ],
+  "Shoot photos and videos": [
+    "catalog: Camera subtitle"
+  ],
+  "Show all apps": [
+    "app/src/main/java/com/turntouch/android/SettingsScreen.kt"
+  ],
+  "Show fewer apps": [
+    "app/src/main/java/com/turntouch/android/SettingsScreen.kt"
+  ],
+  "Show me how it works": [
+    "app/src/main/java/com/turntouch/android/RemotePairingScreen.kt"
+  ],
+  "Simulate connection": [
+    "app/src/main/java/com/turntouch/android/OfflineDemo.kt"
+  ],
+  "Simulated connection ready": [
+    "app/src/main/java/com/turntouch/android/OfflineDemo.kt"
+  ],
+  "Simulated: {0} · {1}": [
+    "app/src/main/java/com/turntouch/android/OfflineDemo.kt"
+  ],
+  "Single tap": [
+    "Application-owned status or selector label; translated only at rendering, never in state comparisons.",
+    "app/src/main/java/com/turntouch/android/MainActivity.kt"
+  ],
+  "Single tap actions": [
+    "app/src/main/java/com/turntouch/android/MainActivity.kt"
+  ],
+  "Single tap, double tap, and hold": [
+    "app/src/main/java/com/turntouch/android/SettingsScreen.kt"
+  ],
+  "Single tap, double tap, and hold\n= twelve different actions": [
+    "app/src/main/java/com/turntouch/android/RemotePairingScreen.kt"
+  ],
+  "Sleep": [
+    "catalog: TTModeHueSleep",
+    "catalog: TTModeNanoleafSleep"
+  ],
+  "Smart lights and devices": [
+    "catalog: Govee subtitle"
+  ],
+  "Smart plugs and switches": [
+    "catalog: Kasa subtitle"
+  ],
+  "Smart power meter and outlet": [
+    "catalog: Wemo subtitle"
+  ],
+  "Snooze": [
+    "catalog: TTModeAlarmSnooze"
+  ],
+  "Sonos": [
+    "catalog: Sonos title"
+  ],
+  "South": [
+    "app/src/main/java/com/turntouch/android/Models.kt"
+  ],
+  "Speaker did not return volume": [
+    "app/src/main/java/com/turntouch/android/Integrations.kt"
+  ],
+  "Spotify": [
+    "catalog: Spotify title"
+  ],
+  "Start": [
+    "app/src/main/java/com/turntouch/android/NativeScreens.kt"
+  ],
+  "Start playback in your music app. Turn Touch controls Android’s active media session and volume.": [
+    "app/src/main/java/com/turntouch/android/ConnectionScreen.kt"
+  ],
+  "Stop": [
+    "app/src/main/java/com/turntouch/android/NativeScreens.kt"
+  ],
+  "Stop alarm": [
+    "catalog: TTModeAlarmStop"
+  ],
+  "Strong": [
+    "app/src/main/java/com/turntouch/android/BindingOptions.kt"
+  ],
+  "Sunset": [
+    "app/src/main/java/com/turntouch/android/OfflineDemo.kt"
+  ],
+  "Switch flash": [
+    "catalog: TTModeCameraSwitchFlash"
+  ],
+  "Switch photo/video": [
+    "catalog: TTModeCameraSwitchPhotoVideo"
+  ],
+  "Switched to {0}": [
+    "app/src/main/java/com/turntouch/android/Models.kt"
+  ],
+  "System-level controls": [
+    "catalog: Phone subtitle"
+  ],
+  "TP-Link Kasa": [
+    "catalog: Kasa title"
+  ],
+  "TP-Link email (KLAP)": [
+    "app/src/main/java/com/turntouch/android/MainActivity.kt"
+  ],
+  "TP-Link password (KLAP)": [
+    "app/src/main/java/com/turntouch/android/MainActivity.kt"
+  ],
+  "Take photo": [
+    "app/src/main/java/com/turntouch/android/NativeScreens.kt",
+    "catalog: TTModeCameraShoot"
+  ],
+  "Tap a button in the app to change its actions. Use Change to choose an app and connect your devices.": [
+    "app/src/main/java/com/turntouch/android/RemotePairingScreen.kt"
+  ],
+  "Tap a button to change its action": [
+    "app/src/main/java/com/turntouch/android/MainActivity.kt"
+  ],
+  "Tap a button to perform its action": [
+    "app/src/main/java/com/turntouch/android/MainActivity.kt"
+  ],
+  "Tap a remote button to try an action": [
+    "app/src/main/java/com/turntouch/android/OfflineDemo.kt"
+  ],
+  "That worked perfectly": [
+    "app/src/main/java/com/turntouch/android/RemotePairingScreen.kt"
+  ],
+  "That's all there is to it": [
+    "app/src/main/java/com/turntouch/android/RemotePairingScreen.kt"
+  ],
+  "The device rejected the request.": [
+    "app/src/main/java/com/turntouch/android/BindingOptions.kt"
+  ],
+  "The device returned an unexpected response.": [
+    "app/src/main/java/com/turntouch/android/BindingOptions.kt"
+  ],
+  "There are batch actions and double-tap actions, all configurable in this app": [
+    "app/src/main/java/com/turntouch/android/RemotePairingScreen.kt"
+  ],
+  "This device does not expose the Turn Touch button service.": [
+    "app/src/main/java/com/turntouch/android/BluetoothController.kt"
+  ],
+  "This is an offline preview. In normal mode, connect your own remote and supported devices. No account, Bluetooth, Wi-Fi, camera, or media access is used by demo actions.": [
+    "app/src/main/java/com/turntouch/android/OfflineDemo.kt"
+  ],
+  "This page does not expose that control": [
+    "app/src/main/java/com/turntouch/android/NativeScreens.kt"
+  ],
+  "Three ways to press each button": [
+    "app/src/main/java/com/turntouch/android/RemotePairingScreen.kt"
+  ],
+  "Toggle device": [
+    "catalog: TTModeWemoDeviceToggle",
+    "catalog: TTModeKasaDeviceToggle",
+    "catalog: TTModeGoveeDeviceToggle"
+  ],
+  "Toggle on/off": [
+    "catalog: TTModeNanoleafToggle"
+  ],
+  "Toggle slides": [
+    "catalog: TTModePresentationToggleSlides"
+  ],
+  "Triangle": [
+    "app/src/main/java/com/turntouch/android/NativeScreens.kt"
+  ],
+  "Trigger action": [
+    "catalog: TTModeIftttTriggerAction"
+  ],
+  "Trigger effect": [
+    "catalog: TTModeNanoleafSceneCustom"
+  ],
+  "TriggerScene": [
+    "catalog: TTModeHomeKitTriggerScene"
+  ],
+  "Try again": [
+    "app/src/main/java/com/turntouch/android/BindingOptions.kt",
+    "app/src/main/java/com/turntouch/android/MainActivity.kt",
+    "app/src/main/java/com/turntouch/android/RemotePairingScreen.kt"
+  ],
+  "Try buttons": [
+    "app/src/main/java/com/turntouch/android/OfflineDemo.kt"
+  ],
+  "Try connecting again": [
+    "app/src/main/java/com/turntouch/android/RemoteStatusBar.kt"
+  ],
+  "Try offline demo": [
+    "app/src/main/java/com/turntouch/android/RemotePairingScreen.kt",
+    "app/src/main/java/com/turntouch/android/SettingsScreen.kt"
+  ],
+  "Turn Touch": [
+    "Store title; maximum=30 characters",
+    "app/src/main/java/com/turntouch/android/BluetoothController.kt"
+  ],
+  "Turn Touch for Android · {0}": [
+    "app/src/main/java/com/turntouch/android/SettingsScreen.kt"
+  ],
+  "Turn Touch for Android — Privacy Policy\nEffective October 16, 2026\n\nTurn Touch for Android connects your Turn Touch Bluetooth remote to actions you configure on your phone or tablet. You do not need a Turn Touch account to use the app.\n\nInformation on your device\n\nRemote names, Bluetooth addresses, battery readings, button assignments, and connection settings are stored on your device. Integration credentials are encrypted with an Android Keystore key. Automatic Android backup is disabled. The app keeps recent connection and action diagnostics locally; it does not send them to Turn Touch.\n\nConnections you choose\n\nThe app sends commands to the smart-home devices and services you configure. These may include Hue, Nanoleaf, Sonos, Govee, Kasa, WeMo, Bose, IFTTT, and your own HTTP endpoints. Depending on the integration, commands travel over your local network or to a provider's cloud service. Requests may include device identifiers, authentication credentials, action settings, or webhook values you provide. These providers handle requests under their own privacy policies. Some local devices use unencrypted HTTP or local network protocols; use them only on a trusted network.\n\nWeb content\n\nPages you open inside the app connect directly to those websites. They may use cookies and receive your IP address, browser information, and any information you enter. Their privacy policies apply. Turn Touch does not receive your browsing content.\n\nPermissions and media\n\nNearby-device permissions allow Bluetooth discovery and connection. Android 11 and earlier require location permission for Bluetooth scanning; Turn Touch does not obtain GPS location. A foreground-service notification keeps a paired remote available while the app is in the background. Camera permission is optional and used only for the camera feature. Photos and silent videos you capture are saved to your device's media library, not uploaded by Turn Touch. The app can also adjust media volume and send alarm requests to your selected alarm app.\n\nNo advertising or analytics\n\nTurn Touch for Android includes no advertising, analytics, tracking, or automatic crash-reporting SDK. We do not sell your information or receive a copy of your remote configuration, credentials, or captured media.\n\nYour choices\n\nYou can remove paired remotes, change integration settings, and revoke permissions in Android Settings. Clearing the app's storage or uninstalling it removes its saved configuration and credentials. Photos and videos saved to your media library remain until you delete them there. Any data sent to a third-party service is subject to that provider's retention and deletion controls.\n\nChildren\n\nThis app is intended for a general audience and is not directed to children under 13. Turn Touch does not knowingly collect children's personal information through this Android app.\n\nChanges and contact\n\nThis policy applies to Turn Touch for Android version 1.0. We will update the policy if the app's data practices change. For privacy questions, contact samuel@turntouch.com.\n": [
+    "privacy.txt"
+  ],
+  "Turn off": [
+    "catalog: TTModeNanoleafTurnOff",
+    "catalog: TTModeWemoDeviceOff",
+    "catalog: TTModeKasaDeviceOff",
+    "catalog: TTModeGoveeDeviceOff"
+  ],
+  "Turn on": [
+    "catalog: TTModeNanoleafTurnOn",
+    "catalog: TTModeWemoDeviceStart",
+    "catalog: TTModeKasaDeviceOn",
+    "catalog: TTModeGoveeDeviceOn"
+  ],
+  "Turn on Bluetooth to connect.": [
+    "app/src/main/java/com/turntouch/android/BluetoothController.kt"
+  ],
+  "Turn on Bluetooth to find your remotes.": [
+    "app/src/main/java/com/turntouch/android/BluetoothController.kt",
+    "app/src/main/java/com/turntouch/android/BluetoothController.kt"
+  ],
+  "URL": [
+    "app/src/main/java/com/turntouch/android/MainActivity.kt"
+  ],
+  "Uh Oh...": [
+    "app/src/main/java/com/turntouch/android/RemotePairingScreen.kt"
+  ],
+  "Unable to read remote services ({0})": [
+    "app/src/main/java/com/turntouch/android/BluetoothController.kt"
+  ],
+  "Use a name of 1–20 UTF-8 bytes.": [
+    "app/src/main/java/com/turntouch/android/BluetoothController.kt"
+  ],
+  "Use your remote to move through poses or adjust the time.": [
+    "app/src/main/java/com/turntouch/android/NativeScreens.kt"
+  ],
+  "Value 1": [
+    "app/src/main/java/com/turntouch/android/MainActivity.kt"
+  ],
+  "Value 2": [
+    "app/src/main/java/com/turntouch/android/MainActivity.kt"
+  ],
+  "Value 3": [
+    "app/src/main/java/com/turntouch/android/MainActivity.kt"
+  ],
+  "Video": [
+    "Application-owned display label",
+    "app/src/main/java/com/turntouch/android/NativeScreens.kt",
+    "catalog: Video title"
+  ],
+  "Video could not be saved ({0})": [
+    "app/src/main/java/com/turntouch/android/NativeScreens.kt"
+  ],
+  "Video saved": [
+    "app/src/main/java/com/turntouch/android/NativeScreens.kt"
+  ],
+  "Volume (0–100)": [
+    "app/src/main/java/com/turntouch/android/BindingOptions.kt"
+  ],
+  "Volume down": [
+    "catalog: TTModePhoneVolumeDown",
+    "catalog: TTModeMusicVolumeDown",
+    "catalog: TTModeSonosVolumeDown",
+    "catalog: TTModeBoseVolumeDown",
+    "catalog: TTModeSpotifyVolumeDown",
+    "catalog: TTModeAlarmVolumeDown",
+    "catalog: TTModeAirfoilVolumeDown",
+    "catalog: TTModeVideoVolumeDown",
+    "catalog: TTModePresentationVolumeDown"
+  ],
+  "Volume jump": [
+    "catalog: TTModeAirfoilVolumeJump"
+  ],
+  "Volume up": [
+    "catalog: TTModePhoneVolumeUp",
+    "catalog: TTModeMusicVolumeUp",
+    "catalog: TTModeSonosVolumeUp",
+    "catalog: TTModeBoseVolumeUp",
+    "catalog: TTModeSpotifyVolumeUp",
+    "catalog: TTModeAlarmVolumeUp",
+    "catalog: TTModeAirfoilVolumeUp",
+    "catalog: TTModeVideoVolumeUp",
+    "catalog: TTModePresentationVolumeUp"
+  ],
+  "Waiting for the button…": [
+    "app/src/main/java/com/turntouch/android/ConnectionScreen.kt",
+    "app/src/main/java/com/turntouch/android/ConnectionScreen.kt"
+  ],
+  "Waiting for your remote to return. Press a button to wake it.": [
+    "app/src/main/java/com/turntouch/android/BluetoothController.kt"
+  ],
+  "Waiting for {0}. Check that it’s on the same Wi-Fi network.": [
+    "app/src/main/java/com/turntouch/android/ConnectionScreen.kt"
+  ],
+  "Warrior I": [
+    "app/src/main/java/com/turntouch/android/NativeScreens.kt"
+  ],
+  "Warrior II": [
+    "app/src/main/java/com/turntouch/android/NativeScreens.kt"
+  ],
+  "Web": [
+    "Application-owned display label",
+    "catalog: Web title"
+  ],
+  "Webhook key": [
+    "app/src/main/java/com/turntouch/android/MainActivity.kt"
+  ],
+  "Website or presentation URL": [
+    "app/src/main/java/com/turntouch/android/NativeScreens.kt"
+  ],
+  "Welcome to Turn Touch": [
+    "app/src/main/java/com/turntouch/android/Localization.kt",
+    "app/src/main/java/com/turntouch/android/RemotePairingScreen.kt"
+  ],
+  "Wemo": [
+    "catalog: Wemo title"
+  ],
+  "West": [
+    "app/src/main/java/com/turntouch/android/Models.kt"
+  ],
+  "Yoga": [
+    "catalog: Yoga title"
+  ],
+  "Your favorite actions, one touch away": [
+    "Store screenshot-caption; maximum=100 characters"
+  ],
+  "Your home at your command.": [
+    "catalog: HomeKit subtitle"
+  ],
+  "Your remote has been paired": [
+    "app/src/main/java/com/turntouch/android/RemotePairingScreen.kt"
+  ],
+  "Your remote has four buttons": [
+    "app/src/main/java/com/turntouch/android/RemotePairingScreen.kt"
+  ],
+  "Your remotes": [
+    "app/src/main/java/com/turntouch/android/MainActivity.kt"
+  ],
+  "connected": [
+    "app/src/main/java/com/turntouch/android/RemoteStatusBar.kt"
+  ],
+  "connecting": [
+    "app/src/main/java/com/turntouch/android/RemoteStatusBar.kt",
+    "app/src/main/java/com/turntouch/android/RemoteStatusBar.kt"
+  ],
+  "connection failed": [
+    "app/src/main/java/com/turntouch/android/RemoteStatusBar.kt"
+  ],
+  "disconnected": [
+    "app/src/main/java/com/turntouch/android/RemoteStatusBar.kt"
+  ],
+  "double": [
+    "Application-owned display label"
+  ],
+  "east": [
+    "Application-owned display label"
+  ],
+  "hold": [
+    "Application-owned display label"
+  ],
+  "north": [
+    "Application-owned display label"
+  ],
+  "pairing": [
+    "app/src/main/java/com/turntouch/android/RemoteStatusBar.kt"
+  ],
+  "simulated": [
+    "app/src/main/java/com/turntouch/android/RemoteStatusBar.kt"
+  ],
+  "single": [
+    "Application-owned display label"
+  ],
+  "south": [
+    "Application-owned display label"
+  ],
+  "west": [
+    "Application-owned display label"
+  ],
+  "{0} button": [
+    "app/src/main/java/com/turntouch/android/MainActivity.kt"
+  ],
+  "{0} button options": [
+    "app/src/main/java/com/turntouch/android/BindingOptions.kt"
+  ],
+  "{0} options": [
+    "app/src/main/java/com/turntouch/android/ConnectionScreen.kt",
+    "app/src/main/java/com/turntouch/android/MainActivity.kt"
+  ],
+  "{0} seconds remaining to pair": [
+    "app/src/main/java/com/turntouch/android/RemotePairingScreen.kt"
+  ],
+  "{0} selector": [
+    "app/src/main/java/com/turntouch/android/BindingOptions.kt"
+  ],
+  "{0} · {1} dBm{2}{3}": [
+    "app/src/main/java/com/turntouch/android/MainActivity.kt"
+  ]
+}

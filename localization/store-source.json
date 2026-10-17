@@ -1,0 +1,18 @@
+{
+  "title": {
+    "text": "Turn Touch",
+    "maximum": 30
+  },
+  "short-description": {
+    "text": "Make your Turn Touch remote control lights, music, and everyday actions.",
+    "maximum": 80
+  },
+  "full-description": {
+    "text": "Put your favorite actions on the four buttons of your Turn Touch remote.\n\nPair a Turn Touch Bluetooth remote with your Android phone or tablet, then choose what each button does. Control compatible lights, adjust your music, and combine several actions into a single press.\n\nMAKE EACH BUTTON YOURS\n• Choose actions for single taps, double taps, and holds.\n• Use 12-action or 16-action layouts.\n• Run several actions from one button.\n• See your remote’s connection status and battery level.\n\nLIGHTS AND MUSIC\nConfigure compatible Philips Hue and Nanoleaf lights, select rooms and scenes, adjust brightness, or randomize Hue colors. Connect compatible Sonos speakers for music controls. Additional connection options include Govee, Kasa, WeMo, Bose, IFTTT, and custom HTTP commands; supported functions and setup requirements vary by device and service.\n\nBUILT FOR YOUR REMOTE\nA guided pairing flow and illustrated walkthrough help you get started. The app keeps listening for your paired remote in the background using Android’s connected-device service. Bluetooth range, permissions, and your phone’s battery settings affect availability.\n\nTry the offline demo to explore sample remote actions without hardware or an account. Demo commands are simulated and do not control real devices.\n\nA Turn Touch remote is required for physical-button control and is sold separately. Compatible smart-home hardware, local network access, and sometimes a third-party account or API key are needed for integrations. This app does not provide Apple HomeKit, Google Home, Nest, or remote firmware updates.\n\nNo Turn Touch account, ads, or subscription is required.\n\nLearn more: https://turntouch.com\nSupport: samuel@turntouch.com",
+    "maximum": 4000
+  },
+  "screenshot-caption": {
+    "text": "Your favorite actions, one touch away",
+    "maximum": 100
+  }
+}

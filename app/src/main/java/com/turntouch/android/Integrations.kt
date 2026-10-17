@@ -12,7 +12,7 @@ import java.io.*
 
 object Network {
     fun request(url: String,method: String="GET",body: String?=null,headers: Map<String,String> = emptyMap()): String {
-        val uri=URI(url); require(uri.scheme in listOf("http","https")) { "Enter an http:// or https:// address." }
+        val uri=URI(url); require(uri.scheme in listOf("http","https")) { tr("Enter an http:// or https:// address.") }
         val c=uri.toURL().openConnection() as HttpURLConnection
         c.connectTimeout=5000; c.readTimeout=7000; c.requestMethod=method; c.instanceFollowRedirects=false
         headers.forEach { (k,v)->c.setRequestProperty(k,v) }
@@ -21,7 +21,7 @@ object Network {
             val code=c.responseCode
             val stream=if(code in 200..299)c.inputStream else c.errorStream
             val text=stream?.bufferedReader()?.use { it.readText() } ?: ""
-            check(code in 200..299) { "Device returned HTTP $code" }
+            check(code in 200..299) { tr("Device returned HTTP {0}", code) }
             return text
         } finally { c.disconnect() }
     }
@@ -35,7 +35,7 @@ object Network {
     fun kasa(host: String,command: String): JSONObject {
         Socket().use { s -> s.connect(InetSocketAddress(host,9999),4000); s.soTimeout=5000
             val payload=kasaCrypt(command.toByteArray()); DataOutputStream(s.getOutputStream()).apply { writeInt(payload.size); write(payload); flush() }
-            val input=DataInputStream(s.getInputStream()); val size=input.readInt(); require(size in 1..1048576) { "Invalid Kasa response" }; val bytes=ByteArray(size); input.readFully(bytes); return JSONObject(kasaCrypt(bytes,true).toString(Charsets.UTF_8)) }
+            val input=DataInputStream(s.getInputStream()); val size=input.readInt(); require(size in 1..1048576) { tr("Invalid Kasa response") }; val bytes=ByteArray(size); input.readFully(bytes); return JSONObject(kasaCrypt(bytes,true).toString(Charsets.UTF_8)) }
     }
 }
 class ActionExecutor(private val app: AppState) {
@@ -52,7 +52,7 @@ class ActionExecutor(private val app: AppState) {
             val action=binding.action.removePrefix("TTMode${binding.mode}")
             when(binding.mode) {
                 "Phone","Music","Spotify","Airfoil" -> media(action,config)
-                "Camera","Yoga","Web","News","Presentation","Video" -> { val handler=nativeAction ?: error("Open Turn Touch to use ${binding.mode}."); handler(binding) }
+                "Camera","Yoga","Web","News","Presentation","Video" -> { val handler=nativeAction ?: error(tr("Open Turn Touch to use {0}.", binding.mode)); handler(binding) }
                 "AlarmClock" -> alarm(action)
                 else -> withContext(Dispatchers.IO) { network(binding.mode,action,config) }
             }
@@ -66,7 +66,7 @@ class ActionExecutor(private val app: AppState) {
             "VolumeMute","Mute" -> audio.adjustStreamVolume(AudioManager.STREAM_MUSIC,AudioManager.ADJUST_TOGGLE_MUTE,AudioManager.FLAG_SHOW_UI)
             "VolumeJump" -> audio.setStreamVolume(AudioManager.STREAM_MUSIC,((c["volume"]?.toIntOrNull() ?: 50).coerceIn(0,100)*audio.getStreamMaxVolume(AudioManager.STREAM_MUSIC)/100),AudioManager.FLAG_SHOW_UI)
             else -> {
-                val code=when(action) { "PlayPause","PauseToggle"->KeyEvent.KEYCODE_MEDIA_PLAY_PAUSE; "Play"->KeyEvent.KEYCODE_MEDIA_PLAY; "Pause"->KeyEvent.KEYCODE_MEDIA_PAUSE; "NextTrack"->KeyEvent.KEYCODE_MEDIA_NEXT; "PreviousTrack"->KeyEvent.KEYCODE_MEDIA_PREVIOUS; else->error("Choose a supported media action") }
+                val code=when(action) { "PlayPause","PauseToggle"->KeyEvent.KEYCODE_MEDIA_PLAY_PAUSE; "Play"->KeyEvent.KEYCODE_MEDIA_PLAY; "Pause"->KeyEvent.KEYCODE_MEDIA_PAUSE; "NextTrack"->KeyEvent.KEYCODE_MEDIA_NEXT; "PreviousTrack"->KeyEvent.KEYCODE_MEDIA_PREVIOUS; else->error(tr("Choose a supported media action")) }
                 audio.dispatchMediaKeyEvent(KeyEvent(KeyEvent.ACTION_DOWN,code)); audio.dispatchMediaKeyEvent(KeyEvent(KeyEvent.ACTION_UP,code))
             }
         }
@@ -75,7 +75,7 @@ class ActionExecutor(private val app: AppState) {
         val intent=Intent(when { action.endsWith("Snooze")->AlarmClock.ACTION_SNOOZE_ALARM; action.endsWith("Stop")->AlarmClock.ACTION_DISMISS_ALARM; else->AlarmClock.ACTION_SHOW_ALARMS }).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
         context.startActivity(intent)
     }
-    private fun required(c: Map<String,String>,key: String)=c[key]?.takeIf { it.isNotBlank() } ?: error("Set $key in connection options first.")
+    private fun required(c: Map<String,String>,key: String)=c[key]?.takeIf { it.isNotBlank() } ?: error(tr("Set {0} in connection options first.", key))
     private fun host(c: Map<String,String>,port: Int?=null): String { val value=required(c,"host").trim().trimEnd('/'); return if(value.startsWith("http"))value else "http://$value${port?.let { if(':' !in value)":$it" else "" } ?: ""}" }
     private fun network(mode: String,action: String,c: Map<String,String>) {
         when(mode) {
@@ -96,13 +96,13 @@ class ActionExecutor(private val app: AppState) {
                 val old=Network.kasa(hostname,"""{"system":{"get_sysinfo":{}}}""").getJSONObject("system").getJSONObject("get_sysinfo").getInt("relay_state")
                 val on=if(action=="DeviceToggle")1-old else if(action=="DeviceOn")1 else 0
                 val result=Network.kasa(hostname,"""{"system":{"set_relay_state":{"state":$on}}}""")
-                check(result.getJSONObject("system").getJSONObject("set_relay_state").optInt("err_code",-1)==0) { "Kasa rejected the command" }
+                check(result.getJSONObject("system").getJSONObject("set_relay_state").optInt("err_code",-1)==0) { tr("Kasa rejected the command") }
             }
             "Govee" -> govee(action,c)
             "Bose" -> bose(action,c)
-            "HomeKit" -> error("Apple HomeKit is not available on Android. A home-scene bridge is required.")
-            "Nest" -> error("Nest requires a Google Device Access project and OAuth setup.")
-            else -> error("Connection not configured")
+            "HomeKit" -> error(tr("Apple HomeKit is not available on Android. A home-scene bridge is required."))
+            "Nest" -> error(tr("Nest requires a Google Device Access project and OAuth setup."))
+            else -> error(tr("Connection not configured"))
         }
     }
     private fun hue(action: String,c: Map<String,String>) {
@@ -119,7 +119,7 @@ class ActionExecutor(private val app: AppState) {
             "SceneColorLoop" -> body.put("on",true).put("effect","colorloop")
             "CycleScenes" -> {
                 val scenes=c["scenes"].orEmpty().split('|').filter { it.isNotBlank() }
-                check(scenes.isNotEmpty()) { "Choose scenes in this button’s options first." }
+                check(scenes.isNotEmpty()) { tr("Choose scenes in this button’s options first.") }
                 val key=base+":"+group+":"+scenes.joinToString("|")
                 val index=sceneCycles[key] ?: 0
                 body.put("scene",scenes[index % scenes.size])
@@ -128,7 +128,7 @@ class ActionExecutor(private val app: AppState) {
             else -> body.put("scene",required(c,"scene"))
         }
         val result=JSONArray(Network.request("$base/groups/$group/action","PUT",body.toString()))
-        for(i in 0 until result.length())result.getJSONObject(i).optJSONObject("error")?.let { error(it.optString("description","Hue command failed")) }
+        for(i in 0 until result.length())result.getJSONObject(i).optJSONObject("error")?.let { error(it.optString("description",tr("Hue command failed"))) }
         if(action=="CycleScenes") {
             val key=base+":"+group+":"+c["scenes"]
             sceneCycles[key]=(sceneCycles[key] ?: 0)+1
@@ -151,7 +151,7 @@ class ActionExecutor(private val app: AppState) {
         if(action.startsWith("Volume")) {
             val channel=mapOf("Channel" to "Master")
             if(action=="VolumeMute") { val old=Network.tag(soap("RenderingControl","GetMute",channel),"CurrentMute"); soap("RenderingControl","SetMute",channel+("DesiredMute" to if(old=="1")"0" else "1")); return }
-            val old=Network.tag(soap("RenderingControl","GetVolume",channel),"CurrentVolume")?.toIntOrNull() ?: error("Speaker did not return volume")
+            val old=Network.tag(soap("RenderingControl","GetVolume",channel),"CurrentVolume")?.toIntOrNull() ?: error(tr("Speaker did not return volume"))
             val volume=when(action) { "VolumeUp"->old+3; "VolumeDown"->old-3; else->c["volume"]?.toIntOrNull() ?: 50 }.coerceIn(0,100)
             soap("RenderingControl","SetVolume",channel+("DesiredVolume" to "$volume"))
         } else {
@@ -183,13 +183,13 @@ class ActionExecutor(private val app: AppState) {
         val props=mutableMapOf<String,String>(); for(i in 0 until state.length()) { val p=state.getJSONObject(i); p.keys().forEach { props[it]=p.get(it).toString() } }
         val command=if(action.startsWith("Brightness"))JSONObject().put("name","brightness").put("value",((props["brightness"]?.toIntOrNull() ?: 50)+if(action.endsWith("Up"))10 else -10).coerceIn(0,100)) else JSONObject().put("name","turn").put("value",if(action=="DeviceOn" || action=="DeviceToggle" && props["powerState"]!="on")"on" else "off")
         val result=JSONObject(Network.request("https://developer-api.govee.com/v1/devices/control","PUT",JSONObject().put("device",device).put("model",model).put("cmd",command).toString(),headers))
-        check(result.optInt("code")==200) { result.optString("message","Govee rejected command") }
+        check(result.optInt("code")==200) { result.optString("message",tr("Govee rejected command")) }
     }
     suspend fun pair(mode: String,c: Map<String,String>): Map<String,String> = withContext(Dispatchers.IO) {
         when(mode) {
             "Hue" -> { val result=JSONArray(Network.request("${host(c)}/api","POST","""{"devicetype":"turntouch#android"}""")); val item=result.getJSONObject(0); item.optJSONObject("error")?.let { error(it.optString("description")) }; c+("token" to item.getJSONObject("success").getString("username")) }
             "Nanoleaf" -> c+("token" to JSONObject(Network.request("${host(c,16021)}/api/v1/new","POST","{}")).getString("auth_token"))
-            else -> error("Enter connection details for this app")
+            else -> error(tr("Enter connection details for this app"))
         }
     }
 }
