@@ -2,5 +2,6 @@
   "full-description": "将喜爱的操作分配给 Turn Touch 遥控器的四个按钮。\n\n将 Turn Touch 蓝牙遥控器与 Android 手机或平板电脑配对，然后选择每个按钮的功能。控制兼容灯具、调节音乐，还可通过一次按键执行多个操作。\n\n自定义每个按钮\n• 为单击、双击和长按选择操作。\n• 使用 12 操作或 16 操作布局。\n• 通过一个按钮执行多个操作。\n• 查看遥控器的连接状态和电量。\n\n灯光与音乐\n配置兼容的 Philips Hue 和 Nanoleaf 灯具，选择房间和场景，调节亮度，或随机切换 Hue 颜色。连接兼容的 Sonos 扬声器来控制音乐。其他连接选项包括 Govee、Kasa、WeMo、Bose、IFTTT 和自定义 HTTP 命令；支持的功能和设置要求因设备和服务而异。\n\n专为遥控器打造\n配对引导和图示教程可帮助您快速上手。应用会通过 Android 的已连接设备服务，在后台持续监听已配对的遥控器。蓝牙范围、权限和手机电池设置都会影响可用性。\n\n试用离线演示，无需硬件或账户即可探索遥控器操作示例。演示命令仅为模拟，不会控制真实设备。\n\n使用实体按键控制需要 Turn Touch 遥控器，需另行购买。集成服务需要兼容的智能家居硬件、局域网访问权限，有时还需要第三方账户或 API 密钥。本应用不提供 Apple HomeKit、Google Home、Nest 或遥控器固件更新。\n\n无需 Turn Touch 账户，无广告，无订阅。\n\n了解更多：https://turntouch.com\n支持：samuel@turntouch.com",
   "screenshot-caption": "喜爱的操作，一触即达",
   "short-description": "用 Turn Touch 遥控器控制灯光、音乐和日常操作。",
-  "title": "Turn Touch"
+  "title": "Turn Touch",
+  "whats-new": "Turn Touch 现已支持 21 种语言。首次打开应用时选择语言，也可在“设置”顶部的“语言”中更改。菜单、操作和设置均已翻译。“自动”会跟随设备语言，默认使用英语。"
 }

@@ -11,7 +11,7 @@ val releaseSigning = Properties().apply {
 android {
     namespace = "com.turntouch.android"
     compileSdk = 36
-    defaultConfig { applicationId = "com.turntouch.android"; minSdk = 26; targetSdk = 36; versionCode = 1; versionName = "1.0"; testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner" }
+    defaultConfig { applicationId = "com.turntouch.android"; minSdk = 26; targetSdk = 36; versionCode = 2; versionName = "1.1"; testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner" }
     signingConfigs {
         if (releaseSigningFile.isFile) create("upload") {
             storeFile = file(releaseSigning.getProperty("storeFile"))

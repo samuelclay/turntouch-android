@@ -46,7 +46,7 @@ class StoreScreenshotTest {
             rule.onNodeWithContentDescription(tr("Settings popover")).assertExists()
             capture("04-settings")
             rule.onNodeWithText(tr("How it works")).performScrollTo().performClick()
-            rule.onNodeWithText(tr("Here's how it works")).assertIsDisplayed()
+            rule.onAllNodesWithText(tr("Here's how it works")).onLast().assertIsDisplayed()
             capture("05-tutorial")
             rule.onNodeWithText(tr("Continue")).performClick()
             rule.onNodeWithText(tr("Each button performs an action")).assertIsDisplayed()

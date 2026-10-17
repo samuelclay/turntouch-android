@@ -1,0 +1,2533 @@
+{
+  "version": "1.1",
+  "assets": [
+    {
+      "language": "en",
+      "locale": "en-US",
+      "file": "store/en-US/images/featureGraphic.png",
+      "width": 1024,
+      "height": 500,
+      "sha256": "d3dcbdd2084d5596739ba1262b48e7b31be4cb83f1d3f83b1570bc64f94dd172"
+    },
+    {
+      "language": "en",
+      "locale": "en-US",
+      "file": "store/en-US/images/icon.png",
+      "width": 512,
+      "height": 512,
+      "sha256": "081f71aa9c47faa9168e4f0e17cb288d9d532c51098324f150c7745e5752e56a"
+    },
+    {
+      "language": "en",
+      "locale": "en-US",
+      "file": "store/en-US/images/phoneScreenshots/01-actions.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "a7ce15acdd05125f632356cb0cc7b154d675e02a30996e66f62ff68bcb2a144c"
+    },
+    {
+      "language": "en",
+      "locale": "en-US",
+      "file": "store/en-US/images/phoneScreenshots/02-button-actions.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "5a48adcf84446a6037dcbe64e52ac828e277503525264085bcbce65d28a18447"
+    },
+    {
+      "language": "en",
+      "locale": "en-US",
+      "file": "store/en-US/images/phoneScreenshots/03-action-picker.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "39163dcb433bd156c641bf9bf872b7500415ec8160bddce44210395772c26532"
+    },
+    {
+      "language": "en",
+      "locale": "en-US",
+      "file": "store/en-US/images/phoneScreenshots/04-settings.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "84786c956b44a42b16bc36b58e418c14acf5d0edf152160b1fd1b4d94ba8f0d0"
+    },
+    {
+      "language": "en",
+      "locale": "en-US",
+      "file": "store/en-US/images/phoneScreenshots/05-tutorial.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "b17729ff51d699e85d8fb79597f58356288b88afca2ff28fa089c1d00d74a6f6"
+    },
+    {
+      "language": "en",
+      "locale": "en-US",
+      "file": "store/en-US/images/phoneScreenshots/06-buttons.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "039dd763f5871e80fba3d228dfdaf13b822514df72dd264785942a15eac444c4"
+    },
+    {
+      "language": "en",
+      "locale": "en-US",
+      "file": "store/en-US/images/phoneScreenshots/07-apps.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "16b3c6d9af7dcec0c8aed3dd2b622426108912709b958f3dc54d736bc80f2da9"
+    },
+    {
+      "language": "en",
+      "locale": "en-US",
+      "file": "store/en-US/images/tenInchScreenshots/01-actions.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "ecad70288df1556f88301520effcdc675ce7e7b2dd5d224e6cc993657d74f47c"
+    },
+    {
+      "language": "en",
+      "locale": "en-US",
+      "file": "store/en-US/images/tenInchScreenshots/02-button-actions.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "6e4a8090ae20c9ce3714ade7e541695460b5d7264ea31bcb24ffc790f2f329a4"
+    },
+    {
+      "language": "en",
+      "locale": "en-US",
+      "file": "store/en-US/images/tenInchScreenshots/03-action-picker.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "60b3a66a3914c24d66bcb57ceb806052e04fbb4bd4f7186bb8eec208a6e59dda"
+    },
+    {
+      "language": "en",
+      "locale": "en-US",
+      "file": "store/en-US/images/tenInchScreenshots/04-settings.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "9d9f64810f37f66bdcfe56f3ea9fa73e84fcf8846c447812685f04ddf1e128e8"
+    },
+    {
+      "language": "en",
+      "locale": "en-US",
+      "file": "store/en-US/images/tenInchScreenshots/05-tutorial.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "c4002054a8d7b0b2b9985dd06f208ff679009d1bbf6497cfd8357e45d4b86748"
+    },
+    {
+      "language": "en",
+      "locale": "en-US",
+      "file": "store/en-US/images/tenInchScreenshots/06-buttons.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "1b459b96930d5c13dd7e65dab48daafb26393b5c5bb8845f8a78e34e1d0f333f"
+    },
+    {
+      "language": "en",
+      "locale": "en-US",
+      "file": "store/en-US/images/tenInchScreenshots/07-apps.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "a80e186a85a676891e90192a81976da51670a4be0deecdf179e9e5e37b5cf510"
+    },
+    {
+      "language": "es",
+      "locale": "es-ES",
+      "file": "store/es-ES/images/featureGraphic.png",
+      "width": 1024,
+      "height": 500,
+      "sha256": "aaf1a2aefcb7be78ee0caa60033ea66838f4ab82981505d6218113c7ac169752"
+    },
+    {
+      "language": "es",
+      "locale": "es-ES",
+      "file": "store/es-ES/images/phoneScreenshots/01-actions.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "dc4347abb2bc38cd53c2739580a4141cfebc485c12c5b8933c4f56f8ea76a303"
+    },
+    {
+      "language": "es",
+      "locale": "es-ES",
+      "file": "store/es-ES/images/phoneScreenshots/02-button-actions.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "a33a7179be95854af184748047eceae54340d727f04f78e100606da75e68a495"
+    },
+    {
+      "language": "es",
+      "locale": "es-ES",
+      "file": "store/es-ES/images/phoneScreenshots/03-action-picker.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "6127a4efbc865673e0995a14dfa8524facb6ffa56e497df0a78f5f69485f7969"
+    },
+    {
+      "language": "es",
+      "locale": "es-ES",
+      "file": "store/es-ES/images/phoneScreenshots/04-settings.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "4543c82687e39f1f185e39c0571dfbecaf5a0b4d3675285b232b839b4ed295fe"
+    },
+    {
+      "language": "es",
+      "locale": "es-ES",
+      "file": "store/es-ES/images/phoneScreenshots/05-tutorial.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "639bd6a9b9fb57a14b874094a26e1d966c9ec94d3c83d169f1077d185b2152bd"
+    },
+    {
+      "language": "es",
+      "locale": "es-ES",
+      "file": "store/es-ES/images/phoneScreenshots/06-buttons.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "a4bb2415b02f85bee2b21973031a1a9e2e10c8235bfa2755c7a6a72f72bb28fe"
+    },
+    {
+      "language": "es",
+      "locale": "es-ES",
+      "file": "store/es-ES/images/phoneScreenshots/07-apps.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "3df211fe21b5111852de13ebc3b60a16f5f538cbab3be3eda548c7180b9d0b95"
+    },
+    {
+      "language": "es",
+      "locale": "es-ES",
+      "file": "store/es-ES/images/tenInchScreenshots/01-actions.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "13cb017b6cb40be6c8521f3774ed18f8386567cd23dfd6bedf7bf9552f40fe91"
+    },
+    {
+      "language": "es",
+      "locale": "es-ES",
+      "file": "store/es-ES/images/tenInchScreenshots/02-button-actions.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "85255862ea8f701e5528fca05ebadfc1879387a07d21a8000fa3c6f81d13389e"
+    },
+    {
+      "language": "es",
+      "locale": "es-ES",
+      "file": "store/es-ES/images/tenInchScreenshots/03-action-picker.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "f403952219ee619042ebc747ad665e2b761cd10502fb09c6f7d4d9f45a8ffcb4"
+    },
+    {
+      "language": "es",
+      "locale": "es-ES",
+      "file": "store/es-ES/images/tenInchScreenshots/04-settings.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "867fcc142716c145533b31fcb399bacb533ac86b8956683a79b745359b55b09d"
+    },
+    {
+      "language": "es",
+      "locale": "es-ES",
+      "file": "store/es-ES/images/tenInchScreenshots/05-tutorial.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "ea421c67805f9bebb6f9b63a7dd27e346f3f87caa283fac2f736067a523c85c0"
+    },
+    {
+      "language": "es",
+      "locale": "es-ES",
+      "file": "store/es-ES/images/tenInchScreenshots/06-buttons.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "82144b08e253141715351efeeee0426fd5c43889a96ea40a4704bad11ca46b2c"
+    },
+    {
+      "language": "es",
+      "locale": "es-ES",
+      "file": "store/es-ES/images/tenInchScreenshots/07-apps.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "d563bfa5aaff2355270b9786c58cefbb056cdd42035b4e7d9e7223e0da188e53"
+    },
+    {
+      "language": "fr",
+      "locale": "fr-FR",
+      "file": "store/fr-FR/images/featureGraphic.png",
+      "width": 1024,
+      "height": 500,
+      "sha256": "5293aef2148f6806507c0532654b8eb929c6c3088ce88152496ab2e4e757d771"
+    },
+    {
+      "language": "fr",
+      "locale": "fr-FR",
+      "file": "store/fr-FR/images/phoneScreenshots/01-actions.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "0a6e35f76603b60290d252b8ebb99509e67bf0668bf18e56012fbc0e465806e2"
+    },
+    {
+      "language": "fr",
+      "locale": "fr-FR",
+      "file": "store/fr-FR/images/phoneScreenshots/02-button-actions.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "735e9c1816864927ff7476f291b62454105f8c71d008005db5742d62d4bb61cc"
+    },
+    {
+      "language": "fr",
+      "locale": "fr-FR",
+      "file": "store/fr-FR/images/phoneScreenshots/03-action-picker.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "000b5fe535abdee96965781bd3153c6389b4d6c34af8a0744305fb2bddc334d2"
+    },
+    {
+      "language": "fr",
+      "locale": "fr-FR",
+      "file": "store/fr-FR/images/phoneScreenshots/04-settings.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "8a7dba188b9353c4db7096a15b1eeadd32364a81f88287a2bef127a55f20a851"
+    },
+    {
+      "language": "fr",
+      "locale": "fr-FR",
+      "file": "store/fr-FR/images/phoneScreenshots/05-tutorial.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "125c74af1c2a6d8a3bf03c3320fecb161743a32b3524cc473e8e12bdaba8961a"
+    },
+    {
+      "language": "fr",
+      "locale": "fr-FR",
+      "file": "store/fr-FR/images/phoneScreenshots/06-buttons.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "57ac77ae98099a33eaf54ea4e88fba32ed2628ddd8c4149b745734af8509d059"
+    },
+    {
+      "language": "fr",
+      "locale": "fr-FR",
+      "file": "store/fr-FR/images/phoneScreenshots/07-apps.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "7941c98d5ca1010592d747ade938e919218544ac2ca9b039cae15dc3f58b0137"
+    },
+    {
+      "language": "fr",
+      "locale": "fr-FR",
+      "file": "store/fr-FR/images/tenInchScreenshots/01-actions.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "701b2e664a2ce516ecf3ba2fd044ae3ea5f2e9e799fe7f390097971c52fff33e"
+    },
+    {
+      "language": "fr",
+      "locale": "fr-FR",
+      "file": "store/fr-FR/images/tenInchScreenshots/02-button-actions.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "35b6c3c02be7e1161eaacd875e4d7843c040dea9c6bd6eb8b2c57bf2272ad747"
+    },
+    {
+      "language": "fr",
+      "locale": "fr-FR",
+      "file": "store/fr-FR/images/tenInchScreenshots/03-action-picker.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "913279d430cb83007d339066a4cb60b27c3e6c82863fdbda038af101d7c55a22"
+    },
+    {
+      "language": "fr",
+      "locale": "fr-FR",
+      "file": "store/fr-FR/images/tenInchScreenshots/04-settings.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "5bfa92b6ade08ce6a332aea0495e4b094528157065296db89f15ec92da3d857e"
+    },
+    {
+      "language": "fr",
+      "locale": "fr-FR",
+      "file": "store/fr-FR/images/tenInchScreenshots/05-tutorial.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "06521effb92f3631a7232fb300cb6298caa31a56377dcb7a20add1a878a0f9a9"
+    },
+    {
+      "language": "fr",
+      "locale": "fr-FR",
+      "file": "store/fr-FR/images/tenInchScreenshots/06-buttons.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "b155f8c1200c322241e1ba820576febed1335f9115d34dcf083d00a68fa2cebb"
+    },
+    {
+      "language": "fr",
+      "locale": "fr-FR",
+      "file": "store/fr-FR/images/tenInchScreenshots/07-apps.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "56c81664fdad3a0e076a8aed70fef5364c9d8fc74ed3538ced6e18a29a9b1ff8"
+    },
+    {
+      "language": "de",
+      "locale": "de-DE",
+      "file": "store/de-DE/images/featureGraphic.png",
+      "width": 1024,
+      "height": 500,
+      "sha256": "b16b1c62872e8de0f4d38b4367138e1b8d914d0cede6a2a7b894fa7c4faf0123"
+    },
+    {
+      "language": "de",
+      "locale": "de-DE",
+      "file": "store/de-DE/images/phoneScreenshots/01-actions.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "3277b0260a8b9b39d261de326e315c6220fc41aad0a8f3801b0b17d6b258553c"
+    },
+    {
+      "language": "de",
+      "locale": "de-DE",
+      "file": "store/de-DE/images/phoneScreenshots/02-button-actions.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "20237585f6906cd11f209b9a6492f1a04cb333bc67ba0e972d7aa36f2df86310"
+    },
+    {
+      "language": "de",
+      "locale": "de-DE",
+      "file": "store/de-DE/images/phoneScreenshots/03-action-picker.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "1bed572c7d0c5a7df0f528cd1ca9635f4ebb3863fb3e6c724b3de01bb53a11b9"
+    },
+    {
+      "language": "de",
+      "locale": "de-DE",
+      "file": "store/de-DE/images/phoneScreenshots/04-settings.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "9d27c9b47cd82e0b60a733eefd43d343c38875affff6accb1e81624961fb6fc5"
+    },
+    {
+      "language": "de",
+      "locale": "de-DE",
+      "file": "store/de-DE/images/phoneScreenshots/05-tutorial.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "67c6590edfa96c58c15ee48d34c1eadc6dd094f39ec4cb515f8b8309756c973f"
+    },
+    {
+      "language": "de",
+      "locale": "de-DE",
+      "file": "store/de-DE/images/phoneScreenshots/06-buttons.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "7c70f1db3e8d26af36d0694b3aec11485f56c83442ba91034466aa477d095f2a"
+    },
+    {
+      "language": "de",
+      "locale": "de-DE",
+      "file": "store/de-DE/images/phoneScreenshots/07-apps.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "100afc2d33de1af0a8139a35e94a477d6d3ebe811a0708c02b0e88b313eb06d0"
+    },
+    {
+      "language": "de",
+      "locale": "de-DE",
+      "file": "store/de-DE/images/tenInchScreenshots/01-actions.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "76c4a478dfc0687034d72da88d3753f1fdd7a405fdaa92d237771c8a215dfb94"
+    },
+    {
+      "language": "de",
+      "locale": "de-DE",
+      "file": "store/de-DE/images/tenInchScreenshots/02-button-actions.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "4ca0f2841ee7fb63bee9942404006e8e242978970d328b6afe4972da920d29b3"
+    },
+    {
+      "language": "de",
+      "locale": "de-DE",
+      "file": "store/de-DE/images/tenInchScreenshots/03-action-picker.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "7819e81bcf497404deb1f2c26d36db04daef377aed08fda0a634aae50fdb11bc"
+    },
+    {
+      "language": "de",
+      "locale": "de-DE",
+      "file": "store/de-DE/images/tenInchScreenshots/04-settings.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "3e0aa1eb05355af8b07d6a7b5d373a2d7e4685b0a4a3688a0454dda1c8059883"
+    },
+    {
+      "language": "de",
+      "locale": "de-DE",
+      "file": "store/de-DE/images/tenInchScreenshots/05-tutorial.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "72444fdcc843e7228fc224d28bd31faf01f53c16affe135cc30208f9e4c33742"
+    },
+    {
+      "language": "de",
+      "locale": "de-DE",
+      "file": "store/de-DE/images/tenInchScreenshots/06-buttons.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "f74105423f4c0aeda9cb8fc80fabddd827788e868977412553ca71253046a33d"
+    },
+    {
+      "language": "de",
+      "locale": "de-DE",
+      "file": "store/de-DE/images/tenInchScreenshots/07-apps.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "f47e2175e7b461d3ec353de4930d11e4cee2a5afb11ef48d2105782056913db6"
+    },
+    {
+      "language": "pt-BR",
+      "locale": "pt-BR",
+      "file": "store/pt-BR/images/featureGraphic.png",
+      "width": 1024,
+      "height": 500,
+      "sha256": "d545853e622c10a9a47f665437b0b2f25b12ba14e48f2576f704ceb5bd073c62"
+    },
+    {
+      "language": "pt-BR",
+      "locale": "pt-BR",
+      "file": "store/pt-BR/images/phoneScreenshots/01-actions.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "28403bbefbf0f58a36c83485d00844fb0ef7ad9637545b85877fd83338c394c0"
+    },
+    {
+      "language": "pt-BR",
+      "locale": "pt-BR",
+      "file": "store/pt-BR/images/phoneScreenshots/02-button-actions.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "7abbf0d7328a671858c60ca9e0532de3762ed820650aef2aad973f1d807ec9be"
+    },
+    {
+      "language": "pt-BR",
+      "locale": "pt-BR",
+      "file": "store/pt-BR/images/phoneScreenshots/03-action-picker.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "509d17b0cd70432555562bab4f87cedc51974f0502abaf21e3a741c8d05c2e08"
+    },
+    {
+      "language": "pt-BR",
+      "locale": "pt-BR",
+      "file": "store/pt-BR/images/phoneScreenshots/04-settings.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "2467c5bbf59123ae080e256d859a9db9bd1c34cd7f20c2e9219a2ac2b476b41c"
+    },
+    {
+      "language": "pt-BR",
+      "locale": "pt-BR",
+      "file": "store/pt-BR/images/phoneScreenshots/05-tutorial.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "a30dd362a2d9c96bdea43e4566b37a5d45e8976bbb4dc2148a45dff71eae705f"
+    },
+    {
+      "language": "pt-BR",
+      "locale": "pt-BR",
+      "file": "store/pt-BR/images/phoneScreenshots/06-buttons.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "13cea42c70fb8c086f3c77502f67d66fd8a05805199abd90724113a10a418125"
+    },
+    {
+      "language": "pt-BR",
+      "locale": "pt-BR",
+      "file": "store/pt-BR/images/phoneScreenshots/07-apps.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "70066cc281c9b0e39f01a4f9c4e39b0505f81298922fe53da155ff2b2a484ca9"
+    },
+    {
+      "language": "pt-BR",
+      "locale": "pt-BR",
+      "file": "store/pt-BR/images/tenInchScreenshots/01-actions.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "f1b51289f0e23f0ebacce79aeffa82528fb6d41f113232a81c48185ae281804e"
+    },
+    {
+      "language": "pt-BR",
+      "locale": "pt-BR",
+      "file": "store/pt-BR/images/tenInchScreenshots/02-button-actions.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "88a3aa1929e89fecf842bee12235fb1a5737e9bc560856dad3d67cd62627a269"
+    },
+    {
+      "language": "pt-BR",
+      "locale": "pt-BR",
+      "file": "store/pt-BR/images/tenInchScreenshots/03-action-picker.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "f06a717cc3d9f455408c126aef3ad3e5ba2e972cdc8808ae34e280707e8e713f"
+    },
+    {
+      "language": "pt-BR",
+      "locale": "pt-BR",
+      "file": "store/pt-BR/images/tenInchScreenshots/04-settings.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "3b13a7f7860231e9ed4a857c115fe6a8bc9b0a10850abcca52f50553b7c03231"
+    },
+    {
+      "language": "pt-BR",
+      "locale": "pt-BR",
+      "file": "store/pt-BR/images/tenInchScreenshots/05-tutorial.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "fd0f2bcf868318891088344060686983b852e9c0a712a3352660d41514a4f91e"
+    },
+    {
+      "language": "pt-BR",
+      "locale": "pt-BR",
+      "file": "store/pt-BR/images/tenInchScreenshots/06-buttons.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "83124945addfc2338e7fc2d0502e405295017558639a16ff1388a7c76fa94585"
+    },
+    {
+      "language": "pt-BR",
+      "locale": "pt-BR",
+      "file": "store/pt-BR/images/tenInchScreenshots/07-apps.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "bff324248d761ae957b197c72adf3ce9dcd6746774b42de3f0e0b722d647dc55"
+    },
+    {
+      "language": "it",
+      "locale": "it-IT",
+      "file": "store/it-IT/images/featureGraphic.png",
+      "width": 1024,
+      "height": 500,
+      "sha256": "7f55b2713a18ead702ee40528d5da335e9e18b6f59f2454ffa77644555155365"
+    },
+    {
+      "language": "it",
+      "locale": "it-IT",
+      "file": "store/it-IT/images/phoneScreenshots/01-actions.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "c7515079386f063c71a2ab5727d1f49b8497558723a325118fa03b2b5e0d9c24"
+    },
+    {
+      "language": "it",
+      "locale": "it-IT",
+      "file": "store/it-IT/images/phoneScreenshots/02-button-actions.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "2c9efc3bf5eee296ac8397e112a047afeb7754605637aa1219611833dbe1d716"
+    },
+    {
+      "language": "it",
+      "locale": "it-IT",
+      "file": "store/it-IT/images/phoneScreenshots/03-action-picker.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "a537946c002b0026709b29fdfa0a661d361158ef0efb743c7dbaa745e3b80e5b"
+    },
+    {
+      "language": "it",
+      "locale": "it-IT",
+      "file": "store/it-IT/images/phoneScreenshots/04-settings.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "fd636b6b42efcc463dfc27c4623a857ddc7d2b999fe429433cce774f1aff7a01"
+    },
+    {
+      "language": "it",
+      "locale": "it-IT",
+      "file": "store/it-IT/images/phoneScreenshots/05-tutorial.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "ea2a93d6142ce5c5f2d121517d55b78f98e3510a8cd16f0fe61d7bae36a7a90f"
+    },
+    {
+      "language": "it",
+      "locale": "it-IT",
+      "file": "store/it-IT/images/phoneScreenshots/06-buttons.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "e959fb52766bb0e5f35d2cf4ff23a943d7191ebc1b9fc79a57922eff4d692f8d"
+    },
+    {
+      "language": "it",
+      "locale": "it-IT",
+      "file": "store/it-IT/images/phoneScreenshots/07-apps.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "cc5a93281ad8364eefda26c7b36bd19426b885c068ebe21df15c7c4acccf154d"
+    },
+    {
+      "language": "it",
+      "locale": "it-IT",
+      "file": "store/it-IT/images/tenInchScreenshots/01-actions.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "8b3f205aae85c8256d99b61d61da8045db3b20676594189186d3079536926ea2"
+    },
+    {
+      "language": "it",
+      "locale": "it-IT",
+      "file": "store/it-IT/images/tenInchScreenshots/02-button-actions.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "520a757abf9f2d5f4e02ec2abde0190dc8432bd782f4a9acf7d9f7816a48cb2e"
+    },
+    {
+      "language": "it",
+      "locale": "it-IT",
+      "file": "store/it-IT/images/tenInchScreenshots/03-action-picker.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "c8f2733d1c703f4ec1da154c81ae9761f1816682e0b47b60a77714d1ead45bd2"
+    },
+    {
+      "language": "it",
+      "locale": "it-IT",
+      "file": "store/it-IT/images/tenInchScreenshots/04-settings.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "e74bfb0ae310eb53aa63c253e483f4f5a353c7a2fc57dc67dda2d5ef4b15cb45"
+    },
+    {
+      "language": "it",
+      "locale": "it-IT",
+      "file": "store/it-IT/images/tenInchScreenshots/05-tutorial.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "c5d7654c0a8ae281274eb804891146a5ace90b045ce5ab694d20320c51868e6a"
+    },
+    {
+      "language": "it",
+      "locale": "it-IT",
+      "file": "store/it-IT/images/tenInchScreenshots/06-buttons.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "7cb38c23bcd3ddba16d111728efd386d199d877a03a079bd92f6532eb80b5ee0"
+    },
+    {
+      "language": "it",
+      "locale": "it-IT",
+      "file": "store/it-IT/images/tenInchScreenshots/07-apps.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "0d194f90f276fcf27bafdc4bd5fb0fbab5476b1497c6c1afd5fe0945035399cd"
+    },
+    {
+      "language": "nl",
+      "locale": "nl-NL",
+      "file": "store/nl-NL/images/featureGraphic.png",
+      "width": 1024,
+      "height": 500,
+      "sha256": "08d39033da610fb838711d76a0c09d7f2c0722ab2d5ab70b2a0157895d8b0a04"
+    },
+    {
+      "language": "nl",
+      "locale": "nl-NL",
+      "file": "store/nl-NL/images/phoneScreenshots/01-actions.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "b03b5127d88f3f600d4b66037abf77f212fb93bbd41f5c62d6eeb8d2508d478d"
+    },
+    {
+      "language": "nl",
+      "locale": "nl-NL",
+      "file": "store/nl-NL/images/phoneScreenshots/02-button-actions.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "a2299b5e7cd1d0c611da5ba933c6997b55c143a6db4a042edd21055946931b9c"
+    },
+    {
+      "language": "nl",
+      "locale": "nl-NL",
+      "file": "store/nl-NL/images/phoneScreenshots/03-action-picker.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "0e86512c9d2087fb61ede7cb61b1533ab61381cd1c2d18c373fb98bf61083dde"
+    },
+    {
+      "language": "nl",
+      "locale": "nl-NL",
+      "file": "store/nl-NL/images/phoneScreenshots/04-settings.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "0af8d6265ed3f0ae2950768f9ed5e710c40553d3de3354e06a8a29602458dcc1"
+    },
+    {
+      "language": "nl",
+      "locale": "nl-NL",
+      "file": "store/nl-NL/images/phoneScreenshots/05-tutorial.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "186cab3d137720fa3ad281e3c4930de64f230523a55ac4c0580cdf5a2f941f66"
+    },
+    {
+      "language": "nl",
+      "locale": "nl-NL",
+      "file": "store/nl-NL/images/phoneScreenshots/06-buttons.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "e31f788e6ad3f71d3955546b752891feb0e7b93db66bd2dc0d135f1270a2efe7"
+    },
+    {
+      "language": "nl",
+      "locale": "nl-NL",
+      "file": "store/nl-NL/images/phoneScreenshots/07-apps.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "3c5afacd1be167777d0e4a2449851b27805c16aa194ead8836042e0085271dd0"
+    },
+    {
+      "language": "nl",
+      "locale": "nl-NL",
+      "file": "store/nl-NL/images/tenInchScreenshots/01-actions.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "f8495f88c1bf01205dfbb13b8ce189151bec3f8a566a4d57f1392c77925656c9"
+    },
+    {
+      "language": "nl",
+      "locale": "nl-NL",
+      "file": "store/nl-NL/images/tenInchScreenshots/02-button-actions.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "25cd0a5ee1606c716557d3e0ad3e57d4a9188d0b101098ed6de2b2013f747c61"
+    },
+    {
+      "language": "nl",
+      "locale": "nl-NL",
+      "file": "store/nl-NL/images/tenInchScreenshots/03-action-picker.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "eb77fa5ad3be397d504e95b9cd99f4fbefae9c84e533e1d14e3e9b3d447553ba"
+    },
+    {
+      "language": "nl",
+      "locale": "nl-NL",
+      "file": "store/nl-NL/images/tenInchScreenshots/04-settings.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "79fa2ef57912ca72ede363b9924d5baff26f93738c7464fb24de770df4c27f32"
+    },
+    {
+      "language": "nl",
+      "locale": "nl-NL",
+      "file": "store/nl-NL/images/tenInchScreenshots/05-tutorial.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "b9b836b32d0952c70f9d051d3fc0c286105694b86a3b6ea15be5c644f5c2b42e"
+    },
+    {
+      "language": "nl",
+      "locale": "nl-NL",
+      "file": "store/nl-NL/images/tenInchScreenshots/06-buttons.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "6639049a2e9ad69ede3ac0034da4a180c23db65bb489555b4b80175ef2e1ab2d"
+    },
+    {
+      "language": "nl",
+      "locale": "nl-NL",
+      "file": "store/nl-NL/images/tenInchScreenshots/07-apps.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "71b355f15b274c59c2c19cda410e348ad48a965a4596b8eb26bdaef378fcd51d"
+    },
+    {
+      "language": "pl",
+      "locale": "pl-PL",
+      "file": "store/pl-PL/images/featureGraphic.png",
+      "width": 1024,
+      "height": 500,
+      "sha256": "795f9784ef3215043fc529f42812f5f1674ec49cc1cd056c851b90ff1dff1697"
+    },
+    {
+      "language": "pl",
+      "locale": "pl-PL",
+      "file": "store/pl-PL/images/phoneScreenshots/01-actions.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "c630d455257d7cd1544db542d06e91d3820d7a12ff6696f468ed62699e00c273"
+    },
+    {
+      "language": "pl",
+      "locale": "pl-PL",
+      "file": "store/pl-PL/images/phoneScreenshots/02-button-actions.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "44d4bd0ef9a3668c6f6c50af3f4f553e376f86403949a3df778f705d366ba365"
+    },
+    {
+      "language": "pl",
+      "locale": "pl-PL",
+      "file": "store/pl-PL/images/phoneScreenshots/03-action-picker.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "75adf74d02190146698eb6bafa45675188e53604e563c171c0f159292c2eaafe"
+    },
+    {
+      "language": "pl",
+      "locale": "pl-PL",
+      "file": "store/pl-PL/images/phoneScreenshots/04-settings.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "e871ccf32ba08c47b0da41294d6830517114f0621772533e3296790036749d06"
+    },
+    {
+      "language": "pl",
+      "locale": "pl-PL",
+      "file": "store/pl-PL/images/phoneScreenshots/05-tutorial.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "68a3770f9c27be92d673a9c00fa355674dc4172a4079f6f9e76365eaa162e953"
+    },
+    {
+      "language": "pl",
+      "locale": "pl-PL",
+      "file": "store/pl-PL/images/phoneScreenshots/06-buttons.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "d6be3ffab683bc6b13083b53f317889f7db443e69879b3c60707a7e25530f5f4"
+    },
+    {
+      "language": "pl",
+      "locale": "pl-PL",
+      "file": "store/pl-PL/images/phoneScreenshots/07-apps.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "d6159d1a9ffede204c6513d30ab0625a065049c4a71404610390cb1d6717718f"
+    },
+    {
+      "language": "pl",
+      "locale": "pl-PL",
+      "file": "store/pl-PL/images/tenInchScreenshots/01-actions.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "393f64f8759b135939e4f0ea0c9c4beee3ac6a10e35a6daf7f081dc5962ea985"
+    },
+    {
+      "language": "pl",
+      "locale": "pl-PL",
+      "file": "store/pl-PL/images/tenInchScreenshots/02-button-actions.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "9a1b971558accf2c6b73250ae76251babde6fcfd552799742a23b6a35df16a7e"
+    },
+    {
+      "language": "pl",
+      "locale": "pl-PL",
+      "file": "store/pl-PL/images/tenInchScreenshots/03-action-picker.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "3699c5ed5f08fc064dd297baf48e9e772ef0be042b686fcab170e1aad23cdeae"
+    },
+    {
+      "language": "pl",
+      "locale": "pl-PL",
+      "file": "store/pl-PL/images/tenInchScreenshots/04-settings.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "77cb186a9cec76ec25021a590e816a1382f0f3780354bf4b511eb6f6aafce0cd"
+    },
+    {
+      "language": "pl",
+      "locale": "pl-PL",
+      "file": "store/pl-PL/images/tenInchScreenshots/05-tutorial.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "e630662dc6d40e14373c4ec559edcf3113215906edc84f095e6091e82d06afa3"
+    },
+    {
+      "language": "pl",
+      "locale": "pl-PL",
+      "file": "store/pl-PL/images/tenInchScreenshots/06-buttons.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "eb9b3d5fdfdb763e11cd8bd6dc46d3251d2424c0aa7a594918c1744506d115de"
+    },
+    {
+      "language": "pl",
+      "locale": "pl-PL",
+      "file": "store/pl-PL/images/tenInchScreenshots/07-apps.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "3fe6acb7c553fea7588fa620d7632fe3d999e41bb4b836244eb8dfab73b554a3"
+    },
+    {
+      "language": "tr",
+      "locale": "tr-TR",
+      "file": "store/tr-TR/images/featureGraphic.png",
+      "width": 1024,
+      "height": 500,
+      "sha256": "4f4b7c3519838dcc90a4b2ffd7b620d46ba288fb2b49b4e5d13693b9d5ed1871"
+    },
+    {
+      "language": "tr",
+      "locale": "tr-TR",
+      "file": "store/tr-TR/images/phoneScreenshots/01-actions.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "df46a378a5e1095480d141056464a0fb97e5220bafb4f269192a23fc3e365bef"
+    },
+    {
+      "language": "tr",
+      "locale": "tr-TR",
+      "file": "store/tr-TR/images/phoneScreenshots/02-button-actions.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "4e4afd6d1b67060b348391bb33d2355aaeda7e3a761efaeb6c5d19360faec6d5"
+    },
+    {
+      "language": "tr",
+      "locale": "tr-TR",
+      "file": "store/tr-TR/images/phoneScreenshots/03-action-picker.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "e961033a83277915adc7d858865a5e826f1b5594737d4237a7d243d3fb6652aa"
+    },
+    {
+      "language": "tr",
+      "locale": "tr-TR",
+      "file": "store/tr-TR/images/phoneScreenshots/04-settings.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "b256f9ad12651ef36d3cd46b7681f301dbf9f3c79af39d8ea3047b5dd92caecb"
+    },
+    {
+      "language": "tr",
+      "locale": "tr-TR",
+      "file": "store/tr-TR/images/phoneScreenshots/05-tutorial.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "e2d649537ea0227856c1452d229ce48e5ea8fe65dc9f3f5cfcef06f7c79cefe9"
+    },
+    {
+      "language": "tr",
+      "locale": "tr-TR",
+      "file": "store/tr-TR/images/phoneScreenshots/06-buttons.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "fc4051d95de05c0398fbb039eae40d52cdc02f9f383b1928bc446dd73d7f9c81"
+    },
+    {
+      "language": "tr",
+      "locale": "tr-TR",
+      "file": "store/tr-TR/images/phoneScreenshots/07-apps.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "175d7e5b07c444ab9fe77449a627f9e1823f7c8f3f15a4b6e2b1a486747df416"
+    },
+    {
+      "language": "tr",
+      "locale": "tr-TR",
+      "file": "store/tr-TR/images/tenInchScreenshots/01-actions.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "3a5706976da7306bbc2482e7ec1005826b8f4134a557a72f0548aacdd180a8fb"
+    },
+    {
+      "language": "tr",
+      "locale": "tr-TR",
+      "file": "store/tr-TR/images/tenInchScreenshots/02-button-actions.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "4fc2ffd766165b35f538f7ef12854854da0203cfdb64789f53f65f5d19594ce6"
+    },
+    {
+      "language": "tr",
+      "locale": "tr-TR",
+      "file": "store/tr-TR/images/tenInchScreenshots/03-action-picker.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "bd2dd82831a6e177b13e2fa769c5279f450413ca3cca8f14caedea47ebcd2b9c"
+    },
+    {
+      "language": "tr",
+      "locale": "tr-TR",
+      "file": "store/tr-TR/images/tenInchScreenshots/04-settings.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "09742e39ef376b7ccca2c9cda28c41dc1419552fe4929038426f5b92d9c823fe"
+    },
+    {
+      "language": "tr",
+      "locale": "tr-TR",
+      "file": "store/tr-TR/images/tenInchScreenshots/05-tutorial.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "d82cb57e41993f58ec9cf0a0246e432b78ec62b4bb56122881a896c1bec1c445"
+    },
+    {
+      "language": "tr",
+      "locale": "tr-TR",
+      "file": "store/tr-TR/images/tenInchScreenshots/06-buttons.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "f98a935f8e62704fef8f3212ef78ee0c3b762f2a4d53d67d6c641aac094808da"
+    },
+    {
+      "language": "tr",
+      "locale": "tr-TR",
+      "file": "store/tr-TR/images/tenInchScreenshots/07-apps.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "3cac1190ce794583e07d4d0f26b820e19fd621f2fc0422346d2b2dcf526625c9"
+    },
+    {
+      "language": "ru",
+      "locale": "ru-RU",
+      "file": "store/ru-RU/images/featureGraphic.png",
+      "width": 1024,
+      "height": 500,
+      "sha256": "0c7cae665c752a49d0e8ab4ed08340404529991c89ad7cfe513e9d18e4c5c7a7"
+    },
+    {
+      "language": "ru",
+      "locale": "ru-RU",
+      "file": "store/ru-RU/images/phoneScreenshots/01-actions.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "589dd5d4ff8a2066215a1f1cf9edcb38e2eab2341ba3d76451c1b48220aeea9b"
+    },
+    {
+      "language": "ru",
+      "locale": "ru-RU",
+      "file": "store/ru-RU/images/phoneScreenshots/02-button-actions.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "dcca4ab27c8bd826b0a03e800ab6574de0084d7a6dda5a498c4bf0bbcddce15a"
+    },
+    {
+      "language": "ru",
+      "locale": "ru-RU",
+      "file": "store/ru-RU/images/phoneScreenshots/03-action-picker.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "4ef1fb76c085174da95ae5c9cba060ebbec51eb08b12a289f67597c54f17ed8f"
+    },
+    {
+      "language": "ru",
+      "locale": "ru-RU",
+      "file": "store/ru-RU/images/phoneScreenshots/04-settings.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "f2704e66d49236b9bcda7d65b2a0df42fca5572738d4f4753c07b2387e24e819"
+    },
+    {
+      "language": "ru",
+      "locale": "ru-RU",
+      "file": "store/ru-RU/images/phoneScreenshots/05-tutorial.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "8320583b8a157bf782d1f001c75351cf124cf6d22c581301d88153263d3950e7"
+    },
+    {
+      "language": "ru",
+      "locale": "ru-RU",
+      "file": "store/ru-RU/images/phoneScreenshots/06-buttons.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "d7e937a05e6493aa1e90c50c099761ce0eb6f639ad771d8cdbc3aa619a05e81d"
+    },
+    {
+      "language": "ru",
+      "locale": "ru-RU",
+      "file": "store/ru-RU/images/phoneScreenshots/07-apps.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "93dd451f1fcc63608bb8c06e227f22509d24561604a28206256727986bfa709f"
+    },
+    {
+      "language": "ru",
+      "locale": "ru-RU",
+      "file": "store/ru-RU/images/tenInchScreenshots/01-actions.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "feb628b90be415f3103d3c7a36a0b9f512ed30b2b2e4637f1e3ee07203ac715b"
+    },
+    {
+      "language": "ru",
+      "locale": "ru-RU",
+      "file": "store/ru-RU/images/tenInchScreenshots/02-button-actions.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "4ca51ba53e3e99a9ab62cec5e5ff3b787c1eee310e9a07c4c5d2b95c72cdfe71"
+    },
+    {
+      "language": "ru",
+      "locale": "ru-RU",
+      "file": "store/ru-RU/images/tenInchScreenshots/03-action-picker.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "dab8f91d91b86f1d70918b7539b866e36baa2c569f507bd0ff0d0a570e402a82"
+    },
+    {
+      "language": "ru",
+      "locale": "ru-RU",
+      "file": "store/ru-RU/images/tenInchScreenshots/04-settings.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "130f59d5b0518d42a6771468138c88856ffdad20be0a3cf43bd9ef199ce02b09"
+    },
+    {
+      "language": "ru",
+      "locale": "ru-RU",
+      "file": "store/ru-RU/images/tenInchScreenshots/05-tutorial.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "9d16afe0c937259606aafec2480b8b614e6a64ae1ee0b509e8b728e01334a052"
+    },
+    {
+      "language": "ru",
+      "locale": "ru-RU",
+      "file": "store/ru-RU/images/tenInchScreenshots/06-buttons.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "35d9a2a286a5bb115610d4b3b4ca757b3f41c24c42a3f69ab59d0d26ff35f45f"
+    },
+    {
+      "language": "ru",
+      "locale": "ru-RU",
+      "file": "store/ru-RU/images/tenInchScreenshots/07-apps.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "0314aa32f7485d5f070ca19708f67eeb13ea9d6645149bd3c841eff15e6e0600"
+    },
+    {
+      "language": "uk",
+      "locale": "uk",
+      "file": "store/uk/images/featureGraphic.png",
+      "width": 1024,
+      "height": 500,
+      "sha256": "bba50fd155bc339b57829b95fd9a897dc768c69d382d16d5b66fd9ad980fc683"
+    },
+    {
+      "language": "uk",
+      "locale": "uk",
+      "file": "store/uk/images/phoneScreenshots/01-actions.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "009e7cb75803c71de2f87c1f8b6399ba2f581bd778c1288e0de09e12d2f45191"
+    },
+    {
+      "language": "uk",
+      "locale": "uk",
+      "file": "store/uk/images/phoneScreenshots/02-button-actions.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "e37cff5544adb385e8dd959a48ad6a48d8bbdda657eb06ef243c9c21e254ec38"
+    },
+    {
+      "language": "uk",
+      "locale": "uk",
+      "file": "store/uk/images/phoneScreenshots/03-action-picker.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "de79bec231a4b7f84e876d9198090a3ca6bdbfab912a70cc294ab918de1e0575"
+    },
+    {
+      "language": "uk",
+      "locale": "uk",
+      "file": "store/uk/images/phoneScreenshots/04-settings.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "efd17b6fff950b959613f9dae3702a76fb65819e2427479bdfb1d209b3d0b712"
+    },
+    {
+      "language": "uk",
+      "locale": "uk",
+      "file": "store/uk/images/phoneScreenshots/05-tutorial.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "c0a6f3e0a63508a8f0c8eea9bba4a29ea2166f0ee8dc3c42ecd2f2ca34fe1d08"
+    },
+    {
+      "language": "uk",
+      "locale": "uk",
+      "file": "store/uk/images/phoneScreenshots/06-buttons.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "36af367c9df4ec9c20aa83954aeae932bedfc3f50cbd7dfc7f111cfddde74caa"
+    },
+    {
+      "language": "uk",
+      "locale": "uk",
+      "file": "store/uk/images/phoneScreenshots/07-apps.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "ee1d995161bc4f3ac8026e74c5ac7362d77ccf43d3df01cc619dfe383e1ba5bb"
+    },
+    {
+      "language": "uk",
+      "locale": "uk",
+      "file": "store/uk/images/tenInchScreenshots/01-actions.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "edfe37fe1500d5b8dfa85a1e0fc9ae2d0f0488f2e5230cc3ad1a6b0de3bb66ef"
+    },
+    {
+      "language": "uk",
+      "locale": "uk",
+      "file": "store/uk/images/tenInchScreenshots/02-button-actions.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "271aebbec840fcc62eba2a3eb72f6c23608af39ee4d39d653d32bd78c79cb3f7"
+    },
+    {
+      "language": "uk",
+      "locale": "uk",
+      "file": "store/uk/images/tenInchScreenshots/03-action-picker.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "e092306a00c5600b7953840d766c891de0bf4596b3d250ddbaece4efdac7f8e9"
+    },
+    {
+      "language": "uk",
+      "locale": "uk",
+      "file": "store/uk/images/tenInchScreenshots/04-settings.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "8b8b19d18a4c8fb1be4bd5d184baca21fcf57b8bef71042c5afd5fe7b5917350"
+    },
+    {
+      "language": "uk",
+      "locale": "uk",
+      "file": "store/uk/images/tenInchScreenshots/05-tutorial.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "da78fe5e27924adfc2c9f6e3d73c7e63bc9aedeaa5a1c08c2218b447f641be22"
+    },
+    {
+      "language": "uk",
+      "locale": "uk",
+      "file": "store/uk/images/tenInchScreenshots/06-buttons.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "01f61b29ddbd74202bd6099ddc0a2e7edc146e4fa1a7cbb5cdf9b447dc774144"
+    },
+    {
+      "language": "uk",
+      "locale": "uk",
+      "file": "store/uk/images/tenInchScreenshots/07-apps.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "0f517a08d8f57b6b77b5fc10abe0f094f85262127e827a432aab34b536532f3c"
+    },
+    {
+      "language": "ar",
+      "locale": "ar",
+      "file": "store/ar/images/featureGraphic.png",
+      "width": 1024,
+      "height": 500,
+      "sha256": "01fe82c760f340291f1e497e1c39a16df0f4dbe74424a34063bd63489deaa6ba"
+    },
+    {
+      "language": "ar",
+      "locale": "ar",
+      "file": "store/ar/images/phoneScreenshots/01-actions.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "9f8dd85a03a2521b87c8820de431aa624c2dab8aebc2c74bb1784b560a111b91"
+    },
+    {
+      "language": "ar",
+      "locale": "ar",
+      "file": "store/ar/images/phoneScreenshots/02-button-actions.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "71e470c07d1a8a96871786b0bde8166a867aa9b1c5e040e09f94c5607738ab43"
+    },
+    {
+      "language": "ar",
+      "locale": "ar",
+      "file": "store/ar/images/phoneScreenshots/03-action-picker.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "9649bde9286dffd649bb4939747a90b58b093f1250e14fb77e8aa75c5774922e"
+    },
+    {
+      "language": "ar",
+      "locale": "ar",
+      "file": "store/ar/images/phoneScreenshots/04-settings.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "86d6420a280ecd47b472b2c1f709fa3c49c3b1d54e8ca7dec0af32973414ff09"
+    },
+    {
+      "language": "ar",
+      "locale": "ar",
+      "file": "store/ar/images/phoneScreenshots/05-tutorial.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "734255a22444ae7480fadcad409121310742b084ded2f7942cc762145636a085"
+    },
+    {
+      "language": "ar",
+      "locale": "ar",
+      "file": "store/ar/images/phoneScreenshots/06-buttons.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "8d0654ada8c9e3a107a9e6ec24dcbb362c36dcc7fad9fb2f4854274eeafd5ff1"
+    },
+    {
+      "language": "ar",
+      "locale": "ar",
+      "file": "store/ar/images/phoneScreenshots/07-apps.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "0f16e87287c7f4a656e3bd7f5175b1d76b899e16ecb897a94a2a7d1ef8b40b50"
+    },
+    {
+      "language": "ar",
+      "locale": "ar",
+      "file": "store/ar/images/tenInchScreenshots/01-actions.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "04b5f7aced2279fbccdd9b180d6d588f63cee7ed08d9648de7b4fed01bb1f535"
+    },
+    {
+      "language": "ar",
+      "locale": "ar",
+      "file": "store/ar/images/tenInchScreenshots/02-button-actions.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "352cf8d4bc5866260b4d4bedfe66f669474d173ab1505f2f04bf12d3e4413d0d"
+    },
+    {
+      "language": "ar",
+      "locale": "ar",
+      "file": "store/ar/images/tenInchScreenshots/03-action-picker.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "a08e5da6dc13c07deb88ed39b114290e44d6a74955736eb85bffd24ed5c607fc"
+    },
+    {
+      "language": "ar",
+      "locale": "ar",
+      "file": "store/ar/images/tenInchScreenshots/04-settings.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "d5b0c5c4a6257854a3f94281b3ab1909360e9abb24ce608d969a1624dac576ef"
+    },
+    {
+      "language": "ar",
+      "locale": "ar",
+      "file": "store/ar/images/tenInchScreenshots/05-tutorial.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "d2aad7c2152ef57ae693549ddef731d9fc88ec390368492d40d923d44e3fe2c0"
+    },
+    {
+      "language": "ar",
+      "locale": "ar",
+      "file": "store/ar/images/tenInchScreenshots/06-buttons.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "3523a533665cec65ebe4b4dc38f47c4915f386f048411b3a880ec8992103426e"
+    },
+    {
+      "language": "ar",
+      "locale": "ar",
+      "file": "store/ar/images/tenInchScreenshots/07-apps.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "1137f2d11db9968e78fbb1d02925114d208e87659cc95cbd661f66bcaef57e95"
+    },
+    {
+      "language": "he",
+      "locale": "iw-IL",
+      "file": "store/iw-IL/images/featureGraphic.png",
+      "width": 1024,
+      "height": 500,
+      "sha256": "c7599465162a373da85083b9c47dee47954fe7bee5495eb0412b0b0ee5276561"
+    },
+    {
+      "language": "he",
+      "locale": "iw-IL",
+      "file": "store/iw-IL/images/phoneScreenshots/01-actions.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "d413276eeb7a7416f8aebdeb2d3bc6c0358210b5f91a00a078ad1b2fd1a48eff"
+    },
+    {
+      "language": "he",
+      "locale": "iw-IL",
+      "file": "store/iw-IL/images/phoneScreenshots/02-button-actions.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "4276f1735501b9b2d206bc28dfaf06d2794e0db93799ae86e33821a98ec054b0"
+    },
+    {
+      "language": "he",
+      "locale": "iw-IL",
+      "file": "store/iw-IL/images/phoneScreenshots/03-action-picker.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "8f2fe372be3b4e335280ea20a245c5e7b646a64ab23fa92ce9b667944530b147"
+    },
+    {
+      "language": "he",
+      "locale": "iw-IL",
+      "file": "store/iw-IL/images/phoneScreenshots/04-settings.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "c79197784467d0718a7eb7c97c5064687c24b084d806e1d93bad9e6ddbd40441"
+    },
+    {
+      "language": "he",
+      "locale": "iw-IL",
+      "file": "store/iw-IL/images/phoneScreenshots/05-tutorial.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "e3ba0dfd13d804f584101aa83f23b6034366a31436bb6175c4d2a2f265966176"
+    },
+    {
+      "language": "he",
+      "locale": "iw-IL",
+      "file": "store/iw-IL/images/phoneScreenshots/06-buttons.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "b88b0a51ae14b600ceb9433cfd3a74770764b61ea49245bc7db393c8d1dc4184"
+    },
+    {
+      "language": "he",
+      "locale": "iw-IL",
+      "file": "store/iw-IL/images/phoneScreenshots/07-apps.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "ff0619567091fa09acaae477a60b0b401254214c772ea8034f4d06427ce5ee6f"
+    },
+    {
+      "language": "he",
+      "locale": "iw-IL",
+      "file": "store/iw-IL/images/tenInchScreenshots/01-actions.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "6776a4f29633f8605a5cd5f5e15d47427f60bb6cff0a6e43fc671566f4d058ea"
+    },
+    {
+      "language": "he",
+      "locale": "iw-IL",
+      "file": "store/iw-IL/images/tenInchScreenshots/02-button-actions.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "80f5ccdda6ccc45eff310fe03408e43f62540def7e162710232fe676a05f7bcb"
+    },
+    {
+      "language": "he",
+      "locale": "iw-IL",
+      "file": "store/iw-IL/images/tenInchScreenshots/03-action-picker.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "fa80de011aeca1c8715c6588110c7135a036990c9e325a84a0bfc832e70eaa9e"
+    },
+    {
+      "language": "he",
+      "locale": "iw-IL",
+      "file": "store/iw-IL/images/tenInchScreenshots/04-settings.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "da0f627e54aa964439fb2ad9cff4ba5138ff2c827b59b0aa31c55dc694e88f66"
+    },
+    {
+      "language": "he",
+      "locale": "iw-IL",
+      "file": "store/iw-IL/images/tenInchScreenshots/05-tutorial.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "5ef319fe76d1e5d1dd22f79ef6f4be2f782c6ace5850667320235d8bd7cea883"
+    },
+    {
+      "language": "he",
+      "locale": "iw-IL",
+      "file": "store/iw-IL/images/tenInchScreenshots/06-buttons.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "45a73ff8d45edf25ad732bbd127beaa18ea19f3f081086344cd1aeccab65bff9"
+    },
+    {
+      "language": "he",
+      "locale": "iw-IL",
+      "file": "store/iw-IL/images/tenInchScreenshots/07-apps.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "d034b99747994645b168f780a4a98fe4008a1943ba880f8ce5dea0c916e85a57"
+    },
+    {
+      "language": "hi",
+      "locale": "hi-IN",
+      "file": "store/hi-IN/images/featureGraphic.png",
+      "width": 1024,
+      "height": 500,
+      "sha256": "4233d185c554717b6cdb9a467022e3ad7b6f5ca5bf27ec579185fd8dd9ca186d"
+    },
+    {
+      "language": "hi",
+      "locale": "hi-IN",
+      "file": "store/hi-IN/images/phoneScreenshots/01-actions.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "46f9cf18e0264f373c61f3d837c841bdf2bb8099273833fd96089697512fda2e"
+    },
+    {
+      "language": "hi",
+      "locale": "hi-IN",
+      "file": "store/hi-IN/images/phoneScreenshots/02-button-actions.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "fec777751596c0de1a2483f3393f1d430fb5bab17696aeab6c332c33c6915e3d"
+    },
+    {
+      "language": "hi",
+      "locale": "hi-IN",
+      "file": "store/hi-IN/images/phoneScreenshots/03-action-picker.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "4786961bc041e1d69f9e61b935f2a50b7ccd451bdcd23b53cb25aea01326d65f"
+    },
+    {
+      "language": "hi",
+      "locale": "hi-IN",
+      "file": "store/hi-IN/images/phoneScreenshots/04-settings.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "311811b280c85b27cdb3cf8441d6b1061cab922811e439fb6ce5af2e83a587c1"
+    },
+    {
+      "language": "hi",
+      "locale": "hi-IN",
+      "file": "store/hi-IN/images/phoneScreenshots/05-tutorial.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "1e054cd2dc375331e19869f9dfb40ad1881c6d919595939ebc9e1ce89c9c63fd"
+    },
+    {
+      "language": "hi",
+      "locale": "hi-IN",
+      "file": "store/hi-IN/images/phoneScreenshots/06-buttons.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "40103db8b8092dff0431dedfd74200c2780a6415a65df1c3a40cad1102ef5aa7"
+    },
+    {
+      "language": "hi",
+      "locale": "hi-IN",
+      "file": "store/hi-IN/images/phoneScreenshots/07-apps.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "2445273ad768b78770283b66ec8dd20ca1bd67272d24a8cea7b09cc577d3ec76"
+    },
+    {
+      "language": "hi",
+      "locale": "hi-IN",
+      "file": "store/hi-IN/images/tenInchScreenshots/01-actions.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "9e655cc9cc8251073201fd1bf2aded195fab11a93dfbdbf8a3e2907735c53d79"
+    },
+    {
+      "language": "hi",
+      "locale": "hi-IN",
+      "file": "store/hi-IN/images/tenInchScreenshots/02-button-actions.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "a75659c20879c89db9092c2eadd0fe86f6d3df398282bf37b72d2775b0c6946f"
+    },
+    {
+      "language": "hi",
+      "locale": "hi-IN",
+      "file": "store/hi-IN/images/tenInchScreenshots/03-action-picker.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "4a2bd83b877d92ae67f945b771ce92758a1e405c005fb0927eb0704f68653d8b"
+    },
+    {
+      "language": "hi",
+      "locale": "hi-IN",
+      "file": "store/hi-IN/images/tenInchScreenshots/04-settings.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "4ba78ad55ccd7d3e19d190c5ad1f85c2721e22afa5a26441dfa659120658e6e6"
+    },
+    {
+      "language": "hi",
+      "locale": "hi-IN",
+      "file": "store/hi-IN/images/tenInchScreenshots/05-tutorial.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "bd2e8dfeedfaf4d80029e5911bc6aeee0c46562520f7d8eff0a63d9cac8b5eb0"
+    },
+    {
+      "language": "hi",
+      "locale": "hi-IN",
+      "file": "store/hi-IN/images/tenInchScreenshots/06-buttons.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "ef11fc3a46752eeb15b62d0e8086385ff97a97672a86dbc32a883507556a3440"
+    },
+    {
+      "language": "hi",
+      "locale": "hi-IN",
+      "file": "store/hi-IN/images/tenInchScreenshots/07-apps.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "663ece1128de9aed490dfbd4cd1588958469161dd2f111c40bea52e45e05dd77"
+    },
+    {
+      "language": "id",
+      "locale": "id",
+      "file": "store/id/images/featureGraphic.png",
+      "width": 1024,
+      "height": 500,
+      "sha256": "17198fc87cd5061e218a17ef62cb9efa2b2ee2fe4699844ac3c057ea0d62b90b"
+    },
+    {
+      "language": "id",
+      "locale": "id",
+      "file": "store/id/images/phoneScreenshots/01-actions.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "1a317beeae539d63be725ab9a9731a25bb42a9ebea8c5074c6536d333418b979"
+    },
+    {
+      "language": "id",
+      "locale": "id",
+      "file": "store/id/images/phoneScreenshots/02-button-actions.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "5fa5850e9ff2f49a8099e8458252dbc7ad498e9ed86fba65f263c449a4a16666"
+    },
+    {
+      "language": "id",
+      "locale": "id",
+      "file": "store/id/images/phoneScreenshots/03-action-picker.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "9ffd5a781c89d924f775413280d256fe1edd6089b34e58852de74c8232f723c2"
+    },
+    {
+      "language": "id",
+      "locale": "id",
+      "file": "store/id/images/phoneScreenshots/04-settings.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "f05ff54de3dc3edacd1962c5e4f04197583074213d52ba9fc870f6a2894dde15"
+    },
+    {
+      "language": "id",
+      "locale": "id",
+      "file": "store/id/images/phoneScreenshots/05-tutorial.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "a1e59794b5fa80c8c2ae4d7b1bd41d712abe3911ccbc5a0b8037fdd383783278"
+    },
+    {
+      "language": "id",
+      "locale": "id",
+      "file": "store/id/images/phoneScreenshots/06-buttons.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "39366bf7e712ecdf07f0527f87c7c93825f7c54cfa3f8ba1a7cfaa0bb7e18943"
+    },
+    {
+      "language": "id",
+      "locale": "id",
+      "file": "store/id/images/phoneScreenshots/07-apps.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "3a3b2bf14b96262e3e38a273fa5d2be5ff8b8e73d7a8bdee78e660993928c2e5"
+    },
+    {
+      "language": "id",
+      "locale": "id",
+      "file": "store/id/images/tenInchScreenshots/01-actions.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "945d1f319f42f58447584f019117da2cc5481597cb3e65bf7f8a0a4656183d2a"
+    },
+    {
+      "language": "id",
+      "locale": "id",
+      "file": "store/id/images/tenInchScreenshots/02-button-actions.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "df7f9b302ece00015594bb125cc744ce9ee6c29226756b7a354b821d156f4a9c"
+    },
+    {
+      "language": "id",
+      "locale": "id",
+      "file": "store/id/images/tenInchScreenshots/03-action-picker.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "5b532f041754150d23e7bf455f2cda87a664077eb043c00e844daa5207fb722e"
+    },
+    {
+      "language": "id",
+      "locale": "id",
+      "file": "store/id/images/tenInchScreenshots/04-settings.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "de065f2e460e45ba3ceffdb50ac0ec86cd51209df5b07ec679a956fe3ff07feb"
+    },
+    {
+      "language": "id",
+      "locale": "id",
+      "file": "store/id/images/tenInchScreenshots/05-tutorial.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "be0742d8f7462877433533d1d290a027c8e3ac1461199d0579e436924b44287d"
+    },
+    {
+      "language": "id",
+      "locale": "id",
+      "file": "store/id/images/tenInchScreenshots/06-buttons.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "3687f5ceb4c853707c1bddda42a56417e50ae5cb43fa0fbab2f6939b4d9015c4"
+    },
+    {
+      "language": "id",
+      "locale": "id",
+      "file": "store/id/images/tenInchScreenshots/07-apps.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "9b2e2be0f8cf9c0fc4589e81c84a9ab4ac8841c440dbdac51e3975d40ac0a8aa"
+    },
+    {
+      "language": "vi",
+      "locale": "vi",
+      "file": "store/vi/images/featureGraphic.png",
+      "width": 1024,
+      "height": 500,
+      "sha256": "696794204aaaa86aae659452d7627ca9e021541483113605d67f11011e8040f5"
+    },
+    {
+      "language": "vi",
+      "locale": "vi",
+      "file": "store/vi/images/phoneScreenshots/01-actions.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "592eb6a93704ce48f7653a1254c76f7d3624a952bf94e52a462d342b94513251"
+    },
+    {
+      "language": "vi",
+      "locale": "vi",
+      "file": "store/vi/images/phoneScreenshots/02-button-actions.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "09a3d9ce825ee23152659cb04e8d51ce600ae1bd437ba2e307f8f863c2cc92c4"
+    },
+    {
+      "language": "vi",
+      "locale": "vi",
+      "file": "store/vi/images/phoneScreenshots/03-action-picker.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "7945709fcfe4700b9f453e56a1f4d193d31907da77a78efb23064dd8c5d180c8"
+    },
+    {
+      "language": "vi",
+      "locale": "vi",
+      "file": "store/vi/images/phoneScreenshots/04-settings.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "9f15eabaed010e5afafda5e05de7cedd4703ee058dbf85cc00271e4ab04118f4"
+    },
+    {
+      "language": "vi",
+      "locale": "vi",
+      "file": "store/vi/images/phoneScreenshots/05-tutorial.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "80dba5213a09caeb54d6d413bcab91d073e7e8c77acef0d0579ad7d214a26dcc"
+    },
+    {
+      "language": "vi",
+      "locale": "vi",
+      "file": "store/vi/images/phoneScreenshots/06-buttons.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "6f5a94cc1b570d672b14115d07def288e3396ca3801cd0a7bacf9a5ce53c63c6"
+    },
+    {
+      "language": "vi",
+      "locale": "vi",
+      "file": "store/vi/images/phoneScreenshots/07-apps.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "662602f0a0341f4326939b64d8a48b2d408068af9a380147e68b74a195381a9f"
+    },
+    {
+      "language": "vi",
+      "locale": "vi",
+      "file": "store/vi/images/tenInchScreenshots/01-actions.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "479855ef59cfa49219cb0d4ec3615e6499778df9d66aff74c0cdcf81313b85a5"
+    },
+    {
+      "language": "vi",
+      "locale": "vi",
+      "file": "store/vi/images/tenInchScreenshots/02-button-actions.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "58a0845cc32291d3946094d2911c94e15799e998faec28d3c30cdc05bb10c9f1"
+    },
+    {
+      "language": "vi",
+      "locale": "vi",
+      "file": "store/vi/images/tenInchScreenshots/03-action-picker.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "f80b81824283878e77236f699173de7c259533111a9e36b6bb555b1f0210efb2"
+    },
+    {
+      "language": "vi",
+      "locale": "vi",
+      "file": "store/vi/images/tenInchScreenshots/04-settings.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "5c60234a6a61f9bb6ff97b8d7aa802d964fe8c7d0c4dcef06363c187a54c53e1"
+    },
+    {
+      "language": "vi",
+      "locale": "vi",
+      "file": "store/vi/images/tenInchScreenshots/05-tutorial.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "9824f252e575effcfdce92e0613c34934a0108c21aafffa6a6dc59dde9a6d7b5"
+    },
+    {
+      "language": "vi",
+      "locale": "vi",
+      "file": "store/vi/images/tenInchScreenshots/06-buttons.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "6abe59d789a71aed81d40be2509c1e7552418a5024e9d97b2bac60a071521070"
+    },
+    {
+      "language": "vi",
+      "locale": "vi",
+      "file": "store/vi/images/tenInchScreenshots/07-apps.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "5ce727ac3e1a50d5da2f69c54e9fb3be8d6e91c0cf346fbcbd43c7cd0e70bb8c"
+    },
+    {
+      "language": "th",
+      "locale": "th",
+      "file": "store/th/images/featureGraphic.png",
+      "width": 1024,
+      "height": 500,
+      "sha256": "6b7782a80cec3600d3912c9ab05322ceb4955b1af27e1c5cf35bbaefd9389a59"
+    },
+    {
+      "language": "th",
+      "locale": "th",
+      "file": "store/th/images/phoneScreenshots/01-actions.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "ab235e8a51b4b8f9e401b63aa722cf2a1e0b23813b4cc420e439d53c75d39b8c"
+    },
+    {
+      "language": "th",
+      "locale": "th",
+      "file": "store/th/images/phoneScreenshots/02-button-actions.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "b1c2efe03ca1b505af4fc8a9e1f4c115ca38bb42def7f6b3411fb3e7aab3d772"
+    },
+    {
+      "language": "th",
+      "locale": "th",
+      "file": "store/th/images/phoneScreenshots/03-action-picker.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "7c200fd530ed74e76173197c3298c231a8b37656dc8bbacf29e2713d0ca3dd7c"
+    },
+    {
+      "language": "th",
+      "locale": "th",
+      "file": "store/th/images/phoneScreenshots/04-settings.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "70848ecf1a1c66f25ba417fddfe93c7961948c0cf03ccb684598e78b4f00bdbd"
+    },
+    {
+      "language": "th",
+      "locale": "th",
+      "file": "store/th/images/phoneScreenshots/05-tutorial.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "869ca74c12cfe5639f135d4b187d9914a9353692a3a8a31b32b15d22a470d98d"
+    },
+    {
+      "language": "th",
+      "locale": "th",
+      "file": "store/th/images/phoneScreenshots/06-buttons.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "97f2c016129fd7ad3923183a8828bc5e7b6db90cb489fe19e0d1fbcfbd5c809c"
+    },
+    {
+      "language": "th",
+      "locale": "th",
+      "file": "store/th/images/phoneScreenshots/07-apps.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "8924c00c8b4c2726b19a533d56c3591736543a00ccd1e9d0327c4c04af15ac9a"
+    },
+    {
+      "language": "th",
+      "locale": "th",
+      "file": "store/th/images/tenInchScreenshots/01-actions.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "1ff6439a5d91e91a13a0e758422fbe873258d163e44eeda10d23bbfb8906012a"
+    },
+    {
+      "language": "th",
+      "locale": "th",
+      "file": "store/th/images/tenInchScreenshots/02-button-actions.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "5d1c7747118df86929e58734ea258f2b834b27db07dc88e20462b532e2c3ee3b"
+    },
+    {
+      "language": "th",
+      "locale": "th",
+      "file": "store/th/images/tenInchScreenshots/03-action-picker.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "fc595f9eefce8885380a501be2670dece213584eb56b92465c455e00498cdabf"
+    },
+    {
+      "language": "th",
+      "locale": "th",
+      "file": "store/th/images/tenInchScreenshots/04-settings.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "626be186a93b722080c267a90e4efcd941501bbc9f71cdfdca734cba208e2c9d"
+    },
+    {
+      "language": "th",
+      "locale": "th",
+      "file": "store/th/images/tenInchScreenshots/05-tutorial.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "dc9a43cb261bdc5b5229318e4107c75479f2e8d870727eb621b3f705862f3b54"
+    },
+    {
+      "language": "th",
+      "locale": "th",
+      "file": "store/th/images/tenInchScreenshots/06-buttons.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "8b7fa18285560a38e581daec4a2723ea97d55effb812189eab244818eb34e23a"
+    },
+    {
+      "language": "th",
+      "locale": "th",
+      "file": "store/th/images/tenInchScreenshots/07-apps.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "71e736b8f71068198ccb7136f59142937d38bf366042f5c7abecdb640e3d9e18"
+    },
+    {
+      "language": "ja",
+      "locale": "ja-JP",
+      "file": "store/ja-JP/images/featureGraphic.png",
+      "width": 1024,
+      "height": 500,
+      "sha256": "bb26bb4a6b55acfc349a57fe39474c539b2428ef1902a108bb9240dd5904b72d"
+    },
+    {
+      "language": "ja",
+      "locale": "ja-JP",
+      "file": "store/ja-JP/images/phoneScreenshots/01-actions.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "d81c49aee9af4af071cbe29d4f8acd36003d366e5629ec99497898f0e522ad51"
+    },
+    {
+      "language": "ja",
+      "locale": "ja-JP",
+      "file": "store/ja-JP/images/phoneScreenshots/02-button-actions.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "e1a6f7d7765972b95f829943ee181c8e7da93e2f9d16dd560da382718d2244c6"
+    },
+    {
+      "language": "ja",
+      "locale": "ja-JP",
+      "file": "store/ja-JP/images/phoneScreenshots/03-action-picker.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "273256c904889dd84e8cb9262902538c4efd941c4c16eadb44e89775ad3a87d0"
+    },
+    {
+      "language": "ja",
+      "locale": "ja-JP",
+      "file": "store/ja-JP/images/phoneScreenshots/04-settings.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "0b325e38c03d983a7c46e9576278030125aff7d9b7e9ca5e550051fb74f4106d"
+    },
+    {
+      "language": "ja",
+      "locale": "ja-JP",
+      "file": "store/ja-JP/images/phoneScreenshots/05-tutorial.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "0b6fbdf2e45e60171ecc5e349f9625901fb443825484ac45ebb33096130ef7df"
+    },
+    {
+      "language": "ja",
+      "locale": "ja-JP",
+      "file": "store/ja-JP/images/phoneScreenshots/06-buttons.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "20777b1b25c720086f7bc33e1e26b45de5dd567ef302595de9648d4b5eba0c13"
+    },
+    {
+      "language": "ja",
+      "locale": "ja-JP",
+      "file": "store/ja-JP/images/phoneScreenshots/07-apps.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "d308f9b2789ce542b32fefd8634f3062d20a756826917a41148e0b9e63265bba"
+    },
+    {
+      "language": "ja",
+      "locale": "ja-JP",
+      "file": "store/ja-JP/images/tenInchScreenshots/01-actions.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "4885458cef69328d248cc100ba15b44fba602bced7bf3026e1e5f72a1cf5d03d"
+    },
+    {
+      "language": "ja",
+      "locale": "ja-JP",
+      "file": "store/ja-JP/images/tenInchScreenshots/02-button-actions.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "3e350e1dfb435c80cb8f90cd5980fac7068dcb6ef38cd35dc8cec05b52fbee43"
+    },
+    {
+      "language": "ja",
+      "locale": "ja-JP",
+      "file": "store/ja-JP/images/tenInchScreenshots/03-action-picker.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "366d54502c0379cddfc1c5839df26a079fe390c07bc84d522b1006347051e437"
+    },
+    {
+      "language": "ja",
+      "locale": "ja-JP",
+      "file": "store/ja-JP/images/tenInchScreenshots/04-settings.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "f424a61035bc9088af1f4e5a44c43a86cb53c51e8da5d4349fdbbc27d76b0fe7"
+    },
+    {
+      "language": "ja",
+      "locale": "ja-JP",
+      "file": "store/ja-JP/images/tenInchScreenshots/05-tutorial.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "b149d80ef76c939bd0a8963a3ba6f7f342d4d4faadc67e0090c272bfe67cada4"
+    },
+    {
+      "language": "ja",
+      "locale": "ja-JP",
+      "file": "store/ja-JP/images/tenInchScreenshots/06-buttons.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "8d8715e6974fb6e5fa4322cc0f399afd8c857f4981debf342d5b673339cf0d40"
+    },
+    {
+      "language": "ja",
+      "locale": "ja-JP",
+      "file": "store/ja-JP/images/tenInchScreenshots/07-apps.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "20d361bf0bcdc3cf0ac2ce13c7b0869425ffeb8b28472edc762d1e7065eea13a"
+    },
+    {
+      "language": "ko",
+      "locale": "ko-KR",
+      "file": "store/ko-KR/images/featureGraphic.png",
+      "width": 1024,
+      "height": 500,
+      "sha256": "3da17e94ea4137404f402416fbcdae85902a1f3e703cb3fd6315969b6968100f"
+    },
+    {
+      "language": "ko",
+      "locale": "ko-KR",
+      "file": "store/ko-KR/images/phoneScreenshots/01-actions.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "32cd7f0488309f1828cb45e970b2703d33dff757fd4501fd452f026e82d76d9a"
+    },
+    {
+      "language": "ko",
+      "locale": "ko-KR",
+      "file": "store/ko-KR/images/phoneScreenshots/02-button-actions.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "adde62cb5d22df8a8cd59db277996cf4c6f695f2e79a56bc6b89939e75dd2f4b"
+    },
+    {
+      "language": "ko",
+      "locale": "ko-KR",
+      "file": "store/ko-KR/images/phoneScreenshots/03-action-picker.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "5fe0ec9b82cca0b66583e339b076b067ca8b4e593c2f0d29be305599db0debde"
+    },
+    {
+      "language": "ko",
+      "locale": "ko-KR",
+      "file": "store/ko-KR/images/phoneScreenshots/04-settings.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "7fdabe47306378673895b130fe493ee4df6bcaa0744cce7369c88d57438aa67b"
+    },
+    {
+      "language": "ko",
+      "locale": "ko-KR",
+      "file": "store/ko-KR/images/phoneScreenshots/05-tutorial.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "71ee2ce7d193db5faae774987429173caba15a9df779ce6b2c18e29ffd9472a7"
+    },
+    {
+      "language": "ko",
+      "locale": "ko-KR",
+      "file": "store/ko-KR/images/phoneScreenshots/06-buttons.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "30988e5f2a7add98aaa51f611cbbea02b122db4cdc117fbd4366b7a4fb2a550a"
+    },
+    {
+      "language": "ko",
+      "locale": "ko-KR",
+      "file": "store/ko-KR/images/phoneScreenshots/07-apps.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "95029e76f9c2466337563a936fd34959fcf13b7d95dc41e4244ce1926ea0a9db"
+    },
+    {
+      "language": "ko",
+      "locale": "ko-KR",
+      "file": "store/ko-KR/images/tenInchScreenshots/01-actions.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "e8a2eff0a4638493fa3267165352518baef15777c500f96448b8b2f21aa89325"
+    },
+    {
+      "language": "ko",
+      "locale": "ko-KR",
+      "file": "store/ko-KR/images/tenInchScreenshots/02-button-actions.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "84dbd08e32dec2e146ff9a707a8e9ebdd41342d70270c6574e2301742674ad2c"
+    },
+    {
+      "language": "ko",
+      "locale": "ko-KR",
+      "file": "store/ko-KR/images/tenInchScreenshots/03-action-picker.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "0c48bfe1db162b109ef352cd87f0492ea89be31cedd1127aa9621e81fb358db6"
+    },
+    {
+      "language": "ko",
+      "locale": "ko-KR",
+      "file": "store/ko-KR/images/tenInchScreenshots/04-settings.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "eedb8078fd6455779dd8d47a098d6e4382f46e65af7d4ae795d505c82cc5536e"
+    },
+    {
+      "language": "ko",
+      "locale": "ko-KR",
+      "file": "store/ko-KR/images/tenInchScreenshots/05-tutorial.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "f6ff8ad78d18dec8236c7accc64e6ac835e6721d2074d38841e5480026d98ec1"
+    },
+    {
+      "language": "ko",
+      "locale": "ko-KR",
+      "file": "store/ko-KR/images/tenInchScreenshots/06-buttons.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "82c623e5b054765d38189706df0727e1f46a78dd7f58b5fe07c14ccade03f571"
+    },
+    {
+      "language": "ko",
+      "locale": "ko-KR",
+      "file": "store/ko-KR/images/tenInchScreenshots/07-apps.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "c2fb6d77743a758e71bca354d6cec1ea1e8645e6870ae6ba2bf251a3fde229ef"
+    },
+    {
+      "language": "zh-Hans",
+      "locale": "zh-CN",
+      "file": "store/zh-CN/images/featureGraphic.png",
+      "width": 1024,
+      "height": 500,
+      "sha256": "ea43076b11792687cfe898167c74774ad496d33b8958c2b0625a9f9c1e5e8c61"
+    },
+    {
+      "language": "zh-Hans",
+      "locale": "zh-CN",
+      "file": "store/zh-CN/images/phoneScreenshots/01-actions.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "9b8c1bb6c552434210256a64b8bc3a7737a74ecc04275c71d1d3d47dbb9a22c6"
+    },
+    {
+      "language": "zh-Hans",
+      "locale": "zh-CN",
+      "file": "store/zh-CN/images/phoneScreenshots/02-button-actions.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "5abd848bda92a78dc0305ecb3ca92cecf7b2d13755d468d191684612ca12ff52"
+    },
+    {
+      "language": "zh-Hans",
+      "locale": "zh-CN",
+      "file": "store/zh-CN/images/phoneScreenshots/03-action-picker.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "c5ca757cc359aa2bad83bd700b0f9458e2736285899091f486157d6dcbb7132e"
+    },
+    {
+      "language": "zh-Hans",
+      "locale": "zh-CN",
+      "file": "store/zh-CN/images/phoneScreenshots/04-settings.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "a877779d72dfd260495a6bf046ba99c9fc018d3a92580038e6721e5d942798c6"
+    },
+    {
+      "language": "zh-Hans",
+      "locale": "zh-CN",
+      "file": "store/zh-CN/images/phoneScreenshots/05-tutorial.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "cccfa7e3d379c56e8a8655dfa82d8cc006989d3f294fd3547f7c57afb06bbbdb"
+    },
+    {
+      "language": "zh-Hans",
+      "locale": "zh-CN",
+      "file": "store/zh-CN/images/phoneScreenshots/06-buttons.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "5d1c51b255ce3144796d34d401a71f0f682de7e35ca8138a683b9f95ee75963a"
+    },
+    {
+      "language": "zh-Hans",
+      "locale": "zh-CN",
+      "file": "store/zh-CN/images/phoneScreenshots/07-apps.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "e0b0161e6840b177b29a7c25ec8f7e24b7a25687fefd9f21feaab58c3d6c4cc3"
+    },
+    {
+      "language": "zh-Hans",
+      "locale": "zh-CN",
+      "file": "store/zh-CN/images/tenInchScreenshots/01-actions.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "b348c275c2d4bbf37987910bde5efa031332f9906cba6de6280f0cc003c40df8"
+    },
+    {
+      "language": "zh-Hans",
+      "locale": "zh-CN",
+      "file": "store/zh-CN/images/tenInchScreenshots/02-button-actions.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "4ad846815793a90a03776dc8e962e491a15c7b8a96a6ca766ed9116d221321f0"
+    },
+    {
+      "language": "zh-Hans",
+      "locale": "zh-CN",
+      "file": "store/zh-CN/images/tenInchScreenshots/03-action-picker.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "c543249706cf2ca5f6382929356266d65bdf8808f32bfc7ee39e1d4684ba9f69"
+    },
+    {
+      "language": "zh-Hans",
+      "locale": "zh-CN",
+      "file": "store/zh-CN/images/tenInchScreenshots/04-settings.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "ffd21ff201fd806bd8f87b03ceef8eb8acd9c7d6c079032470a87741ad02b473"
+    },
+    {
+      "language": "zh-Hans",
+      "locale": "zh-CN",
+      "file": "store/zh-CN/images/tenInchScreenshots/05-tutorial.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "8947b804e2fcaebf031ef4ddcc6cf98204f5697921c1713e96ac5d367a32a427"
+    },
+    {
+      "language": "zh-Hans",
+      "locale": "zh-CN",
+      "file": "store/zh-CN/images/tenInchScreenshots/06-buttons.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "d27e289f3438c34d037f2bf2c296681a02311c1ba36c080415c9b736c5dd62a2"
+    },
+    {
+      "language": "zh-Hans",
+      "locale": "zh-CN",
+      "file": "store/zh-CN/images/tenInchScreenshots/07-apps.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "56a55ae8627b6a7da002fe4e8e91510ca9388a53c40f0d45a617737e83b98689"
+    },
+    {
+      "language": "zh-Hant",
+      "locale": "zh-TW",
+      "file": "store/zh-TW/images/featureGraphic.png",
+      "width": 1024,
+      "height": 500,
+      "sha256": "c7a569c25c2f4005875113c157931201958217bcfe1514475c052aca076a6eea"
+    },
+    {
+      "language": "zh-Hant",
+      "locale": "zh-TW",
+      "file": "store/zh-TW/images/phoneScreenshots/01-actions.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "b92197c90ee4f2acca633f473dfa8d5850e3c722f53f6f24e521e0500ffb7fac"
+    },
+    {
+      "language": "zh-Hant",
+      "locale": "zh-TW",
+      "file": "store/zh-TW/images/phoneScreenshots/02-button-actions.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "46293559b41bd76c2a1308afb6a17a0ea2d13ab76fbb073332368a5b69c65aec"
+    },
+    {
+      "language": "zh-Hant",
+      "locale": "zh-TW",
+      "file": "store/zh-TW/images/phoneScreenshots/03-action-picker.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "d584d851901753a3a0a22f2256f934fbf62b6a9e9c453ebf88355a83bf893d60"
+    },
+    {
+      "language": "zh-Hant",
+      "locale": "zh-TW",
+      "file": "store/zh-TW/images/phoneScreenshots/04-settings.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "059278f7323fd6b20e6abca4e935d5cfeabad058cd70373ca40ac8d3ca8de62c"
+    },
+    {
+      "language": "zh-Hant",
+      "locale": "zh-TW",
+      "file": "store/zh-TW/images/phoneScreenshots/05-tutorial.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "ad694da34d45800f7cc4fcb278bbd1ac715ea267b1ab737fd7d2dfa58b082b41"
+    },
+    {
+      "language": "zh-Hant",
+      "locale": "zh-TW",
+      "file": "store/zh-TW/images/phoneScreenshots/06-buttons.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "4a3b8d93281f4b4a1a420a84d856de670c218ce3c9c8b1ff55d5afb973beb08c"
+    },
+    {
+      "language": "zh-Hant",
+      "locale": "zh-TW",
+      "file": "store/zh-TW/images/phoneScreenshots/07-apps.png",
+      "width": 1080,
+      "height": 1920,
+      "sha256": "c50d025528c76886c06b2f5e55cc436b21dc9e8f9143ae13cd93c2a728a17bbc"
+    },
+    {
+      "language": "zh-Hant",
+      "locale": "zh-TW",
+      "file": "store/zh-TW/images/tenInchScreenshots/01-actions.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "428906d2bbf05cbd9b325554ac0bf40dcc5a24b5a73b7d1d2da6bc8e78dabb81"
+    },
+    {
+      "language": "zh-Hant",
+      "locale": "zh-TW",
+      "file": "store/zh-TW/images/tenInchScreenshots/02-button-actions.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "cad7d884c2ab9052e69d6f3ad045a5ab049ccf82d3979d0c9fcdf49b1ac1027a"
+    },
+    {
+      "language": "zh-Hant",
+      "locale": "zh-TW",
+      "file": "store/zh-TW/images/tenInchScreenshots/03-action-picker.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "86e470bc59f193e0e43cb9d515b2e4290cc2511baafe22bc82ce33cce0a060c1"
+    },
+    {
+      "language": "zh-Hant",
+      "locale": "zh-TW",
+      "file": "store/zh-TW/images/tenInchScreenshots/04-settings.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "e01a269afdf605083495e9c39d6e4dbb434375ebdc3ff09e3100db959ea6827f"
+    },
+    {
+      "language": "zh-Hant",
+      "locale": "zh-TW",
+      "file": "store/zh-TW/images/tenInchScreenshots/05-tutorial.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "12a55c299569beb912a6e9b4ffdaf8a0047cd4043fa4e0ac2045e407735f6050"
+    },
+    {
+      "language": "zh-Hant",
+      "locale": "zh-TW",
+      "file": "store/zh-TW/images/tenInchScreenshots/06-buttons.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "907bf69a611c56e6d3984aea4fdcc70ba8d0c3410bc37284c6dd40e9d8193878"
+    },
+    {
+      "language": "zh-Hant",
+      "locale": "zh-TW",
+      "file": "store/zh-TW/images/tenInchScreenshots/07-apps.png",
+      "width": 1920,
+      "height": 1200,
+      "sha256": "979768ef9b8434d7e4d722e6e506be37c7acd4c2d96f996729fe52085a56eb88"
+    }
+  ]
+}

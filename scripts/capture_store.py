@@ -16,6 +16,7 @@ def adb(serial, *args, **kwargs):
 
 parser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument('--languages', nargs='+', default=['en'], help='BCP 47 codes, or all')
+parser.add_argument('--resume', action='store_true', help='Skip already complete seven-image sets')
 args = parser.parse_args()
 supported = json.loads((ROOT / 'localization/languages.json').read_text())
 store_locales = json.loads((ROOT / 'localization/store-locales.json').read_text())
@@ -24,6 +25,9 @@ if not set(languages) <= set(supported):
     parser.error('Unsupported language')
 for language in languages:
     for serial, category, other in [(PHONE, 'phoneScreenshots', TABLET), (TABLET, 'tenInchScreenshots', PHONE)]:
+        destination = ROOT / 'store' / store_locales[language] / 'images' / category
+        if args.resume and len(list(destination.glob('*.png'))) == 7:
+            continue
         adb(other, 'shell', 'am', 'force-stop', 'com.turntouch.android')
         running = subprocess.run(['adb', '-s', serial, 'shell', 'pidof', 'com.turntouch.android'], capture_output=True, text=True)
         print(f'{serial}: previous app process {running.stdout.strip() or "not running"}', flush=True)
@@ -37,8 +41,8 @@ for language in languages:
             if serial == PHONE:
                 adb(serial, 'shell', 'wm', 'size', '1080x1920')
             adb(serial, 'shell', 'settings', 'put', 'global', 'sysui_demo_allowed', '1')
-            for args in [('enter',), ('notifications', '--es', 'visible', 'false')]:
-                adb(serial, 'shell', 'am', 'broadcast', '-a', 'com.android.systemui.demo', '--es', 'command', *args)
+            for demo_args in [('enter',), ('notifications', '--es', 'visible', 'false')]:
+                adb(serial, 'shell', 'am', 'broadcast', '-a', 'com.android.systemui.demo', '--es', 'command', *demo_args)
             result = adb(serial, 'shell', 'am', 'instrument', '-w', '-e', 'class', 'com.turntouch.android.StoreScreenshotTest', '-e', 'storeScreenshots', 'true', '-e', 'language', language, 'com.turntouch.android.test/androidx.test.runner.AndroidJUnitRunner', capture_output=True, text=True)
             print(result.stdout)
             if 'OK (1 test)' not in result.stdout:
