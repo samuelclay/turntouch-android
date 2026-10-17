@@ -1,0 +1,15 @@
+{
+  "version": "1.1",
+  "version_code": 2,
+  "status": "In review",
+  "source_commit": "bb9435a31025e78d53f51b90a8c004fdca671257",
+  "release_policy": "Full production rollout after approval; managed publishing off",
+  "languages": 21,
+  "assets": {
+    "feature_graphics": 21,
+    "screenshots": 294,
+    "app_icon": 1
+  },
+  "aab_sha256": "e08a02f7530e74aa37e266c1331b08b5c97421748e535b4beef14329bdfca94c",
+  "url": "https://play.google.com/console/u/0/developers/6280481402178293168/app/4974725381826331297/publishing"
+}
