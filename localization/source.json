@@ -234,9 +234,6 @@
   "Connect to {0}": [
     "app/src/main/java/com/turntouch/android/BindingOptions.kt"
   ],
-  "Connect using the Home Assistant menu.": [
-    "app/src/main/java/com/turntouch/android/HomeAssistantOptions.kt"
-  ],
   "Connect your Android device to the same Wi-Fi network, then select your bridge below.": [
     "app/src/main/java/com/turntouch/android/ConnectionScreen.kt"
   ],
@@ -1173,6 +1170,7 @@
     "app/src/main/java/com/turntouch/android/RemotePairingScreen.kt"
   ],
   "Sign in…": [
+    "app/src/main/java/com/turntouch/android/HomeAssistantOptions.kt",
     "app/src/main/java/com/turntouch/android/HomeAssistantOptions.kt",
     "app/src/main/java/com/turntouch/android/HomeAssistantOptions.kt"
   ],

@@ -48,6 +48,15 @@ class HomeAssistantFlowTest {
                 val bitmap=InstrumentationRegistry.getInstrumentation().uiAutomation.takeScreenshot()
                 java.io.File(rule.activity.getExternalFilesDir(null),"home-assistant-$language.png").outputStream().use {bitmap.compress(android.graphics.Bitmap.CompressFormat.PNG,100,it)}
             }
+            runBlocking {client.disconnect()}
+            for(language in listOf("de","ar")) {
+                rule.runOnIdle {Localization.previewLanguage(language)}
+                rule.onNodeWithTag("ha-sign-in").performScrollTo().assertIsDisplayed().assertIsEnabled()
+                val bitmap=InstrumentationRegistry.getInstrumentation().uiAutomation.takeScreenshot()
+                java.io.File(rule.activity.getExternalFilesDir(null),"home-assistant-sign-in-$language.png").outputStream().use {bitmap.compress(android.graphics.Bitmap.CompressFormat.PNG,100,it)}
+            }
+            rule.onNodeWithTag("ha-sign-in").performClick()
+            rule.onNodeWithText(tr("Home Assistant address")).assertExists()
         } finally {runBlocking {client.disconnect()};rule.runOnIdle {Localization.previewLanguage(null);app.homeAssistant=original;snapshot.restore()}}
     }
     private fun checkLayout(twelve: Boolean) {

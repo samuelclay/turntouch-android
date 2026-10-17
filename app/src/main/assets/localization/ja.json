@@ -73,7 +73,6 @@
   "Connect this app first.": "先にこのアプリを接続してください。",
   "Connect to Home Assistant first.": "先にHome Assistantに接続してください。",
   "Connect to {0}": "{0}に接続",
-  "Connect using the Home Assistant menu.": "Home Assistantメニューから接続してください。",
   "Connect your Android device to the same Wi-Fi network, then select your bridge below.": "Androidデバイスを同じWi-Fiネットワークに接続し、下からブリッジを選択してください。",
   "Connect your Android device to the same Wi-Fi network, then select your light panels below.": "Androidデバイスを同じWi-Fiネットワークに接続し、下からライトパネルを選択してください。",
   "Connect {0} first.": "先に{0}を接続してください。",

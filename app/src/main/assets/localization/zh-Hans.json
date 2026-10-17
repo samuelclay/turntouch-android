@@ -73,7 +73,6 @@
   "Connect this app first.": "请先连接此应用。",
   "Connect to Home Assistant first.": "请先连接到 Home Assistant。",
   "Connect to {0}": "连接到 {0}",
-  "Connect using the Home Assistant menu.": "通过 Home Assistant 菜单连接。",
   "Connect your Android device to the same Wi-Fi network, then select your bridge below.": "请将 Android 设备连接到同一 Wi-Fi 网络，然后在下方选择 bridge。",
   "Connect your Android device to the same Wi-Fi network, then select your light panels below.": "请将 Android 设备连接到同一 Wi-Fi 网络，然后在下方选择灯板。",
   "Connect {0} first.": "请先连接 {0}。",

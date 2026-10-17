@@ -115,8 +115,9 @@ fun haCategories()=listOf("" to tr("Controllable entities"),"*" to tr("All entit
             Button(onClick={if(tokenEntry)work {client.connect(address,token);token="";connection=false} else {runCatching {HomeAssistantClient.normalize(address)}.onSuccess {auth=it}.onFailure {message=it.message.orEmpty();failed=true}}},enabled=!busy,modifier=Modifier.fillMaxWidth(),shape=RoundedCornerShape(8.dp),colors=ButtonDefaults.buttonColors(containerColor=HABlue)) {Text(if(tokenEntry)tr("Connect") else tr("Sign in…"))}
         }
         Box(Modifier.testTag("ha-entities").fillMaxWidth().height(210.dp).border(0.5.dp,Color(0xffe1e5e9),RoundedCornerShape(8.dp))) {
-            if(visible.isEmpty())Text(if(client.connected)tr("No matching entities") else tr("Connect using the Home Assistant menu."),Modifier.align(Alignment.Center).padding(24.dp),color=Color.Gray,textAlign=TextAlign.Center)
-            LazyColumn {items(visible,key={it.getString("entity_id")}) {item ->
+            if(!client.connected)Button(onClick={connection=true;tokenEntry=false},enabled=!busy,modifier=Modifier.align(Alignment.Center).padding(horizontal=24.dp).fillMaxWidth().heightIn(min=56.dp).testTag("ha-sign-in"),shape=RoundedCornerShape(8.dp),colors=ButtonDefaults.buttonColors(containerColor=HABlue)) {Text(tr("Sign in…"),fontSize=18.sp)}
+            else if(visible.isEmpty())Text(tr("No matching entities"),Modifier.align(Alignment.Center).padding(24.dp),color=Color.Gray,textAlign=TextAlign.Center)
+            if(client.connected)LazyColumn {items(visible,key={it.getString("entity_id")}) {item ->
                 val id=item.getString("entity_id");val domain=id.substringBefore('.')
                 Row(Modifier.fillMaxWidth().background(if(id==entityID)Color(0xffeaf2f8) else Color.White).clickable {
                     focus.clearFocus();entityID=id;service=HomeAssistantClient.actions(item,client.services).firstOrNull()?.optString("id").orEmpty();data="{}";message=""
