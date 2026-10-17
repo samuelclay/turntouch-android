@@ -18,8 +18,8 @@ object LocalDiscovery {
             val end=System.currentTimeMillis()+5000
             while(System.currentTimeMillis()<end) {ensureActive();val p=DatagramPacket(ByteArray(8192),8192)
                 try {socket.receive(p);val raw=p.data.copyOf(p.length)
-                    if(p.port==9999) {val info=JSONObject(Network.kasaCrypt(raw,true).toString(Charsets.UTF_8)).getJSONObject("system").getJSONObject("get_sysinfo");found[p.address.hostAddress!!]=LanDevice(info.optString("alias","Kasa"),"http://${p.address.hostAddress}","Kasa legacy")}
-                    else if(p.port==20002 && raw.size>16) {val info=JSONObject(String(raw,16,raw.size-16)).optJSONObject("result") ?: continue;found[p.address.hostAddress!!]=LanDevice(info.optString("device_model","Kasa"),"http://${p.address.hostAddress}","Kasa KLAP")}
+                    if(p.port==9999) {val info=JSONObject(Network.kasaCrypt(raw,true).toString(Charsets.UTF_8)).getJSONObject("system").getJSONObject("get_sysinfo");found[p.address.hostAddress!!]=LanDevice(info.optString("alias","Kasa"),"http://${p.address.hostAddress}",tr("Kasa legacy"))}
+                    else if(p.port==20002 && raw.size>16) {val info=JSONObject(String(raw,16,raw.size-16)).optJSONObject("result") ?: continue;found[p.address.hostAddress!!]=LanDevice(info.optString("device_model","Kasa"),"http://${p.address.hostAddress}",tr("Kasa KLAP"))}
                 } catch(_:SocketTimeoutException) {} catch(_:org.json.JSONException) {} }
         };found.values.toList()
     }
@@ -39,7 +39,7 @@ object GoveeLan {
     @Synchronized fun state(host: String): JSONObject = socket().use {s->
         send(s,host,4003,"devStatus",JSONObject());val end=System.currentTimeMillis()+4000
         while(System.currentTimeMillis()<end) {val p=DatagramPacket(ByteArray(4096),4096);try {s.receive(p);if(p.address.hostAddress!=host)continue;val msg=JSONObject(String(p.data,0,p.length)).getJSONObject("msg");if(msg.optString("cmd")=="devStatus")return@use msg.getJSONObject("data")} catch(_:SocketTimeoutException) {}}
-        error("Govee did not respond. Enable LAN Control in the Govee app.")
+        error(tr("Govee did not respond. Enable LAN Control in the Govee app."))
     }
     @Synchronized fun control(host: String,action: String) {
         val old=state(host)
@@ -48,6 +48,6 @@ object GoveeLan {
         DatagramSocket().use {send(it,host,4003,if(brightness)"brightness" else "turn",JSONObject().put("value",value))}
         var confirmed=false
         repeat(4) {if(!confirmed) {Thread.sleep(200);val actual=state(host);confirmed=actual.optInt(if(brightness)"brightness" else "onOff")==value}}
-        check(confirmed) {"Govee did not confirm the change"}
+        check(confirmed) {tr("Govee did not confirm the change")}
     }
 }

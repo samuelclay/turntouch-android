@@ -52,14 +52,14 @@ val SelectedStroke=Color(0xff303aa0)
 val Effra=FontFamily(Font(R.font.effra),Font(R.font.effra_light,FontWeight.Light),Font(R.font.effra_bold,FontWeight.Bold))
 class MainActivity: ComponentActivity() {
     private val state get()=(application as TurnTouchApp).state
-    private val permissions=registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { result -> if(state.onboarding || state.screen=="pairing") { if(result.values.all { it })state.bluetooth.beginPairing() else state.bluetooth.pairingUnavailable("Allow Nearby devices in Settings to connect a remote.") } }
+    private val permissions=registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { result -> if(state.onboarding || state.screen=="pairing") { if(result.values.all { it })state.bluetooth.beginPairing() else state.bluetooth.pairingUnavailable(tr("Allow Nearby devices in Settings to connect a remote.")) } }
     override fun onNewIntent(intent: Intent) { super.onNewIntent(intent); openRequestedSetup(intent) }
     private fun openRequestedSetup(intent: Intent) { if(BuildConfig.DEBUG)intent.getStringExtra("setup")?.takeIf { id -> state.catalog.modes.any { it.id==id } }?.let { state.finishOnboarding(); state.screen="connect:$it" } }
     fun scan() {
         val needed=if(Build.VERSION.SDK_INT>=31)arrayOf(Manifest.permission.BLUETOOTH_SCAN,Manifest.permission.BLUETOOTH_CONNECT) else arrayOf(Manifest.permission.ACCESS_FINE_LOCATION)
         if(needed.all { checkSelfPermission(it)==PackageManager.PERMISSION_GRANTED })state.bluetooth.beginPairing() else permissions.launch(needed)
     }
-    override fun onStart() { super.onStart(); state.bluetooth.reconnect() }
+    override fun onStart() { super.onStart(); Localization.refresh(); state.bluetooth.reconnect() }
     override fun onCreate(savedInstanceState: Bundle?) { super.onCreate(savedInstanceState); openRequestedSetup(intent); enableEdgeToEdge(); setContent {
         MaterialTheme(colorScheme=lightColorScheme(primary=Blue,onPrimary=Color.White,background=Color.White,surface=Color.White,onSurface=Ink),typography=Typography(bodyLarge=androidx.compose.ui.text.TextStyle(fontFamily=Effra,fontSize=17.sp),bodyMedium=androidx.compose.ui.text.TextStyle(fontFamily=Effra,fontSize=15.sp),labelLarge=androidx.compose.ui.text.TextStyle(fontFamily=Effra,fontSize=15.sp),titleLarge=androidx.compose.ui.text.TextStyle(fontFamily=Effra,fontSize=24.sp))) { Surface(Modifier.fillMaxSize()) { App(state,::scan) } }
     } }
@@ -70,6 +70,13 @@ class MainActivity: ComponentActivity() {
     if(id!=0)Image(painterResource(id),description,modifier.size(size),colorFilter=tint?.let {ColorFilter.tint(it)}) else Box(modifier.size(size))
 }
 @Composable fun App(app: AppState,scan: ()->Unit) {
+    CompositionLocalProvider(androidx.compose.ui.platform.LocalLayoutDirection provides if(Localization.rtl) LayoutDirection.Rtl else LayoutDirection.Ltr) {
+        LocalizedApp(app,scan)
+    }
+}
+@Composable private fun LocalizedApp(app: AppState,scan: ()->Unit) {
+    var welcome by remember { mutableStateOf(Localization.needsWelcome) }
+    if(welcome)LanguageDialog(onDismiss={welcome=false},firstLaunch=true)
     if(app.screen=="demo" && app.demo==null) { OfflineDemo(app); return }
     var settingsOpen by remember { mutableStateOf(false) }
     var inspected by remember { mutableStateOf<Direction?>(null) }
@@ -83,7 +90,7 @@ class MainActivity: ComponentActivity() {
         Box(Modifier.fillMaxWidth().height(44.dp).background(Brush.verticalGradient(listOf(Color.White,Color(0xffe7e7e7))))) {
             Artwork("title",Modifier.align(Alignment.Center).width(100.dp).height(12.dp),100.dp)
             Box(Modifier.align(Alignment.CenterEnd)) {
-                IconButton(onClick={settingsOpen=!settingsOpen}) { Artwork("settings",size=22.dp,description="Settings") }
+                IconButton(onClick={settingsOpen=!settingsOpen}) { Artwork("settings",size=22.dp,description=tr("Settings")) }
                 if(settingsOpen)SettingsPopover(app,onDismiss={settingsOpen=false},
                     onNavigate={settingsOpen=false;app.screen=it},
                     onConnection={settingsOpen=false;connection=it})
@@ -95,12 +102,12 @@ class MainActivity: ComponentActivity() {
             app.screen.startsWith("connect:") -> ConnectionScreen(app,app.screen.substringAfter(":")) { app.screen="remote" }
             app.screen=="devices" -> Devices(app,scan)
             app.screen=="privacy" -> Column(Modifier.fillMaxSize()) {
-                TextButton(onClick={app.screen="remote"}) { Text("Done") }
+                TextButton(onClick={app.screen="remote"}) { Text(tr("Done")) }
                 val context=LocalContext.current
                 val policy=remember { context.assets.open("privacy.txt").bufferedReader().use { it.readText() } }
-                Text(policy,Modifier.verticalScroll(rememberScrollState()).padding(24.dp),fontSize=16.sp)
+                Text(tr(policy),Modifier.verticalScroll(rememberScrollState()).padding(24.dp),fontSize=16.sp)
             }
-            app.screen=="diagnostics" -> Column { TextButton(onClick={app.screen="remote";settingsOpen=true}) { Text("Back") }; LazyColumn { items(app.events.toList()) { Text(it,Modifier.padding(12.dp),fontSize=13.sp) } } }
+            app.screen=="diagnostics" -> Column { TextButton(onClick={app.screen="remote";settingsOpen=true}) { Text(tr("Back")) }; LazyColumn { items(app.events.toList()) { Text(it,Modifier.padding(12.dp),fontSize=13.sp) } } }
             nativeBinding!=null -> NativeScreen(app,nativeBinding!!,nativeCommands) { nativeBinding=null }
             else -> {
                 Row(Modifier.fillMaxWidth().height(92.dp)) {
@@ -108,15 +115,15 @@ class MainActivity: ComponentActivity() {
                         Column(Modifier.weight(1f).fillMaxHeight().background(if(selected)Brush.verticalGradient(listOf(Color.White,Color.White)) else Brush.verticalGradient(listOf(Color.White,Color(0xffe7e7e7)))).combinedClickable(onClick={app.select(i);inspected=null},onLongClick={app.select(i);chooseMode=true}),horizontalAlignment=Alignment.CenterHorizontally,verticalArrangement=Arrangement.Center) {
                             MiniDiamond(i,selected)
                             Spacer(Modifier.height(13.dp))
-                            Text(if(app.twelve)listOf("SINGLE TAP","DOUBLE TAP","HOLD")[i] else app.mode(i).title.uppercase(),fontFamily=Effra,fontSize=13.sp,color=if(selected)Ink else Color(0xff808388))
+                            Text(if(app.twelve)listOf(tr("SINGLE TAP"),tr("DOUBLE TAP"),tr("HOLD"))[i] else app.mode(i).title.uppercase(),fontFamily=Effra,fontSize=13.sp,color=if(selected)Ink else Color(0xff808388))
                         }
                     }
                 }
                 HorizontalDivider(color=Color(0xffe7e7e7))
                 Row(Modifier.fillMaxWidth().height(64.dp).padding(horizontal=32.dp),verticalAlignment=Alignment.CenterVertically) {
                     Artwork(app.mode().icon)
-                    Text(if(app.twelve)"${listOf("Single tap","Double tap","Hold")[app.selected]} actions" else app.mode().subtitle.ifBlank { app.mode().title },Modifier.weight(1f).padding(start=12.dp),fontSize=13.sp)
-                    TextButton(onClick={chooseMode=!chooseMode}) { Text(if(chooseMode)"Done" else "Change",fontSize=13.sp) }
+                    Text(if(app.twelve)listOf(tr("Single tap actions"),tr("Double tap actions"),tr("Hold actions"))[app.selected] else app.mode().subtitle.ifBlank { app.mode().title },Modifier.weight(1f).padding(start=12.dp),fontSize=13.sp)
+                    TextButton(onClick={chooseMode=!chooseMode}) { Text(if(chooseMode)tr("Done") else tr("Change"),fontSize=13.sp) }
                 }
                 Box(Modifier.weight(1f).fillMaxWidth()) {
                     if(chooseMode) ModePicker(app) { id->app.assignMode(id);chooseMode=false }
@@ -127,8 +134,8 @@ class MainActivity: ComponentActivity() {
                         }
                         if(inspected!=null) ActionEditor(app,inspected!!)
                         else {
-                            Text(if(app.perform)"Tap a button to perform its action" else "Tap a button to change its action",fontSize=14.sp,color=Color(0xff808388))
-                            TextButton(onClick={connection=app.mode().id}) { Text("${app.mode().title} options") }
+                            Text(if(app.perform)tr("Tap a button to perform its action") else tr("Tap a button to change its action"),fontSize=14.sp,color=Color(0xff808388))
+                            TextButton(onClick={connection=app.mode().id}) { Text(tr("{0} options", app.mode().title)) }
                         }
 
                     }
@@ -137,7 +144,7 @@ class MainActivity: ComponentActivity() {
             }
         }
     }
-    if(app.onboarding || app.screen=="pairing" || app.screen=="tutorial") RemotePairingDialog(app,scan,app.screen=="tutorial") { app.finishOnboarding(); app.screen="remote" }
+    if(!welcome && (app.onboarding || app.screen=="pairing" || app.screen=="tutorial")) RemotePairingDialog(app,scan,app.screen=="tutorial") { app.finishOnboarding(); app.screen="remote" }
     connection?.let { id -> LaunchedEffect(id) { app.screen="connect:$id";connection=null } }
 }
 @Composable fun MiniDiamond(selected: Int,active: Boolean) {
@@ -176,7 +183,8 @@ fun diamondPoints(w: Float,h: Float,s: Float): List<List<Offset>> = listOf(
                 val binding=app.bindings(direction).firstOrNull()
                 val action=binding?.let {app.catalog.action(it)}
                 Box(
-                    Modifier.offset(with(density){left.toDp()},with(density){top.toDp()})
+                    // Physical east/west positions must not mirror with the UI language.
+                    Modifier.align(AbsoluteAlignment.TopLeft).absoluteOffset(with(density){left.toDp()},with(density){top.toDp()})
                         .size(with(density){faceWidth.toDp()},with(density){faceHeight.toDp()})
                         .clip(shape).background(if(active)Color(0xffc3c7c9) else if(selected)Color.White else Color(0xfffafbfd))
                         .pointerInput(direction) {
@@ -189,7 +197,7 @@ fun diamondPoints(w: Float,h: Float,s: Float): List<List<Offset>> = listOf(
                         .combinedClickable(interactionSource=interaction,indication=null,
                             onClick={onPress(direction,Gesture.Single)},
                             onDoubleClick={onPress(direction,Gesture.Double)},onLongClick={onPress(direction,Gesture.Hold)})
-                        .semantics {contentDescription="${direction.name} button"}
+                        .semantics {contentDescription=tr("{0} button", direction.displayName)}
                         .drawWithContent {
                             drawContent()
                             drawPath(polygon(localPoints.map {Offset(it.x*size.width,it.y*size.height)}),
@@ -199,7 +207,7 @@ fun diamondPoints(w: Float,h: Float,s: Float): List<List<Offset>> = listOf(
                     Column(Modifier.fillMaxWidth(if(app.twelve)0.55f else 0.66f),horizontalAlignment=Alignment.CenterHorizontally,
                         verticalArrangement=Arrangement.Center) {
                         if(app.twelve)Artwork(binding?.let {app.catalog.mode(it.mode).icon} ?: "add",size=16.dp)
-                        Text(action?.title ?: "Add action",Modifier.fillMaxWidth().padding(top=if(app.twelve)3.dp else 0.dp),
+                        Text(action?.title ?: tr("Add action"),Modifier.fillMaxWidth().padding(top=if(app.twelve)3.dp else 0.dp),
                             style=androidx.compose.ui.text.TextStyle(fontFamily=Effra,color=Ink,fontSize=13.sp,lineHeight=15.sp,
                                 platformStyle=PlatformTextStyle(includeFontPadding=false)),
                             textAlign=TextAlign.Center,maxLines=2,overflow=TextOverflow.Ellipsis)
@@ -224,14 +232,14 @@ fun diamondPoints(w: Float,h: Float,s: Float): List<List<Offset>> = listOf(
     val editingGesture=if(pairedRandom)Gesture.Single else gesture
     val batch=app.bindings(direction,editingGesture)
     Column(Modifier.widthIn(max=700.dp).fillMaxWidth().padding(horizontal=24.dp)) {
-        if(!app.twelve && !pairedRandom)Row { listOf(Gesture.Single,Gesture.Double).forEach { g->TextButton(onClick={gesture=g;choosing=false},Modifier.weight(1f)) { Text(if(g==Gesture.Single)"Single tap" else "Double tap",color=if(gesture==g)Blue else Color.Gray) } } }
+        if(!app.twelve && !pairedRandom)Row { listOf(Gesture.Single,Gesture.Double).forEach { g->TextButton(onClick={gesture=g;choosing=false},Modifier.weight(1f)) { Text(if(g==Gesture.Single)tr("Single tap") else tr("Double tap"),color=if(gesture==g)Blue else Color.Gray) } } }
         batch.forEachIndexed { i,b ->
             key(direction,gesture,i,b.mode,b.action) {
                 Row(Modifier.fillMaxWidth().padding(vertical=8.dp),verticalAlignment=Alignment.CenterVertically) {
                     Artwork(app.catalog.action(b).icon)
                     Column(Modifier.weight(1f).padding(start=12.dp)) { Text(app.catalog.action(b).title); Text(app.catalog.mode(b.mode).title,fontSize=12.sp,color=Color.Gray) }
-                    TextButton(onClick={val same=choosing && !adding && changingIndex==i;adding=false;changingIndex=i;choosing=!same;choiceMode=b.mode},Modifier.semantics {contentDescription="Change action ${i+1}"}) {Text("Change",fontSize=13.sp)}
-                    if(i>0)IconButton(onClick={app.save(direction,editingGesture,batch.filterIndexed { n,_->n!=i })}) { Artwork("button_x",size=14.dp,description="Remove action ${i+1}") }
+                    TextButton(onClick={val same=choosing && !adding && changingIndex==i;adding=false;changingIndex=i;choosing=!same;choiceMode=b.mode},Modifier.semantics {contentDescription=tr("Change action {0}", i+1)}) {Text(tr("Change"),fontSize=13.sp)}
+                    if(i>0)IconButton(onClick={app.save(direction,editingGesture,batch.filterIndexed { n,_->n!=i })}) { Artwork("button_x",size=14.dp,description=tr("Remove action {0}", i+1)) }
                 }
                 if(choosing && !adding && changingIndex==i) ActionChooser(app,choiceMode,{choiceMode=it},{choosing=false}) { selected ->
                     val current=app.bindings(direction,editingGesture)
@@ -255,7 +263,7 @@ fun diamondPoints(w: Float,h: Float,s: Float): List<List<Offset>> = listOf(
             TextButton(onClick={if(choosing && adding)choosing=false else {adding=true;choosing=true;choiceMode=null}}) {
                 Artwork(if(choosing && adding)"button_x" else "button_plus",size=14.dp)
                 Spacer(Modifier.width(8.dp))
-                Text(if(choosing && adding)"Cancel" else "Add new action",fontFamily=Effra,fontSize=13.sp,color=Color(0xffa0a0a0))
+                Text(if(choosing && adding)tr("Cancel") else tr("Add new action"),fontFamily=Effra,fontSize=13.sp,color=Color(0xffa0a0a0))
             }
             HorizontalDivider(Modifier.align(Alignment.BottomCenter),thickness=0.5.dp,color=Color(0xffc2cbce))
         }
@@ -267,11 +275,11 @@ fun diamondPoints(w: Float,h: Float,s: Float): List<List<Offset>> = listOf(
 @Composable private fun ActionChooser(app: AppState,mode: String?,onMode: (String?)->Unit,onCancel: ()->Unit,onChoose: (Binding)->Unit) {
     val reveal=remember {BringIntoViewRequester()}
     LaunchedEffect(mode) {withFrameNanos { };reveal.bringIntoView()}
-    Column(Modifier.fillMaxWidth().bringIntoViewRequester(reveal).background(Color.White).semantics {contentDescription="Action chooser"}) {
+    Column(Modifier.fillMaxWidth().bringIntoViewRequester(reveal).background(Color.White).semantics {contentDescription=tr("Action chooser")}) {
         Row(verticalAlignment=Alignment.CenterVertically) {
-            Text(if(mode==null)"Choose app" else "Choose action",Modifier.weight(1f),fontSize=17.sp)
-            if(mode!=null)TextButton(onClick={onMode(null)}) {Text("Apps",fontSize=13.sp)}
-            IconButton(onClick=onCancel) {Artwork("button_x",size=14.dp,description="Close action chooser",tint=Ink)}
+            Text(if(mode==null)tr("Choose app") else tr("Choose action"),Modifier.weight(1f),fontSize=17.sp)
+            if(mode!=null)TextButton(onClick={onMode(null)}) {Text(tr("Apps"),fontSize=13.sp)}
+            IconButton(onClick=onCancel) {Artwork("button_x",size=14.dp,description=tr("Close action chooser"),tint=Ink)}
         }
         Column(Modifier.fillMaxWidth().heightIn(max=240.dp).verticalScroll(rememberScrollState())) {
             if(mode==null)app.catalog.modes.forEach {m->TextButton(onClick={onMode(m.id)},Modifier.fillMaxWidth()) {
@@ -287,45 +295,45 @@ fun diamondPoints(w: Float,h: Float,s: Float): List<List<Offset>> = listOf(
     val ble=app.bluetooth
     var rename by remember { mutableStateOf<Remote?>(null) }
     Column(Modifier.fillMaxWidth().verticalScroll(rememberScrollState()).padding(24.dp)) {
-        Row(verticalAlignment=Alignment.CenterVertically) { Text("Your remotes",Modifier.weight(1f),fontSize=25.sp); TextButton(onClick={app.screen="remote"}) { Text("Done") } }
-        Text("Press a button on your Turn Touch to wake it, then connect.",Modifier.padding(vertical=16.dp))
-        Button(onClick={app.screen="pairing"}) { Text("Pair a new remote") }
+        Row(verticalAlignment=Alignment.CenterVertically) { Text(tr("Your remotes"),Modifier.weight(1f),fontSize=25.sp); TextButton(onClick={app.screen="remote"}) { Text(tr("Done")) } }
+        Text(tr("Press a button on your Turn Touch to wake it, then connect."),Modifier.padding(vertical=16.dp))
+        Button(onClick={app.screen="pairing"}) { Text(tr("Pair a new remote")) }
         ble.error?.let { Text(it,Modifier.padding(vertical=12.dp),color=MaterialTheme.colorScheme.error) }
         ble.remotes.forEach { remote ->
             Column(Modifier.fillMaxWidth().padding(vertical=18.dp)) {
-                Text(remote.name,fontSize=22.sp); Text(remote.state,fontSize=15.sp); Text("${remote.address} · ${remote.rssi} dBm${remote.battery?.let { " · $it% battery" } ?: ""}${remote.firmware?.let { " · Firmware $it" } ?: ""}",fontSize=12.sp,color=Color.Gray)
-                if(remote.state.startsWith("Press")) { Row { Direction.entries.forEach { d->Text(if(remote.pairedButtons and (1 shl d.ordinal)!=0)"✓ ${d.name}  " else "○ ${d.name}  ",fontSize=13.sp) } } }
+                Text(remote.name,fontSize=22.sp); Text(tr(remote.state),fontSize=15.sp); Text(tr("{0} · {1} dBm{2}{3}", remote.address, remote.rssi, remote.battery?.let { tr(" · {0}% battery", it) } ?: "", remote.firmware?.let { tr(" · Firmware {0}", it) } ?: ""),fontSize=12.sp,color=Color.Gray)
+                if(remote.state.startsWith("Press")) { Row { Direction.entries.forEach { d->Text(if(remote.pairedButtons and (1 shl d.ordinal)!=0)tr("✓ {0}  ", d.displayName) else tr("○ {0}  ", d.displayName),fontSize=13.sp) } } }
                 remote.connectionError?.let { Text(it,fontSize=14.sp,color=MaterialTheme.colorScheme.error) }
                 Row {
-                    if(remote.state!="Connected" && !remote.state.startsWith("Press"))TextButton(onClick={if(ble.isSaved(remote.address))ble.retry(remote.address) else app.screen="pairing"}) { Text(if(remote.state=="Nearby")"Connect" else "Try again") }
-                    if(remote.state=="Connected")TextButton(onClick={rename=remote}) { Text("Rename") }
-                    if(ble.isSaved(remote.address))TextButton(onClick={ble.disconnect(remote.address,true)}) { Text("Forget") }
+                    if(remote.state!="Connected" && !remote.state.startsWith("Press"))TextButton(onClick={if(ble.isSaved(remote.address))ble.retry(remote.address) else app.screen="pairing"}) { Text(if(remote.state=="Nearby")tr("Connect") else tr("Try again")) }
+                    if(remote.state=="Connected")TextButton(onClick={rename=remote}) { Text(tr("Rename")) }
+                    if(ble.isSaved(remote.address))TextButton(onClick={ble.disconnect(remote.address,true)}) { Text(tr("Forget")) }
                 }
                 HorizontalDivider()
             }
         }
-        if(ble.remotes.isEmpty())Text("No remotes found yet. A remote connected to your Mac or iPhone may need to disconnect there first.",Modifier.padding(vertical=24.dp),color=Color.Gray)
+        if(ble.remotes.isEmpty())Text(tr("No remotes found yet. A remote connected to your Mac or iPhone may need to disconnect there first."),Modifier.padding(vertical=24.dp),color=Color.Gray)
     }
-    rename?.let { remote -> var name by remember { mutableStateOf(remote.name) }; var error by remember { mutableStateOf("") }; AlertDialog(onDismissRequest={rename=null},title={Text("Name your remote")},text={Column { OutlinedTextField(name,{name=it},label={Text("Name")});Text(error,color=MaterialTheme.colorScheme.error) }},confirmButton={TextButton(onClick={runCatching { ble.rename(remote.address,name) }.onSuccess { rename=null }.onFailure { error=it.message.orEmpty() }}) { Text("Save") }},dismissButton={TextButton(onClick={rename=null}) { Text("Cancel") }}) }
+    rename?.let { remote -> var name by remember { mutableStateOf(remote.name) }; var error by remember { mutableStateOf("") }; AlertDialog(onDismissRequest={rename=null},title={Text(tr("Name your remote"))},text={Column { OutlinedTextField(name,{name=it},label={Text(tr("Name"))});Text(error,color=MaterialTheme.colorScheme.error) }},confirmButton={TextButton(onClick={runCatching { ble.rename(remote.address,name) }.onSuccess { rename=null }.onFailure { error=it.message.orEmpty() }}) { Text(tr("Save")) }},dismissButton={TextButton(onClick={rename=null}) { Text(tr("Cancel")) }}) }
 }
 fun connectionFields(mode: String): List<Pair<String,String>> = when(mode) {
-    "Hue"->listOf("host" to "Bridge IP address","token" to "Bridge username","group" to "Group ID (0 = all lights)")
-    "Nanoleaf"->listOf("host" to "Panel IP address","token" to "Authorization token")
-    "Kasa"->listOf("host" to "Device IP address","protocol" to "Protocol (legacy or klap)","username" to "TP-Link email (KLAP)","password" to "TP-Link password (KLAP)")
-    "Sonos","Bose","Wemo"->listOf("host" to "Device IP address (include port if needed)")
-    "Govee"->listOf("host" to "Device IP address (LAN Control)","key" to "Govee API key","device" to "Device address","model" to "Model")
-    "Ifttt"->listOf("key" to "Webhook key")
+    "Hue"->listOf("host" to tr("Bridge IP address"),"token" to tr("Bridge username"),"group" to tr("Group ID (0 = all lights)"))
+    "Nanoleaf"->listOf("host" to tr("Panel IP address"),"token" to tr("Authorization token"))
+    "Kasa"->listOf("host" to tr("Device IP address"),"protocol" to tr("Protocol (legacy or klap)"),"username" to tr("TP-Link email (KLAP)"),"password" to tr("TP-Link password (KLAP)"))
+    "Sonos","Bose","Wemo"->listOf("host" to tr("Device IP address (include port if needed)"))
+    "Govee"->listOf("host" to tr("Device IP address (LAN Control)"),"key" to tr("Govee API key"),"device" to tr("Device address"),"model" to tr("Model"))
+    "Ifttt"->listOf("key" to tr("Webhook key"))
     "HomeKit","Nest"->emptyList()
     else->emptyList()
 }
 fun actionFields(mode: String): List<Pair<String,String>> = when(mode) {
-    "Custom"->listOf("url" to "URL","method" to "HTTP method (GET or POST)","body" to "Request body")
-    "Ifttt"->listOf("event" to "Event name","value1" to "Value 1","value2" to "Value 2","value3" to "Value 3")
-    "Hue"->listOf("group" to "Group ID","scene" to "Scene ID","step" to "Brightness step","seconds" to "Fade duration (seconds)")
-    "Nanoleaf"->listOf("scene" to "Effect name")
-    "Web","News","Presentation","Video"->listOf("url" to "Page or media URL")
-    "Yoga"->listOf("seconds" to "Pose duration (seconds)")
-    else->listOf("volume" to "Jump volume (0–100)")
+    "Custom"->listOf("url" to tr("URL"),"method" to tr("HTTP method (GET or POST)"),"body" to tr("Request body"))
+    "Ifttt"->listOf("event" to tr("Event name"),"value1" to tr("Value 1"),"value2" to tr("Value 2"),"value3" to tr("Value 3"))
+    "Hue"->listOf("group" to tr("Group ID"),"scene" to tr("Scene ID"),"step" to tr("Brightness step"),"seconds" to tr("Fade duration (seconds)"))
+    "Nanoleaf"->listOf("scene" to tr("Effect name"))
+    "Web","News","Presentation","Video"->listOf("url" to tr("Page or media URL"))
+    "Yoga"->listOf("seconds" to tr("Pose duration (seconds)"))
+    else->listOf("volume" to tr("Jump volume (0–100)"))
 }
 @Composable fun Fields(fields: List<Pair<String,String>>,values: MutableMap<String,String>) {
     fields.forEach { (key,label) -> OutlinedTextField(values[key] ?: "",{values[key]=it},Modifier.fillMaxWidth().padding(vertical=5.dp),label={Text(label,fontSize=13.sp)},singleLine=key!="body",visualTransformation=if(key in listOf("key","token","password"))PasswordVisualTransformation() else VisualTransformation.None) }

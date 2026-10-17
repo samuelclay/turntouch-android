@@ -29,7 +29,7 @@ data class LightingChoices(val rooms: List<DeviceChoice> = emptyList(), val scen
 
 object LightingOptions {
     fun base(config: Map<String, String>, port: Int? = null): String {
-        val host = config["host"]?.takeIf { it.isNotBlank() } ?: error("Connect this app first.")
+        val host = config["host"]?.takeIf { it.isNotBlank() } ?: error(tr("Connect this app first."))
         val address = if (host.startsWith("http://") || host.startsWith("https://")) host else "http://$host"
         val uri = java.net.URI(address)
         return address.trimEnd('/') + if (port != null && uri.port == -1) ":$port" else ""
@@ -39,22 +39,22 @@ object LightingOptions {
         if (text.trimStart().startsWith("[")) {
             val result = JSONArray(text)
             for (i in 0 until result.length()) result.getJSONObject(i).optJSONObject("error")?.let {
-                error(it.optString("description", "The device rejected the request."))
+                error(it.optString("description", tr("The device rejected the request.")))
             }
-            error("The device returned an unexpected response.")
+            error(tr("The device returned an unexpected response."))
         }
         return JSONObject(text)
     }
 
     suspend fun load(mode: String, config: Map<String, String>): LightingChoices = withContext(Dispatchers.IO) {
-        val token = config["token"]?.takeIf { it.isNotBlank() } ?: error("Connect $mode first.")
+        val token = config["token"]?.takeIf { it.isNotBlank() } ?: error(tr("Connect {0} first.", mode))
         when (mode) {
             "Hue" -> {
                 val base = "${base(config)}/api/$token"
                 val groups = objectResponse(Network.request("$base/groups"))
                 val scenes = objectResponse(Network.request("$base/scenes"))
                 LightingChoices(
-                    listOf(DeviceChoice("0", "All rooms")) + groups.keys().asSequence().map { id ->
+                    listOf(DeviceChoice("0", tr("All rooms"))) + groups.keys().asSequence().map { id ->
                         DeviceChoice(id, groups.getJSONObject(id).getString("name"))
                     }.sortedBy { it.name.lowercase() }.toList(),
                     scenes.keys().asSequence().map { id ->
@@ -83,7 +83,7 @@ object LightingOptions {
     }
     val fields = when {
         binding.mode in listOf("Custom", "Ifttt", "Web", "News", "Presentation", "Video", "Yoga") -> actionFields(binding.mode)
-        binding.action.endsWith("VolumeJump") -> listOf("volume" to "Volume (0–100)")
+        binding.action.endsWith("VolumeJump") -> listOf("volume" to tr("Volume (0–100)"))
         else -> emptyList()
     }
     fields.forEach { (key, label) ->
@@ -102,16 +102,16 @@ object LightingOptions {
         error = null
         try { choices = app.demo?.choices(binding.mode) ?: LightingOptions.load(binding.mode, config) }
         catch (cancelled: kotlinx.coroutines.CancellationException) { throw cancelled }
-        catch (failure: Exception) { error = failure.message ?: "Could not load options." }
+        catch (failure: Exception) { error = failure.message ?: tr("Could not load options.") }
         finally { loading = false }
     }
     fun update(key: String, value: String) = onChange(binding.copy(options = binding.options + (key to value)))
-    Column(Modifier.fillMaxWidth().semantics { contentDescription = "${binding.mode} button options" }) {
+    Column(Modifier.fillMaxWidth().semantics { contentDescription = tr("{0} button options", binding.mode) }) {
         if (config["token"].isNullOrBlank()) {
-            TextButton(onClick = { app.screen = "connect:${binding.mode}" }) { Text("Connect to ${binding.mode}") }
+            TextButton(onClick = { app.screen = "connect:${binding.mode}" }) { Text(tr("Connect to {0}", binding.mode)) }
         } else {
             if (loading) LinearProgressIndicator(Modifier.fillMaxWidth().padding(vertical = 8.dp))
-            error?.let { Text(it, color = MaterialTheme.colorScheme.error); TextButton(onClick = { refresh++ }) { Text("Try again") } }
+            error?.let { Text(it, color = MaterialTheme.colorScheme.error); TextButton(onClick = { refresh++ }) { Text(tr("Try again")) } }
             val action = binding.action.removePrefix("TTMode${binding.mode}")
             if (binding.mode == "Hue") {
                 val group = binding.options["group"] ?: config["group"] ?: "0"
@@ -123,7 +123,7 @@ object LightingOptions {
                 if (sceneAction) {
                     if (action == "CycleScenes") {
                         val selected = binding.options["scenes"]?.split('|')?.filter { it.isNotBlank() }.orEmpty()
-                        Text("Scenes to cycle", Modifier.padding(top = 12.dp))
+                        Text(tr("Scenes to cycle"), Modifier.padding(top = 12.dp))
                         Column(Modifier.heightIn(max = 240.dp).verticalScroll(rememberScrollState())) {
                             scenes.forEach { scene ->
                                 val checked = scene.id in selected
@@ -134,7 +134,7 @@ object LightingOptions {
                         }
                     } else InlineChoice("Scene", scenes, binding.options["scene"]) { update("scene", it) }
                 }
-                if (action == "Sleep") OutlinedTextField(binding.options["seconds"] ?: "60", { update("seconds", it) }, Modifier.fillMaxWidth(), label = { Text("Fade duration (seconds)") }, singleLine = true)
+                if (action == "Sleep") OutlinedTextField(binding.options["seconds"] ?: "60", { update("seconds", it) }, Modifier.fillMaxWidth(), label = { Text(tr("Fade duration (seconds)")) }, singleLine = true)
             } else {
                 InlineChoice("Effect", choices?.scenes.orEmpty(), binding.options["scene"], loading=loading, onRefresh={refresh++}) { effect ->
                     onChange(binding.copy(action="TTModeNanoleafSceneCustom", options=binding.options + ("scene" to effect)))
@@ -157,18 +157,18 @@ object LightingOptions {
     }
     Column(Modifier.fillMaxWidth().padding(vertical=6.dp)) {
         Row(verticalAlignment=Alignment.CenterVertically) {
-            Text(label,Modifier.width(54.dp),fontFamily=Effra,fontSize=13.sp,color=Ink)
+            Text(tr(label),Modifier.widthIn(min=54.dp,max=110.dp),fontFamily=Effra,fontSize=13.sp,color=Ink)
             Row(
                 Modifier.weight(1f).heightIn(min=44.dp).border(0.5.dp,Color(0xffc2cbce),RoundedCornerShape(5.dp))
                     .background(Color.White,RoundedCornerShape(5.dp)).clickable { expanded=!expanded }
-                    .semantics { contentDescription="$label selector" }.padding(horizontal=12.dp,vertical=10.dp),
+                    .semantics { contentDescription=tr("{0} selector", tr(label)) }.padding(horizontal=12.dp,vertical=10.dp),
                 verticalAlignment=Alignment.CenterVertically
             ) {
-                Text(choices.firstOrNull { it.id==selected }?.name ?: selected?.takeIf { it.isNotBlank() } ?: if(label=="Effect")"Choose effect" else "Choose ${label.lowercase()}",Modifier.weight(1f),fontFamily=Effra,fontSize=15.sp,color=Ink)
+                Text(choices.firstOrNull { it.id==selected }?.name ?: selected?.takeIf { it.isNotBlank() } ?: when(label) { "Effect"->tr("Choose effect"); "Room"->tr("Choose room"); else->tr("Choose scene") },Modifier.weight(1f),fontFamily=Effra,fontSize=15.sp,color=Ink)
                 Text(if(expanded)"▴" else "▾",color=Ink)
             }
             if(onRefresh!=null) {
-                IconButton(onClick=onRefresh,enabled=!loading,modifier=Modifier.semantics {contentDescription="Refresh ${if(label=="Room")"rooms and scenes" else "effects"}"}) {
+                IconButton(onClick=onRefresh,enabled=!loading,modifier=Modifier.semantics {contentDescription=if(label=="Room")tr("Refresh rooms and scenes") else tr("Refresh effects")}) {
                     if(loading)CircularProgressIndicator(Modifier.size(18.dp),strokeWidth=2.dp)
                     else Artwork("refresh",size=18.dp,tint=Blue)
                 }
@@ -177,7 +177,7 @@ object LightingOptions {
         if(expanded) {
             Column(Modifier.fillMaxWidth().heightIn(max=216.dp).bringIntoViewRequester(bringIntoView)
                 .background(Color.White).verticalScroll(rememberScrollState())) {
-                if(choices.isEmpty())Text(if(loading)"Loading…" else "No ${if(label=="Effect")"effects" else label.lowercase()+"s"} available.",Modifier.padding(12.dp))
+                if(choices.isEmpty())Text(if(loading)tr("Loading…") else when(label) { "Effect"->tr("No effects available."); "Room"->tr("No rooms available."); else->tr("No scenes available.") },Modifier.padding(12.dp))
                 choices.forEach {choice ->
                     TextButton(onClick={onSelect(choice.id);expanded=false},modifier=Modifier.fillMaxWidth()) {
                         Text(choice.name,Modifier.weight(1f),fontFamily=Effra);if(choice.id==selected)Text("✓")
@@ -190,9 +190,9 @@ object LightingOptions {
 
 @Composable private fun HueRandomOptions(single: Binding,double: Binding?,onSingleChange: (Binding)->Unit,onDoubleChange: (Binding)->Unit) {
     val groups=listOf(
-        Triple("Color","randomColors",listOf("Different","Mix","Same")),
-        Triple("Saturation","randomSaturation",listOf("Pastels","Mix","Strong")),
-        Triple("Luminance","randomBrightness",listOf("Dim","Mix","Bright"))
+        Triple(tr("Color"),"randomColors",listOf(tr("Different"),tr("Mix"),tr("Same"))),
+        Triple(tr("Saturation"),"randomSaturation",listOf(tr("Pastels"),tr("Mix"),tr("Strong"))),
+        Triple(tr("Luminance"),"randomBrightness",listOf(tr("Dim"),tr("Mix"),tr("Bright")))
     )
     Column(Modifier.fillMaxWidth().padding(vertical=8.dp)) {
         groups.forEach { (label,key,choices) ->
@@ -206,13 +206,13 @@ object LightingOptions {
 @Composable private fun RandomSegments(label: String,tap: String,key: String,choices: List<String>,binding: Binding,onChange: (Binding)->Unit) {
     val selected=binding.options[key]?.toIntOrNull() ?: 2
     Row(Modifier.fillMaxWidth().padding(vertical=3.dp),verticalAlignment=Alignment.CenterVertically) {
-        if(tap.isNotBlank())Artwork(if(tap=="Single tap")"single_tap" else "double_tap",Modifier.padding(end=8.dp),size=20.dp,description=tap,tint=Ink)
+        if(tap.isNotBlank())Artwork(if(tap=="Single tap")"single_tap" else "double_tap",Modifier.padding(end=8.dp),size=20.dp,description=tr(tap),tint=Ink)
         Row(Modifier.weight(1f).border(1.dp,Blue,RoundedCornerShape(5.dp)).clip(RoundedCornerShape(5.dp)).selectableGroup()) {
             choices.forEachIndexed {index,title ->
                 Box(Modifier.weight(1f).heightIn(min=36.dp).background(if(index==selected)Blue else Color.White)
                     .selectable(selected=index==selected,role=androidx.compose.ui.semantics.Role.RadioButton) {
                         onChange(binding.copy(options=binding.options+(key to index.toString())))
-                    }.semantics {contentDescription="${if(tap.isBlank())"" else "$tap "}$label: $title"}.padding(horizontal=3.dp,vertical=8.dp),
+                    }.semantics {contentDescription=tr("{0}: {1}: {2}", tr(tap), label, title)}.padding(horizontal=3.dp,vertical=8.dp),
                     contentAlignment=Alignment.Center) {
                     Text(title,fontFamily=Effra,fontSize=13.sp,color=if(index==selected)Color.White else Blue)
                 }

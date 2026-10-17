@@ -1,0 +1,6 @@
+{
+  "full-description": "將喜愛的功能設為 Turn Touch 遙控器上的四個按鈕。\n\n將 Turn Touch Bluetooth 遙控器與 Android 手機或平板配對，再選擇各按鈕的功能。操控相容燈具、調整音樂，或將多個動作組合成一次按鍵操作。\n\n自訂每個按鈕\n• 設定單按、連按兩下與長按的功能。\n• 使用 12 或 16 個動作的配置。\n• 一個按鈕即可執行多個動作。\n• 查看遙控器連線狀態與電池電量。\n\n燈光與音樂\n設定相容的 Philips Hue 和 Nanoleaf 燈具，選擇房間與場景、調整亮度，或隨機切換 Hue 顏色。連線相容的 Sonos 喇叭以控制音樂。其他連線選項包括 Govee、Kasa、WeMo、Bose、IFTTT 和自訂 HTTP 指令；支援的功能與設定需求依裝置和服務而異。\n\n專為您的遙控器打造\n引導式配對流程和圖解說明協助您快速上手。App 會透過 Android 的已連線裝置服務，在背景持續搜尋已配對的遙控器。藍牙範圍、權限和手機電池設定都會影響可用性。\n\n試用離線示範，無需硬體或帳戶即可探索遙控器功能範例。示範指令僅供模擬，不會控制實際裝置。\n\n使用實體按鈕控制需另購 Turn Touch 遙控器。整合功能需要相容的智慧家庭硬體、區域網路存取，有時也需要第三方帳戶或 API 金鑰。本 App 不提供 Apple HomeKit、Google Home、Nest 或遙控器韌體更新功能。\n\n無需 Turn Touch 帳戶，沒有廣告，也不需訂閱。\n\n了解更多：https://turntouch.com\n支援：samuel@turntouch.com",
+  "screenshot-caption": "喜愛的功能，一按即用",
+  "short-description": "讓 Turn Touch 遙控器操控燈光、音樂與日常功能。",
+  "title": "Turn Touch"
+}

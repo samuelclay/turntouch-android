@@ -11,3 +11,7 @@ evidence/
 *.keystore
 *.jks
 .env
+
+# Python localization tooling
+__pycache__/
+*.pyc

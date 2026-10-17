@@ -116,3 +116,11 @@ Distributed under the MIT license. See [LICENSE](LICENSE) for more information.
 
 [license-image]: https://img.shields.io/badge/License-MIT-blue.svg
 [license-url]: LICENSE
+
+## Localization
+
+The app supports English and 20 translations, automatic device-language detection,
+a first-launch chooser, and Language at the top of Settings. See
+[the localization workflow](localization/README.md) for extraction, incremental
+AI translation, catalog validation, and localized store screenshot preparation.
+[Validation results](localization/VALIDATION.md) record the current build and UI checks.
