@@ -308,7 +308,7 @@
     "id": "Kasa",
     "title": "TP-Link Kasa",
     "subtitle": "Smart plugs and switches",
-    "icon": "mode_wemo",
+    "icon": "mode_kasa",
     "origin": "iOS",
     "actions": [
       {
@@ -338,7 +338,7 @@
     "id": "Govee",
     "title": "Govee",
     "subtitle": "Smart lights and devices",
-    "icon": "mode_hue",
+    "icon": "mode_govee",
     "origin": "iOS",
     "actions": [
       {

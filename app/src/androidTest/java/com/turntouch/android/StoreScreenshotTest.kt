@@ -54,6 +54,13 @@ class StoreScreenshotTest {
             rule.onNodeWithText(tr("Cancel")).performClick()
             rule.onNodeWithText(tr("Change"),useUnmergedTree=true).performClick()
             capture("07-apps")
+            rule.onNodeWithText(tr("Govee")).performScrollTo()
+            capture("08-smart-home-apps")
+            rule.runOnIdle { rule.activity.onBackPressedDispatcher.onBackPressed(); app.changeButtonMode(true) }
+            rule.onNodeWithText(tr("SINGLE TAP")).assertIsDisplayed()
+            rule.onNodeWithText(tr("DOUBLE TAP")).assertIsDisplayed()
+            rule.onNodeWithText(tr("HOLD")).assertIsDisplayed()
+            capture("09-twelve-actions")
         } finally {
             rule.runOnIdle {snapshot.restore();Localization.previewLanguage(null);languagePrefs.edit().putBoolean("welcomed",welcomed).commit()}
         }

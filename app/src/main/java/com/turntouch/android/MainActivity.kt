@@ -121,7 +121,7 @@ class MainActivity: ComponentActivity() {
                 }
                 HorizontalDivider(color=Color(0xffe7e7e7))
                 Row(Modifier.fillMaxWidth().height(64.dp).padding(horizontal=32.dp),verticalAlignment=Alignment.CenterVertically) {
-                    Artwork(app.mode().icon)
+                    Artwork(if(app.twelve) "settings" else app.mode().icon)
                     Text(if(app.twelve)listOf(tr("Single tap actions"),tr("Double tap actions"),tr("Hold actions"))[app.selected] else app.mode().subtitle.ifBlank { app.mode().title },Modifier.weight(1f).padding(start=12.dp),fontSize=13.sp)
                     TextButton(onClick={chooseMode=!chooseMode}) { Text(if(chooseMode)tr("Done") else tr("Change"),fontSize=13.sp) }
                 }
@@ -135,7 +135,7 @@ class MainActivity: ComponentActivity() {
                         if(inspected!=null) ActionEditor(app,inspected!!)
                         else {
                             Text(if(app.perform)tr("Tap a button to perform its action") else tr("Tap a button to change its action"),fontSize=14.sp,color=Color(0xff808388))
-                            TextButton(onClick={connection=app.mode().id}) { Text(tr("{0} options", app.mode().title)) }
+                            if(!app.twelve)TextButton(onClick={connection=app.mode().id}) { Text(tr("{0} options", app.mode().title)) }
                         }
 
                     }
