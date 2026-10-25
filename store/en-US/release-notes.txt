@@ -1,7 +1,1 @@
-Turn Touch comes to Android.
-• Pair your Bluetooth remote with a guided setup.
-• Customize single taps, double taps, and holds.
-• Control compatible lights and music, or combine actions.
-• See remote status and battery level.
-• Use the app on phones and tablets.
-• Explore an offline demo without hardware.
+Home Assistant comes to Turn Touch. Connect your home, browse devices, scenes, scripts, and automations, and assign actions to your remote buttons. Refreshed icons for TP-Link Kasa, Nanoleaf, and Govee and clearer labels make setup easier.
