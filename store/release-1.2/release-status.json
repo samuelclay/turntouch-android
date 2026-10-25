@@ -1,0 +1,20 @@
+{
+  "version": "1.2",
+  "version_code": 3,
+  "status": "Changes in review",
+  "quick_checks": "Running at submission; automatically sent for review when checks pass",
+  "submitted_at": "2026-10-25T05:41:13.507625+00:00",
+  "source_commit": "b48242b99d31c9c634d4d0464abc7707d99f6048",
+  "release_policy": "Full production rollout after approval; managed publishing off",
+  "languages": 21,
+  "localized_screenshots": "Existing 21-language listing assets retained",
+  "aab_sha256": "4cdb9fb7fc8fbbf4e9770716a7e1354ed11f42fbd3921c88828e60e3e811c939",
+  "validation": {
+    "unit_tests": 23,
+    "lint_errors": 0,
+    "signature_verified": true,
+    "zip_alignment_16kb": true,
+    "ci": "Android and Localization passed"
+  },
+  "url": "https://play.google.com/console/u/1/developers/6280481402178293168/app/4974725381826331297/publishing"
+}
